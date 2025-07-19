@@ -6,7 +6,7 @@
 	(paper "A4")
 	(title_block
 		(title "Helsinki Region Live Train Map")
-		(date "2025-06-28")
+		(date "2025-07-19")
 		(rev "1")
 		(comment 1 "©Chris Dirks & Unto Ahti")
 		(comment 2 "MIT License")
@@ -17053,7 +17053,7 @@
 		)
 		(uuid "98e78cc7-c3a0-48f0-a660-b135ab82ed22")
 	)
-	(label "NAL-NIMT_MCU"
+	(label "HPL-NOA_MCU"
 		(at 241.3 134.62 0)
 		(effects
 			(font
@@ -17063,7 +17063,7 @@
 		)
 		(uuid "a78d5558-78b6-4d83-85e1-5505cb51d711")
 	)
-	(label "STRAND-MNK_MCU"
+	(label "HKI-KTS_MCU"
 		(at 205.74 73.66 180)
 		(effects
 			(font
@@ -17113,7 +17113,7 @@
 		)
 		(uuid "c84df52d-b9e8-40b5-83e2-89455d0e7b94")
 	)
-	(label "STRAND-MNK_MCU"
+	(label "HKI-KTS_MCU"
 		(at 241.3 132.08 0)
 		(effects
 			(font
@@ -17193,7 +17193,7 @@
 		)
 		(uuid "f2fa7e90-f26b-4c01-848f-d195d4284c3f")
 	)
-	(label "NAL-NIMT_MCU"
+	(label "HPL-NOA_MCU"
 		(at 187.96 45.72 0)
 		(effects
 			(font

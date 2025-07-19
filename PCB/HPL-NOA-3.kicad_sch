@@ -4,6 +4,10 @@
 	(generator_version "9.0")
 	(uuid "7fea9d16-4095-4a33-9387-20616c241c9c")
 	(paper "A4")
+	(title_block
+		(date "2025-07-19")
+		(rev "1")
+	)
 	(lib_symbols
 		(symbol "PCM_JLCPCB-Extended:LED, WS2812B, 1615"
 			(exclude_from_sim no)

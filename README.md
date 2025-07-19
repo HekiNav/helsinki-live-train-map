@@ -1,12 +1,12 @@
-# Auckland Live LED Train Map
+# Helsinki Live LED Train Map
 
-A physical, real-time LED map of the Auckland train network, powered by an ESP32-C3 microcontroller. Train movements are displayed using addressable RGB LEDs, with live data fetched over Wi-Fi.
+A physical, real-time LED map of the Helsinki Region train network, powered by an ESP32-C3 microcontroller. Train movements are displayed using addressable RGB LEDs, with live data fetched over Wi-Fi.
 
 ---
 
 ## Table of Contents
 
-- [Auckland Live LED Train Map](#auckland-live-led-train-map)
+- [Helsinki Live LED Train Map](#auckland-live-led-train-map)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Hardware](#hardware)
@@ -20,12 +20,12 @@ A physical, real-time LED map of the Auckland train network, powered by an ESP32
 
 ---
 
-![PCB Overview Render](Images/Auckland-LED-Train-Map-Render.avif)
+![PCB Overview Render](Images/Helsinki-LED-Train-Map.png)
 
 ## Features
 
-- **Real-time Train Tracking:** Displays the approximate locations of trains on the Auckland network.
-- **Addressable LEDs:** ~150 WS2812B-compatible RGB LEDs (1.6x1.5mm) for a vibrant display.
+- **Real-time Train Tracking:** Displays the approximate locations of trains on the Helsinki region network.
+- **Addressable LEDs:** ~290 WS2812B-compatible RGB LEDs (1.6x1.5mm) for a vibrant display.
 - **Wi-Fi Connectivity:** ESP32-C3's built-in Wi-Fi fetches live train data.
 - **Custom PCB:** Designed for JLCPCB manufacturing limits.
 - **Open Source:** Hardware and firmware are open source.
@@ -35,23 +35,22 @@ A physical, real-time LED map of the Auckland train network, powered by an ESP32
 ## Hardware
 
 - **Microcontroller:** ESP32-C3 (RISC-V, 160 MHz, 4 MB Flash, QFN32)
-- **LEDs:** ~150 x XL-1615RGBC-WS2812B (1.6mm x 1.5mm)
-- **PCB:** 249mm x 66mm, JLCPCB-friendly
+- **LEDs:** ~290 x XL-1615RGBC-WS2812B (1.6mm x 1.5mm)
+- **PCB:** 249mm x 71.5mm, JLCPCB-friendly
 - **Antenna:** On-board PCB antenna ([TI CC2430DB design](https://www.ti.com/lit/ug/swru125/swru125.pdf))
 
-![ESP32-C3 PCB Render](Images/ESP32C3-PCB-Render.avif)
+![ESP32-C3 PCB Render](Images/Helsinki-LED-Train)
 
-![Pukekohe PCB Render](Images/Pukekohe-PCB-Render.avif)
 
 ---
 
 ## PCB Design
 
 - Designed in **KiCad V9.0** using [JLCPCB KiCad Library](https://github.com/CDFER/jlcpcb-kicad-library)
-- **View Online:** [Interactive PCB Layout (Kicanvas)](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2FCDFER%2FAuckland-LED-Train-Map%2Ftree%2Fmain%2FPCB)
+- **View Online:** [Interactive PCB Layout (Kicanvas)](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2FHekiNav%2Fhelsinki-live-train-map%2Ftree%2Fmain%2FPCB)
 - **Source Files:** `/PCB` directory
 
-![Schematic](Images/Schematic.avif)
+![Schematic](Images/Schematic.png)
 
 ---
 
@@ -93,7 +92,7 @@ Easily flash the latest firmware to your ESP32-C3 using your browser:
 ## Links
 
 - [Web Installer](https://cdfer.github.io/Auckland-LED-Train-Map/led-rails.html)
-- [Interactive PCB Viewer](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2FCDFER%2FAuckland-LED-Train-Map%2Ftree%2Fmain%2FPCB)
+- [Interactive PCB Viewer](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2FHekiNav%2Fhelsinki-live-train-map%2Ftree%2Fmain%2FPCB)
 - [GTFS Realtime Cache API](https://github.com/CDFER/GTFS-Realtime-Cache-Server)
 - [JLCPCB KiCad Library](https://github.com/CDFER/jlcpcb-kicad-library)
 
@@ -109,4 +108,4 @@ Contributions are welcome! Open an issue or submit a pull request for improvemen
 
 This project is released under the MIT license.
 
-© 2025 Chris Dirks
+© 2025 Chris Dirks & Unto Ahti
