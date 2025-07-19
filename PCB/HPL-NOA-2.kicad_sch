@@ -12,7 +12,7 @@
 		(comment 2 "MIT License")
 	)
 	(lib_symbols
-		(symbol "PCM_JLCPCB-Capacitors:0402,10uF"
+		(symbol "PCM_JLCPCB-Capacitors:0402,1uF"
 			(pin_numbers
 				(hide yes)
 			)
@@ -31,7 +31,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "10uF"
+			(property "Value" "1uF"
 				(at 2.032 -0.3782 0)
 				(effects
 					(font
@@ -49,7 +49,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2208231630_Samsung-Electro-Mechanics-CL05A106MQ5NUNC_C15525.pdf"
+			(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05A105KA5NQNC_C52923.pdf"
 				(at 0 0 0)
 				(effects
 					(font
@@ -58,7 +58,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "6.3V 10uF X5R ±20% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+			(property "Description" "25V 1uF X5R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
 				(at 0 0 0)
 				(effects
 					(font
@@ -67,7 +67,7 @@
 					(hide yes)
 				)
 			)
-			(property "LCSC" "C15525"
+			(property "LCSC" "C52923"
 				(at 0 0 0)
 				(effects
 					(font
@@ -76,7 +76,7 @@
 					(hide yes)
 				)
 			)
-			(property "Stock" "1595146"
+			(property "Stock" "7151069"
 				(at 0 0 0)
 				(effects
 					(font
@@ -85,7 +85,7 @@
 					(hide yes)
 				)
 			)
-			(property "Price" "0.007USD"
+			(property "Price" "0.006USD"
 				(at 0 0 0)
 				(effects
 					(font
@@ -148,7 +148,7 @@
 					(hide yes)
 				)
 			)
-			(property "Part" "CL05A106MQ5NUNC"
+			(property "Part" "CL05A105KA5NQNC"
 				(at 0 0 0)
 				(effects
 					(font
@@ -157,7 +157,7 @@
 					(hide yes)
 				)
 			)
-			(property "Voltage Rated" "6.3V"
+			(property "Voltage Rated" "25V"
 				(at 2.032 -2.0462 0)
 				(effects
 					(font
@@ -166,7 +166,7 @@
 					(justify left)
 				)
 			)
-			(property "Tolerance" "±20%"
+			(property "Tolerance" "±10%"
 				(at 0 0 0)
 				(effects
 					(font
@@ -175,7 +175,7 @@
 					(hide yes)
 				)
 			)
-			(property "Capacitance" "10uF"
+			(property "Capacitance" "1uF"
 				(at 0 0 0)
 				(effects
 					(font
@@ -202,7 +202,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "0402,10uF_0_1"
+			(symbol "0402,1uF_0_1"
 				(polyline
 					(pts
 						(xy -1.27 0.635) (xy 1.27 0.635)
@@ -228,263 +228,7 @@
 					)
 				)
 			)
-			(symbol "0402,10uF_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 3.175)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 3.175)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "PCM_JLCPCB-Capacitors:0402,220nF"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "C"
-				(at 2.032 1.668 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "220nF"
-				(at 2.032 -0.3782 0)
-				(effects
-					(font
-						(size 0.8 0.8)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "PCM_JLCPCB:C_0402"
-				(at -1.778 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05B224KO5NNNC_C16772.pdf"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "16V 220nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "LCSC" "C16772"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Stock" "351761"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Price" "0.008USD"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Process" "SMT"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Minimum Qty" "20"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Attrition Qty" "10"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Class" "Basic Component"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer" "Samsung Electro-Mechanics"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Part" "CL05B224KO5NNNC"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Voltage Rated" "16V"
-				(at 2.032 -2.0462 0)
-				(effects
-					(font
-						(size 0.8 0.8)
-					)
-					(justify left)
-				)
-			)
-			(property "Tolerance" "±10%"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Capacitance" "220nF"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Temperature Coefficient" "X7R"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "C_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "0402,220nF_0_1"
-				(polyline
-					(pts
-						(xy -1.27 0.635) (xy 1.27 0.635)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 -0.635) (xy 1.27 -0.635)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "0402,220nF_1_1"
+			(symbol "0402,1uF_1_1"
 				(pin passive line
 					(at 0 3.81 270)
 					(length 3.175)
@@ -1344,76 +1088,76 @@
 		(uuid "e0cd0c8f-192b-4f99-9758-3f4136b4016e")
 	)
 	(junction
-		(at 209.55 24.13)
+		(at 210.82 25.4)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "26171892-65bf-4069-aa66-fb18f8acc1a0")
+		(uuid "462032a5-a9eb-4d6f-87be-9e19293ae2aa")
 	)
 	(junction
-		(at 201.93 31.75)
+		(at 265.43 25.4)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "5519ba4c-57d7-4387-84f3-246b1fa32eca")
+		(uuid "4b821b92-e20a-4540-b697-e83fd5f87a48")
 	)
 	(junction
-		(at 240.03 31.75)
+		(at 242.57 33.02)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "7d53eb9a-7fec-46bb-a506-d26b4604d0f5")
+		(uuid "50094213-8bd0-480f-b607-3297b419d1b2")
 	)
 	(junction
-		(at 209.55 31.75)
+		(at 232.41 25.4)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "8200848d-f262-42aa-8917-2974daabf754")
+		(uuid "6b54c220-e5dc-49cc-8200-c0a1f7b821ab")
 	)
 	(junction
-		(at 267.97 31.75)
+		(at 242.57 25.4)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "8510cb56-d31a-4eb7-b8c6-94a36e7585e7")
+		(uuid "8255cdb0-7407-43b7-8a4b-541889f224e3")
 	)
 	(junction
-		(at 232.41 31.75)
+		(at 210.82 33.02)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "8eac5489-e0f0-446d-a612-0d1d9395ad52")
+		(uuid "9ed51a66-5315-4421-a74a-18c16ca51a58")
 	)
 	(junction
-		(at 240.03 24.13)
+		(at 265.43 33.02)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "d2af2cd6-5868-469c-ab85-e7a5d127db06")
+		(uuid "a8186315-acae-4a84-8a65-3ff02afa5b67")
 	)
 	(junction
-		(at 260.35 31.75)
+		(at 200.66 33.02)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "d99b3785-1584-41c9-b826-2b1e407fbcbf")
+		(uuid "ba0a15b0-0ed8-43b9-bc62-660675f518b8")
 	)
 	(junction
-		(at 232.41 24.13)
+		(at 275.59 25.4)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "e3faa083-a40d-4ac8-ab67-5feba4828ff5")
+		(uuid "bf6976bb-ffb1-4528-803f-495113dbaafb")
 	)
 	(junction
-		(at 267.97 24.13)
+		(at 200.66 25.4)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "eb08602d-d412-4309-9a65-480d00c91b9b")
+		(uuid "c4c1211d-5934-45ec-9847-a92f5da61057")
 	)
 	(junction
-		(at 260.35 24.13)
+		(at 275.59 33.02)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "ed803e53-75f5-42d5-8cf1-6ad3d9ea21d1")
+		(uuid "e79aee4e-3bfc-4f6e-8f41-d85a757f1025")
 	)
 	(junction
-		(at 201.93 24.13)
+		(at 232.41 33.02)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "fcf99d02-d323-4aee-a2a9-6b28a3642780")
+		(uuid "ef2f476f-25bc-4d25-b928-bbc616811f31")
 	)
 	(wire
 		(pts
@@ -1424,16 +1168,6 @@
 			(type default)
 		)
 		(uuid "03e35466-b3b0-4a96-a191-d6abbdcc3344")
-	)
-	(wire
-		(pts
-			(xy 201.93 31.75) (xy 209.55 31.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "05d36bd2-6d15-4ba5-9bf5-a884dc4ab963")
 	)
 	(wire
 		(pts
@@ -1457,16 +1191,6 @@
 	)
 	(wire
 		(pts
-			(xy 267.97 31.75) (xy 275.59 31.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "12406d59-246a-465f-99fa-d965ded6b66a")
-	)
-	(wire
-		(pts
 			(xy 34.29 52.07) (xy 34.29 25.4)
 		)
 		(stroke
@@ -1474,16 +1198,6 @@
 			(type default)
 		)
 		(uuid "167cadf0-61cf-481e-aeea-39ffaba242d4")
-	)
-	(wire
-		(pts
-			(xy 232.41 24.13) (xy 240.03 24.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "18657e8c-6bd8-40fb-9b26-eb2fab711a7a")
 	)
 	(wire
 		(pts
@@ -1557,13 +1271,13 @@
 	)
 	(wire
 		(pts
-			(xy 260.35 31.75) (xy 267.97 31.75)
+			(xy 232.41 33.02) (xy 242.57 33.02)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "24ce7854-6411-413b-b16a-bd11b7ddc37d")
+		(uuid "24fe2a06-d392-4339-b830-4042e8dc8f77")
 	)
 	(wire
 		(pts
@@ -1617,16 +1331,6 @@
 	)
 	(wire
 		(pts
-			(xy 240.03 31.75) (xy 247.65 31.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "31411772-2288-4cfd-a736-c81421c4df48")
-	)
-	(wire
-		(pts
 			(xy 106.68 151.13) (xy 99.06 151.13)
 		)
 		(stroke
@@ -1674,16 +1378,6 @@
 			(type default)
 		)
 		(uuid "3c07d38b-3607-4e16-aa8f-4801519ac7b7")
-	)
-	(wire
-		(pts
-			(xy 232.41 31.75) (xy 240.03 31.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3d95b175-9354-4fc4-ba37-a60a51d65a99")
 	)
 	(wire
 		(pts
@@ -1797,6 +1491,16 @@
 	)
 	(wire
 		(pts
+			(xy 242.57 33.02) (xy 252.73 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5ef665c8-5eed-455d-ba39-e9a54ba24719")
+	)
+	(wire
+		(pts
 			(xy 158.75 38.1) (xy 173.99 38.1)
 		)
 		(stroke
@@ -1814,16 +1518,6 @@
 			(type default)
 		)
 		(uuid "628fdb2b-7391-47bb-8a53-8f7da2817efa")
-	)
-	(wire
-		(pts
-			(xy 267.97 24.13) (xy 275.59 24.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "634a450c-fcc8-4fa6-9266-76520e516a78")
 	)
 	(wire
 		(pts
@@ -1854,6 +1548,16 @@
 			(type default)
 		)
 		(uuid "64bd69f6-1579-4e31-966a-c58a1a50db18")
+	)
+	(wire
+		(pts
+			(xy 265.43 33.02) (xy 275.59 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6542ad4e-f289-440f-b266-6902b8622409")
 	)
 	(wire
 		(pts
@@ -2007,16 +1711,6 @@
 	)
 	(wire
 		(pts
-			(xy 209.55 24.13) (xy 217.17 24.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8b6b98e1-113f-41f5-af26-bf3f4961b34d")
-	)
-	(wire
-		(pts
 			(xy 36.83 38.1) (xy 52.07 38.1)
 		)
 		(stroke
@@ -2047,6 +1741,16 @@
 	)
 	(wire
 		(pts
+			(xy 200.66 25.4) (xy 210.82 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "93dbc805-170e-479d-8bc3-5a6ce34ff565")
+	)
+	(wire
+		(pts
 			(xy 236.22 52.07) (xy 243.84 52.07)
 		)
 		(stroke
@@ -2074,6 +1778,16 @@
 			(type default)
 		)
 		(uuid "9a8c6837-488f-4cd9-b4ca-828c7f51057c")
+	)
+	(wire
+		(pts
+			(xy 265.43 25.4) (xy 275.59 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9aaf0a98-4557-4786-a9c2-655877276d8a")
 	)
 	(wire
 		(pts
@@ -2134,6 +1848,16 @@
 			(type default)
 		)
 		(uuid "9fbe0e91-d5c6-4128-9641-ed6a0111cb19")
+	)
+	(wire
+		(pts
+			(xy 275.59 25.4) (xy 285.75 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a234ed5b-171a-4ad5-a4b5-9f2d5be604b3")
 	)
 	(wire
 		(pts
@@ -2207,6 +1931,16 @@
 	)
 	(wire
 		(pts
+			(xy 232.41 25.4) (xy 242.57 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aba0e370-0f1b-405c-99b4-40b2c02c66c5")
+	)
+	(wire
+		(pts
 			(xy 38.1 182.88) (xy 30.48 182.88)
 		)
 		(stroke
@@ -2227,6 +1961,16 @@
 	)
 	(wire
 		(pts
+			(xy 200.66 33.02) (xy 210.82 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b1ef31df-9fab-4b6c-8848-acb459a8199f")
+	)
+	(wire
+		(pts
 			(xy 77.47 52.07) (xy 77.47 38.1)
 		)
 		(stroke
@@ -2234,16 +1978,6 @@
 			(type default)
 		)
 		(uuid "b30a3bd1-88d5-46cd-9e6e-d8557add8241")
-	)
-	(wire
-		(pts
-			(xy 201.93 24.13) (xy 209.55 24.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b3462fd7-ec39-44a5-be0e-cb60720b512e")
 	)
 	(wire
 		(pts
@@ -2277,6 +2011,26 @@
 	)
 	(wire
 		(pts
+			(xy 275.59 33.02) (xy 285.75 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bccc09f2-0ca2-4bf6-a500-899429fdc819")
+	)
+	(wire
+		(pts
+			(xy 242.57 25.4) (xy 252.73 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bd933a3c-4abd-4e84-9f7a-2e66fe17b3d8")
+	)
+	(wire
+		(pts
 			(xy 106.68 118.11) (xy 99.06 118.11)
 		)
 		(stroke
@@ -2294,6 +2048,16 @@
 			(type default)
 		)
 		(uuid "bf94d0b3-9440-42a4-a0f1-f74bf6b5f5be")
+	)
+	(wire
+		(pts
+			(xy 210.82 25.4) (xy 220.98 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c13f90dc-092e-46ef-8506-6c7f4fd7df12")
 	)
 	(wire
 		(pts
@@ -2527,6 +2291,16 @@
 	)
 	(wire
 		(pts
+			(xy 210.82 33.02) (xy 220.98 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e3a00c1c-b145-4e3e-998d-22fb345a7ad7")
+	)
+	(wire
+		(pts
 			(xy 38.1 118.11) (xy 30.48 118.11)
 		)
 		(stroke
@@ -2534,26 +2308,6 @@
 			(type default)
 		)
 		(uuid "e4dea760-3c40-4353-8243-46a1afd5b6bc")
-	)
-	(wire
-		(pts
-			(xy 209.55 31.75) (xy 217.17 31.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ea232e16-291e-4de8-a0f7-e5605feec519")
-	)
-	(wire
-		(pts
-			(xy 240.03 24.13) (xy 247.65 24.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "eab5f905-aaa1-4b50-8692-0855ef19ecdb")
 	)
 	(wire
 		(pts
@@ -2584,16 +2338,6 @@
 			(type default)
 		)
 		(uuid "f6f43c50-6d5b-4aac-9432-0c6107130f07")
-	)
-	(wire
-		(pts
-			(xy 260.35 24.13) (xy 267.97 24.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f72e84cf-33d0-4e4c-a790-b0a15e072c6c")
 	)
 	(wire
 		(pts
@@ -2669,7 +2413,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "00219701-2350-4e00-a1f2-67a8caf5d66d")
-		(property "Reference" "#PWR03005"
+		(property "Reference" "#PWR0212"
 			(at 105.41 21.59 0)
 			(effects
 				(font
@@ -2719,7 +2463,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03005")
+					(reference "#PWR0212")
 					(unit 1)
 				)
 			)
@@ -2735,7 +2479,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "03a78711-ec23-4c92-9467-a3de59edc35a")
-		(property "Reference" "#PWR03035"
+		(property "Reference" "#PWR0242"
 			(at 228.6 48.26 0)
 			(effects
 				(font
@@ -2786,7 +2530,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03035")
+					(reference "#PWR0242")
 					(unit 1)
 				)
 			)
@@ -2801,7 +2545,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "09deb3cd-111f-4849-80ed-fbbe862eaea8")
-		(property "Reference" "D3054"
+		(property "Reference" "D131"
 			(at 172.974 156.718 0)
 			(effects
 				(font
@@ -2904,7 +2648,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3054")
+					(reference "D131")
 					(unit 1)
 				)
 			)
@@ -2919,7 +2663,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0c1f75ee-3049-4fd4-92e5-0a90c0f9ef2a")
-		(property "Reference" "D3059"
+		(property "Reference" "D136"
 			(at 12.954 188.468 0)
 			(effects
 				(font
@@ -3022,7 +2766,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3059")
+					(reference "D136")
 					(unit 1)
 				)
 			)
@@ -3038,7 +2782,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0cc8cfa6-e543-4f3e-9342-903f6ce6b3d6")
-		(property "Reference" "#PWR03095"
+		(property "Reference" "#PWR0302"
 			(at 205.74 132.08 0)
 			(effects
 				(font
@@ -3088,211 +2832,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03095")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_JLCPCB-Capacitors:0402,220nF")
-		(at 209.55 27.94 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "0d62c387-9acf-4026-88b8-8946f2c48163")
-		(property "Reference" "C3002"
-			(at 211.582 26.272 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "220nF"
-			(at 211.582 28.3182 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "PCM_JLCPCB:C_0402"
-			(at 207.772 27.94 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05B224KO5NNNC_C16772.pdf"
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "16V 220nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C16772"
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stock" "351761"
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" "0.008USD"
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Process" "SMT"
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Minimum Qty" "20"
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Attrition Qty" "10"
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Class" "Basic Component"
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part" "CL05B224KO5NNNC"
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Voltage Rated" "16V"
-			(at 211.582 29.9862 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Tolerance" "±10%"
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Capacitance" "220nF"
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Temperature Coefficient" "X7R"
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartID" ""
-			(at 209.55 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "d24b37c5-3d59-4ade-a68c-2040ae64c01d")
-		)
-		(pin "1"
-			(uuid "f28fad51-aa5f-4e4d-8287-c59cc1b7f0f9")
-		)
-		(instances
-			(project "Auckland-LED-Train-Map"
-				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "C3002")
+					(reference "#PWR0302")
 					(unit 1)
 				)
 			)
@@ -3308,7 +2848,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0e2f61a5-26d6-4339-a41a-a23d1a864025")
-		(property "Reference" "#PWR03132"
+		(property "Reference" "#PWR0339"
 			(at 68.58 196.85 0)
 			(effects
 				(font
@@ -3358,7 +2898,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03132")
+					(reference "#PWR0339")
 					(unit 1)
 				)
 			)
@@ -3374,7 +2914,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0ef7d27e-c8e9-4191-8944-1b6224567382")
-		(property "Reference" "#PWR03082"
+		(property "Reference" "#PWR0289"
 			(at 182.88 114.3 0)
 			(effects
 				(font
@@ -3425,7 +2965,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03082")
+					(reference "#PWR0289")
 					(unit 1)
 				)
 			)
@@ -3441,7 +2981,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "103b9df8-3ba7-4612-812e-0272feeb96d3")
-		(property "Reference" "#PWR03050"
+		(property "Reference" "#PWR0257"
 			(at 274.32 66.04 0)
 			(effects
 				(font
@@ -3491,7 +3031,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03050")
+					(reference "#PWR0257")
 					(unit 1)
 				)
 			)
@@ -3506,7 +3046,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "11e04311-8309-45a4-abb8-64897933160b")
-		(property "Reference" "D3061"
+		(property "Reference" "D138"
 			(at 58.674 188.468 0)
 			(effects
 				(font
@@ -3609,7 +3149,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3061")
+					(reference "D138")
 					(unit 1)
 				)
 			)
@@ -3625,7 +3165,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "154efd7e-a8f8-43f3-a205-4fe23671d59e")
-		(property "Reference" "#PWR03104"
+		(property "Reference" "#PWR0311"
 			(at 137.16 147.32 0)
 			(effects
 				(font
@@ -3676,7 +3216,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03104")
+					(reference "#PWR0311")
 					(unit 1)
 				)
 			)
@@ -3692,7 +3232,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "155197f8-64f3-4d44-a431-3d92259a951c")
-		(property "Reference" "#PWR03125"
+		(property "Reference" "#PWR0332"
 			(at 68.58 179.07 0)
 			(effects
 				(font
@@ -3742,7 +3282,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03125")
+					(reference "#PWR0332")
 					(unit 1)
 				)
 			)
@@ -3757,7 +3297,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "155ddfdb-19ca-434d-9f01-475efeeca415")
-		(property "Reference" "D3002"
+		(property "Reference" "D79"
 			(at 39.624 34.544 0)
 			(effects
 				(font
@@ -3860,73 +3400,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3002")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 232.41 31.75 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "15ae432f-c807-41cc-a1f9-7a0d8f3caad5")
-		(property "Reference" "#PWR03014"
-			(at 232.41 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 232.41 35.8831 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 232.41 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 232.41 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 232.41 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4ea94eb5-e9a5-4fbd-b90c-e0e97d1358cf")
-		)
-		(instances
-			(project "Auckland-LED-Train-Map"
-				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03014")
+					(reference "D79")
 					(unit 1)
 				)
 			)
@@ -3942,7 +3416,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "15df0711-720d-412c-8806-c9afacfd503f")
-		(property "Reference" "#PWR03102"
+		(property "Reference" "#PWR0309"
 			(at 91.44 147.32 0)
 			(effects
 				(font
@@ -3993,7 +3467,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03102")
+					(reference "#PWR0309")
 					(unit 1)
 				)
 			)
@@ -4009,7 +3483,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "18836ffe-403a-4c83-bab9-d06cd5eb689b")
-		(property "Reference" "#PWR03133"
+		(property "Reference" "#PWR0340"
 			(at 91.44 196.85 0)
 			(effects
 				(font
@@ -4059,7 +3533,73 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03133")
+					(reference "#PWR0340")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 265.43 25.4 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1a1356ed-9865-4922-899a-a9c6e092eb5e")
+		(property "Reference" "#PWR0219"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 265.43 21.2669 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 265.43 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 265.43 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 265.43 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8e64fb2e-f3b4-4627-88dc-28836730ca9c")
+		)
+		(instances
+			(project "Helsinki-LED-Train-Map"
+				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
+					(reference "#PWR0219")
 					(unit 1)
 				)
 			)
@@ -4074,7 +3614,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1a869ba6-71e1-45af-a439-f2337c213e3d")
-		(property "Reference" "D3037"
+		(property "Reference" "D114"
 			(at 58.674 123.698 0)
 			(effects
 				(font
@@ -4177,7 +3717,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3037")
+					(reference "D114")
 					(unit 1)
 				)
 			)
@@ -4193,7 +3733,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1b3791e4-4965-4372-8e37-f3f10bff6871")
-		(property "Reference" "#PWR03073"
+		(property "Reference" "#PWR0280"
 			(at 251.46 99.06 0)
 			(effects
 				(font
@@ -4243,7 +3783,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03073")
+					(reference "#PWR0280")
 					(unit 1)
 				)
 			)
@@ -4259,7 +3799,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1e758da6-10f0-46db-a411-9b3d88bd69e9")
-		(property "Reference" "#PWR03069"
+		(property "Reference" "#PWR0276"
 			(at 160.02 99.06 0)
 			(effects
 				(font
@@ -4309,7 +3849,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03069")
+					(reference "#PWR0276")
 					(unit 1)
 				)
 			)
@@ -4324,7 +3864,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2039fcac-a6f0-4c5c-b826-b7d8a29ad6ac")
-		(property "Reference" "D3050"
+		(property "Reference" "D127"
 			(at 81.534 156.718 0)
 			(effects
 				(font
@@ -4427,7 +3967,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3050")
+					(reference "D127")
 					(unit 1)
 				)
 			)
@@ -4442,7 +3982,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "244838e7-327a-4cc0-94f9-c66370ab53a9")
-		(property "Reference" "D3008"
+		(property "Reference" "D85"
 			(at 161.544 34.544 0)
 			(effects
 				(font
@@ -4545,7 +4085,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3008")
+					(reference "D85")
 					(unit 1)
 				)
 			)
@@ -4561,7 +4101,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "250bf296-eec1-456c-8cf9-56153b6d619c")
-		(property "Reference" "#PWR03088"
+		(property "Reference" "#PWR0295"
 			(at 45.72 132.08 0)
 			(effects
 				(font
@@ -4611,7 +4151,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03088")
+					(reference "#PWR0295")
 					(unit 1)
 				)
 			)
@@ -4627,7 +4167,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2525a561-a326-4204-907f-934a41b679fa")
-		(property "Reference" "#PWR03108"
+		(property "Reference" "#PWR0315"
 			(at 228.6 147.32 0)
 			(effects
 				(font
@@ -4678,7 +4218,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03108")
+					(reference "#PWR0315")
 					(unit 1)
 				)
 			)
@@ -4694,7 +4234,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "25c25031-699f-48d4-b620-9accfecad65d")
-		(property "Reference" "#PWR03121"
+		(property "Reference" "#PWR0328"
 			(at 251.46 165.1 0)
 			(effects
 				(font
@@ -4744,7 +4284,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03121")
+					(reference "#PWR0328")
 					(unit 1)
 				)
 			)
@@ -4759,7 +4299,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "26336ea7-44ce-41af-a988-73840213b9ea")
-		(property "Reference" "D3022"
+		(property "Reference" "D99"
 			(at 264.414 57.658 0)
 			(effects
 				(font
@@ -4862,7 +4402,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3022")
+					(reference "D99")
 					(unit 1)
 				)
 			)
@@ -4878,7 +4418,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "288639f7-d54e-4cab-a593-71010e5c133c")
-		(property "Reference" "#PWR03106"
+		(property "Reference" "#PWR0313"
 			(at 182.88 147.32 0)
 			(effects
 				(font
@@ -4929,7 +4469,73 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03106")
+					(reference "#PWR0313")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 265.43 33.02 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "28b19ac5-2755-441b-84be-fc7870b09b88")
+		(property "Reference" "#PWR0231"
+			(at 265.43 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 265.43 37.1531 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 265.43 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 265.43 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 265.43 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8ab8accf-658c-4448-b22c-1f1c85a67b4c")
+		)
+		(instances
+			(project "Helsinki-LED-Train-Map"
+				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
+					(reference "#PWR0231")
 					(unit 1)
 				)
 			)
@@ -4944,7 +4550,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "29889555-2070-4e27-90a4-39c490298c39")
-		(property "Reference" "D3005"
+		(property "Reference" "D82"
 			(at 100.584 34.544 0)
 			(effects
 				(font
@@ -5047,7 +4653,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3005")
+					(reference "D82")
 					(unit 1)
 				)
 			)
@@ -5062,7 +4668,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2bcc33d7-4b1e-4398-8bf7-311909625e31")
-		(property "Reference" "D3024"
+		(property "Reference" "D101"
 			(at 35.814 90.678 0)
 			(effects
 				(font
@@ -5165,7 +4771,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3024")
+					(reference "D101")
 					(unit 1)
 				)
 			)
@@ -5181,7 +4787,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2c4ddf45-7d04-478a-a446-101136da5336")
-		(property "Reference" "#PWR03131"
+		(property "Reference" "#PWR0338"
 			(at 45.72 196.85 0)
 			(effects
 				(font
@@ -5231,211 +4837,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03131")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_JLCPCB-Capacitors:0402,10uF")
-		(at 201.93 27.94 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "2cbed16e-6d3e-48b7-824a-abe4108be148")
-		(property "Reference" "C3001"
-			(at 203.962 26.272 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10uF"
-			(at 203.962 28.3182 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "PCM_JLCPCB:C_0402"
-			(at 200.152 27.94 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2208231630_Samsung-Electro-Mechanics-CL05A106MQ5NUNC_C15525.pdf"
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "6.3V 10uF X5R ±20% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C15525"
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stock" "1595146"
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" "0.007USD"
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Process" "SMT"
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Minimum Qty" "20"
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Attrition Qty" "10"
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Class" "Basic Component"
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part" "CL05A106MQ5NUNC"
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Voltage Rated" "6.3V"
-			(at 203.962 29.9862 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Tolerance" "±20%"
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Capacitance" "10uF"
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Temperature Coefficient" "X5R"
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartID" ""
-			(at 201.93 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "e50f1218-ee4e-4d61-99c9-8252a66ca2cb")
-		)
-		(pin "2"
-			(uuid "84d4f9c3-53a8-4a75-b1d8-081d9641d08d")
-		)
-		(instances
-			(project "Auckland-LED-Train-Map"
-				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "C3001")
+					(reference "#PWR0338")
 					(unit 1)
 				)
 			)
@@ -5450,7 +4852,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2dfdcf0f-4a27-4e9a-a0a5-75d57a6c0a13")
-		(property "Reference" "D3004"
+		(property "Reference" "D81"
 			(at 80.264 34.544 0)
 			(effects
 				(font
@@ -5553,7 +4955,203 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3004")
+					(reference "D81")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Capacitors:0402,1uF")
+		(at 242.57 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2f93f2dc-4e2a-4a4a-9c66-b86f3b562700")
+		(property "Reference" "C38"
+			(at 245.11 26.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1uF"
+			(at 245.11 29.21 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:C_0402"
+			(at 240.792 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05A105KA5NQNC_C52923.pdf"
+			(at 242.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "25V 1uF X5R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+			(at 242.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C52923"
+			(at 242.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stock" "7151069"
+			(at 242.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "0.006USD"
+			(at 242.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Process" "SMT"
+			(at 242.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 242.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Attrition Qty" "10"
+			(at 242.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 242.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
+			(at 242.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 242.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part" "CL05A105KA5NQNC"
+			(at 242.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage Rated" "25V"
+			(at 245.11 31.75 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 242.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Capacitance" "1uF"
+			(at 242.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature Coefficient" "X5R"
+			(at 242.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5ef12f6a-8de5-4b03-b888-4e74c456619d")
+		)
+		(pin "2"
+			(uuid "b01b8575-099a-4e37-81f7-a17bd805f584")
+		)
+		(instances
+			(project "Helsinki-LED-Train-Map"
+				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
+					(reference "C38")
 					(unit 1)
 				)
 			)
@@ -5569,7 +5167,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "31077c2d-48b1-4066-a945-8d627af53de5")
-		(property "Reference" "#PWR03096"
+		(property "Reference" "#PWR0303"
 			(at 228.6 132.08 0)
 			(effects
 				(font
@@ -5619,7 +5217,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03096")
+					(reference "#PWR0303")
 					(unit 1)
 				)
 			)
@@ -5635,7 +5233,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "31659517-ab99-443f-ac2c-4f0aeb1b4cb0")
-		(property "Reference" "#PWR03136"
+		(property "Reference" "#PWR0343"
 			(at 160.02 196.85 0)
 			(effects
 				(font
@@ -5685,211 +5283,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03136")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_JLCPCB-Capacitors:0402,220nF")
-		(at 275.59 27.94 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "338abdf6-0a2b-49fb-a296-9dda8830b19d")
-		(property "Reference" "C3009"
-			(at 277.622 26.272 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "220nF"
-			(at 277.622 28.3182 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "PCM_JLCPCB:C_0402"
-			(at 273.812 27.94 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05B224KO5NNNC_C16772.pdf"
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "16V 220nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C16772"
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stock" "351761"
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" "0.008USD"
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Process" "SMT"
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Minimum Qty" "20"
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Attrition Qty" "10"
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Class" "Basic Component"
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part" "CL05B224KO5NNNC"
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Voltage Rated" "16V"
-			(at 277.622 29.9862 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Tolerance" "±10%"
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Capacitance" "220nF"
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Temperature Coefficient" "X7R"
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartID" ""
-			(at 275.59 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "16f57bea-2950-4ad4-957d-41c9b1a956e8")
-		)
-		(pin "1"
-			(uuid "b40c1396-a03b-4afa-a865-fd928b8d16be")
-		)
-		(instances
-			(project "Auckland-LED-Train-Map"
-				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "C3009")
+					(reference "#PWR0343")
 					(unit 1)
 				)
 			)
@@ -5904,7 +5298,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "35fe7b49-ed79-42d6-87e0-1c585c52b814")
-		(property "Reference" "D3035"
+		(property "Reference" "D112"
 			(at 12.954 123.698 0)
 			(effects
 				(font
@@ -6007,7 +5401,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3035")
+					(reference "D112")
 					(unit 1)
 				)
 			)
@@ -6023,7 +5417,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "36c338f4-7ca5-45e5-92f9-2b3e5006bb1a")
-		(property "Reference" "#PWR03021"
+		(property "Reference" "#PWR0225"
 			(at 125.73 39.37 0)
 			(effects
 				(font
@@ -6073,211 +5467,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03021")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_JLCPCB-Capacitors:0402,220nF")
-		(at 247.65 27.94 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3791b2d7-cca4-46bb-b1b7-54f3a1eea50a")
-		(property "Reference" "C3006"
-			(at 249.682 26.272 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "220nF"
-			(at 249.682 28.3182 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "PCM_JLCPCB:C_0402"
-			(at 245.872 27.94 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05B224KO5NNNC_C16772.pdf"
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "16V 220nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C16772"
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stock" "351761"
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" "0.008USD"
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Process" "SMT"
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Minimum Qty" "20"
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Attrition Qty" "10"
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Class" "Basic Component"
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part" "CL05B224KO5NNNC"
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Voltage Rated" "16V"
-			(at 249.682 29.9862 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Tolerance" "±10%"
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Capacitance" "220nF"
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Temperature Coefficient" "X7R"
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartID" ""
-			(at 247.65 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "d14a997d-97ca-4689-88d4-36d5e320c12a")
-		)
-		(pin "1"
-			(uuid "8ebba20f-f5e0-451d-a647-a17aa478ec5d")
-		)
-		(instances
-			(project "Auckland-LED-Train-Map"
-				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "C3006")
+					(reference "#PWR0225")
 					(unit 1)
 				)
 			)
@@ -6293,7 +5483,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "384c638d-f89a-40b1-9caf-aa10b1879c88")
-		(property "Reference" "#PWR03130"
+		(property "Reference" "#PWR0337"
 			(at 22.86 196.85 0)
 			(effects
 				(font
@@ -6343,7 +5533,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03130")
+					(reference "#PWR0337")
 					(unit 1)
 				)
 			)
@@ -6359,7 +5549,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "38ce026e-f0c4-463c-a966-ec63575c3412")
-		(property "Reference" "#PWR03111"
+		(property "Reference" "#PWR0318"
 			(at 22.86 165.1 0)
 			(effects
 				(font
@@ -6409,7 +5599,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03111")
+					(reference "#PWR0318")
 					(unit 1)
 				)
 			)
@@ -6425,7 +5615,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3961d493-519c-4920-af00-bc532fe6b2aa")
-		(property "Reference" "#PWR03029"
+		(property "Reference" "#PWR0236"
 			(at 105.41 48.26 0)
 			(effects
 				(font
@@ -6475,7 +5665,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03029")
+					(reference "#PWR0236")
 					(unit 1)
 				)
 			)
@@ -6491,7 +5681,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3a83d03f-ae7a-49a3-9408-5fa3f5728a19")
-		(property "Reference" "#PWR03097"
+		(property "Reference" "#PWR0304"
 			(at 251.46 132.08 0)
 			(effects
 				(font
@@ -6541,7 +5731,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03097")
+					(reference "#PWR0304")
 					(unit 1)
 				)
 			)
@@ -6556,7 +5746,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3bcb2525-091f-4a53-a153-ef3fcc645fd2")
-		(property "Reference" "D3045"
+		(property "Reference" "D122"
 			(at 241.554 123.698 0)
 			(effects
 				(font
@@ -6659,7 +5849,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3045")
+					(reference "D122")
 					(unit 1)
 				)
 			)
@@ -6675,7 +5865,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3ca37d94-488f-4f4f-b461-284c9aaccaa7")
-		(property "Reference" "#PWR03058"
+		(property "Reference" "#PWR0265"
 			(at 182.88 81.28 0)
 			(effects
 				(font
@@ -6726,73 +5916,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03058")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 260.35 31.75 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3fa02545-e49e-4303-aa75-ac122380a58f")
-		(property "Reference" "#PWR03015"
-			(at 260.35 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 260.35 35.8831 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 260.35 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 260.35 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 260.35 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "172a8453-3ef5-44a3-b7da-a165ff536bce")
-		)
-		(instances
-			(project "Auckland-LED-Train-Map"
-				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03015")
+					(reference "#PWR0265")
 					(unit 1)
 				)
 			)
@@ -6808,7 +5932,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3fccae4d-6c1d-4ffd-8419-5c7a9a40b5e7")
-		(property "Reference" "#PWR03008"
+		(property "Reference" "#PWR0215"
 			(at 166.37 21.59 0)
 			(effects
 				(font
@@ -6858,7 +5982,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03008")
+					(reference "#PWR0215")
 					(unit 1)
 				)
 			)
@@ -6873,7 +5997,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "424c7cbb-514b-44bf-890a-c441afa5cfa1")
-		(property "Reference" "D3017"
+		(property "Reference" "D94"
 			(at 161.544 61.468 0)
 			(effects
 				(font
@@ -6976,7 +6100,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3017")
+					(reference "D94")
 					(unit 1)
 				)
 			)
@@ -6991,7 +6115,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "425951e2-8d9f-4cdd-a490-541c26d2d4c6")
-		(property "Reference" "D3062"
+		(property "Reference" "D139"
 			(at 81.534 188.468 0)
 			(effects
 				(font
@@ -7094,7 +6218,73 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3062")
+					(reference "D139")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 232.41 25.4 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "45c11f70-f4a4-488d-88bb-56f2092982f8")
+		(property "Reference" "#PWR0218"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 232.41 21.2669 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 232.41 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 232.41 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 232.41 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "45123040-5737-45b7-a958-542962ff9f2e")
+		)
+		(instances
+			(project "Helsinki-LED-Train-Map"
+				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
+					(reference "#PWR0218")
 					(unit 1)
 				)
 			)
@@ -7110,7 +6300,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "45d68e5d-686c-48f9-a0dc-77f720ba7b0f")
-		(property "Reference" "#PWR03033"
+		(property "Reference" "#PWR0240"
 			(at 186.69 48.26 0)
 			(effects
 				(font
@@ -7160,7 +6350,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03033")
+					(reference "#PWR0240")
 					(unit 1)
 				)
 			)
@@ -7175,7 +6365,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "48162f85-c840-4670-98ef-f5ea29861774")
-		(property "Reference" "D3063"
+		(property "Reference" "D140"
 			(at 104.394 188.468 0)
 			(effects
 				(font
@@ -7278,7 +6468,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3063")
+					(reference "D140")
 					(unit 1)
 				)
 			)
@@ -7293,7 +6483,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4947a615-9de9-4bb0-b9aa-76d1ceeb14f6")
-		(property "Reference" "D3034"
+		(property "Reference" "D111"
 			(at 264.414 90.678 0)
 			(effects
 				(font
@@ -7396,7 +6586,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3034")
+					(reference "D111")
 					(unit 1)
 				)
 			)
@@ -7412,7 +6602,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4974b7b8-e961-4866-a004-5d344163fa3d")
-		(property "Reference" "#PWR03079"
+		(property "Reference" "#PWR0286"
 			(at 114.3 114.3 0)
 			(effects
 				(font
@@ -7463,7 +6653,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03079")
+					(reference "#PWR0286")
 					(unit 1)
 				)
 			)
@@ -7478,7 +6668,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4c387dea-7999-4330-bed2-1e2dbb76b2c3")
-		(property "Reference" "D3023"
+		(property "Reference" "D100"
 			(at 12.954 90.678 0)
 			(effects
 				(font
@@ -7581,7 +6771,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3023")
+					(reference "D100")
 					(unit 1)
 				)
 			)
@@ -7597,7 +6787,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4cbfa91f-97b0-4040-b5bb-9e5ad9a9ab08")
-		(property "Reference" "#PWR03039"
+		(property "Reference" "#PWR0246"
 			(at 44.45 66.04 0)
 			(effects
 				(font
@@ -7647,7 +6837,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03039")
+					(reference "#PWR0246")
 					(unit 1)
 				)
 			)
@@ -7663,7 +6853,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4cd2de16-4de5-4038-ba04-c59651d05633")
-		(property "Reference" "#PWR03019"
+		(property "Reference" "#PWR0223"
 			(at 85.09 39.37 0)
 			(effects
 				(font
@@ -7713,7 +6903,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03019")
+					(reference "#PWR0223")
 					(unit 1)
 				)
 			)
@@ -7728,7 +6918,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4d87946c-823b-45f6-8c05-d54143dccbc2")
-		(property "Reference" "D3014"
+		(property "Reference" "D91"
 			(at 100.584 61.468 0)
 			(effects
 				(font
@@ -7831,7 +7021,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3014")
+					(reference "D91")
 					(unit 1)
 				)
 			)
@@ -7847,7 +7037,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4da00254-945b-415f-a711-e1b3215da41a")
-		(property "Reference" "#PWR03061"
+		(property "Reference" "#PWR0268"
 			(at 251.46 81.28 0)
 			(effects
 				(font
@@ -7898,7 +7088,399 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03061")
+					(reference "#PWR0268")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Capacitors:0402,1uF")
+		(at 275.59 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4e0236dc-40f3-4f5f-bf7f-a6a0e1ee1aea")
+		(property "Reference" "C41"
+			(at 278.13 26.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1uF"
+			(at 278.13 29.21 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:C_0402"
+			(at 273.812 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05A105KA5NQNC_C52923.pdf"
+			(at 275.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "25V 1uF X5R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+			(at 275.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C52923"
+			(at 275.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stock" "7151069"
+			(at 275.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "0.006USD"
+			(at 275.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Process" "SMT"
+			(at 275.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 275.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Attrition Qty" "10"
+			(at 275.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 275.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
+			(at 275.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 275.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part" "CL05A105KA5NQNC"
+			(at 275.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage Rated" "25V"
+			(at 278.13 31.75 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 275.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Capacitance" "1uF"
+			(at 275.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature Coefficient" "X5R"
+			(at 275.59 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e0504900-7c2f-4a23-8108-820c9bf6b293")
+		)
+		(pin "2"
+			(uuid "9512538d-1eea-40e6-8f65-86361f2903e6")
+		)
+		(instances
+			(project "Helsinki-LED-Train-Map"
+				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
+					(reference "C41")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Capacitors:0402,1uF")
+		(at 200.66 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4e6424d5-2d8a-44dd-8c3d-2d285c19e290")
+		(property "Reference" "C34"
+			(at 203.2 26.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1uF"
+			(at 203.2 29.21 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:C_0402"
+			(at 198.882 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05A105KA5NQNC_C52923.pdf"
+			(at 200.66 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "25V 1uF X5R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+			(at 200.66 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C52923"
+			(at 200.66 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stock" "7151069"
+			(at 200.66 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "0.006USD"
+			(at 200.66 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Process" "SMT"
+			(at 200.66 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 200.66 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Attrition Qty" "10"
+			(at 200.66 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 200.66 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
+			(at 200.66 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 200.66 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part" "CL05A105KA5NQNC"
+			(at 200.66 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage Rated" "25V"
+			(at 203.2 31.75 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 200.66 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Capacitance" "1uF"
+			(at 200.66 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature Coefficient" "X5R"
+			(at 200.66 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d38efa9a-eda5-4b53-958c-f0c83bf0acbe")
+		)
+		(pin "2"
+			(uuid "93810e10-e898-4447-89ab-14006f323832")
+		)
+		(instances
+			(project "Helsinki-LED-Train-Map"
+				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
+					(reference "C34")
 					(unit 1)
 				)
 			)
@@ -7914,7 +7496,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4fab4bf4-1b46-43b9-a484-c596e2c5c67a")
-		(property "Reference" "#PWR03120"
+		(property "Reference" "#PWR0327"
 			(at 228.6 165.1 0)
 			(effects
 				(font
@@ -7964,211 +7546,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03120")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_JLCPCB-Capacitors:0402,220nF")
-		(at 217.17 27.94 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5043a546-4614-40b4-9428-03f10e1d0a60")
-		(property "Reference" "C3003"
-			(at 219.202 26.272 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "220nF"
-			(at 219.202 28.3182 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "PCM_JLCPCB:C_0402"
-			(at 215.392 27.94 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05B224KO5NNNC_C16772.pdf"
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "16V 220nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C16772"
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stock" "351761"
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" "0.008USD"
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Process" "SMT"
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Minimum Qty" "20"
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Attrition Qty" "10"
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Class" "Basic Component"
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part" "CL05B224KO5NNNC"
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Voltage Rated" "16V"
-			(at 219.202 29.9862 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Tolerance" "±10%"
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Capacitance" "220nF"
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Temperature Coefficient" "X7R"
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartID" ""
-			(at 217.17 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "7bfcfd5b-4239-4e43-b30c-c8fcbcf1db75")
-		)
-		(pin "1"
-			(uuid "3bb62269-6c63-4077-a995-93151d0cd6df")
-		)
-		(instances
-			(project "Auckland-LED-Train-Map"
-				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "C3003")
+					(reference "#PWR0327")
 					(unit 1)
 				)
 			)
@@ -8184,7 +7562,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "50a030ad-24cb-40a0-b146-70ef0da16215")
-		(property "Reference" "#PWR03071"
+		(property "Reference" "#PWR0278"
 			(at 205.74 99.06 0)
 			(effects
 				(font
@@ -8234,7 +7612,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03071")
+					(reference "#PWR0278")
 					(unit 1)
 				)
 			)
@@ -8250,7 +7628,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "50a5d9df-7f77-4ade-aa2e-7fdb9c36b911")
-		(property "Reference" "#PWR03110"
+		(property "Reference" "#PWR0317"
 			(at 274.32 147.32 0)
 			(effects
 				(font
@@ -8301,7 +7679,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03110")
+					(reference "#PWR0317")
 					(unit 1)
 				)
 			)
@@ -8317,7 +7695,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "524fd7b7-8235-41f8-a9ad-be79f1cf4ffa")
-		(property "Reference" "#PWR03087"
+		(property "Reference" "#PWR0294"
 			(at 22.86 132.08 0)
 			(effects
 				(font
@@ -8367,7 +7745,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03087")
+					(reference "#PWR0294")
 					(unit 1)
 				)
 			)
@@ -8383,7 +7761,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "53733e72-e056-4255-a753-9ce4f8d2c5c6")
-		(property "Reference" "#PWR03023"
+		(property "Reference" "#PWR0227"
 			(at 166.37 39.37 0)
 			(effects
 				(font
@@ -8433,7 +7811,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03023")
+					(reference "#PWR0227")
 					(unit 1)
 				)
 			)
@@ -8449,7 +7827,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "55ba3b3d-71e9-40b6-8141-35a73a48edb3")
-		(property "Reference" "#PWR03076"
+		(property "Reference" "#PWR0283"
 			(at 45.72 114.3 0)
 			(effects
 				(font
@@ -8500,7 +7878,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03076")
+					(reference "#PWR0283")
 					(unit 1)
 				)
 			)
@@ -8516,7 +7894,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5a11bd5f-53f4-48d1-89b0-bd204b57d1fd")
-		(property "Reference" "#PWR03070"
+		(property "Reference" "#PWR0277"
 			(at 182.88 99.06 0)
 			(effects
 				(font
@@ -8566,7 +7944,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03070")
+					(reference "#PWR0277")
 					(unit 1)
 				)
 			)
@@ -8581,7 +7959,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "5b54aadf-9070-499a-adee-dc262b557aaa")
-		(property "Reference" "D3006"
+		(property "Reference" "D83"
 			(at 120.904 34.544 0)
 			(effects
 				(font
@@ -8684,7 +8062,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3006")
+					(reference "D83")
 					(unit 1)
 				)
 			)
@@ -8700,7 +8078,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5c20d106-e9a5-46df-86c9-558021ceb614")
-		(property "Reference" "#PWR03060"
+		(property "Reference" "#PWR0267"
 			(at 228.6 81.28 0)
 			(effects
 				(font
@@ -8751,7 +8129,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03060")
+					(reference "#PWR0267")
 					(unit 1)
 				)
 			)
@@ -8767,7 +8145,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5c989271-9ab8-491b-82e6-304c45c32e1a")
-		(property "Reference" "#PWR03068"
+		(property "Reference" "#PWR0275"
 			(at 137.16 99.06 0)
 			(effects
 				(font
@@ -8817,7 +8195,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03068")
+					(reference "#PWR0275")
 					(unit 1)
 				)
 			)
@@ -8833,7 +8211,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5cbd58a4-b213-4bce-b80d-6e8f9eb9436a")
-		(property "Reference" "#PWR03116"
+		(property "Reference" "#PWR0323"
 			(at 137.16 165.1 0)
 			(effects
 				(font
@@ -8883,211 +8261,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03116")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_JLCPCB-Capacitors:0402,10uF")
-		(at 260.35 27.94 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5dcab4dc-1f15-44c6-ac4d-cf1dd943c34a")
-		(property "Reference" "C3007"
-			(at 262.382 26.272 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10uF"
-			(at 262.382 28.3182 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "PCM_JLCPCB:C_0402"
-			(at 258.572 27.94 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2208231630_Samsung-Electro-Mechanics-CL05A106MQ5NUNC_C15525.pdf"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "6.3V 10uF X5R ±20% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C15525"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stock" "1595146"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" "0.007USD"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Process" "SMT"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Minimum Qty" "20"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Attrition Qty" "10"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Class" "Basic Component"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part" "CL05A106MQ5NUNC"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Voltage Rated" "6.3V"
-			(at 262.382 29.9862 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Tolerance" "±20%"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Capacitance" "10uF"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Temperature Coefficient" "X5R"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartID" ""
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "2ab5982b-8ee7-40aa-b343-7949f3e4c91d")
-		)
-		(pin "2"
-			(uuid "2a9f6ee9-f8c9-416a-b40a-2c13772e6527")
-		)
-		(instances
-			(project "Auckland-LED-Train-Map"
-				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "C3007")
+					(reference "#PWR0323")
 					(unit 1)
 				)
 			)
@@ -9102,7 +8276,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "5f86411d-a6df-420e-b23d-d72c8804f53e")
-		(property "Reference" "D3055"
+		(property "Reference" "D132"
 			(at 195.834 156.718 0)
 			(effects
 				(font
@@ -9205,73 +8379,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3055")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 232.41 24.13 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "63467cb4-5dfd-4eff-afa7-f5521b49acbc")
-		(property "Reference" "#PWR03011"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 232.41 19.9969 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 232.41 24.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 232.41 24.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 232.41 24.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c250cca8-a342-4ff9-827d-b00e32783a1d")
-		)
-		(instances
-			(project "Auckland-LED-Train-Map"
-				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03011")
+					(reference "D132")
 					(unit 1)
 				)
 			)
@@ -9287,7 +8395,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "635a9308-3fc2-43cd-99b7-4cad1623ab23")
-		(property "Reference" "#PWR03043"
+		(property "Reference" "#PWR0250"
 			(at 125.73 66.04 0)
 			(effects
 				(font
@@ -9337,7 +8445,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03043")
+					(reference "#PWR0250")
 					(unit 1)
 				)
 			)
@@ -9353,7 +8461,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "643c06c4-422a-4906-80af-0da0106a67ca")
-		(property "Reference" "#PWR03107"
+		(property "Reference" "#PWR0314"
 			(at 205.74 147.32 0)
 			(effects
 				(font
@@ -9404,7 +8512,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03107")
+					(reference "#PWR0314")
 					(unit 1)
 				)
 			)
@@ -9420,7 +8528,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "64ba64a1-4819-4b60-9f1f-772281441c2d")
-		(property "Reference" "#PWR03114"
+		(property "Reference" "#PWR0321"
 			(at 91.44 165.1 0)
 			(effects
 				(font
@@ -9470,7 +8578,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03114")
+					(reference "#PWR0321")
 					(unit 1)
 				)
 			)
@@ -9486,7 +8594,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "65b8f4e2-fbe9-4148-b786-5612c55b2875")
-		(property "Reference" "#PWR03074"
+		(property "Reference" "#PWR0281"
 			(at 274.32 99.06 0)
 			(effects
 				(font
@@ -9536,7 +8644,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03074")
+					(reference "#PWR0281")
 					(unit 1)
 				)
 			)
@@ -9552,7 +8660,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6815f5bc-f280-4163-a575-dd3429690a33")
-		(property "Reference" "#PWR03026"
+		(property "Reference" "#PWR0233"
 			(at 44.45 48.26 0)
 			(effects
 				(font
@@ -9602,7 +8710,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03026")
+					(reference "#PWR0233")
 					(unit 1)
 				)
 			)
@@ -9617,7 +8725,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "69de8411-ed6c-4e4d-8f4d-86ea8d0bccc2")
-		(property "Reference" "D3010"
+		(property "Reference" "D87"
 			(at 19.304 61.468 0)
 			(effects
 				(font
@@ -9720,7 +8828,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3010")
+					(reference "D87")
 					(unit 1)
 				)
 			)
@@ -9735,7 +8843,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6a30dca4-1005-40ea-8579-b5d881962760")
-		(property "Reference" "D3032"
+		(property "Reference" "D109"
 			(at 218.694 90.678 0)
 			(effects
 				(font
@@ -9838,7 +8946,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3032")
+					(reference "D109")
 					(unit 1)
 				)
 			)
@@ -9854,7 +8962,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6b97169f-ddfd-4053-b54e-876daff26db6")
-		(property "Reference" "#PWR03027"
+		(property "Reference" "#PWR0234"
 			(at 64.77 48.26 0)
 			(effects
 				(font
@@ -9904,7 +9012,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03027")
+					(reference "#PWR0234")
 					(unit 1)
 				)
 			)
@@ -9919,7 +9027,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6d33f378-61c4-4a4f-9470-4413d7a9fbca")
-		(property "Reference" "D3057"
+		(property "Reference" "D134"
 			(at 241.554 156.718 0)
 			(effects
 				(font
@@ -10022,7 +9130,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3057")
+					(reference "D134")
 					(unit 1)
 				)
 			)
@@ -10038,7 +9146,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6d491759-3130-4c1b-9719-17e7f768aad5")
-		(property "Reference" "#PWR03020"
+		(property "Reference" "#PWR0224"
 			(at 105.41 39.37 0)
 			(effects
 				(font
@@ -10088,7 +9196,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03020")
+					(reference "#PWR0224")
 					(unit 1)
 				)
 			)
@@ -10104,7 +9212,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6e4ebbc1-1ac5-4bb1-9bf3-2d73fc9a1117")
-		(property "Reference" "#PWR03056"
+		(property "Reference" "#PWR0263"
 			(at 137.16 81.28 0)
 			(effects
 				(font
@@ -10155,7 +9263,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03056")
+					(reference "#PWR0263")
 					(unit 1)
 				)
 			)
@@ -10171,7 +9279,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6f0b0363-db0c-41ce-ab46-d89a703c257a")
-		(property "Reference" "#PWR03072"
+		(property "Reference" "#PWR0279"
 			(at 228.6 99.06 0)
 			(effects
 				(font
@@ -10221,7 +9329,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03072")
+					(reference "#PWR0279")
 					(unit 1)
 				)
 			)
@@ -10237,7 +9345,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6fae7201-6d10-4066-b1a8-cf5940aaa155")
-		(property "Reference" "#PWR03054"
+		(property "Reference" "#PWR0261"
 			(at 91.44 81.28 0)
 			(effects
 				(font
@@ -10288,7 +9396,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03054")
+					(reference "#PWR0261")
 					(unit 1)
 				)
 			)
@@ -10296,16 +9404,16 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 201.93 24.13 0)
+		(at 200.66 25.4 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "7046b78d-5d91-480e-92db-950d83024604")
-		(property "Reference" "#PWR03010"
-			(at 201.93 27.94 0)
+		(uuid "72f254d6-3c7d-4c33-b67c-252d672217c6")
+		(property "Reference" "#PWR0217"
+			(at 200.66 29.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10314,7 +9422,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 201.93 19.9969 0)
+			(at 200.66 21.2669 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10322,7 +9430,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 201.93 24.13 0)
+			(at 200.66 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10331,7 +9439,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 201.93 24.13 0)
+			(at 200.66 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10340,7 +9448,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 201.93 24.13 0)
+			(at 200.66 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10349,216 +9457,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "8fada4e1-040a-4249-b088-36c4f466bc8d")
+			(uuid "446adf22-e103-4520-a594-60c45b4fcc3b")
 		)
 		(instances
-			(project "Auckland-LED-Train-Map"
+			(project "Helsinki-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03010")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_JLCPCB-Capacitors:0402,220nF")
-		(at 240.03 27.94 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "71b0b18f-ce02-4dae-b36e-af40aaeace2e")
-		(property "Reference" "C3005"
-			(at 242.062 26.272 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "220nF"
-			(at 242.062 28.3182 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "PCM_JLCPCB:C_0402"
-			(at 238.252 27.94 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05B224KO5NNNC_C16772.pdf"
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "16V 220nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C16772"
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stock" "351761"
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" "0.008USD"
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Process" "SMT"
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Minimum Qty" "20"
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Attrition Qty" "10"
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Class" "Basic Component"
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part" "CL05B224KO5NNNC"
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Voltage Rated" "16V"
-			(at 242.062 29.9862 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Tolerance" "±10%"
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Capacitance" "220nF"
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Temperature Coefficient" "X7R"
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartID" ""
-			(at 240.03 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "9e8f595d-176c-4b7d-89a1-9550d9c0b83c")
-		)
-		(pin "1"
-			(uuid "2d5a2623-c50f-469f-b8df-fc1c4cbce4e0")
-		)
-		(instances
-			(project "Auckland-LED-Train-Map"
-				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "C3005")
+					(reference "#PWR0217")
 					(unit 1)
 				)
 			)
@@ -10574,7 +9478,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "732ca7a6-f226-404d-99f7-1741c259b661")
-		(property "Reference" "#PWR03075"
+		(property "Reference" "#PWR0282"
 			(at 22.86 114.3 0)
 			(effects
 				(font
@@ -10625,7 +9529,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03075")
+					(reference "#PWR0282")
 					(unit 1)
 				)
 			)
@@ -10641,7 +9545,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7377ca16-cb37-4356-8197-c1166b3d61cc")
-		(property "Reference" "#PWR03112"
+		(property "Reference" "#PWR0319"
 			(at 45.72 165.1 0)
 			(effects
 				(font
@@ -10691,7 +9595,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03112")
+					(reference "#PWR0319")
 					(unit 1)
 				)
 			)
@@ -10707,7 +9611,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "741fcbaf-1208-477f-b190-5789821f01bb")
-		(property "Reference" "#PWR03135"
+		(property "Reference" "#PWR0342"
 			(at 137.16 196.85 0)
 			(effects
 				(font
@@ -10757,7 +9661,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03135")
+					(reference "#PWR0342")
 					(unit 1)
 				)
 			)
@@ -10773,7 +9677,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "742e349c-37d9-4913-93e0-9151895028e4")
-		(property "Reference" "#PWR03032"
+		(property "Reference" "#PWR0239"
 			(at 166.37 48.26 0)
 			(effects
 				(font
@@ -10823,7 +9727,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03032")
+					(reference "#PWR0239")
 					(unit 1)
 				)
 			)
@@ -10839,7 +9743,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7524f2f1-1418-40f0-a96f-3a6a1d5cfd49")
-		(property "Reference" "#PWR03049"
+		(property "Reference" "#PWR0256"
 			(at 251.46 66.04 0)
 			(effects
 				(font
@@ -10889,7 +9793,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03049")
+					(reference "#PWR0256")
 					(unit 1)
 				)
 			)
@@ -10905,7 +9809,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "756c53d5-252b-419e-8f09-6ebbda1e3840")
-		(property "Reference" "#PWR03090"
+		(property "Reference" "#PWR0297"
 			(at 91.44 132.08 0)
 			(effects
 				(font
@@ -10955,7 +9859,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03090")
+					(reference "#PWR0297")
 					(unit 1)
 				)
 			)
@@ -10971,7 +9875,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "771f26c7-a5f2-484d-b955-c0cb0a16cea6")
-		(property "Reference" "#PWR03126"
+		(property "Reference" "#PWR0333"
 			(at 91.44 179.07 0)
 			(effects
 				(font
@@ -11021,7 +9925,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03126")
+					(reference "#PWR0333")
 					(unit 1)
 				)
 			)
@@ -11036,7 +9940,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "79488cde-dc61-43d9-a818-0ec934972097")
-		(property "Reference" "D3016"
+		(property "Reference" "D93"
 			(at 141.224 61.468 0)
 			(effects
 				(font
@@ -11139,7 +10043,73 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3016")
+					(reference "D93")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 200.66 33.02 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7991afc8-c7ec-4a01-bbf0-bc963d47638e")
+		(property "Reference" "#PWR0229"
+			(at 200.66 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 200.66 37.1531 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 200.66 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 200.66 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 200.66 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9c951db5-44bd-42dc-bacc-a061b83fbd31")
+		)
+		(instances
+			(project "Helsinki-LED-Train-Map"
+				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
+					(reference "#PWR0229")
 					(unit 1)
 				)
 			)
@@ -11155,7 +10125,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "79a5372e-7edb-4d0f-bcc4-e43db6256433")
-		(property "Reference" "#PWR03055"
+		(property "Reference" "#PWR0262"
 			(at 114.3 81.28 0)
 			(effects
 				(font
@@ -11206,7 +10176,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03055")
+					(reference "#PWR0262")
 					(unit 1)
 				)
 			)
@@ -11222,7 +10192,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7a0b65d1-8293-490c-8a58-3e09b0e6db4f")
-		(property "Reference" "#PWR03025"
+		(property "Reference" "#PWR0232"
 			(at 24.13 48.26 0)
 			(effects
 				(font
@@ -11272,7 +10242,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03025")
+					(reference "#PWR0232")
 					(unit 1)
 				)
 			)
@@ -11288,7 +10258,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7a1c578f-9c37-47ab-a9d3-3d9c48af7a41")
-		(property "Reference" "#PWR03037"
+		(property "Reference" "#PWR0244"
 			(at 274.32 48.26 0)
 			(effects
 				(font
@@ -11339,7 +10309,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03037")
+					(reference "#PWR0244")
 					(unit 1)
 				)
 			)
@@ -11355,7 +10325,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7aac2d14-af47-481c-8229-8cf9817309ef")
-		(property "Reference" "#PWR03030"
+		(property "Reference" "#PWR0237"
 			(at 125.73 48.26 0)
 			(effects
 				(font
@@ -11405,7 +10375,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03030")
+					(reference "#PWR0237")
 					(unit 1)
 				)
 			)
@@ -11421,7 +10391,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7ad67826-3547-406a-a4db-65d0238c9381")
-		(property "Reference" "#PWR03118"
+		(property "Reference" "#PWR0325"
 			(at 182.88 165.1 0)
 			(effects
 				(font
@@ -11471,7 +10441,73 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03118")
+					(reference "#PWR0325")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 232.41 33.02 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7aefcf24-97be-487f-b5b5-43296b31a4d4")
+		(property "Reference" "#PWR0230"
+			(at 232.41 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 232.41 37.1531 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 232.41 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 232.41 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 232.41 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c6415904-6cc7-43ff-b860-e33a708c6177")
+		)
+		(instances
+			(project "Helsinki-LED-Train-Map"
+				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
+					(reference "#PWR0230")
 					(unit 1)
 				)
 			)
@@ -11486,7 +10522,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7c0d5cde-2b07-4e4b-bb1b-111ba8463131")
-		(property "Reference" "D3041"
+		(property "Reference" "D118"
 			(at 150.114 123.698 0)
 			(effects
 				(font
@@ -11590,7 +10626,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3041")
+					(reference "D118")
 					(unit 1)
 				)
 			)
@@ -11605,7 +10641,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7d5cfd21-77bb-4b4d-80e1-008c555fa132")
-		(property "Reference" "D3013"
+		(property "Reference" "D90"
 			(at 80.264 61.468 0)
 			(effects
 				(font
@@ -11708,7 +10744,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3013")
+					(reference "D90")
 					(unit 1)
 				)
 			)
@@ -11723,7 +10759,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7f53c339-b3ea-4a7b-bb19-6b4647330a64")
-		(property "Reference" "D3011"
+		(property "Reference" "D88"
 			(at 39.624 61.468 0)
 			(effects
 				(font
@@ -11826,7 +10862,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3011")
+					(reference "D88")
 					(unit 1)
 				)
 			)
@@ -11842,7 +10878,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8020a21d-597c-427a-be23-784618804731")
-		(property "Reference" "#PWR03077"
+		(property "Reference" "#PWR0284"
 			(at 68.58 114.3 0)
 			(effects
 				(font
@@ -11893,7 +10929,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03077")
+					(reference "#PWR0284")
 					(unit 1)
 				)
 			)
@@ -11909,7 +10945,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "823d8359-abe4-434b-a3f1-32b397b1c4fb")
-		(property "Reference" "#PWR03003"
+		(property "Reference" "#PWR0210"
 			(at 64.77 21.59 0)
 			(effects
 				(font
@@ -11959,7 +10995,203 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03003")
+					(reference "#PWR0210")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Capacitors:0402,1uF")
+		(at 265.43 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8350848e-98ee-47ce-a017-9e1837b58539")
+		(property "Reference" "C40"
+			(at 267.97 26.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1uF"
+			(at 267.97 29.21 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:C_0402"
+			(at 263.652 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05A105KA5NQNC_C52923.pdf"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "25V 1uF X5R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C52923"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stock" "7151069"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "0.006USD"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Process" "SMT"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Attrition Qty" "10"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part" "CL05A105KA5NQNC"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage Rated" "25V"
+			(at 267.97 31.75 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Capacitance" "1uF"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature Coefficient" "X5R"
+			(at 265.43 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "dceccf5f-1593-49bb-a82f-f46a9b5f8ab4")
+		)
+		(pin "2"
+			(uuid "e4a1e8d1-c7c8-4fb3-90c8-89da136043f7")
+		)
+		(instances
+			(project "Helsinki-LED-Train-Map"
+				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
+					(reference "C40")
 					(unit 1)
 				)
 			)
@@ -11974,7 +11206,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "84430062-752d-428c-a052-f28a416fdd10")
-		(property "Reference" "D3012"
+		(property "Reference" "D89"
 			(at 59.944 61.468 0)
 			(effects
 				(font
@@ -12077,7 +11309,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3012")
+					(reference "D89")
 					(unit 1)
 				)
 			)
@@ -12093,7 +11325,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "86969479-69c9-438d-a454-f8afe79ad4f1")
-		(property "Reference" "#PWR03041"
+		(property "Reference" "#PWR0248"
 			(at 85.09 66.04 0)
 			(effects
 				(font
@@ -12143,7 +11375,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03041")
+					(reference "#PWR0248")
 					(unit 1)
 				)
 			)
@@ -12159,7 +11391,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "876522d1-b9f6-4161-b37d-e80411016d1e")
-		(property "Reference" "#PWR03004"
+		(property "Reference" "#PWR0211"
 			(at 85.09 21.59 0)
 			(effects
 				(font
@@ -12209,7 +11441,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03004")
+					(reference "#PWR0211")
 					(unit 1)
 				)
 			)
@@ -12225,7 +11457,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8766a682-588e-4c29-a29b-8741b1e0f88c")
-		(property "Reference" "#PWR03017"
+		(property "Reference" "#PWR0221"
 			(at 44.45 39.37 0)
 			(effects
 				(font
@@ -12275,7 +11507,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03017")
+					(reference "#PWR0221")
 					(unit 1)
 				)
 			)
@@ -12290,7 +11522,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "87c8da24-9be6-45d9-94dd-988ba61a19e3")
-		(property "Reference" "D3021"
+		(property "Reference" "D98"
 			(at 241.554 57.658 0)
 			(effects
 				(font
@@ -12393,7 +11625,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3021")
+					(reference "D98")
 					(unit 1)
 				)
 			)
@@ -12409,7 +11641,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8809d8b3-c74d-4c39-906c-032158cc0ea0")
-		(property "Reference" "#PWR03046"
+		(property "Reference" "#PWR0253"
 			(at 186.69 66.04 0)
 			(effects
 				(font
@@ -12459,7 +11691,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03046")
+					(reference "#PWR0253")
 					(unit 1)
 				)
 			)
@@ -12474,7 +11706,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8987f783-98e2-49bf-9865-e29e96d0b814")
-		(property "Reference" "D3007"
+		(property "Reference" "D84"
 			(at 141.224 34.544 0)
 			(effects
 				(font
@@ -12577,7 +11809,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3007")
+					(reference "D84")
 					(unit 1)
 				)
 			)
@@ -12593,7 +11825,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8a511d61-6c8f-49ea-835d-488021f8a27c")
-		(property "Reference" "#PWR03084"
+		(property "Reference" "#PWR0291"
 			(at 228.6 114.3 0)
 			(effects
 				(font
@@ -12644,7 +11876,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03084")
+					(reference "#PWR0291")
 					(unit 1)
 				)
 			)
@@ -12660,7 +11892,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8b2ec939-92ad-4a57-aa78-925075a96608")
-		(property "Reference" "#PWR03098"
+		(property "Reference" "#PWR0305"
 			(at 274.32 132.08 0)
 			(effects
 				(font
@@ -12710,7 +11942,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03098")
+					(reference "#PWR0305")
 					(unit 1)
 				)
 			)
@@ -12725,7 +11957,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8b5cac04-8ba3-4c72-bcdd-abfd3b315aad")
-		(property "Reference" "D3039"
+		(property "Reference" "D116"
 			(at 104.394 123.698 0)
 			(effects
 				(font
@@ -12828,7 +12060,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3039")
+					(reference "D116")
 					(unit 1)
 				)
 			)
@@ -12843,7 +12075,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8c868022-7b53-42f8-97d8-20e4459addcd")
-		(property "Reference" "D3036"
+		(property "Reference" "D113"
 			(at 35.814 123.698 0)
 			(effects
 				(font
@@ -12946,7 +12178,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3036")
+					(reference "D113")
 					(unit 1)
 				)
 			)
@@ -12962,7 +12194,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8dd5c895-2ad1-4c0a-95f3-b12cae470f7d")
-		(property "Reference" "#PWR03065"
+		(property "Reference" "#PWR0272"
 			(at 68.58 99.06 0)
 			(effects
 				(font
@@ -13012,7 +12244,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03065")
+					(reference "#PWR0272")
 					(unit 1)
 				)
 			)
@@ -13028,7 +12260,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8e2e5496-4d70-4ff3-807b-f1bb5e37cb80")
-		(property "Reference" "#PWR03057"
+		(property "Reference" "#PWR0264"
 			(at 160.02 81.28 0)
 			(effects
 				(font
@@ -13079,7 +12311,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03057")
+					(reference "#PWR0264")
 					(unit 1)
 				)
 			)
@@ -13095,7 +12327,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8fa582d0-e569-4845-a603-b319b016a4b1")
-		(property "Reference" "#PWR03067"
+		(property "Reference" "#PWR0274"
 			(at 114.3 99.06 0)
 			(effects
 				(font
@@ -13145,7 +12377,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03067")
+					(reference "#PWR0274")
 					(unit 1)
 				)
 			)
@@ -13161,7 +12393,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9187433a-0bfc-4108-b58c-5e1d84ed2a96")
-		(property "Reference" "#PWR03045"
+		(property "Reference" "#PWR0252"
 			(at 166.37 66.04 0)
 			(effects
 				(font
@@ -13211,7 +12443,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03045")
+					(reference "#PWR0252")
 					(unit 1)
 				)
 			)
@@ -13227,7 +12459,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "92289bab-33cf-46a9-8949-154eb76630c9")
-		(property "Reference" "#PWR03129"
+		(property "Reference" "#PWR0336"
 			(at 160.02 179.07 0)
 			(effects
 				(font
@@ -13277,7 +12509,203 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03129")
+					(reference "#PWR0336")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Capacitors:0402,1uF")
+		(at 252.73 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "93bbfa1f-f63a-462e-8183-1966c2064cb4")
+		(property "Reference" "C39"
+			(at 255.27 26.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1uF"
+			(at 255.27 29.21 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:C_0402"
+			(at 250.952 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05A105KA5NQNC_C52923.pdf"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "25V 1uF X5R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C52923"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stock" "7151069"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "0.006USD"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Process" "SMT"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Attrition Qty" "10"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part" "CL05A105KA5NQNC"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage Rated" "25V"
+			(at 255.27 31.75 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Capacitance" "1uF"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature Coefficient" "X5R"
+			(at 252.73 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b301f09c-89f5-401e-9313-aef3ccee4186")
+		)
+		(pin "2"
+			(uuid "887db5df-516b-42e5-bb36-2d6ff94b1ae8")
+		)
+		(instances
+			(project "Helsinki-LED-Train-Map"
+				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
+					(reference "C39")
 					(unit 1)
 				)
 			)
@@ -13292,7 +12720,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "94698bd0-3533-496b-9658-c5e466d54c93")
-		(property "Reference" "D3027"
+		(property "Reference" "D104"
 			(at 104.394 90.678 0)
 			(effects
 				(font
@@ -13395,7 +12823,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3027")
+					(reference "D104")
 					(unit 1)
 				)
 			)
@@ -13410,7 +12838,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "94903bfb-24c7-46fa-9f38-a60e62f81acf")
-		(property "Reference" "D3031"
+		(property "Reference" "D108"
 			(at 195.834 90.678 0)
 			(effects
 				(font
@@ -13513,7 +12941,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3031")
+					(reference "D108")
 					(unit 1)
 				)
 			)
@@ -13529,7 +12957,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "964dc1af-fd94-49f8-9d65-4b57b829adfe")
-		(property "Reference" "#PWR03093"
+		(property "Reference" "#PWR0300"
 			(at 160.02 132.08 0)
 			(effects
 				(font
@@ -13579,7 +13007,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03093")
+					(reference "#PWR0300")
 					(unit 1)
 				)
 			)
@@ -13595,7 +13023,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "96b8181a-523e-43d5-b277-b518013f7a6f")
-		(property "Reference" "#PWR03028"
+		(property "Reference" "#PWR0235"
 			(at 85.09 48.26 0)
 			(effects
 				(font
@@ -13645,7 +13073,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03028")
+					(reference "#PWR0235")
 					(unit 1)
 				)
 			)
@@ -13660,7 +13088,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9733f3a3-4259-4959-b355-479336cb327e")
-		(property "Reference" "D3018"
+		(property "Reference" "D95"
 			(at 181.864 61.468 0)
 			(effects
 				(font
@@ -13763,7 +13191,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3018")
+					(reference "D95")
 					(unit 1)
 				)
 			)
@@ -13779,7 +13207,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9863f2d1-9a5b-4760-b6af-d93308a8ac97")
-		(property "Reference" "#PWR03091"
+		(property "Reference" "#PWR0298"
 			(at 114.3 132.08 0)
 			(effects
 				(font
@@ -13829,7 +13257,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03091")
+					(reference "#PWR0298")
 					(unit 1)
 				)
 			)
@@ -13844,7 +13272,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9b0d06f4-2342-44cd-8e47-c645955ea16f")
-		(property "Reference" "D3009"
+		(property "Reference" "D86"
 			(at 181.864 34.544 0)
 			(effects
 				(font
@@ -13947,7 +13375,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3009")
+					(reference "D86")
 					(unit 1)
 				)
 			)
@@ -13963,7 +13391,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9b31a913-3437-4935-b2e7-c76b842a70ad")
-		(property "Reference" "#PWR03042"
+		(property "Reference" "#PWR0249"
 			(at 105.41 66.04 0)
 			(effects
 				(font
@@ -14013,7 +13441,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03042")
+					(reference "#PWR0249")
 					(unit 1)
 				)
 			)
@@ -14029,7 +13457,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9ce09ca5-0f57-4197-a604-1e0e26987c9c")
-		(property "Reference" "#PWR03052"
+		(property "Reference" "#PWR0259"
 			(at 45.72 81.28 0)
 			(effects
 				(font
@@ -14080,7 +13508,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03052")
+					(reference "#PWR0259")
 					(unit 1)
 				)
 			)
@@ -14095,7 +13523,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9d426d25-6623-49db-b5c0-114c6bf422f2")
-		(property "Reference" "D3025"
+		(property "Reference" "D102"
 			(at 58.674 90.678 0)
 			(effects
 				(font
@@ -14198,7 +13626,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3025")
+					(reference "D102")
 					(unit 1)
 				)
 			)
@@ -14214,7 +13642,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9eca7174-8949-4a80-b240-44af1b23d8eb")
-		(property "Reference" "#PWR03083"
+		(property "Reference" "#PWR0290"
 			(at 205.74 114.3 0)
 			(effects
 				(font
@@ -14265,7 +13693,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03083")
+					(reference "#PWR0290")
 					(unit 1)
 				)
 			)
@@ -14281,7 +13709,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9f572408-a0d8-40d6-a79e-bac63e6f4fa4")
-		(property "Reference" "#PWR03036"
+		(property "Reference" "#PWR0243"
 			(at 251.46 48.26 0)
 			(effects
 				(font
@@ -14332,7 +13760,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03036")
+					(reference "#PWR0243")
 					(unit 1)
 				)
 			)
@@ -14348,7 +13776,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a1b2d2a3-fce6-478d-ae90-b2deac68c8ee")
-		(property "Reference" "#PWR03001"
+		(property "Reference" "#PWR0208"
 			(at 24.13 21.59 0)
 			(effects
 				(font
@@ -14398,7 +13826,203 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03001")
+					(reference "#PWR0208")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Capacitors:0402,1uF")
+		(at 220.98 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a1d5fba9-df46-4d51-b08d-8dc11b5646b2")
+		(property "Reference" "C36"
+			(at 223.52 26.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1uF"
+			(at 223.52 29.21 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:C_0402"
+			(at 219.202 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05A105KA5NQNC_C52923.pdf"
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "25V 1uF X5R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C52923"
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stock" "7151069"
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "0.006USD"
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Process" "SMT"
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Attrition Qty" "10"
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part" "CL05A105KA5NQNC"
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage Rated" "25V"
+			(at 223.52 31.75 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Capacitance" "1uF"
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature Coefficient" "X5R"
+			(at 220.98 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d87eb524-9d4a-4def-be37-07275c9027fa")
+		)
+		(pin "2"
+			(uuid "4077d7f8-1681-4190-aa58-3ab95566ffa9")
+		)
+		(instances
+			(project "Helsinki-LED-Train-Map"
+				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
+					(reference "C36")
 					(unit 1)
 				)
 			)
@@ -14414,7 +14038,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a1f74541-7cc2-4949-a677-2dd8e8b97c76")
-		(property "Reference" "#PWR03105"
+		(property "Reference" "#PWR0312"
 			(at 160.02 147.32 0)
 			(effects
 				(font
@@ -14465,211 +14089,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03105")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_JLCPCB-Capacitors:0402,220nF")
-		(at 267.97 27.94 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a20f2438-1e9f-436a-8882-6847dff1192d")
-		(property "Reference" "C3008"
-			(at 270.002 26.272 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "220nF"
-			(at 270.002 28.3182 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "PCM_JLCPCB:C_0402"
-			(at 266.192 27.94 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05B224KO5NNNC_C16772.pdf"
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "16V 220nF X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C16772"
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stock" "351761"
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" "0.008USD"
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Process" "SMT"
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Minimum Qty" "20"
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Attrition Qty" "10"
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Class" "Basic Component"
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part" "CL05B224KO5NNNC"
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Voltage Rated" "16V"
-			(at 270.002 29.9862 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Tolerance" "±10%"
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Capacitance" "220nF"
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Temperature Coefficient" "X7R"
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartID" ""
-			(at 267.97 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "e5127b8f-c5f5-43b4-9522-e34d66d92f5f")
-		)
-		(pin "1"
-			(uuid "45b35bb7-5784-4a00-bb3e-dc9818808fc8")
-		)
-		(instances
-			(project "Auckland-LED-Train-Map"
-				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "C3008")
+					(reference "#PWR0312")
 					(unit 1)
 				)
 			)
@@ -14685,7 +14105,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a3a1f3da-a5ff-4589-82eb-66b743f77e71")
-		(property "Reference" "#PWR03124"
+		(property "Reference" "#PWR0331"
 			(at 45.72 179.07 0)
 			(effects
 				(font
@@ -14735,7 +14155,7 @@
 		(instances
 			(project ""
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03124")
+					(reference "#PWR0331")
 					(unit 1)
 				)
 			)
@@ -14751,7 +14171,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a674ffcc-aa95-48fa-b805-9cd1a341cd73")
-		(property "Reference" "#PWR03123"
+		(property "Reference" "#PWR0330"
 			(at 22.86 179.07 0)
 			(effects
 				(font
@@ -14801,7 +14221,7 @@
 		(instances
 			(project ""
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03123")
+					(reference "#PWR0330")
 					(unit 1)
 				)
 			)
@@ -14816,7 +14236,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a6a81e99-895a-4841-8478-32b2eb8cb6ee")
-		(property "Reference" "D3049"
+		(property "Reference" "D126"
 			(at 58.674 156.718 0)
 			(effects
 				(font
@@ -14919,7 +14339,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3049")
+					(reference "D126")
 					(unit 1)
 				)
 			)
@@ -14935,7 +14355,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a8431776-b976-4f86-8445-34afa96dac5f")
-		(property "Reference" "#PWR03134"
+		(property "Reference" "#PWR0341"
 			(at 114.3 196.85 0)
 			(effects
 				(font
@@ -14985,7 +14405,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03134")
+					(reference "#PWR0341")
 					(unit 1)
 				)
 			)
@@ -15000,7 +14420,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a96fa870-6f19-4f9d-998b-3eb37a635040")
-		(property "Reference" "D3047"
+		(property "Reference" "D124"
 			(at 12.954 156.718 0)
 			(effects
 				(font
@@ -15103,7 +14523,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3047")
+					(reference "D124")
 					(unit 1)
 				)
 			)
@@ -15118,7 +14538,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "aa569b16-4321-47fa-8573-39b13a3ff725")
-		(property "Reference" "D3001"
+		(property "Reference" "D78"
 			(at 19.304 34.544 0)
 			(effects
 				(font
@@ -15221,7 +14641,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3001")
+					(reference "D78")
 					(unit 1)
 				)
 			)
@@ -15237,7 +14657,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "aaa434d9-d4b7-4e53-b86c-c08bfef7e374")
-		(property "Reference" "#PWR03078"
+		(property "Reference" "#PWR0285"
 			(at 91.44 114.3 0)
 			(effects
 				(font
@@ -15288,7 +14708,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03078")
+					(reference "#PWR0285")
 					(unit 1)
 				)
 			)
@@ -15304,7 +14724,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "aad5abfe-89bb-4ef6-9ddd-071f3db0ebc9")
-		(property "Reference" "#PWR03092"
+		(property "Reference" "#PWR0299"
 			(at 137.16 132.08 0)
 			(effects
 				(font
@@ -15354,7 +14774,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03092")
+					(reference "#PWR0299")
 					(unit 1)
 				)
 			)
@@ -15369,7 +14789,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "abd9ca1f-c8d5-42ce-83c6-18b5be591b84")
-		(property "Reference" "D3033"
+		(property "Reference" "D110"
 			(at 241.554 90.678 0)
 			(effects
 				(font
@@ -15472,7 +14892,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3033")
+					(reference "D110")
 					(unit 1)
 				)
 			)
@@ -15487,7 +14907,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "add3e796-b96b-4426-8f6a-77801906d730")
-		(property "Reference" "D3065"
+		(property "Reference" "D142"
 			(at 150.114 188.468 0)
 			(effects
 				(font
@@ -15590,7 +15010,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3065")
+					(reference "D142")
 					(unit 1)
 				)
 			)
@@ -15605,7 +15025,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "afb34f74-82ad-4bd3-bd9c-4ebcf8632310")
-		(property "Reference" "D3019"
+		(property "Reference" "D96"
 			(at 195.834 57.658 0)
 			(effects
 				(font
@@ -15708,7 +15128,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3019")
+					(reference "D96")
 					(unit 1)
 				)
 			)
@@ -15724,7 +15144,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b11372f6-9262-4dff-81f4-2b471d1b9858")
-		(property "Reference" "#PWR03018"
+		(property "Reference" "#PWR0222"
 			(at 64.77 39.37 0)
 			(effects
 				(font
@@ -15774,7 +15194,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03018")
+					(reference "#PWR0222")
 					(unit 1)
 				)
 			)
@@ -15790,7 +15210,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b241fe44-ab74-435d-8021-312d2b4628c2")
-		(property "Reference" "#PWR03044"
+		(property "Reference" "#PWR0251"
 			(at 146.05 66.04 0)
 			(effects
 				(font
@@ -15840,7 +15260,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03044")
+					(reference "#PWR0251")
 					(unit 1)
 				)
 			)
@@ -15856,7 +15276,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b24e1d90-ea00-4c5c-8b38-c1221c737d89")
-		(property "Reference" "#PWR03128"
+		(property "Reference" "#PWR0335"
 			(at 137.16 179.07 0)
 			(effects
 				(font
@@ -15906,7 +15326,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03128")
+					(reference "#PWR0335")
 					(unit 1)
 				)
 			)
@@ -15922,7 +15342,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b471a2b3-a328-48e5-a2ed-b632be72e6e9")
-		(property "Reference" "#PWR03047"
+		(property "Reference" "#PWR0254"
 			(at 205.74 66.04 0)
 			(effects
 				(font
@@ -15972,7 +15392,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03047")
+					(reference "#PWR0254")
 					(unit 1)
 				)
 			)
@@ -15987,7 +15407,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b56a570f-6494-43d2-b0f3-6b00998e9a9b")
-		(property "Reference" "D3060"
+		(property "Reference" "D137"
 			(at 35.814 188.468 0)
 			(effects
 				(font
@@ -16091,7 +15511,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3060")
+					(reference "D137")
 					(unit 1)
 				)
 			)
@@ -16106,7 +15526,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b7c6a807-8f11-4919-93b0-b89b802fc07a")
-		(property "Reference" "D3020"
+		(property "Reference" "D97"
 			(at 218.694 57.658 0)
 			(effects
 				(font
@@ -16209,7 +15629,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3020")
+					(reference "D97")
 					(unit 1)
 				)
 			)
@@ -16224,7 +15644,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b7cb6a6b-6cfd-4e7e-972e-bc359ea86d14")
-		(property "Reference" "D3028"
+		(property "Reference" "D105"
 			(at 127.254 90.678 0)
 			(effects
 				(font
@@ -16327,7 +15747,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3028")
+					(reference "D105")
 					(unit 1)
 				)
 			)
@@ -16342,7 +15762,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b8482f8e-8ecf-4f6a-b5cb-a6081ea21e00")
-		(property "Reference" "D3003"
+		(property "Reference" "D80"
 			(at 59.944 34.544 0)
 			(effects
 				(font
@@ -16445,7 +15865,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3003")
+					(reference "D80")
 					(unit 1)
 				)
 			)
@@ -16461,7 +15881,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ba6c3f37-11ff-4ad7-a31e-98a495a51951")
-		(property "Reference" "#PWR03103"
+		(property "Reference" "#PWR0310"
 			(at 114.3 147.32 0)
 			(effects
 				(font
@@ -16512,7 +15932,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03103")
+					(reference "#PWR0310")
 					(unit 1)
 				)
 			)
@@ -16528,7 +15948,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bbd004fe-1d4e-4d1f-9276-753183e64862")
-		(property "Reference" "#PWR03109"
+		(property "Reference" "#PWR0316"
 			(at 251.46 147.32 0)
 			(effects
 				(font
@@ -16579,7 +15999,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03109")
+					(reference "#PWR0316")
 					(unit 1)
 				)
 			)
@@ -16594,7 +16014,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bc143672-e9b7-4018-bd36-bda375a92e1d")
-		(property "Reference" "D3042"
+		(property "Reference" "D119"
 			(at 172.974 123.698 0)
 			(effects
 				(font
@@ -16697,7 +16117,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3042")
+					(reference "D119")
 					(unit 1)
 				)
 			)
@@ -16713,7 +16133,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "be6f78c7-fa88-4f1c-8005-8556619b17c5")
-		(property "Reference" "#PWR03048"
+		(property "Reference" "#PWR0255"
 			(at 228.6 66.04 0)
 			(effects
 				(font
@@ -16763,7 +16183,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03048")
+					(reference "#PWR0255")
 					(unit 1)
 				)
 			)
@@ -16779,7 +16199,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bea5f472-f698-4a42-aa88-ac5d42fa15db")
-		(property "Reference" "#PWR03117"
+		(property "Reference" "#PWR0324"
 			(at 160.02 165.1 0)
 			(effects
 				(font
@@ -16829,7 +16249,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03117")
+					(reference "#PWR0324")
 					(unit 1)
 				)
 			)
@@ -16845,7 +16265,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bf8e0a49-873a-435a-8e8f-f368b03dc4b3")
-		(property "Reference" "#PWR03006"
+		(property "Reference" "#PWR0213"
 			(at 125.73 21.59 0)
 			(effects
 				(font
@@ -16895,7 +16315,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03006")
+					(reference "#PWR0213")
 					(unit 1)
 				)
 			)
@@ -16910,7 +16330,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bf8faca3-6704-42ab-b518-ad7af75b5b0a")
-		(property "Reference" "D3052"
+		(property "Reference" "D129"
 			(at 127.254 156.718 0)
 			(effects
 				(font
@@ -17013,7 +16433,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3052")
+					(reference "D129")
 					(unit 1)
 				)
 			)
@@ -17028,7 +16448,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c2f6d571-e19e-49ef-a614-a144d0d916ec")
-		(property "Reference" "D3038"
+		(property "Reference" "D115"
 			(at 81.534 123.698 0)
 			(effects
 				(font
@@ -17131,7 +16551,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3038")
+					(reference "D115")
 					(unit 1)
 				)
 			)
@@ -17146,7 +16566,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c3909ab4-d87f-4982-a12b-196a84ddd547")
-		(property "Reference" "D3046"
+		(property "Reference" "D123"
 			(at 264.414 123.698 0)
 			(effects
 				(font
@@ -17249,211 +16669,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3046")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_JLCPCB-Capacitors:0402,10uF")
-		(at 232.41 27.94 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c3b9e99d-afce-42ca-833f-0d438249a84d")
-		(property "Reference" "C3004"
-			(at 234.442 26.272 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10uF"
-			(at 234.442 28.3182 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "PCM_JLCPCB:C_0402"
-			(at 230.632 27.94 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2208231630_Samsung-Electro-Mechanics-CL05A106MQ5NUNC_C15525.pdf"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "6.3V 10uF X5R ±20% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C15525"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Stock" "1595146"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" "0.007USD"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Process" "SMT"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Minimum Qty" "20"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Attrition Qty" "10"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Class" "Basic Component"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Part" "CL05A106MQ5NUNC"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Voltage Rated" "6.3V"
-			(at 234.442 29.9862 0)
-			(effects
-				(font
-					(size 0.8 0.8)
-				)
-				(justify left)
-			)
-		)
-		(property "Tolerance" "±20%"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Capacitance" "10uF"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Temperature Coefficient" "X5R"
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PartID" ""
-			(at 232.41 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "dd3162e1-a181-4f10-b2fa-9ac89b9bc226")
-		)
-		(pin "2"
-			(uuid "881ac40b-fed3-47be-82af-e1b6a080aab8")
-		)
-		(instances
-			(project "Auckland-LED-Train-Map"
-				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "C3004")
+					(reference "D123")
 					(unit 1)
 				)
 			)
@@ -17469,7 +16685,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c4c49533-dca6-4dd3-96a4-e9c19203592a")
-		(property "Reference" "#PWR03024"
+		(property "Reference" "#PWR0228"
 			(at 186.69 39.37 0)
 			(effects
 				(font
@@ -17519,7 +16735,203 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03024")
+					(reference "#PWR0228")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Capacitors:0402,1uF")
+		(at 232.41 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c50c047a-7147-45c2-8bc3-3b50224bf94d")
+		(property "Reference" "C37"
+			(at 234.95 26.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1uF"
+			(at 234.95 29.21 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:C_0402"
+			(at 230.632 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05A105KA5NQNC_C52923.pdf"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "25V 1uF X5R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C52923"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stock" "7151069"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "0.006USD"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Process" "SMT"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Attrition Qty" "10"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part" "CL05A105KA5NQNC"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage Rated" "25V"
+			(at 234.95 31.75 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Capacitance" "1uF"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature Coefficient" "X5R"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d9efff32-3ccc-442c-bab3-de00e0738b3e")
+		)
+		(pin "2"
+			(uuid "166b2916-0f6e-4b81-8a56-4e0f66ba5fed")
+		)
+		(instances
+			(project "Helsinki-LED-Train-Map"
+				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
+					(reference "C37")
 					(unit 1)
 				)
 			)
@@ -17535,7 +16947,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c66f17d3-80fa-409f-a3c0-53a4617d9a7d")
-		(property "Reference" "#PWR03038"
+		(property "Reference" "#PWR0245"
 			(at 24.13 66.04 0)
 			(effects
 				(font
@@ -17585,7 +16997,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03038")
+					(reference "#PWR0245")
 					(unit 1)
 				)
 			)
@@ -17601,7 +17013,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c85c33e9-be72-427f-9197-ca6451a09d56")
-		(property "Reference" "#PWR03085"
+		(property "Reference" "#PWR0292"
 			(at 251.46 114.3 0)
 			(effects
 				(font
@@ -17652,7 +17064,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03085")
+					(reference "#PWR0292")
 					(unit 1)
 				)
 			)
@@ -17668,7 +17080,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c8b9bd06-5a2c-4e03-8ac9-1a70fd3decef")
-		(property "Reference" "#PWR03086"
+		(property "Reference" "#PWR0293"
 			(at 274.32 114.3 0)
 			(effects
 				(font
@@ -17719,7 +17131,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03086")
+					(reference "#PWR0293")
 					(unit 1)
 				)
 			)
@@ -17734,7 +17146,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c90d1799-9bfc-4ec9-bdaa-1bff41e41117")
-		(property "Reference" "D3048"
+		(property "Reference" "D125"
 			(at 35.814 156.718 0)
 			(effects
 				(font
@@ -17837,7 +17249,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3048")
+					(reference "D125")
 					(unit 1)
 				)
 			)
@@ -17852,7 +17264,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c9a53204-138c-4947-8504-471327759b3e")
-		(property "Reference" "D3015"
+		(property "Reference" "D92"
 			(at 120.904 61.468 0)
 			(effects
 				(font
@@ -17955,7 +17367,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3015")
+					(reference "D92")
 					(unit 1)
 				)
 			)
@@ -17971,7 +17383,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c9ebe16f-bd56-41e6-8131-53ed3964fe74")
-		(property "Reference" "#PWR03016"
+		(property "Reference" "#PWR0220"
 			(at 24.13 39.37 0)
 			(effects
 				(font
@@ -18021,7 +17433,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03016")
+					(reference "#PWR0220")
 					(unit 1)
 				)
 			)
@@ -18037,7 +17449,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cbf4ffae-b1da-451c-9fd7-a5c03c673be9")
-		(property "Reference" "#PWR03113"
+		(property "Reference" "#PWR0320"
 			(at 68.58 165.1 0)
 			(effects
 				(font
@@ -18087,7 +17499,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03113")
+					(reference "#PWR0320")
 					(unit 1)
 				)
 			)
@@ -18102,7 +17514,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "cdefbac0-fc2d-4dfc-a216-c2719202008b")
-		(property "Reference" "D3053"
+		(property "Reference" "D130"
 			(at 150.114 156.718 0)
 			(effects
 				(font
@@ -18206,7 +17618,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3053")
+					(reference "D130")
 					(unit 1)
 				)
 			)
@@ -18222,7 +17634,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cf2e47aa-54e3-4c91-b0b8-939d9b8d14fe")
-		(property "Reference" "#PWR03009"
+		(property "Reference" "#PWR0216"
 			(at 186.69 21.59 0)
 			(effects
 				(font
@@ -18272,7 +17684,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03009")
+					(reference "#PWR0216")
 					(unit 1)
 				)
 			)
@@ -18287,7 +17699,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "cf53a8e2-c4e7-42c3-87ed-bc36333c0d3e")
-		(property "Reference" "D3058"
+		(property "Reference" "D135"
 			(at 264.414 156.718 0)
 			(effects
 				(font
@@ -18390,7 +17802,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3058")
+					(reference "D135")
 					(unit 1)
 				)
 			)
@@ -18406,7 +17818,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cfd3b87c-fb6a-49d8-ac7b-bfe0de143368")
-		(property "Reference" "#PWR03064"
+		(property "Reference" "#PWR0271"
 			(at 45.72 99.06 0)
 			(effects
 				(font
@@ -18456,7 +17868,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03064")
+					(reference "#PWR0271")
 					(unit 1)
 				)
 			)
@@ -18472,7 +17884,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d098f48a-65a3-40a4-a198-44bbac42805a")
-		(property "Reference" "#PWR03122"
+		(property "Reference" "#PWR0329"
 			(at 274.32 165.1 0)
 			(effects
 				(font
@@ -18522,7 +17934,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03122")
+					(reference "#PWR0329")
 					(unit 1)
 				)
 			)
@@ -18538,7 +17950,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d0ece76e-4897-4f26-bf4f-3974577d5323")
-		(property "Reference" "#PWR03031"
+		(property "Reference" "#PWR0238"
 			(at 146.05 48.26 0)
 			(effects
 				(font
@@ -18588,7 +18000,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03031")
+					(reference "#PWR0238")
 					(unit 1)
 				)
 			)
@@ -18604,7 +18016,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d5acf5f0-4111-49f1-856d-d2fab6a61924")
-		(property "Reference" "#PWR03101"
+		(property "Reference" "#PWR0308"
 			(at 68.58 147.32 0)
 			(effects
 				(font
@@ -18655,7 +18067,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03101")
+					(reference "#PWR0308")
 					(unit 1)
 				)
 			)
@@ -18671,7 +18083,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d60c87ca-bf01-4a64-a122-f3ef190f1931")
-		(property "Reference" "#PWR03034"
+		(property "Reference" "#PWR0241"
 			(at 205.74 48.26 0)
 			(effects
 				(font
@@ -18722,7 +18134,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03034")
+					(reference "#PWR0241")
 					(unit 1)
 				)
 			)
@@ -18738,7 +18150,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d619eb17-2148-4163-b4b9-5bb7f3864345")
-		(property "Reference" "#PWR03081"
+		(property "Reference" "#PWR0288"
 			(at 160.02 114.3 0)
 			(effects
 				(font
@@ -18789,7 +18201,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03081")
+					(reference "#PWR0288")
 					(unit 1)
 				)
 			)
@@ -18805,7 +18217,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d82bc347-9632-4dc8-b322-221c611f96a4")
-		(property "Reference" "#PWR03115"
+		(property "Reference" "#PWR0322"
 			(at 114.3 165.1 0)
 			(effects
 				(font
@@ -18855,7 +18267,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03115")
+					(reference "#PWR0322")
 					(unit 1)
 				)
 			)
@@ -18871,7 +18283,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d8a13948-be0a-4079-b39d-a19d06755e2b")
-		(property "Reference" "#PWR03127"
+		(property "Reference" "#PWR0334"
 			(at 114.3 179.07 0)
 			(effects
 				(font
@@ -18921,7 +18333,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03127")
+					(reference "#PWR0334")
 					(unit 1)
 				)
 			)
@@ -18937,7 +18349,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d9b07575-83c3-499f-9a98-f42c0a1120a5")
-		(property "Reference" "#PWR03089"
+		(property "Reference" "#PWR0296"
 			(at 68.58 132.08 0)
 			(effects
 				(font
@@ -18987,7 +18399,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03089")
+					(reference "#PWR0296")
 					(unit 1)
 				)
 			)
@@ -19002,7 +18414,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "da5f11cb-28e3-4582-9d6e-eeee408c6588")
-		(property "Reference" "D3044"
+		(property "Reference" "D121"
 			(at 218.694 123.698 0)
 			(effects
 				(font
@@ -19105,7 +18517,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3044")
+					(reference "D121")
 					(unit 1)
 				)
 			)
@@ -19120,7 +18532,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e120b77c-0a95-4099-ae60-33f99cd1985b")
-		(property "Reference" "D3056"
+		(property "Reference" "D133"
 			(at 218.694 156.718 0)
 			(effects
 				(font
@@ -19223,7 +18635,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3056")
+					(reference "D133")
 					(unit 1)
 				)
 			)
@@ -19239,7 +18651,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e34afaa7-87bf-4132-a2de-0631df708eb8")
-		(property "Reference" "#PWR03062"
+		(property "Reference" "#PWR0269"
 			(at 274.32 81.28 0)
 			(effects
 				(font
@@ -19290,7 +18702,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03062")
+					(reference "#PWR0269")
 					(unit 1)
 				)
 			)
@@ -19306,7 +18718,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e4072c96-562b-4d31-acbe-6b491bf2ce0c")
-		(property "Reference" "#PWR03094"
+		(property "Reference" "#PWR0301"
 			(at 182.88 132.08 0)
 			(effects
 				(font
@@ -19356,7 +18768,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03094")
+					(reference "#PWR0301")
 					(unit 1)
 				)
 			)
@@ -19371,7 +18783,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e5f53022-0a63-4917-a677-3a7b40250b78")
-		(property "Reference" "D3029"
+		(property "Reference" "D106"
 			(at 150.114 90.678 0)
 			(effects
 				(font
@@ -19474,73 +18886,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3029")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 201.93 31.75 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e5fbb13b-f3bd-4267-a393-913c78513770")
-		(property "Reference" "#PWR03013"
-			(at 201.93 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 201.93 35.8831 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 201.93 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 201.93 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 201.93 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "eacb94e4-022c-47b5-bd77-19cf4cf275e3")
-		)
-		(instances
-			(project "Auckland-LED-Train-Map"
-				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03013")
+					(reference "D106")
 					(unit 1)
 				)
 			)
@@ -19556,7 +18902,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e6a9070e-3b00-4ff3-9d5e-14db8f319662")
-		(property "Reference" "#PWR03100"
+		(property "Reference" "#PWR0307"
 			(at 45.72 147.32 0)
 			(effects
 				(font
@@ -19607,7 +18953,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03100")
+					(reference "#PWR0307")
 					(unit 1)
 				)
 			)
@@ -19623,7 +18969,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e9f93433-cc06-46f5-8442-c41ea7d917b8")
-		(property "Reference" "#PWR03119"
+		(property "Reference" "#PWR0326"
 			(at 205.74 165.1 0)
 			(effects
 				(font
@@ -19673,7 +19019,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03119")
+					(reference "#PWR0326")
 					(unit 1)
 				)
 			)
@@ -19689,7 +19035,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ec29a29e-a9cb-4fa9-b30e-b66ea70b74f0")
-		(property "Reference" "#PWR03040"
+		(property "Reference" "#PWR0247"
 			(at 64.77 66.04 0)
 			(effects
 				(font
@@ -19739,7 +19085,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03040")
+					(reference "#PWR0247")
 					(unit 1)
 				)
 			)
@@ -19754,7 +19100,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ec562949-748f-4d68-a5fe-640866cd3206")
-		(property "Reference" "D3043"
+		(property "Reference" "D120"
 			(at 195.834 123.698 0)
 			(effects
 				(font
@@ -19857,7 +19203,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3043")
+					(reference "D120")
 					(unit 1)
 				)
 			)
@@ -19873,7 +19219,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ee6ef16f-3d76-4f56-86df-7d8f1a1c4db3")
-		(property "Reference" "#PWR03066"
+		(property "Reference" "#PWR0273"
 			(at 91.44 99.06 0)
 			(effects
 				(font
@@ -19923,7 +19269,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03066")
+					(reference "#PWR0273")
 					(unit 1)
 				)
 			)
@@ -19939,7 +19285,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f07bc135-9f73-4821-9931-7065304cfd2d")
-		(property "Reference" "#PWR03080"
+		(property "Reference" "#PWR0287"
 			(at 137.16 114.3 0)
 			(effects
 				(font
@@ -19990,7 +19336,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03080")
+					(reference "#PWR0287")
 					(unit 1)
 				)
 			)
@@ -20006,7 +19352,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f1f39392-27c1-45af-964a-35e5a7ff51c1")
-		(property "Reference" "#PWR03063"
+		(property "Reference" "#PWR0270"
 			(at 22.86 99.06 0)
 			(effects
 				(font
@@ -20056,7 +19402,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03063")
+					(reference "#PWR0270")
 					(unit 1)
 				)
 			)
@@ -20072,7 +19418,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f3775887-0530-4e49-b779-1c61d4455dbc")
-		(property "Reference" "#PWR03059"
+		(property "Reference" "#PWR0266"
 			(at 205.74 81.28 0)
 			(effects
 				(font
@@ -20123,7 +19469,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03059")
+					(reference "#PWR0266")
 					(unit 1)
 				)
 			)
@@ -20139,7 +19485,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f41d2bae-316b-4c91-abe5-d66b92b8b081")
-		(property "Reference" "#PWR03022"
+		(property "Reference" "#PWR0226"
 			(at 146.05 39.37 0)
 			(effects
 				(font
@@ -20189,7 +19535,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03022")
+					(reference "#PWR0226")
 					(unit 1)
 				)
 			)
@@ -20205,7 +19551,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f477b613-43b2-4e01-ab4f-4108082ef15c")
-		(property "Reference" "#PWR03053"
+		(property "Reference" "#PWR0260"
 			(at 68.58 81.28 0)
 			(effects
 				(font
@@ -20256,7 +19602,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03053")
+					(reference "#PWR0260")
 					(unit 1)
 				)
 			)
@@ -20271,7 +19617,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f6ee397b-3f61-40c4-a7cf-c1c52c2313ed")
-		(property "Reference" "D3051"
+		(property "Reference" "D128"
 			(at 104.394 156.718 0)
 			(effects
 				(font
@@ -20374,7 +19720,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3051")
+					(reference "D128")
 					(unit 1)
 				)
 			)
@@ -20390,7 +19736,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f76f9a5d-ce1c-4048-bb74-5d6b92ce49f4")
-		(property "Reference" "#PWR03007"
+		(property "Reference" "#PWR0214"
 			(at 146.05 21.59 0)
 			(effects
 				(font
@@ -20440,7 +19786,203 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03007")
+					(reference "#PWR0214")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Capacitors:0402,1uF")
+		(at 210.82 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f97fce68-5574-40f9-9d26-53eee09bd009")
+		(property "Reference" "C35"
+			(at 213.36 26.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1uF"
+			(at 213.36 29.21 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:C_0402"
+			(at 209.042 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05A105KA5NQNC_C52923.pdf"
+			(at 210.82 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "25V 1uF X5R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+			(at 210.82 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C52923"
+			(at 210.82 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stock" "7151069"
+			(at 210.82 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "0.006USD"
+			(at 210.82 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Process" "SMT"
+			(at 210.82 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 210.82 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Attrition Qty" "10"
+			(at 210.82 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 210.82 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
+			(at 210.82 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 210.82 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part" "CL05A105KA5NQNC"
+			(at 210.82 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage Rated" "25V"
+			(at 213.36 31.75 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 210.82 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Capacitance" "1uF"
+			(at 210.82 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature Coefficient" "X5R"
+			(at 210.82 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b93384de-62f4-41b7-ae29-ee662c72bfeb")
+		)
+		(pin "2"
+			(uuid "7e1e3aec-698f-420d-bbea-005def4017c9")
+		)
+		(instances
+			(project "Helsinki-LED-Train-Map"
+				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
+					(reference "C35")
 					(unit 1)
 				)
 			)
@@ -20455,7 +19997,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f99cf0cc-bc0b-4e6a-baba-fa647f5c9625")
-		(property "Reference" "D3030"
+		(property "Reference" "D107"
 			(at 172.974 90.678 0)
 			(effects
 				(font
@@ -20558,7 +20100,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3030")
+					(reference "D107")
 					(unit 1)
 				)
 			)
@@ -20573,7 +20115,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f9b8ca59-3603-4761-846c-5530148529c0")
-		(property "Reference" "D3064"
+		(property "Reference" "D141"
 			(at 127.254 188.468 0)
 			(effects
 				(font
@@ -20676,7 +20218,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3064")
+					(reference "D141")
 					(unit 1)
 				)
 			)
@@ -20692,7 +20234,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f9d20ea7-4b1f-4811-af62-e728bf6ba898")
-		(property "Reference" "#PWR03051"
+		(property "Reference" "#PWR0258"
 			(at 22.86 81.28 0)
 			(effects
 				(font
@@ -20743,7 +20285,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03051")
+					(reference "#PWR0258")
 					(unit 1)
 				)
 			)
@@ -20759,7 +20301,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fb3b1c50-f0ba-4442-83fd-9f73565be2f9")
-		(property "Reference" "#PWR03099"
+		(property "Reference" "#PWR0306"
 			(at 22.86 147.32 0)
 			(effects
 				(font
@@ -20810,7 +20352,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03099")
+					(reference "#PWR0306")
 					(unit 1)
 				)
 			)
@@ -20825,7 +20367,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "fbb54ec8-ca4d-4803-95b3-24205dc9df18")
-		(property "Reference" "D3040"
+		(property "Reference" "D117"
 			(at 127.254 123.698 0)
 			(effects
 				(font
@@ -20928,7 +20470,203 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3040")
+					(reference "D117")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_JLCPCB-Capacitors:0402,1uF")
+		(at 285.75 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fe0013f9-fd0a-449d-b262-705b5c6f6b57")
+		(property "Reference" "C42"
+			(at 288.29 26.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1uF"
+			(at 288.29 29.21 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "PCM_JLCPCB:C_0402"
+			(at 283.972 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05A105KA5NQNC_C52923.pdf"
+			(at 285.75 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "25V 1uF X5R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+			(at 285.75 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C52923"
+			(at 285.75 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Stock" "7151069"
+			(at 285.75 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "0.006USD"
+			(at 285.75 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Process" "SMT"
+			(at 285.75 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Minimum Qty" "20"
+			(at 285.75 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Attrition Qty" "10"
+			(at 285.75 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Class" "Basic Component"
+			(at 285.75 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Category" "Capacitors,Multilayer Ceramic Capacitors MLCC - SMD/SMT"
+			(at 285.75 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 285.75 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part" "CL05A105KA5NQNC"
+			(at 285.75 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage Rated" "25V"
+			(at 288.29 31.75 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 285.75 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Capacitance" "1uF"
+			(at 285.75 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature Coefficient" "X5R"
+			(at 285.75 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "12d3f375-90f3-46d8-aeda-81d2b9e82cb3")
+		)
+		(pin "2"
+			(uuid "e31155d6-e5cf-4545-8099-7b6e7737ac8a")
+		)
+		(instances
+			(project "Helsinki-LED-Train-Map"
+				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
+					(reference "C42")
 					(unit 1)
 				)
 			)
@@ -20943,7 +20681,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "febe610b-26f3-4a91-a2b2-a7960de2bfd9")
-		(property "Reference" "D3026"
+		(property "Reference" "D103"
 			(at 81.534 90.678 0)
 			(effects
 				(font
@@ -21046,7 +20784,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "D3026")
+					(reference "D103")
 					(unit 1)
 				)
 			)
@@ -21062,7 +20800,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ff371472-8b0c-450b-b78d-08153416829b")
-		(property "Reference" "#PWR03002"
+		(property "Reference" "#PWR0209"
 			(at 44.45 21.59 0)
 			(effects
 				(font
@@ -21112,73 +20850,7 @@
 		(instances
 			(project "Auckland-LED-Train-Map"
 				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03002")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 260.35 24.13 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ffd2ba2f-8f37-413a-be1c-19026b0b8ca0")
-		(property "Reference" "#PWR03012"
-			(at 260.35 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 260.35 19.9969 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 260.35 24.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 260.35 24.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 260.35 24.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3a2a948c-0e25-4136-8a03-24728f699b01")
-		)
-		(instances
-			(project "Auckland-LED-Train-Map"
-				(path "/ab288f7d-a01b-40d1-8b79-fa22fb371f45/081abeee-8e28-48da-a70f-ee01407c3b3b/2bdc9a9d-cd00-4f56-a25d-ca3212db160a"
-					(reference "#PWR03012")
+					(reference "#PWR0209")
 					(unit 1)
 				)
 			)

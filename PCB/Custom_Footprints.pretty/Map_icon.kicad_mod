@@ -1,0 +1,90 @@
+(footprint "Map_icon"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "7df936d4-1ea6-49f8-a42f-e965df357a0c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "Map"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a307d43b-5eea-46f9-a812-c6ca2478f211")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a9beb5c3-bdb4-4fde-87e6-ef8e19321aab")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1990a2c0-e022-4c4a-a933-eebe4782496b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr board_only exclude_from_pos_files exclude_from_bom)
+	(fp_poly
+		(pts
+			(xy 1.413007 0.961893) (xy 0.411824 1.212189) (xy -0.411824 1.00555) (xy -1.413007 1.255845) (xy -1.413007 -0.801819)
+			(xy -1.206367 -0.801819) (xy -1.206367 0.990998) (xy -0.513689 0.819283) (xy -0.309959 0.819283)
+			(xy 0.30996 0.973535) (xy 0.30996 -0.819282) (xy 0.513689 -0.819282) (xy 0.513689 0.973535) (xy 1.206368 0.801821)
+			(xy 1.206368 0.80182) (xy 1.206368 -0.990996) (xy 0.513689 -0.819282) (xy 0.30996 -0.819282) (xy -0.309959 -0.973534)
+			(xy -0.309959 0.819283) (xy -0.513689 0.819283) (xy -0.513688 0.819283) (xy -0.513688 -0.973534)
+			(xy -1.206367 -0.801819) (xy -1.413007 -0.801819) (xy -1.413007 -0.961892) (xy -0.411824 -1.212188)
+			(xy 0.411824 -1.005548) (xy 1.413007 -1.255844)
+		)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "59bdbc63-c2c1-4bcd-be26-76ce260d82ed")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 2.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "44751869-0286-498a-841f-76e37bfb9277")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(embedded_fonts no)
+)
