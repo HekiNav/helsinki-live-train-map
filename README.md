@@ -20,7 +20,7 @@ A physical, real-time LED map of the Helsinki Region train network, powered by a
 
 ---
 
-![PCB Overview Render](Images/Helsinki-LED-Train-Map.png)
+![PCB Overview Render](Images/Helsinki-LED-Train-Map_Overview.png)
 
 ## Features
 
@@ -39,7 +39,7 @@ A physical, real-time LED map of the Helsinki Region train network, powered by a
 - **PCB:** 249mm x 71.5mm, JLCPCB-friendly
 - **Antenna:** On-board PCB antenna ([TI CC2430DB design](https://www.ti.com/lit/ug/swru125/swru125.pdf))
 
-![ESP32-C3 PCB Render](Images/Helsinki-LED-Train)
+![ESP32-C3 PCB Render](Images/Helsinki-LED-Train-Map_ESP32_LVLS.png)
 
 
 ---
