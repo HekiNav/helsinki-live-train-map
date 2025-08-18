@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@font-face {
+    font-family: "Gotham XNarrow";
+    src: url("Gotham\ XNarrow\ Medium.woff");
+}
+body {
+    margin: 0;
+    background-color: rgb(15, 15, 15);
+    display: grid;
+    grid-template-rows: 1fr;
+    position: static;
+    width: 100vw;
+    height: 100vh;
+}
+.logContainer{
+    overflow-y: auto;
+    display: flex;
+    width: 100vw;
+    height: 50vh;
+    
+}
+#log{
+    padding: 3em;
+    font-family: "IBM Plex Mono";
+    color: rgb(0, 193, 0);
+    font-weight: 600;
+    text-shadow: rgb(0, 193, 0) 1px 0 10px;
+    margin-bottom: 3em;
+}
+#svgContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+svg{
+    position: absolute;
+}
+.mode{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+}
+#currentMode{
+    margin: 0;
+    font-family: "Gotham XNarrow";
+    font-size: 3em;
+    color: white;
+    margin-right: 0.3em;
+}
+#changeMode {
+    width: 5em;
+    height: 5em;
+    border: 0;
+    background: none;
+}
+#changeMode img {
+    width: 100%;
+}
+
+*[hidden] {
+    display: none;
+}

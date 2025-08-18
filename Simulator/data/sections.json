@@ -1,0 +1,2880 @@
+[
+    {
+        "type": "station",
+        "code": "HPL",
+        "tracks": [
+            {
+                "component": "D19",
+                "lines": [
+                    "A",
+                    "L",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D18",
+                "lines": [
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "HPL",
+        "station2": "ILA",
+        "tracks": [
+            {
+                "component": "D20",
+                "lines": [
+                    "A",
+                    "L",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D17",
+                "lines": [
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "ILA",
+        "tracks": [
+            {
+                "component": "D21",
+                "lines": [
+                    "A",
+                    "L",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D16",
+                "lines": [
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "ILA",
+        "station2": "PSL",
+        "segments": [
+            [
+                {
+                    "component": "D22",
+                    "lines": [
+                        "A",
+                        "L",
+                        "I",
+                        "P"
+                    ]
+                },
+                {
+                    "component": "D15",
+                    "lines": [
+                        "E",
+                        "U",
+                        "Y",
+                        "H"
+                    ]
+                }
+            ],
+            [
+                {
+                    "component": "D23",
+                    "lines": [
+                        "A",
+                        "L",
+                        "I",
+                        "P"
+                    ]
+                },
+                {
+                    "component": "D14",
+                    "lines": [
+                        "E",
+                        "U",
+                        "Y",
+                        "H"
+                    ]
+                }
+            ],
+            [
+                {
+                    "component": "D24",
+                    "lines": [
+                        "A",
+                        "L",
+                        "I",
+                        "P"
+                    ],
+                    "line": "coastal"
+                },
+                {
+                    "component": "D13",
+                    "lines": [
+                        "E",
+                        "U",
+                        "Y",
+                        "H"
+                    ],
+                    "line": "coastal"
+                }
+            ],
+            [
+                {
+                    "component": "D177",
+                    "lines": [
+                        "A",
+                        "L",
+                        "I",
+                        "P"
+                    ],
+                    "line": "coastal"
+                },
+                {
+                    "component": "D167",
+                    "lines": [
+                        "E",
+                        "U",
+                        "Y",
+                        "H"
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        "type": "station",
+        "code": "PSL",
+        "tracks": [
+            {
+                "component": "D176",
+                "lines": [
+                    "A",
+                    "L",
+                    "I",
+                    "P"
+                ],
+                "line": "coastal"
+            },
+            {
+                "component": "D166",
+                "lines": [
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ],
+                "line": "coastal"
+            },
+            {
+                "component": "D156",
+                "lines": [
+                    "T",
+                    "K"
+                ],
+                "line": "main"
+            },
+            {
+                "component": "D146",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ],
+                "line": "main"
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "PSL",
+        "station2": "HKI",
+        "segments": [
+            [
+                {
+                    "component": "D175",
+                    "lines": [
+                        "A",
+                        "L",
+                        "I",
+                        "P"
+                    ],
+                    "line": "coastal"
+                },
+                {
+                    "component": "D165",
+                    "lines": [
+                        "E",
+                        "U",
+                        "Y",
+                        "H"
+                    ],
+                    "line": "coastal"
+                },
+                {
+                    "component": "D155",
+                    "lines": [
+                        "T",
+                        "K",
+                        "I",
+                        "P"
+                    ],
+                    "line": "main"
+                },
+                {
+                    "component": "D145",
+                    "lines": [
+                        "D",
+                        "R",
+                        "Z"
+                    ],
+                    "line": "main"
+                }
+            ],
+            [
+                {
+                    "component": "D174",
+                    "lines": [
+                        "A",
+                        "L",
+                        "I",
+                        "P"
+                    ],
+                    "line": "coastal"
+                },
+                {
+                    "component": "D164",
+                    "lines": [
+                        "E",
+                        "U",
+                        "Y",
+                        "H"
+                    ],
+                    "line": "coastal"
+                },
+                {
+                    "component": "D154",
+                    "lines": [
+                        "T",
+                        "K",
+                        "I",
+                        "P"
+                    ],
+                    "line": "main"
+                },
+                {
+                    "component": "D144",
+                    "lines": [
+                        "D",
+                        "R",
+                        "Z"
+                    ],
+                    "line": "main"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "station",
+        "code": "HKI",
+        "tracks": [
+            {
+                "component": "D173",
+                "lines": [
+                    "A",
+                    "L",
+                    "I",
+                    "P"
+                ],
+                "line": "coastal"
+            },
+            {
+                "component": "D163",
+                "lines": [
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ],
+                "line": "coastal"
+            },
+            {
+                "component": "153",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ],
+                "line": "main"
+            },
+            {
+                "component": "D143",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ],
+                "line": "main"
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "PSL",
+        "station2": "KÄP",
+        "segments": [
+            [
+                {
+                    "component": "D157",
+                    "lines": [
+                        "T",
+                        "K",
+                        "I",
+                        "P"
+                    ]
+                },
+                {
+                    "component": "D147",
+                    "lines": [
+                        "D",
+                        "R",
+                        "Z"
+                    ]
+                }
+            ],
+            [
+                {
+                    "component": "D158",
+                    "lines": [
+                        "T",
+                        "K",
+                        "I",
+                        "P"
+                    ]
+                },
+                {
+                    "component": "D148",
+                    "lines": [
+                        "D",
+                        "R",
+                        "Z"
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "KÄP",
+        "tracks": [
+            {
+                "component": "D149",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D159",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KÄP",
+        "station2": "OLK",
+        "tracks": [
+            {
+                "component": "D160",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D150",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "OLK",
+        "tracks": [
+            {
+                "component": "D161",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D151",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "OLK",
+        "station2": "PMK",
+        "tracks": [
+            {
+                "component": "D162",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D152",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "PMK",
+        "tracks": [
+            {
+                "component": "D178",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D168",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "PMK",
+        "station2": "ML",
+        "tracks": [
+            {
+                "component": "D179",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D169",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "ML",
+        "tracks": [
+            {
+                "component": "D180",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D170",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "ML",
+        "station2": "TNA",
+        "tracks": [
+            {
+                "component": "D181",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D171",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "TNA",
+        "tracks": [
+            {
+                "component": "D182",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D172",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "TNA",
+        "station2": "PLA",
+        "tracks": [
+            {
+                "component": "D188",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D183",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "PLA",
+        "tracks": [
+            {
+                "component": "D189",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D184",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "PLA",
+        "station2": "TKL",
+        "tracks": [
+            {
+                "component": "D190",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D185",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "station",
+        "code": "TKL",
+        "tracks": [
+            {
+                "component": "D191",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D186",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "TKL",
+        "station2": "HKH",
+        "tracks": [
+            {
+                "component": "D192",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D187",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "HKH",
+        "tracks": [
+            {
+                "component": "D203",
+                "lines": [
+                    "T",
+                    "K",
+                    "I",
+                    "P"
+                ]
+            },
+            {
+                "component": "D193",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "HKH",
+        "station2": "KVY",
+        "segments": [
+            [
+                {
+                    "component": "D204",
+                    "lines": [
+                        "T",
+                        "K"
+                    ]
+                },
+                {
+                    "component": "D194",
+                    "lines": [
+                        "D",
+                        "R",
+                        "Z"
+                    ]
+                }
+            ],
+            [
+                {
+                    "component": "D205",
+                    "lines": [
+                        "T",
+                        "K"
+                    ]
+                },
+                {
+                    "component": "D195",
+                    "lines": [
+                        "D",
+                        "R",
+                        "Z"
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "KVY",
+        "tracks": [
+            {
+                "component": "D206",
+                "lines": [
+                    "T",
+                    "K"
+                ]
+            },
+            {
+                "component": "D196",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KVY",
+        "station2": "RKL",
+        "tracks": [
+            {
+                "component": "D207",
+                "lines": [
+                    "T",
+                    "K"
+                ]
+            },
+            {
+                "component": "D197",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "RKL",
+        "tracks": [
+            {
+                "component": "D208",
+                "lines": [
+                    "T",
+                    "K"
+                ]
+            },
+            {
+                "component": "D198",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "RKL",
+        "station2": "KRS",
+        "tracks": [
+            {
+                "component": "D209",
+                "lines": [
+                    "T",
+                    "K"
+                ]
+            },
+            {
+                "component": "D199",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "KRS",
+        "tracks": [
+            {
+                "component": "D210",
+                "lines": [
+                    "T",
+                    "K"
+                ]
+            },
+            {
+                "component": "D200",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KRS",
+        "station2": "SAV",
+        "tracks": [
+            {
+                "component": "D211",
+                "lines": [
+                    "T",
+                    "K"
+                ]
+            },
+            {
+                "component": "D201",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "SAV",
+        "tracks": [
+            {
+                "component": "D212",
+                "lines": [
+                    "T",
+                    "K"
+                ]
+            },
+            {
+                "component": "D202",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "SAV",
+        "station2": "KE",
+        "tracks": [
+            {
+                "component": "D219",
+                "lines": [
+                    "T",
+                    "K"
+                ]
+            },
+            {
+                "component": "D213",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "station",
+        "code": "KE",
+        "tracks": [
+            {
+                "component": "D220",
+                "lines": [
+                    "T",
+                    "K"
+                ]
+            },
+            {
+                "component": "D214",
+                "lines": [
+                    "D",
+                    "R",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "KE",
+        "station2": "HAA",
+        "segments": [
+            [
+                {
+                    "component": "D215"
+                }
+            ],
+            [
+                {
+                    "component": "D216"
+                }
+            ],
+            [
+                {
+                    "component": "D217"
+                }
+            ],
+            [
+                {
+                    "component": "D218"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "KE",
+        "station2": "AIN",
+        "segments": [
+            [
+                {
+                    "component": "D221"
+                }
+            ],
+            [
+                {
+                    "component": "D222"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "AIN",
+        "tracks": [
+            {
+                "component": "D223"
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "AIN",
+        "station2": "JP",
+        "segments": [
+            [
+                {
+                    "component": "D224"
+                }
+            ],
+            [
+                {
+                    "component": "D225"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "JP",
+        "tracks": [
+            {
+                "component": "D226"
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "JP",
+        "station2": "SAU",
+        "segments": [
+            [
+                {
+                    "component": "D227"
+                }
+            ],
+            [
+                {
+                    "component": "D228"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "SAU",
+        "tracks": [
+            {
+                "component": "D229"
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "SAU",
+        "station2": "JK",
+        "segments": [
+            [
+                {
+                    "component": "D230"
+                }
+            ],
+            [
+                {
+                    "component": "D231"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "JK",
+        "tracks": [
+            {
+                "component": "D232"
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "JK",
+        "station2": "HY",
+        "segments": [
+            [
+                {
+                    "component": "D233"
+                }
+            ],
+            [
+                {
+                    "component": "D234"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "HY",
+        "tracks": [
+            {
+                "component": "D235"
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "HY",
+        "station2": "RI",
+        "segments": [
+            [
+                {
+                    "component": "D236"
+                }
+            ],
+            [
+                {
+                    "component": "D237"
+                }
+            ],
+            [
+                {
+                    "component": "D238"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "RI",
+        "tracks": [
+            {
+                "component": "D239"
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "RI",
+        "station2": "HK",
+        "segments": [
+            [
+                {
+                    "component": "D240"
+                }
+            ],
+            [
+                {
+                    "component": "D241"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "HK",
+        "tracks": [
+            {
+                "component": "D242"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "HK",
+        "station2": "OI",
+        "tracks": [
+            {
+                "component": "D243"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "OI",
+        "tracks": [
+            {
+                "component": "D244"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "OI",
+        "station2": "MLA",
+        "tracks": [
+            {
+                "component": "D245"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "MLA",
+        "tracks": [
+            {
+                "component": "D246"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "MLA",
+        "station2": "LAA",
+        "tracks": [
+            {
+                "component": "D247"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "LAA",
+        "tracks": [
+            {
+                "component": "D248"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "LAA",
+        "station2": "JR",
+        "tracks": [
+            {
+                "component": "D249"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "JR",
+        "tracks": [
+            {
+                "component": "D250"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "JR",
+        "station2": "HR",
+        "tracks": [
+            {
+                "component": "D251"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "HR",
+        "tracks": [
+            {
+                "component": "D252"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "HR",
+        "station2": "LH",
+        "tracks": [
+            {
+                "component": "D253"
+            }
+        ]
+    },
+    {
+        "type": "station",
+        "code": "LH",
+        "tracks": [
+            {
+                "component": "D268",
+                "lines":["G"]
+            },
+            {
+                "component": "D267",
+                "lines":["Z", "O"]
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "LH",
+        "station2": "HNN",
+        "segments": [
+            [
+                {
+                    "component": "D254"
+                }
+            ],
+            [
+                {
+                    "component": "D255"
+                }
+            ],
+            [
+                {
+                    "component": "D256"
+                }
+            ],
+            [
+                {
+                    "component": "D257"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "HNN",
+        "tracks": [
+            {
+                "component": "D258"
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "HNN",
+        "station2": "MLÄ",
+        "segments": [
+            [
+                {
+                    "component": "D259"
+                }
+            ],
+            [
+                {
+                    "component": "D260"
+                }
+            ],
+            [
+                {
+                    "component": "D261"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "MLÄ",
+        "tracks": [
+            {
+                "component": "D262"
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "MLÄ",
+        "station2": "HAA",
+        "segments": [
+            [
+                {
+                    "component": "D263"
+                }
+            ],
+            [
+                {
+                    "component": "D264"
+                }
+            ],
+            [
+                {
+                    "component": "D265"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "HAA",
+        "tracks": [
+            {
+                "component": "D266"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "LH",
+        "station2": "VLH",
+        "tracks": [
+            {
+                "component": "D269"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "VLH",
+        "tracks": [
+            {
+                "component": "D270"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "VLH",
+        "station2": "NSL",
+        "tracks": [
+            {
+                "component": "D271"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "NSL",
+        "tracks": [
+            {
+                "component": "D272"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "NSL",
+        "station2": "UKÄ",
+        "tracks": [
+            {
+                "component": "D273"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "UKÄ",
+        "tracks": [
+            {
+                "component": "D274"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "UKÄ",
+        "station2": "KA",
+        "tracks": [
+            {
+                "component": "D275"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "KA",
+        "tracks": [
+            {
+                "component": "D276"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KA",
+        "station2": "KRA",
+        "tracks": [
+            {
+                "component": "D277"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "KRA",
+        "tracks": [
+            {
+                "component": "D278"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KRA",
+        "station2": "KV",
+        "tracks": [
+            {
+                "component": "D279"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "KV",
+        "tracks": [
+            {
+                "component": "D289"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KV",
+        "station2": "MKI",
+        "tracks": [
+            {
+                "component": "D281"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "MKI",
+        "tracks": [
+            {
+                "component": "D282"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "MKI",
+        "station2": "IKR",
+        "tracks": [
+            {
+                "component": "D283"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "IKR",
+        "tracks": [
+            {
+                "component": "D284"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "IKR",
+        "station2": "TSL",
+        "tracks": [
+            {
+                "component": "D285"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "TSL",
+        "tracks": [
+            {
+                "component": "D286"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "TSL",
+        "station2": "KY",
+        "tracks": [
+            {
+                "component": "D287"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "KY",
+        "tracks": [
+            {
+                "component": "D288"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KY",
+        "station2": "KLN",
+        "tracks": [
+            {
+                "component": "D290"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "KLN",
+        "tracks": [
+            {
+                "component": "D291"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KLN",
+        "station2": "PTI",
+        "tracks": [
+            {
+                "component": "D292"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "PTI",
+        "tracks": [
+            {
+                "component": "D293"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "PTI",
+        "station2": "KTA",
+        "tracks": [
+            {
+                "component": "D294"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "KTA",
+        "tracks": [
+            {
+                "component": "D295"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KTA",
+        "station2": "KTS",
+        "tracks": [
+            {
+                "component": "D296"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "KTS",
+        "tracks": [
+            {
+                "component": "D297"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "HKH",
+        "station2": "LNÄ",
+        "tracks": [
+            {
+                "component": "D25"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "LNÄ",
+        "tracks": [
+            {
+                "component": "D26"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "LNÄ",
+        "station2": "LEN",
+        "tracks": [
+            {
+                "component": "D27"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "LEN",
+        "tracks": [
+            {
+                "component": "D28"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "LEN",
+        "station2": "AVP",
+        "tracks": [
+            {
+                "component": "D29"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "AVP",
+        "tracks": [
+            {
+                "component": "D30"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "AVP",
+        "station2": "KTÖ",
+        "tracks": [
+            {
+                "component": "D31"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "KTÖ",
+        "tracks": [
+            {
+                "component": "D32"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KTÖ",
+        "station2": "VEH",
+        "tracks": [
+            {
+                "component": "D34"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "VEH",
+        "tracks": [
+            {
+                "component": "D35"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "VEH",
+        "station2": "VKS",
+        "tracks": [
+            {
+                "component": "D36"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "VKS",
+        "tracks": [
+            {
+                "component": "D37"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "VKS",
+        "station2": "MRL",
+        "tracks": [
+            {
+                "component": "D38"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "MRL",
+        "tracks": [
+            {
+                "component": "D39"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "MRL",
+        "station2": "LOH",
+        "tracks": [
+            {
+                "component": "D40"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "LOH",
+        "tracks": [
+            {
+                "component": "D41"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "LOH",
+        "station2": "MYR",
+        "tracks": [
+            {
+                "component": "D42"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "MYR",
+        "tracks": [
+            {
+                "component": "D43"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "MYR",
+        "station2": "MLO",
+        "tracks": [
+            {
+                "component": "D44"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "MLO",
+        "tracks": [
+            {
+                "component": "D45"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "MLO",
+        "station2": "KAN",
+        "tracks": [
+            {
+                "component": "D46"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "KAN",
+        "tracks": [
+            {
+                "component": "D47"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KAN",
+        "station2": "POH",
+        "tracks": [
+            {
+                "component": "D48"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "POH",
+        "tracks": [
+            {
+                "component": "D49"
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "POH",
+        "station2": "HPL",
+        "segments": [
+            [
+                {
+                    "component": "D50"
+                }
+            ],
+            [
+                {
+                    "component": "D52"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "HPL",
+        "station2": "VMO",
+        "tracks": [
+            {
+                "component": "D54",
+                "lines": [
+                    "A",
+                    "L"
+                ]
+            },
+            {
+                "component": "D52",
+                "lines": [
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "VMO",
+        "tracks": [
+            {
+                "component": "D53",
+                "lines": [
+                    "A",
+                    "L"
+                ]
+            },
+            {
+                "component": "D66",
+                "lines": [
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "VMO",
+        "station2": "PJM",
+        "tracks": [
+            {
+                "component": "D67",
+                "lines": [
+                    "A",
+                    "L"
+                ]
+            },
+            {
+                "component": "D55",
+                "lines": [
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "PJM",
+        "tracks": [
+            {
+                "component": "D68",
+                "lines": [
+                    "A",
+                    "L"
+                ]
+            },
+            {
+                "component": "D56",
+                "lines": [
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "PJM",
+        "station2": "MÄK",
+        "tracks": [
+            {
+                "component": "D69",
+                "lines": [
+                    "A",
+                    "L"
+                ]
+            },
+            {
+                "component": "D57",
+                "lines": [
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "MÄK",
+        "tracks": [
+            {
+                "component": "D70",
+                "lines": [
+                    "A",
+                    "L"
+                ]
+            },
+            {
+                "component": "D58",
+                "lines": [
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "MÄK",
+        "station2": "LPV",
+        "tracks": [
+            {
+                "component": "D71",
+                "lines": [
+                    "A",
+                    "L"
+                ]
+            },
+            {
+                "component": "D59",
+                "lines": [
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "station",
+        "code": "LPV",
+        "tracks": [
+            {
+                "component": "D72",
+                "lines": [
+                    "A",
+                    "L"
+                ]
+            },
+            {
+                "component": "D60",
+                "lines": [
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "LPV",
+        "station2": "KIL",
+        "tracks": [
+            {
+                "component": "D73",
+                "lines": [
+                    "L",
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            },
+            {
+                "component": "D61",
+                "lines": []
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "KIL",
+        "tracks": [
+            {
+                "component": "D74",
+                "lines": [
+                    "L",
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            },
+            {
+                "component": "D62",
+                "lines": []
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KIL",
+        "station2": "KEA",
+        "tracks": [
+            {
+                "component": "D75",
+                "lines": [
+                    "L",
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            },
+            {
+                "component": "D63",
+                "lines": []
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "KEA",
+        "tracks": [
+            {
+                "component": "D76",
+                "lines": [
+                    "L",
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            },
+            {
+                "component": "D64",
+                "lines": []
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KEA",
+        "station2": "KNI",
+        "tracks": [
+            {
+                "component": "D77",
+                "lines": [
+                    "L",
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            },
+            {
+                "component": "D65",
+                "lines": []
+            }
+        ]
+    },
+    {
+        "type": "station",
+        "code": "KNI",
+        "tracks": [
+            {
+                "component": "D87",
+                "lines": [
+                    "L",
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            },
+            {
+                "component": "D78",
+                "lines": []
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KNI",
+        "station2": "KVH",
+        "tracks": [
+            {
+                "component": "D88",
+                "lines": [
+                    "L",
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            },
+            {
+                "component": "D79",
+                "lines": []
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "KVH",
+        "tracks": [
+            {
+                "component": "D89",
+                "lines": [
+                    "L",
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            },
+            {
+                "component": "D80",
+                "lines": []
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KVH",
+        "station2": "TRL",
+        "tracks": [
+            {
+                "component": "D90",
+                "lines": [
+                    "L",
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            },
+            {
+                "component": "D81",
+                "lines": []
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "TRL",
+        "tracks": [
+            {
+                "component": "D91",
+                "lines": [
+                    "L",
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            },
+            {
+                "component": "D82",
+                "lines": []
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "TRL",
+        "station2": "EPO",
+        "tracks": [
+            {
+                "component": "D92",
+                "lines": [
+                    "L",
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            },
+            {
+                "component": "D83",
+                "lines": []
+            }
+        ]
+    },
+    {
+        "type": "station",
+        "code": "EPO",
+        "tracks": [
+            {
+                "component": "D93",
+                "lines": [
+                    "L",
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            },
+            {
+                "component": "D84",
+                "lines": []
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "EPO",
+        "station2": "KLH",
+        "tracks": [
+            {
+                "component": "D94",
+                "lines": [
+                    "L",
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            },
+            {
+                "component": "D85",
+                "lines": []
+            }
+        ]
+    },
+    {
+        "type": "station",
+        "code": "KLH",
+        "tracks": [
+            {
+                "component": "D95",
+                "lines": [
+                    "L",
+                    "E",
+                    "U",
+                    "Y",
+                    "H"
+                ]
+            },
+            {
+                "component": "D86",
+                "lines": []
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KLH",
+        "station2": "MAS",
+        "tracks": [
+            {
+                "component": "D96"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "MAS",
+        "tracks": [
+            {
+                "component": "D97"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "MAS",
+        "station2": "JRS",
+        "tracks": [
+            {
+                "component": "D98"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "JRS",
+        "tracks": [
+            {
+                "component": "D99"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "JRS",
+        "station2": "TOL",
+        "tracks": [
+            {
+                "component": "D100"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "TOL",
+        "tracks": [
+            {
+                "component": "D101"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "TOL",
+        "station2": "KKN",
+        "tracks": [
+            {
+                "component": "D102"
+            }
+        ]
+    },
+    {
+        "type": "station",
+        "code": "KKN",
+        "tracks": [
+            {
+                "component": "D103"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KKN",
+        "station2": "STI",
+        "tracks": [
+            {
+                "component": "D104"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "STI",
+        "tracks": [
+            {
+                "component": "D105"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "STI",
+        "station2": "IKO",
+        "tracks": [
+            {
+                "component": "D106"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "IKO",
+        "tracks": [
+            {
+                "component": "D107"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "IKO",
+        "station2": "KR",
+        "tracks": [
+            {
+                "component": "D108"
+            }
+        ]
+    },
+    {
+        "type": "station",
+        "code": "KR",
+        "tracks": [
+            {
+                "component": "D109"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "KR",
+        "station2": "DRA",
+        "tracks": [
+            {
+                "component": "D110"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "DRA",
+        "tracks": [
+            {
+                "component": "D111"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "DRA",
+        "station2": "TMS",
+        "tracks": [
+            {
+                "component": "D112"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "TMS",
+        "tracks": [
+            {
+                "component": "D113"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "TMS",
+        "station2": "SGY",
+        "tracks": [
+            {
+                "component": "D114"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "SGY",
+        "tracks": [
+            {
+                "component": "D115"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "SGY",
+        "station2": "LPO",
+        "tracks": [
+            {
+                "component": "D116"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "LPO",
+        "tracks": [
+            {
+                "component": "D117"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "LPO",
+        "station2": "STA",
+        "tracks": [
+            {
+                "component": "D118"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "STA",
+        "tracks": [
+            {
+                "component": "D119"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "STA",
+        "station2": "HKP",
+        "tracks": [
+            {
+                "component": "D120"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "HKP",
+        "tracks": [
+            {
+                "component": "D121"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "HKP",
+        "station2": "HNK",
+        "tracks": [
+            {
+                "component": "D122"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "HNK",
+        "tracks": [
+            {
+                "component": "D123"
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "RI",
+        "station2": "RY",
+        "segments": [
+            [
+                {
+                    "component": "D240"
+                }
+            ],
+            [
+                {
+                    "component": "D124"
+                }
+            ],
+            [
+                {
+                    "component": "D125"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "RY",
+        "tracks": [
+            {
+                "component": "D126"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "RY",
+        "station2": "TU",
+        "tracks": [
+            {
+                "component": "D127"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "TU",
+        "tracks": [
+            {
+                "component": "D128"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "TU",
+        "station2": "HL",
+        "tracks": [
+            {
+                "component": "D129"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "HL",
+        "tracks": [
+            {
+                "component": "D130"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "HL",
+        "station2": "PRL",
+        "tracks": [
+            {
+                "component": "D131"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "PRL",
+        "tracks": [
+            {
+                "component": "D132"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "PRL",
+        "station2": "ITA",
+        "tracks": [
+            {
+                "component": "D133"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "ITA",
+        "tracks": [
+            {
+                "component": "D134"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "ITA",
+        "station2": "TL",
+        "tracks": [
+            {
+                "component": "D135"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "TL",
+        "tracks": [
+            {
+                "component": "D136"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "TL",
+        "station2": "VIA",
+        "tracks": [
+            {
+                "component": "D137"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "VIA",
+        "tracks": [
+            {
+                "component": "D138"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "VIA",
+        "station2": "LPÄ",
+        "tracks": [
+            {
+                "component": "D139"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "LPÄ",
+        "tracks": [
+            {
+                "component": "D140"
+            }
+        ]
+    },
+    {
+        "type": "multiBetween",
+        "station1": "LPÄ",
+        "station2": "TPE",
+        "segments": [
+            [
+                {
+                    "component": "D141"
+                }
+            ],
+            [
+                {
+                    "component": "D142"
+                }
+            ]
+        ]
+    },
+    {
+        "type": "station",
+        "code": "TPE",
+        "equalTracksException": true,
+        "tracks": [
+            {
+                "component": "D298"
+            },
+            {
+                "component": "D303"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "TPE",
+        "station2": "TSO",
+        "tracks": [
+            {
+                "component": "D299"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "TSO",
+        "tracks": [
+            {
+                "component": "D300"
+            }
+        ]
+    },
+    {
+        "type": "between",
+        "station1": "TSO",
+        "station2": "NOA",
+        "tracks": [
+            {
+                "component": "D301"
+            }
+        ]
+    },
+    {
+        "type": "stop",
+        "code": "NOA",
+        "tracks": [
+            {
+                "component": "D302"
+            }
+        ]
+    }
+]

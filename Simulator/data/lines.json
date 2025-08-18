@@ -1,0 +1,50 @@
+{
+    "A": {
+        "color": "purple"
+    },
+    "L": {
+        "color": "magenta"
+    },
+    "E": {
+        "color": "brown"
+    },
+    "U": {
+        "color": "yellow"
+    },
+    "Y": {
+        "color": "white"
+    },
+    "H": {
+        "color": "teal"
+    },
+    "P": {
+        "color": "limegreen"
+    },
+    "I": {
+        "color": "red"
+    },
+    "D": {
+        "color": "white"
+    },
+    "T": {
+        "color": "white"
+    },
+    "R": {
+        "color": "white"
+    },
+    "Z": {
+        "color": "orange"
+    },
+    "K": {
+        "color": "blue"
+    },
+    "G": {
+        "color": "red"
+    },
+    "O": {
+        "color": "green"
+    },
+    "M": {
+        "color": "blue"
+    }
+}

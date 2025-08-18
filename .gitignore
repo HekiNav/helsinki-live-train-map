@@ -48,6 +48,9 @@ PCB/jlcpcb/
 # Local History for Visual Studio Code
 .history/
 
+# Node JS
+*node_modules/
+
 # Built Visual Studio Code Extensions
 *.vsix
 

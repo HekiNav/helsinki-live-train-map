@@ -20,5 +20,6 @@
         "RSSI",
         "Segoe",
         "sntp"
-    ]
+    ],
+    "C_Cpp.errorSquiggles": "disabled"
 }

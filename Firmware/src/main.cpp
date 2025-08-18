@@ -27,10 +27,10 @@ time_t nextFetchTime = 0;	 // Tracks when the next update should occur
 
 // Pins and pixel counts defined in the board file (./boards/Auckland_Rail_Network_V1_0_0.json)
 
-NeoPixelBusLg<NeoGrbFeature, NeoEsp32Rmt0800KbpsMethod> strandMNK(STRAND_MNK_PIXELS, STRAND_MNK);
-NeoPixelBusLg<NeoGrbFeature, NeoEsp32Rmt1800KbpsMethod> nalNIMT(NAL_NIMT_PIXELS, NAL_NIMT);
+NeoPixelBusLg<NeoGrbFeature, NeoEsp32Rmt0Ws2812xMethod> strandMNK(HKI_KTS_PIXELS, HKI_KTS);
+NeoPixelBusLg<NeoGrbFeature, NeoEsp32Rmt1Ws2812xMethod> nalNIMT(HPL_NOA_PIXELS, HPL_NOA);
 
-RgbColor black(0, 0, 0);
+RgbColor black(0,0,0);
 std::vector<RgbColor> colorTable;
 int blockColorIds[512];	 // Array to hold block colors
 
