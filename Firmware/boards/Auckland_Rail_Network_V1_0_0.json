@@ -14,10 +14,10 @@
             "-DPOWER_BUTTON=9",
             "-DLED_5V_EN=4",
             "-DLVL_Shifter_EN=0",
-            "-DHPL_NOA=3",
-            "-DHPL_NOA_PIXELS=134",
-            "-DHKI_KTS=1",
-            "-DHKI_KTS_PIXELS=154",
+            "-DNAL_NIMT=3",
+            "-DNAL_NIMT_PIXELS=108",
+            "-DSTRAND_MNK=1",
+            "-DSTRAND_MNK_PIXELS=44",
             "-DDEBOUNCE_DELAY=50"
         ],
         "f_cpu": "160000000L",
@@ -42,7 +42,7 @@
         "arduino",
         "espidf"
     ],
-    "name": "Helsinki Rail Network V1.0.0",
+    "name": "Auckland Rail Network V1.0.0",
     "upload": {
         "flash_size": "4MB",
         "maximum_ram_size": 327680,
@@ -50,6 +50,6 @@
         "require_upload_port": true,
         "speed": 460800
     },
-    "url": "https://github.com/HekiNav/helsinki-live-train-map",
-    "vendor": "Hekinav"
+    "url": "https://keastudios.co.nz/",
+    "vendor": "Kea Studios"
 }
