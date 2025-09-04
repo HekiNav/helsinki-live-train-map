@@ -29,13 +29,13 @@ jobs:
 
       - name: Run mergebin
         working-directory: ./Firmware
-        run: pio run -e Auckland_Rail_Network_V1_0_0 --target mergebin
+        run: pio run -e Helsinki_Rail_Network_V1_0_0 --target mergebin
 
       - name: Upload merged firmware artifact
         uses: actions/upload-artifact@v4
         with:
           name: merged-firmware
-          path: Firmware/.pio/build/Auckland_Rail_Network_V1_0_0/firmware-merged.bin
+          path: Firmware/.pio/build/Helsinki_Rail_Network_V1_0_0/firmware-merged.bin
 
   deploy:
     needs: build_firmware
@@ -58,12 +58,12 @@ jobs:
 
       - name: Prepare deployment files
         run: |
-          mkdir -p _site/bin/Auckland-LED-Rail-Map-V1.0.0
-          cp -r "Web Installer/bin/Auckland-LED-Rail-Map-V1.0.0/." _site/bin/Auckland-LED-Rail-Map-V1.0.0/
+          mkdir -p _site/bin/Helsinki-LED-Rail-Map-V1.0.0
+          cp -r "Web Installer/bin/Helsinki-LED-Rail-Map-V1.0.0/." _site/bin/Helsinki-LED-Rail-Map-V1.0.0/
           cp "Web Installer/led-rails.html" _site/
           cp "Web Installer/favicon.png" _site/
           # Add the new firmware from the artifact
-          cp staging_firmware/firmware-merged.bin _site/bin/Auckland-LED-Rail-Map-V1.0.0/firmware-merged.bin
+          cp staging_firmware/firmware-merged.bin _site/bin/Helsinki-LED-Rail-Map-V1.0.0/firmware-merged.bin
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
