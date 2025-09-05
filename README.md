@@ -14,7 +14,6 @@ A physical, real-time LED map of the Helsinki Region train network, powered by a
   - [Software / Firmware](#software--firmware)
   - [Getting Started](#getting-started)
   - [Web Installer](#web-installer)
-  - [Web Simulation](#simulator)
   - [Links](#links)
   - [Contributing](#contributing)
   - [License](#license)
@@ -60,7 +59,7 @@ A physical, real-time LED map of the Helsinki Region train network, powered by a
 The ESP32-C3 firmware is responsible for:
 
 1. Connecting to Wi-Fi
-2. Fetching live train data from Fintraffic's [Digitraffic](https://www.digitraffic.fi/rautatieliikenne/) api
+2. Fetching live train data from the Fintraffic's [Digitraffic](https://www.digitraffic.fi/rautatieliikenne/) api
 3. Processing data to determine train locations
 4. Controlling WS2812B LEDs to display train positions
 
@@ -74,7 +73,7 @@ The ESP32-C3 firmware is responsible for:
 2. **Connect to Wi-Fi:**
    - On first boot, use the web installer interface to configure Wi-Fi credentials.
 3. **Power the Board:**
-   - Use a 5V USB-C power supply capable of at least ~1A.
+   - Use a 5V USB-C power supply capable of at least ~1A (~2A recommended for compatibility with higher brightness settings).
 4. **Enjoy the Live Map!**
 
 ---
@@ -87,23 +86,6 @@ Easily flash the latest firmware to your ESP32-C3 using your browser:
 
 - Works with Chrome, Edge, or any Web Serial-compatible browser
 - Follow on-screen instructions to connect and flash your device
-
----
-
-## Web Simulator
-
-View a digital version of the train map using your browser:
-
-[Open the Helsinki Live Train Map Simulation](https://hekinav.github.io/helsinki-live-train-map//led-rails.html)
-
-- Uses a svg map generated from the CPL (component pick-and-place) production data file 
-
-### CPL to train map converter
-Converts a CPL production file to a svg file which is used in the web simulator
-
-- Uses a Node.js [script](Simulator/tools/cplConverter.js)
-- Not polished or optimised, but it works
-
 
 ---
 

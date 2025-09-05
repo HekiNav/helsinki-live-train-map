@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LED-Rails - Installer</title>
-    <meta name="description" content="Easily update and configure Wi-Fi for your Auckland LED Rail Map">
+    <meta name="description" content="Easily update and configure Wi-Fi for your HSL/VR LED Rail Map">
     <meta property="og:title" content="LED Rails - Web Installer" />
     <meta property="og:site_name" content="LED Rails" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Easily update and configure Wi-Fi for your Auckland LED Rail Map" />
+    <meta property="og:description" content="Easily update and configure Wi-Fi for your HSL/VR LED Rail Map" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="LED Rails - Web Installer" />
-    <meta name="twitter:description" content="Easily update and configure Wi-Fi for your Auckland LED Rail Map" />
+    <meta name="twitter:description" content="Easily update and configure Wi-Fi for your HSL/VR LED Rail Map" />
     <link rel="icon" type="image/png" href="favicon.png">
     <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
     <style>
@@ -137,7 +137,7 @@
     <div class="content">
         <header>
             <h1>LED-Rails Installer</h1>
-            <p>Update your device and/or set up Wi-Fi for your Auckland LED Rail Map.</p>
+            <p>Update your device and/or set up Wi-Fi for your HSL/VR LED Commuter Rail Map.</p>
         </header>
         <main>
             <div id="flasher">
@@ -148,7 +148,7 @@
                     </li>
                 </ol>
                 <div class="container">
-                    <esp-web-install-button id="inst" manifest="bin/Auckland-LED-Rail-Map-V1.0.0/manifest.json"
+                    <esp-web-install-button id="inst" manifest="bin/Helsinki-LED-Rail-Map-V1.0.0/manifest.json"
                         improv-wifi>
                         <button class="btn" slot="activate">Connect Device</button>
                         <span slot="unsupported">Sorry, your browser does not support Web Serial. Please use Chrome or
@@ -157,8 +157,6 @@
                     </esp-web-install-button>
                 </div>
             </div>
-            <p style="margin-top:24px; color:#888; font-size:0.95em;">Need help? Visit <a
-                    href="https://keastudios.co.nz/" target="_blank">Kea Studios</a></p>
         </main>
         <div class="footer">
             This project is powered by <a href="https://esphome.github.io/esp-web-tools/">ESP Web
@@ -168,7 +166,7 @@
     <script>
         async function getManifestVersion() {
             try {
-                const response = await fetch('bin/Auckland-LED-Rail-Map-V1.0.0/manifest.json');
+                const response = await fetch('bin/Helsinki-LED-Rail-Map-V1.0.0/manifest.json');
                 if (!response.ok) throw new Error('Network response was not ok');
                 const manifest = await response.json();
                 document.getElementById('verstr').textContent = 'v' + (manifest.version || 'unknown');
