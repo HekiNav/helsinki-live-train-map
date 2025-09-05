@@ -6,6 +6,7 @@
 #include <Preferences.h>
 #include <WiFi.h>
 #include <esp_sntp.h>
+#include <esp_random.h>
 #include <time.h>
 #include <vector>
 
@@ -13,16 +14,19 @@
 
 // Array of server URLs for failover
 String serverURLs[] = {
-	String("http://keastudios.co.nz/akl-ltm/") + BACKEND_VERSION + ".json",
-	String("http://dirksonline.net/akl-ltm/") + BACKEND_VERSION + ".json",
-	// String("http://192.168.86.31:3000/akl-ltm/") + BACKEND_VERSION + ".json",
+	//String("http://keastudios.co.nz/akl-ltm/") + BACKEND_VERSION + ".json",
+	//String("http://dirksonline.net/akl-ltm/") + BACKEND_VERSION + ".json",
+	String("https://hekinav-api.loophole.site/hki-ltm/") + BACKEND_VERSION + ".json",
+	String("http://192.168.1.155:3001/hki-ltm/") + BACKEND_VERSION + ".json",
 };
 const int numServers = sizeof(serverURLs) / sizeof(serverURLs[0]);
 int currentServerIndex = 0;
 
-const char* ntpServers[] = { "nz.pool.ntp.org", "pool.msltime.measurement.govt.nz", "pool.ntp.org" };
+const char* ntpServers[] = { "0.fi.pool.ntp.org", "1.fi.pool.ntp.org", "2.fi.pool.ntp.org" };
 
-const char* time_zone = "NZST-12NZDT,M9.5.0,M4.1.0/3";
+const char* time_zone = "Europe/Helsinki";
+
+const int USER_ID = esp_random();
 
 time_t lastMapDrawTime = 0;	 // Tracks the last time the map was drawn
 time_t nextFetchTime = 0;	 // Tracks when the next update should occur
@@ -281,7 +285,7 @@ String downloadJSON() {
 
 	for (int i = 0; i < numServers; i++) {
 		int serverIndex = (currentServerIndex + i) % numServers;
-		String url = serverURLs[serverIndex];
+		String url = serverURLs[serverIndex] + "?userId=" + USER_ID;
 		http.setTimeout(10000);	 // Set timeout to 10 seconds per server
 		http.setFollowRedirects(HTTPC_FORCE_FOLLOW_REDIRECTS);
 		http.begin(url);
@@ -309,9 +313,9 @@ void setBlockColor(uint16_t block, int colorId) {
 
 	// Set the color on the appropriate strand based on the block number
 	if (block >= 100 && block < 100 + NAL_NIMT_PIXELS) {
-		nalNIMT.SetPixelColor(block - 100, colorTable[blockColorIds[block]]);
+		nalNIMT.SetPixelColor(block-100, colorTable[blockColorIds[block]]);
 	} else if (block >= 300 && block < 300 + STRAND_MNK_PIXELS) {
-		strandMNK.SetPixelColor(block - 300, colorTable[blockColorIds[block]]);
+		strandMNK.SetPixelColor(block-300, colorTable[blockColorIds[block]]);
 	} else {
 		Serial.printf("Block %d is out of range for both strands.\n", block);
 	}
@@ -365,7 +369,7 @@ void parseLEDMap(const String& downloadedJson) {
 		nextFetchTime = baseTimestamp + updateOffset;
 	} else {
 		Serial.println("Fetched the same data twice");
-		return;	 // No need to update if the data is the same
+		//return;	 // No need to update if the data is the same
 	}
 
 	if (String(BACKEND_VERSION) != version) {
