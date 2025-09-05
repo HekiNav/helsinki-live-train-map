@@ -64,7 +64,7 @@ void onImprovWiFiConnectedCb(const char *ssid, const char *password) {
 
 bool attemptConnectToSavedWiFi(int index) {
 	Serial.printf("Attempting to connect to saved network %i: %s\n", index, savedWiFi[index].ssid);
-	if (improvSerial.tryConnectToWifi(savedWiFi[index].ssid, savedWiFi[index].password, 500, 2)) {
+	if (improvSerial.tryConnectToWifi(savedWiFi[index].ssid, savedWiFi[index].password, 500, 5)) {
 		Serial.println("WiFi connected successfully!");
 		server.begin();	 // Start the web server
 		return true;
