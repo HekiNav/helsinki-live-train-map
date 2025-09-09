@@ -42,7 +42,7 @@
         "arduino",
         "espidf"
     ],
-    "name": "Auckland Rail Network V1.0.0",
+    "name": "HSL Rail Network V1.0.0",
     "upload": {
         "flash_size": "4MB",
         "maximum_ram_size": 327680,

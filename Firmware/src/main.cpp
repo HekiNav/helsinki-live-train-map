@@ -5,8 +5,8 @@
 #include <NeoPixelBusLg.h>
 #include <Preferences.h>
 #include <WiFi.h>
-#include <esp_sntp.h>
 #include <esp_random.h>
+#include <esp_sntp.h>
 #include <time.h>
 #include <vector>
 
@@ -26,10 +26,10 @@ const char* ntpServers[] = { "0.fi.pool.ntp.org", "1.fi.pool.ntp.org", "2.fi.poo
 
 const char* time_zone = "Europe/Helsinki";
 
-const int USER_ID = esp_random();
 
 time_t lastMapDrawTime = 0;	 // Tracks the last time the map was drawn
 time_t nextFetchTime = 0;	 // Tracks when the next update should occur
+int updateCounter = 0;
 
 // Pins and pixel counts defined in the board file (./boards/)
 
@@ -46,7 +46,7 @@ int blockColorIds[512];	 // Array to hold block colors
 struct LedUpdate {
 	uint16_t preBlock;
 	uint16_t postBlock;
-	int colorId;
+	std::vector<int> colorIds;
 	time_t timestamp;  // Timestamp for when the update should occur
 };
 
@@ -184,6 +184,29 @@ void setCharlieplexedLED(uint8_t pin, charlieplexedLedState state) {
 			break;
 	}
 }
+int ledCalibration() {
+	strandMNK.SetLuminance(40);
+	nalNIMT.SetLuminance(40);
+	unsigned long last;
+	int i = 0;
+	while (i < STRAND_MNK_PIXELS + NAL_NIMT_PIXELS) {
+		unsigned long now = millis();
+		if (now - last >= 200) {
+			if (i < STRAND_MNK_PIXELS) {
+				strandMNK.SetPixelColor(i, RgbColor(255, 0, 255));
+				strandMNK.Show();
+			} else {
+				nalNIMT.SetPixelColor(i - STRAND_MNK_PIXELS, RgbColor(255, 0, 255));
+				nalNIMT.Show();
+			}
+			last = now;
+			i++;
+		}
+
+		vTaskDelay(pdMS_TO_TICKS(25));
+	}
+	return 1;
+}
 
 void statusLedManagerTask(void* pvParameters) {
 	statusLed leds[] = { { WIFI_LED_PIN, LED_OFF, false, 0 }, { CONFIG_LED_PIN, LED_OFF, false, 0 } };
@@ -285,7 +308,7 @@ String downloadJSON() {
 
 	for (int i = 0; i < numServers; i++) {
 		int serverIndex = (currentServerIndex + i) % numServers;
-		String url = serverURLs[serverIndex] + "?userId=" + USER_ID;
+		String url = serverURLs[serverIndex];
 		http.setTimeout(10000);	 // Set timeout to 10 seconds per server
 		http.setFollowRedirects(HTTPC_FORCE_FOLLOW_REDIRECTS);
 		http.begin(url);
@@ -313,9 +336,9 @@ void setBlockColor(uint16_t block, int colorId) {
 
 	// Set the color on the appropriate strand based on the block number
 	if (block >= 100 && block < 100 + NAL_NIMT_PIXELS) {
-		nalNIMT.SetPixelColor(block-100, colorTable[blockColorIds[block]]);
+		nalNIMT.SetPixelColor(block - 100, colorTable[blockColorIds[block]]);
 	} else if (block >= 300 && block < 300 + STRAND_MNK_PIXELS) {
-		strandMNK.SetPixelColor(block-300, colorTable[blockColorIds[block]]);
+		strandMNK.SetPixelColor(block - 300, colorTable[blockColorIds[block]]);
 	} else {
 		Serial.printf("Block %d is out of range for both strands.\n", block);
 	}
@@ -331,11 +354,28 @@ void drawMap(time_t epoch) {
 	}
 
 	// Draw the map based on the current LED update schedule
+	updateCounter++;
 	for (const auto& update : ledUpdateSchedule) {
-		if (epoch >= update.timestamp) {
-			setBlockColor(update.postBlock, update.colorId);
+		const int l = update.colorIds.size();
+		if (l > 1) {
+			const int i = updateCounter % l;
+			Serial.println(i);
+			Serial.println(l);
+			Serial.println(update.colorIds[i]);
+			Serial.println('\n');
+			if (epoch >= update.timestamp) {
+				setBlockColor(update.postBlock, update.colorIds[i]);
+			} else {
+				setBlockColor(update.preBlock, update.colorIds[i]);
+			}
+			ledUpdatePending = true;
+
 		} else {
-			setBlockColor(update.preBlock, update.colorId);
+			if (epoch >= update.timestamp) {
+				setBlockColor(update.postBlock, update.colorIds[0]);
+			} else {
+				setBlockColor(update.preBlock, update.colorIds[0]);
+			}
 		}
 	}
 
@@ -392,7 +432,7 @@ void parseLEDMap(const String& downloadedJson) {
 	ledUpdateSchedule.clear();
 	for (JsonObject update : updates) {
 		JsonArray blocks = update["b"];
-		int colorId = update["c"];
+		JsonArray colorIds = update["c"];
 		int offset = update["t"];
 
 		// Schedule color update
@@ -404,7 +444,10 @@ void parseLEDMap(const String& downloadedJson) {
 		} else {
 			ledUpdate.timestamp = 0;
 		}
-		ledUpdate.colorId = colorId;
+		for (const int colorId : colorIds) {
+			ledUpdate.colorIds.push_back(colorId);
+		}
+
 		ledUpdateSchedule.push_back(ledUpdate);
 	}
 
@@ -508,6 +551,7 @@ void setup() {
 	WiFiImprovSetup();
 
 	Serial.println(getSystemInfo());
+	//ledCalibration();
 }
 
 void loop() {
@@ -541,7 +585,7 @@ void loop() {
 		checkButton(&powerButton);
 
 		// --- Push updates to the LED strips only if changes were made ---
-		if (ledUpdatePending || lastMapDrawTime < epoch) {
+		if (ledUpdatePending || lastMapDrawTime < epoch -1) {
 			drawMap(epoch);	 // Draw the map with the current updates
 			ledUpdatePending = false;
 		}
