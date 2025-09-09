@@ -57,13 +57,8 @@ Promise.all([
         , updates: []
     }
     app.get('/hki-ltm/100.json', (req, res) => {
-        const user = req.query.userId
-        if (!user || Number(user) == NaN) return res.json({
-            error: 400,
-            message: "Please provide a positive integer userId url parameter"
-        })
         json.timestamp = Date.now() - 20
-        json.updates = generateUpdates(user)
+        json.updates = generateUpdates()
         res.json(json)
     })
 
@@ -84,6 +79,10 @@ Promise.all([
         });
     });
 
+
+    // PERIODICALLY REMOVE GHOST TRAINS
+    setInterval(handleGhostTrains,1000)
+
     // MQTT MESSAGE HANDLING
     let msgCount = 0
     let firstMessage = true
@@ -103,7 +102,12 @@ Promise.all([
     });
 })
 
-
+function handleGhostTrains() {
+    const now = Date.now()
+    ledState.forEach(led => {
+        led.trains = led.trains.filter(t => ((now - t.t) / 1000 / 60) < 30)
+    });
+}
 
 
 function initialRequest() {
@@ -216,7 +220,8 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: [] }) {
                 led.trains.push({
                     n: trainNumber,
                     l: commuterLineID,
-                    d: lastUpdate.differenceInMinutes || lastUpdate.unknownDelay
+                    d: lastUpdate.differenceInMinutes || lastUpdate.unknownDelay,
+                    t: Date.now()
                 })
             }
         })
@@ -258,21 +263,11 @@ function findCorrectTrack(segment, lineID, timeTable) {
     return remainingTracks[0]
 }
 
-function generateUpdates(user) {
-    console.log("USER:",user)
-    updates[user] ? updates[user]++ : updates[user]=1
+function generateUpdates() {
     return ledState.flatMap(led => {
-        const block = (ledOrder["HPL-NOA"].some(id => id == led.id) ? ledOrder["HPL-NOA"].findIndex(id => id == led.id) + 100 : ledOrder["HKI-KTS"].findIndex(id => id == led.id) + 300) + 1
-        let color = 0
-        if (led.trains.length == 1) {
-            color = getTrainColor(led.trains[0])
-        } else if (led.trains.length > 1) {
-            const i = updates[user] % led.trains.length
-            color = getTrainColor(led.trains[i])
-        } else {
-            return []
-        }
-        return { b: [block, block], c: color, t: 0 }
+        const block = (ledOrder["HPL-NOA"].some(id => id == led.id) ? ledOrder["HPL-NOA"].findIndex(id => id == led.id) + 300 : ledOrder["HKI-KTS"].findIndex(id => id == led.id) + 100) + 1
+        console.log(led.trains)
+        return led.trains.length ? { b: [block, block], c: led.trains.map(getTrainColor), t: 0 } : []
     })
 }
 function getTrainColor(t) {
@@ -283,19 +278,3 @@ async function getJSON(name) {
     const json = (await fs.readFile(`./data/${name}.json`)).toString()
     return JSON.parse(json)
 }
-
-/* function loadSvg() {
-    fetchData("./tools/output.svg").then(data => {
-        svgContainer.innerHTML += data
-        const svg = document.querySelector("svg")
-        function resizeSVG() {
-            svg.style.transform = `scale(${svgContainer.clientWidth / svg.clientWidth * 90}%)`
-        }
-        window.addEventListener("resize", resizeSVG)
-        resizeSVG()
-    })
-}
-function print(message) {
-    log.innerHTML += message
-    logContainer.scrollTop = logContainer.scrollHeight
-} */
