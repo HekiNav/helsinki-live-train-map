@@ -35,8 +35,8 @@ int updateCounter = 0;
 
 // I am useing WS2811 timing =>   0:{0.3, 0.95} 1:{0.9, 0.35} Reset:300us
 // XL-1615RGBC-WS2812B-S requires 0:{>0.3, >0.9} 1:{>0.9, >0.3} Reset:>200us
-NeoPixelBusLg<NeoGrbFeature, NeoEsp32Rmt0Ws2811Method> strandMNK(STRAND_MNK_PIXELS, STRAND_MNK);
-NeoPixelBusLg<NeoGrbFeature, NeoEsp32Rmt1Ws2811Method> nalNIMT(NAL_NIMT_PIXELS, NAL_NIMT);
+NeoPixelBusLg<NeoGrbFeature, NeoEsp32Rmt0Ws2811Method> hplNoa(HPL_NOA_PIXELS, HPL_NOA);
+NeoPixelBusLg<NeoGrbFeature, NeoEsp32Rmt1Ws2811Method> hkiKts(HKI_KTS_PIXELS, HKI_KTS);
 
 RgbColor black(0, 0, 0);
 std::vector<RgbColor> colorTable;
@@ -133,8 +133,8 @@ void checkButton(Button* button) {
 				preferences.end();
 
 				// Update the LEDs
-				strandMNK.SetLuminance(brightness);
-				nalNIMT.SetLuminance(brightness);
+				hplNoa.SetLuminance(brightness);
+				hkiKts.SetLuminance(brightness);
 
 				Serial.printf("brightness now at: %i/255\n", brightness);
 				ledUpdatePending = true;
@@ -185,19 +185,19 @@ void setCharlieplexedLED(uint8_t pin, charlieplexedLedState state) {
 	}
 }
 int ledCalibration() {
-	strandMNK.SetLuminance(40);
-	nalNIMT.SetLuminance(40);
+	hplNoa.SetLuminance(40);
+	hkiKts.SetLuminance(40);
 	unsigned long last;
 	int i = 0;
-	while (i < STRAND_MNK_PIXELS + NAL_NIMT_PIXELS) {
+	while (i < HPL_NOA_PIXELS + HKI_KTS_PIXELS) {
 		unsigned long now = millis();
 		if (now - last >= 200) {
-			if (i < STRAND_MNK_PIXELS) {
-				strandMNK.SetPixelColor(i, RgbColor(255, 0, 255));
-				strandMNK.Show();
+			if (i < HPL_NOA_PIXELS) {
+				hplNoa.SetPixelColor(i, RgbColor(255, 0, 255));
+				hplNoa.Show();
 			} else {
-				nalNIMT.SetPixelColor(i - STRAND_MNK_PIXELS, RgbColor(255, 0, 255));
-				nalNIMT.Show();
+				hkiKts.SetPixelColor(i - HPL_NOA_PIXELS, RgbColor(255, 0, 255));
+				hkiKts.Show();
 			}
 			last = now;
 			i++;
@@ -335,10 +335,10 @@ void setBlockColor(uint16_t block, int colorId) {
 	blockColorIds[block] = colorId;	 // Update the color ID for the block if it's higher
 
 	// Set the color on the appropriate strand based on the block number
-	if (block >= 100 && block < 100 + NAL_NIMT_PIXELS) {
-		nalNIMT.SetPixelColor(block - 100, colorTable[blockColorIds[block]]);
-	} else if (block >= 300 && block < 300 + STRAND_MNK_PIXELS) {
-		strandMNK.SetPixelColor(block - 300, colorTable[blockColorIds[block]]);
+	if (block >= 100 && block < 100 + HKI_KTS_PIXELS) {
+		hkiKts.SetPixelColor(block - 100, colorTable[blockColorIds[block]]);
+	} else if (block >= 300 && block < 300 + HPL_NOA_PIXELS) {
+		hplNoa.SetPixelColor(block - 300, colorTable[blockColorIds[block]]);
 	} else {
 		Serial.printf("Block %d is out of range for both strands.\n", block);
 	}
@@ -346,8 +346,8 @@ void setBlockColor(uint16_t block, int colorId) {
 
 void drawMap(time_t epoch) {
 	// Clear both strands
-	nalNIMT.ClearTo(black);
-	strandMNK.ClearTo(black);
+	hkiKts.ClearTo(black);
+	hplNoa.ClearTo(black);
 	// Reset the blocks array
 	for (int i = 0; i < 512; i++) {
 		blockColorIds[i] = 0;  // Reset all blocks to black
@@ -359,10 +359,6 @@ void drawMap(time_t epoch) {
 		const int l = update.colorIds.size();
 		if (l > 1) {
 			const int i = updateCounter % l;
-			Serial.println(i);
-			Serial.println(l);
-			Serial.println(update.colorIds[i]);
-			Serial.println('\n');
 			if (epoch >= update.timestamp) {
 				setBlockColor(update.postBlock, update.colorIds[i]);
 			} else {
@@ -380,12 +376,12 @@ void drawMap(time_t epoch) {
 	}
 
 	// Show the updates on both strands
-	strandMNK.Show();
+	hplNoa.Show();
 
 	// Allow time for the strand to be sent out (Not needed but might reduce interference)
-	vTaskDelay(pdMS_TO_TICKS(int(0.03 * STRAND_MNK_PIXELS) + 1));
+	vTaskDelay(pdMS_TO_TICKS(int(0.03 * HPL_NOA_PIXELS) + 1));
 
-	nalNIMT.Show();
+	hkiKts.Show();
 
 	lastMapDrawTime = epoch;  // Update the last draw time
 }
@@ -474,23 +470,23 @@ void setup() {
 	pinMode(LED_5V_EN, OUTPUT);
 	digitalWrite(LED_5V_EN, LOW);  //Disable 5V Power
 
-	strandMNK.Begin();
-	strandMNK.ClearTo(black);
-	nalNIMT.Begin();
-	nalNIMT.ClearTo(black);
+	hplNoa.Begin();
+	hplNoa.ClearTo(black);
+	hkiKts.Begin();
+	hkiKts.ClearTo(black);
 
 	digitalWrite(LVL_Shifter_EN, LOW);	//Enable LVL Shifter
 	digitalWrite(LED_5V_EN, HIGH);		//Enable 5V Power
 
-	nalNIMT.Show();
-	strandMNK.Show();
+	hkiKts.Show();
+	hplNoa.Show();
 
 	// Set initial brightness
 	preferences.begin("brightness");
 	brightness = preferences.getInt("brightness", brightness);
 	preferences.end();
-	strandMNK.SetLuminance(brightness);
-	nalNIMT.SetLuminance(brightness);
+	hplNoa.SetLuminance(brightness);
+	hkiKts.SetLuminance(brightness);
 
 // Factory test mode
 #if defined(FACTORY_TEST)
@@ -502,22 +498,22 @@ void setup() {
 		while (true) {
 			Serial.println("Factory test mode enabled");
 
-			strandMNK.ClearTo(RgbColor(255, 0, 0));
-			nalNIMT.ClearTo(RgbColor(255, 0, 0));
-			strandMNK.Show();
-			nalNIMT.Show();
+			hplNoa.ClearTo(RgbColor(255, 0, 0));
+			hkiKts.ClearTo(RgbColor(255, 0, 0));
+			hplNoa.Show();
+			hkiKts.Show();
 			vTaskDelay(pdMS_TO_TICKS(1000));
 
-			strandMNK.ClearTo(RgbColor(0, 255, 0));
-			nalNIMT.ClearTo(RgbColor(0, 255, 0));
-			strandMNK.Show();
-			nalNIMT.Show();
+			hplNoa.ClearTo(RgbColor(0, 255, 0));
+			hkiKts.ClearTo(RgbColor(0, 255, 0));
+			hplNoa.Show();
+			hkiKts.Show();
 			vTaskDelay(pdMS_TO_TICKS(1000));
 
-			strandMNK.ClearTo(RgbColor(0, 0, 255));
-			nalNIMT.ClearTo(RgbColor(0, 0, 255));
-			strandMNK.Show();
-			nalNIMT.Show();
+			hplNoa.ClearTo(RgbColor(0, 0, 255));
+			hkiKts.ClearTo(RgbColor(0, 0, 255));
+			hplNoa.Show();
+			hkiKts.Show();
 			vTaskDelay(pdMS_TO_TICKS(1000));
 		}
 	}
@@ -585,7 +581,7 @@ void loop() {
 		checkButton(&powerButton);
 
 		// --- Push updates to the LED strips only if changes were made ---
-		if (ledUpdatePending || lastMapDrawTime < epoch -1) {
+		if (ledUpdatePending || lastMapDrawTime < epoch) {
 			drawMap(epoch);	 // Draw the map with the current updates
 			ledUpdatePending = false;
 		}
