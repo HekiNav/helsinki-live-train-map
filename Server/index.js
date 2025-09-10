@@ -7,11 +7,7 @@ const port = 3001
 const MEASURING_TIME = null //Time limit for MQTT in seconds, starts from 1st message, logs amount of messages after
 
 const OPTIONS = {
-    allowedTrainTypes: ["HL"],
-    modes: [
-        "lines",
-        "delay"
-    ]
+    allowedTrainTypes: ["HL"]
 }
 
 
@@ -20,10 +16,15 @@ let lines
 let sections
 let stations
 let client
-let colors
+let lineColors
+
+const delayColors = [
+    [0,255,0],
+    [255,255,0],
+    [255,0,0],
+]
 
 let ledState
-let updates = {}
 
 const print = console.log
 
@@ -36,7 +37,7 @@ Promise.all([
 ]).then((jsonData) => {
     [ledOrder, lines, sections, stations] = jsonData
     ledState = Object.values(ledOrder).flat().map(id => ({ id: id, trains: [] }))
-    colors = Object.values(lines).reduce((prev,cur,i) => ({...prev, [i]: cur.color}), {})
+    lineColors = Object.values(lines).reduce((prev,cur,i) => ({...prev, [i]: cur.color}), {})
     print("[STATUS] JSON data loaded")
 
     // INITIAL STATE REQUEST
@@ -53,12 +54,13 @@ Promise.all([
         timestamp: 0,
         update: 5,
         colors:
-            colors
+            lineColors
         , updates: []
     }
     app.get('/hki-ltm/100.json', (req, res) => {
         json.timestamp = Date.now() - 20
-        json.updates = generateUpdates()
+        json.updates = generateUpdates(req.query.mode)
+        json.colors = getColorTable(req.query.mode)
         res.json(json)
     })
 
@@ -81,7 +83,7 @@ Promise.all([
 
 
     // PERIODICALLY REMOVE GHOST TRAINS
-    setInterval(handleGhostTrains,1000)
+    setInterval(handleGhostTrains,60000)
 
     // MQTT MESSAGE HANDLING
     let msgCount = 0
@@ -263,15 +265,44 @@ function findCorrectTrack(segment, lineID, timeTable) {
     return remainingTracks[0]
 }
 
-function generateUpdates() {
+function generateUpdates(mode) {
     return ledState.flatMap(led => {
         const block = (ledOrder["HPL-NOA"].some(id => id == led.id) ? ledOrder["HPL-NOA"].findIndex(id => id == led.id) + 300 : ledOrder["HKI-KTS"].findIndex(id => id == led.id) + 100) + 1
         console.log(led.trains)
-        return led.trains.length ? { b: [block, block], c: led.trains.map(getTrainColor), t: 0 } : []
+        return led.trains.length ? { b: [block, block], c: led.trains.map(getTrainColorFunction(mode)), t: 0 } : []
     })
 }
-function getTrainColor(t) {
-    return Object.values(colors).findIndex(c => c.toString() == lines[t.l].color.toString())
+function getColorTable(mode) {
+    switch (mode) {
+        case "lines":
+            return lineColors;
+        case "delay":
+            return delayColors;
+        default:
+            return [[255,0,0]];
+    }
+}
+function getTrainColorFunction(mode) {
+    switch (mode) {
+        case "lines":
+            return getTrainColorByLine;
+        case "delay":
+            return getTrainColorByDelay;
+        default:
+            return () => 0;
+    }
+}
+function getTrainColorByLine(t) {
+    return Object.values(lineColors).findIndex(c => c.toString() == lines[t.l].color.toString())
+}
+function getTrainColorByDelay(t) {
+    if (t.d < 2) {
+        return 0
+    } else if (t.d > 10) {
+        return 2
+    } else {
+        return 1
+    }
 }
 
 async function getJSON(name) {
