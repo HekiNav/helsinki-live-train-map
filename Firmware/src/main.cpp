@@ -26,7 +26,6 @@ const char* ntpServers[] = { "0.fi.pool.ntp.org", "1.fi.pool.ntp.org", "2.fi.poo
 
 const char* time_zone = "Europe/Helsinki";
 
-
 time_t lastMapDrawTime = 0;	 // Tracks the last time the map was drawn
 time_t nextFetchTime = 0;	 // Tracks when the next update should occur
 int updateCounter = 0;
@@ -41,6 +40,9 @@ NeoPixelBusLg<NeoGrbFeature, NeoEsp32Rmt1Ws2811Method> hkiKts(HKI_KTS_PIXELS, HK
 RgbColor black(0, 0, 0);
 std::vector<RgbColor> colorTable;
 int blockColorIds[512];	 // Array to hold block colors
+
+int mode = 0;
+String modes[] = { String("lines"), String("delay") };
 
 // --- Data structure for scheduled LED updates ---
 struct LedUpdate {
@@ -88,6 +90,7 @@ struct Button {
 Button brightnessDownButton = { BRIGHTNESS_DOWN_BUTTON, 0, false, HIGH };
 Button brightnessUpButton = { BRIGHTNESS_UP_BUTTON, 0, false, HIGH };
 Button powerButton = { POWER_BUTTON, 0, false, HIGH };
+Button mapButton = { MAP_BUTTON, 0, false, HIGH };
 
 // --- (Existing ISR, button check, time, and LED functions) ---
 // IRAM_ATTR ensures the ISR is placed in IRAM
@@ -117,6 +120,11 @@ void checkButton(Button* button) {
 						Serial.print("Power button pressed ");
 						brightness = (brightness == 0) ? 250 : 0;  // Toggle brightness
 						break;
+					case MAP_BUTTON:
+						Serial.print("Map button pressed ");
+						Serial.print((mode + 1) % sizeof(modes) / sizeof(modes[0]));
+						mode = (mode + 1) % sizeof(modes) / sizeof(modes[0]);
+						break;
 					default:
 						Serial.printf("Unknown button pressed on pin %d\n", button->pin);
 						return;	 // Exit if an unknown button is pressed
@@ -135,8 +143,11 @@ void checkButton(Button* button) {
 				// Update the LEDs
 				hplNoa.SetLuminance(brightness);
 				hkiKts.SetLuminance(brightness);
-
-				Serial.printf("brightness now at: %i/255\n", brightness);
+				if (button->pin == MAP_BUTTON) {
+					Serial.printf("mode is now : %s\n", modes[mode]);
+				} else {
+					Serial.printf("brightness now at: %i/255\n", brightness);
+				}
 				ledUpdatePending = true;
 			}
 		}
@@ -308,7 +319,8 @@ String downloadJSON() {
 
 	for (int i = 0; i < numServers; i++) {
 		int serverIndex = (currentServerIndex + i) % numServers;
-		String url = serverURLs[serverIndex];
+		String url = serverURLs[serverIndex] + "?mode=" + modes[mode];
+		Serial.println(url);
 		http.setTimeout(10000);	 // Set timeout to 10 seconds per server
 		http.setFollowRedirects(HTTPC_FORCE_FOLLOW_REDIRECTS);
 		http.begin(url);
@@ -529,6 +541,7 @@ void setup() {
 	attachInterruptArg(digitalPinToInterrupt(BRIGHTNESS_DOWN_BUTTON), buttonISR, &brightnessDownButton, CHANGE);
 	attachInterruptArg(digitalPinToInterrupt(BRIGHTNESS_UP_BUTTON), buttonISR, &brightnessUpButton, CHANGE);
 	attachInterruptArg(digitalPinToInterrupt(POWER_BUTTON), buttonISR, &powerButton, CHANGE);
+	attachInterruptArg(digitalPinToInterrupt(MAP_BUTTON), buttonISR, &mapButton, CHANGE);
 
 	Serial.println(getSystemInfo());
 
@@ -579,6 +592,7 @@ void loop() {
 		checkButton(&brightnessDownButton);
 		checkButton(&brightnessUpButton);
 		checkButton(&powerButton);
+		checkButton(&mapButton);
 
 		// --- Push updates to the LED strips only if changes were made ---
 		if (ledUpdatePending || lastMapDrawTime < epoch) {
