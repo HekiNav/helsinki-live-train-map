@@ -26,7 +26,6 @@ const char* ntpServers[] = { "0.fi.pool.ntp.org", "1.fi.pool.ntp.org", "2.fi.poo
 
 const char* time_zone = "Europe/Helsinki";
 
-
 time_t lastMapDrawTime = 0;	 // Tracks the last time the map was drawn
 time_t nextFetchTime = 0;	 // Tracks when the next update should occur
 int updateCounter = 0;
@@ -41,6 +40,9 @@ NeoPixelBusLg<NeoGrbFeature, NeoEsp32Rmt1Ws2811Method> hkiKts(HKI_KTS_PIXELS, HK
 RgbColor black(0, 0, 0);
 std::vector<RgbColor> colorTable;
 int blockColorIds[512];	 // Array to hold block colors
+
+int mode = 0;
+String modes[] = {String("test"), String("lines"), String("delay") };
 
 // --- Data structure for scheduled LED updates ---
 struct LedUpdate {
@@ -88,6 +90,7 @@ struct Button {
 Button brightnessDownButton = { BRIGHTNESS_DOWN_BUTTON, 0, false, HIGH };
 Button brightnessUpButton = { BRIGHTNESS_UP_BUTTON, 0, false, HIGH };
 Button powerButton = { POWER_BUTTON, 0, false, HIGH };
+Button mapButton = { MAP_BUTTON, 0, false, HIGH };
 
 // --- (Existing ISR, button check, time, and LED functions) ---
 // IRAM_ATTR ensures the ISR is placed in IRAM
@@ -95,53 +98,6 @@ void IRAM_ATTR buttonISR(void* arg) {
 	Button* button = (Button*)arg;
 	button->lastChangeTime = xTaskGetTickCountFromISR() * portTICK_PERIOD_MS;
 	button->pendingCheck = true;
-}
-
-void checkButton(Button* button) {
-	if (button->pendingCheck && (millis() - button->lastChangeTime) >= DEBOUNCE_DELAY) {
-		bool currentState = digitalRead(button->pin);
-		if (currentState != button->lastState) {
-			button->lastState = currentState;
-			if (currentState == LOW) {	// Assuming active-low configuration
-				// Handle button press
-				switch (button->pin) {
-					case BRIGHTNESS_DOWN_BUTTON:
-						Serial.print("Brightness Down pressed ");
-						brightness -= 20;
-						break;
-					case BRIGHTNESS_UP_BUTTON:
-						Serial.print("Brightness Up pressed ");
-						brightness += 20;
-						break;
-					case POWER_BUTTON:
-						Serial.print("Power button pressed ");
-						brightness = (brightness == 0) ? 250 : 0;  // Toggle brightness
-						break;
-					default:
-						Serial.printf("Unknown button pressed on pin %d\n", button->pin);
-						return;	 // Exit if an unknown button is pressed
-				}
-
-				// Ensure brightness stays within bounds
-				brightness = (brightness > 0) ? constrain(brightness, 20, 250) : 0;
-
-				// Save brightness to preferences
-				preferences.begin("brightness");
-				if (preferences.getInt("brightness") != brightness) {
-					preferences.putInt("brightness", brightness);
-				}
-				preferences.end();
-
-				// Update the LEDs
-				hplNoa.SetLuminance(brightness);
-				hkiKts.SetLuminance(brightness);
-
-				Serial.printf("brightness now at: %i/255\n", brightness);
-				ledUpdatePending = true;
-			}
-		}
-		button->pendingCheck = false;
-	}
 }
 
 const char* getLocalTime(time_t epoch) {
@@ -262,6 +218,65 @@ void setStatusLedState(uint8_t pin, statusLedCommand command) {
 	xTaskNotify(statusLedTaskHandle, notification, eSetValueWithOverwrite);
 }
 
+void checkButton(Button* button) {
+	if (button->pendingCheck && (millis() - button->lastChangeTime) >= DEBOUNCE_DELAY) {
+		bool currentState = digitalRead(button->pin);
+		if (currentState != button->lastState) {
+			button->lastState = currentState;
+			if (currentState == LOW) {	// Assuming active-low configuration
+				// Handle button press
+				switch (button->pin) {
+					case BRIGHTNESS_DOWN_BUTTON:
+						Serial.print("Brightness Down pressed ");
+						brightness -= 20;
+						break;
+					case BRIGHTNESS_UP_BUTTON:
+						Serial.print("Brightness Up pressed ");
+						brightness += 20;
+						break;
+					case POWER_BUTTON:
+						Serial.print("Power button pressed ");
+						brightness = (brightness == 0) ? 250 : 0;  // Toggle brightness
+						break;
+					case MAP_BUTTON:
+						Serial.print("Map button pressed ");
+						Serial.print(mode + 1 % (sizeof(modes) / sizeof(modes[0])));
+						Serial.print(mode + 1);
+						mode = (mode + 1) % (sizeof(modes) / sizeof(modes[0]));
+						ledUpdatePending = true;
+						nextFetchTime = 0;
+						setStatusLedState(CONFIG_LED_PIN, LED_OFF);
+						break;
+					default:
+						Serial.printf("Unknown button pressed on pin %d\n", button->pin);
+						return;	 // Exit if an unknown button is pressed
+				}
+
+				// Ensure brightness stays within bounds
+				brightness = (brightness > 0) ? constrain(brightness, 20, 250) : 0;
+
+				// Save brightness to preferences
+				preferences.begin("brightness");
+				if (preferences.getInt("brightness") != brightness) {
+					preferences.putInt("brightness", brightness);
+				}
+				preferences.end();
+
+				// Update the LEDs
+				hplNoa.SetLuminance(brightness);
+				hkiKts.SetLuminance(brightness);
+				if (button->pin == MAP_BUTTON) {
+					Serial.printf("mode is now : %s\n", modes[mode]);
+				} else {
+					Serial.printf("brightness now at: %i/255\n", brightness);
+				}
+				ledUpdatePending = true;
+			}
+		}
+		button->pendingCheck = false;
+	}
+}
+
 const char* getSystemInfo() {
 	static char buffer[255];
 	FlashMode_t mode = (FlashMode_t)ESP.getFlashChipMode();
@@ -308,7 +323,8 @@ String downloadJSON() {
 
 	for (int i = 0; i < numServers; i++) {
 		int serverIndex = (currentServerIndex + i) % numServers;
-		String url = serverURLs[serverIndex];
+		String url = serverURLs[serverIndex] + "?mode=" + modes[mode];
+		Serial.println(url);
 		http.setTimeout(10000);	 // Set timeout to 10 seconds per server
 		http.setFollowRedirects(HTTPC_FORCE_FOLLOW_REDIRECTS);
 		http.begin(url);
@@ -354,23 +370,25 @@ void drawMap(time_t epoch) {
 	}
 
 	// Draw the map based on the current LED update schedule
-	updateCounter++;
-	for (const auto& update : ledUpdateSchedule) {
-		const int l = update.colorIds.size();
-		if (l > 1) {
-			const int i = updateCounter % l;
-			if (epoch >= update.timestamp) {
-				setBlockColor(update.postBlock, update.colorIds[i]);
-			} else {
-				setBlockColor(update.preBlock, update.colorIds[i]);
-			}
-			ledUpdatePending = true;
+	if (lastMapDrawTime != 0) {
+		updateCounter++;
+		for (const auto& update : ledUpdateSchedule) {
+			const int l = update.colorIds.size();
+			if (l > 1) {
+				const int i = updateCounter % l;
+				if (epoch >= update.timestamp) {
+					setBlockColor(update.postBlock, update.colorIds[i]);
+				} else {
+					setBlockColor(update.preBlock, update.colorIds[i]);
+				}
+				ledUpdatePending = true;
 
-		} else {
-			if (epoch >= update.timestamp) {
-				setBlockColor(update.postBlock, update.colorIds[0]);
 			} else {
-				setBlockColor(update.preBlock, update.colorIds[0]);
+				if (epoch >= update.timestamp) {
+					setBlockColor(update.postBlock, update.colorIds[0]);
+				} else {
+					setBlockColor(update.preBlock, update.colorIds[0]);
+				}
 			}
 		}
 	}
@@ -529,6 +547,7 @@ void setup() {
 	attachInterruptArg(digitalPinToInterrupt(BRIGHTNESS_DOWN_BUTTON), buttonISR, &brightnessDownButton, CHANGE);
 	attachInterruptArg(digitalPinToInterrupt(BRIGHTNESS_UP_BUTTON), buttonISR, &brightnessUpButton, CHANGE);
 	attachInterruptArg(digitalPinToInterrupt(POWER_BUTTON), buttonISR, &powerButton, CHANGE);
+	attachInterruptArg(digitalPinToInterrupt(MAP_BUTTON), buttonISR, &mapButton, CHANGE);
 
 	Serial.println(getSystemInfo());
 
@@ -579,6 +598,7 @@ void loop() {
 		checkButton(&brightnessDownButton);
 		checkButton(&brightnessUpButton);
 		checkButton(&powerButton);
+		checkButton(&mapButton);
 
 		// --- Push updates to the LED strips only if changes were made ---
 		if (ledUpdatePending || lastMapDrawTime < epoch) {

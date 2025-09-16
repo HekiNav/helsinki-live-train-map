@@ -11,6 +11,7 @@
             "-DCONFIG_LED_PIN=5",
             "-DBRIGHTNESS_DOWN_BUTTON=6",
             "-DBRIGHTNESS_UP_BUTTON=7",
+            "-DMAP_BUTTON=8",
             "-DPOWER_BUTTON=9",
             "-DLED_5V_EN=4",
             "-DLVL_Shifter_EN=0",
