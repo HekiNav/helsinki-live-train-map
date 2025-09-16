@@ -7,7 +7,7 @@ const port = 3001
 const MEASURING_TIME = null //Time limit for MQTT in seconds, starts from 1st message, logs amount of messages after
 
 const OPTIONS = {
-    allowedTrainTypes: ["HL"]
+    allowedTrainTypes: ["HV", "HL"]
 }
 
 
@@ -16,32 +16,54 @@ let lines
 let sections
 let stations
 let client
-let lineColors
 
-const delayColors = [
-    [0,255,0],
-    [255,255,0],
-    [255,0,0],
-]
+const testColors = {
+    0: [255,0,0],
+    1: [255,255,0],
+    2: [0,255,0],
+    3: [0,255,255],
+    4: [0,0,255],
+}
+
+const lineColors = {
+    0: [255, 0, 0], // Red
+    1: [255, 128, 0], // Orange
+    2: [255, 255, 0], // Yellow
+    // SKIPPED 3: [128, 255, 0], // Yellow-green
+    3: [0, 255, 0], // Green
+    // SKIPPED 5: [0, 255, 128], // Turqoise
+    4: [0, 255, 255], // Cyan
+    // SKIPPED 7: [0, 128, 255], // Almost blue
+    5: [0, 0, 255], // Blue
+    6: [128, 0, 255], // Purple
+    7: [255, 0, 255], // Magenta
+    8: [255, 0, 128], // Pink
+    9: [255, 255, 255], // Pink
+}
+
+const delayColors = {
+    0: [0, 255, 0],
+    1: [255, 255, 0],
+    2: [255, 0, 0],
+    2: [0, 255, 255],
+}
 
 let ledState
 
-const print = console.log
 
-print(`[CONFIG] Train filters:
+console.log(`[CONFIG] Train filters:
 [CONFIG] Allowed types: ${OPTIONS.allowedTrainTypes.length ? OPTIONS.allowedTrainTypes.toString() : "all"}`)
 
-print("[STATUS] Loading JSON data")
+console.log("[STATUS] Loading JSON data")
 Promise.all([
     getJSON("ledsInOrder"), getJSON("lines",), getJSON("sections"), getJSON("stations")
 ]).then((jsonData) => {
     [ledOrder, lines, sections, stations] = jsonData
     ledState = Object.values(ledOrder).flat().map(id => ({ id: id, trains: [] }))
-    lineColors = Object.values(lines).reduce((prev,cur,i) => ({...prev, [i]: cur.color}), {})
-    print("[STATUS] JSON data loaded")
+    console.log("[STATUS] JSON data loaded")
 
     // INITIAL STATE REQUEST
-    print("[STATUS] Requesting initial state")
+    console.log("[STATUS] Requesting initial state")
 
     initialRequest()
 
@@ -76,14 +98,14 @@ Promise.all([
     //train-tracking/<departure_date,train_number,type,station,track_section,previous_station,next_station,previous_track_section,next_track_section>
     client.on("connect", () => {
         client.subscribe("trains/+/+/Commuter/HL/#", (err) => {
-            if (err) print(`[ERROR] MQTT connection error: ${err}`)
-            else print("[STATUS] MQTT connection successful")
+            if (err) console.log(`[ERROR] MQTT connection error: ${err}`)
+            else console.log("[STATUS] MQTT connection successful")
         });
     });
 
 
     // PERIODICALLY REMOVE GHOST TRAINS
-    setInterval(handleGhostTrains,60000)
+    setInterval(handleGhostTrains, 60000)
 
     // MQTT MESSAGE HANDLING
     let msgCount = 0
@@ -94,10 +116,10 @@ Promise.all([
         // message is Buffer
         parseMessage(topic, JSON.parse(message.toString()), OPTIONS)
         if (firstMessage & MEASURING_TIME) {
-            print(`[TIMER] Starting timer for ${MEASURING_TIME} seconds`)
+            console.log(`[TIMER] Starting timer for ${MEASURING_TIME} seconds`)
             setTimeout(() => {
                 client.end();
-                print(`[TIMER] Got ${msgCount} messages in ${MEASURING_TIME} seconds, averaging at ${msgCount / (MEASURING_TIME / 60)} msg/m`)
+                console.log(`[TIMER] Got ${msgCount} messages in ${MEASURING_TIME} seconds, averaging at ${msgCount / (MEASURING_TIME / 60)} msg/m`)
             }, 1000 * MEASURING_TIME)
             firstMessage = false
         }
@@ -115,7 +137,7 @@ function handleGhostTrains() {
 function initialRequest() {
     fetchData("https://rata.digitraffic.fi/api/v1/live-trains").then(data => {
         const trains = JSON.parse(data)
-        print(`[STATUS] Got ${trains.length} unfiltered trains`)
+        //console.log(`[STATUS] Got ${trains.length} unfiltered trains`)
         trains.forEach(train => {
             parseMessage("", train, OPTIONS)
         });
@@ -186,7 +208,7 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: [] }) {
         const t2 = new Date(lastUpdate.actualTime || lastUpdate.scheduledTime)
         const diff = (Number(t1) - Number(t2))
         const intervalTime = diff / (tracks.length - 1)
-        console.log(lastUpdate.stationShortCode, "=>", nextUpdate.stationShortCode, tracks.length, intervalTime / 1000)
+        //console.log(lastUpdate.stationShortCode, "=>", nextUpdate.stationShortCode, tracks.length, intervalTime / 1000)
         const interval = setInterval(updateMultiBetween, intervalTime)
         let i = 0
         function updateMultiBetween() {
@@ -212,7 +234,7 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: [] }) {
     updateLedState(track)
 
 
-    print(`[TRAIN] ${trainNumber} (${commuterLineID}) ${s.type == "between" || s.type == "multiBetween" ? `between ${s.station1} and ${s.station2}` : `at ${s.code}`}`)
+    //console.log(`[TRAIN] ${trainNumber} (${commuterLineID}) ${s.type == "between" || s.type == "multiBetween" ? `between ${s.station1} and ${s.station2}` : `at ${s.code}`}`)
 
 
     function updateLedState(track) {
@@ -222,7 +244,7 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: [] }) {
                 led.trains.push({
                     n: trainNumber,
                     l: commuterLineID,
-                    d: lastUpdate.differenceInMinutes || lastUpdate.unknownDelay,
+                    d: typeof lastUpdate.differenceInMinutes == "number" ? lastUpdate.differenceInMinutes : lastUpdate.unknownDelay,
                     t: Date.now()
                 })
             }
@@ -267,8 +289,12 @@ function findCorrectTrack(segment, lineID, timeTable) {
 
 function generateUpdates(mode) {
     return ledState.flatMap(led => {
-        const block = (ledOrder["HPL-NOA"].some(id => id == led.id) ? ledOrder["HPL-NOA"].findIndex(id => id == led.id) + 300 : ledOrder["HKI-KTS"].findIndex(id => id == led.id) + 100) + 1
-        console.log(led.trains)
+        const block = (ledOrder["HPL-NOA"].some(id => id == led.id) ? ledOrder["HPL-NOA"].findIndex(id => id == led.id) + 300 : ledOrder["HKI-KTS"].findIndex(id => id == led.id) + 100)
+        if (mode == "test") {
+            const section = sections.filter(s => (s.tracks || s.segments.flat()).some(t => t.component == led.id))
+            console.log(section, led.id)
+            return { b: [block, block], c: section.map(getTrainColorFunction(mode)), t: 0 }
+        }
         return led.trains.length ? { b: [block, block], c: led.trains.map(getTrainColorFunction(mode)), t: 0 } : []
     })
 }
@@ -278,8 +304,10 @@ function getColorTable(mode) {
             return lineColors;
         case "delay":
             return delayColors;
+        case "test":
+            return testColors;
         default:
-            return [[255,0,0]];
+            return [[255, 0, 0]];
     }
 }
 function getTrainColorFunction(mode) {
@@ -288,20 +316,68 @@ function getTrainColorFunction(mode) {
             return getTrainColorByLine;
         case "delay":
             return getTrainColorByDelay;
+        case "test":
+            return getBlockColorBySectionType;
         default:
             return () => 0;
     }
 }
 function getTrainColorByLine(t) {
-    return Object.values(lineColors).findIndex(c => c.toString() == lines[t.l].color.toString())
+    switch (t.l) {
+        case "A":
+            return 1;
+        case "E":
+            return 7;
+        case "U":
+            return 2;
+        case "Y":
+        case "L":
+        case "H":
+            return 6;
+        case "I":
+            return 4;
+        case "P":
+            return 3;
+        case "K":
+            return 5;
+        case "Z":
+            return 9;
+        case "D":
+        case "T":
+        case "R":
+            return 8;
+        // Not in service
+        case "V":
+            return 0;
+        case "O":
+            return 2;
+        default:
+            return 8;
+    }
 }
 function getTrainColorByDelay(t) {
-    if (t.d < 2) {
+    if (t.d === true) {
+        return 3
+    } else if (t.d < 2) {
         return 0
     } else if (t.d > 10) {
         return 2
     } else {
         return 1
+    }
+}
+function getBlockColorBySectionType(s) {
+    switch (s.type) {
+        case "stop":
+            return 0;
+        case "station":
+            return 1;
+        case "between":
+            return 2;
+        case "multiBetween":
+            return 3;
+        default:
+            return 4;
     }
 }
 
