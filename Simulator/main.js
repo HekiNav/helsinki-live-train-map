@@ -1,34 +1,29 @@
 const MEASURING_TIME = null //Time limit for MQTT in seconds, starts from 1st message, logs amount of messages after
 
 const OPTIONS = {
-    allowedTrainTypes: ["HL"],
+    dev: true,
+    apiVersion: "100",
     modes: [
         "lines",
         "delay"
     ]
 }
 
-const log = document.getElementById("log")
-const logContainer = document.querySelector(".logContainer")
+//const log = document.getElementById("log")
+//const logContainer = document.querySelector(".logContainer")
 const svgContainer = document.querySelector("#svgContainer")
 const modeButton = document.querySelector("#changeMode")
 const modeText = document.querySelector("#currentMode")
 
 let ledOrder
-let lines
-let sections
-let stations
-let client
 
-let ledState
-let updates = 0
 let mode = OPTIONS.modes[0]
 
-print(`[CONFIG] Train filters:<br>
+/* print(`[CONFIG] Train filters:<br>
 [CONFIG] Allowed types: ${OPTIONS.allowedTrainTypes.length ? OPTIONS.allowedTrainTypes.toString() : "all"}<br>`)
 
-print("[STATUS] Loading JSON data<br>")
-Promise.all([
+print("[STATUS] Loading JSON data<br>") */
+/* Promise.all([
     getJSON("ledsInOrder"), getJSON("lines",), getJSON("sections"), getJSON("stations")
 ]).then((jsonData) => {
     [ledOrder, lines, sections, stations] = jsonData
@@ -39,11 +34,8 @@ Promise.all([
     print("[STATUS] Requesting initial state<br>")
     loadSvg()
     initialRequest()
-
-    setInterval(reloadMap, 1000)
-
-    modeButton.addEventListener("click", switchMode)
-
+ */
+/* 
     // MQTT HANDLING
     client = mqtt.connect("wss://rata.digitraffic.fi/mqtt")
 
@@ -73,16 +65,26 @@ Promise.all([
         }
     });
 })
+ */
+
+fetch("./data/ledsInOrder.json").then(data => {
+    data.json().then(json => {
+        ledOrder = json
+        setInterval(reloadMap, 10_000)
+        modeButton.addEventListener("click", switchMode)
+    })
+
+})
 
 function switchMode() {
     const currentModeIndex = OPTIONS.modes.findIndex(m => m == mode)
-    mode = OPTIONS.modes[(currentModeIndex +1) % OPTIONS.modes.length]
+    mode = OPTIONS.modes[(currentModeIndex + 1) % OPTIONS.modes.length]
     modeText.innerHTML = mode
     reloadMap()
 }
 
 
-
+/* 
 function initialRequest() {
     fetchData("https://rata.digitraffic.fi/api/v1/live-trains").then(data => {
         const trains = JSON.parse(data)
@@ -91,8 +93,7 @@ function initialRequest() {
             parseMessage("", train, OPTIONS)
         });
     })
-}
-
+} */
 /* async function graphQL(body) {
     const response = await fetch("https://rata.digitraffic.fi/api/v2/graphql/graphql", {
         method: "POST",
@@ -103,13 +104,12 @@ function initialRequest() {
         body: body
     })
 } */
-
+/* 
 async function fetchData(url) {
     const response = await fetch(url)
     return await response.text()
-}
-
-function parseMessage(topic, message, opt = { allowedTrainTypes: [] }) {
+} */
+/* function parseMessage(topic, message, opt = { allowedTrainTypes: [] }) {
     const [endpoint,
         departureDateT,
         trainNumberT,
@@ -246,9 +246,16 @@ function findCorrectTrack(segment, lineID, timeTable) {
     }
     return remainingTracks[0]
 }
-
-function reloadMap() {
-    updates++
+ */
+async function reloadMap() {
+    const url = OPTIONS.dev ? `http://127.0.0.1:3001/hki-ltm/${OPTIONS.apiVersion}.json` : `https://hekinav-api.loophole.site/hki-ltm/${OPTIONS.apiVersion}.json`
+    const response = await fetch(url)
+    if (response.status == 200) {
+        drawMap()
+    } else {
+        alert(`API at ${url} is not responding`)
+    }
+    /* updates++
     ledState.forEach(led => {
         const svg = document.querySelector("svg")
 
@@ -265,8 +272,13 @@ function reloadMap() {
             LED.removeAttribute("data-train")
         }
 
-    })
+    }) */
 }
+function drawMap() {
+    console.log(ledOrder)
+    
+}
+/* 
 function getTrainColor(t) {
     switch (mode) {
         case "lines":
@@ -295,4 +307,4 @@ function loadSvg() {
 function print(message) {
     log.innerHTML += message
     logContainer.scrollTop = logContainer.scrollHeight
-}
+} */

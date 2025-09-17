@@ -1,8 +1,11 @@
 const express = require("express")
+const cors = require("cors")
 const mqtt = require("mqtt")
 const fs = require("node:fs/promises")
 const app = express()
 const port = 3001
+
+app.use(cors())
 
 const MEASURING_TIME = null //Time limit for MQTT in seconds, starts from 1st message, logs amount of messages after
 
@@ -278,6 +281,8 @@ function getColorTable(mode) {
             return lineColors;
         case "delay":
             return delayColors;
+        case "comp":
+            return compColors;
         default:
             return [[255,0,0]];
     }
