@@ -40,7 +40,7 @@ const lineColors = {
     6: [128, 0, 255],   // Purple
     7: [255, 0, 255],   // Magenta
     8: [255, 0, 128],   // Pink
-    9: [255, 255, 255], // Pink
+    9: [255, 255, 255], // White
 }
 
 const delayColors = {
@@ -351,6 +351,7 @@ function getTrainColorByLine(t) {
         case "L":
         case "H":
             return 6;
+        case "M":
         case "I":
             return 4;
         case "P":

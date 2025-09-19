@@ -14,13 +14,14 @@ A physical, real-time LED map of the Helsinki Region train network, powered by a
   - [Software / Firmware](#software--firmware)
   - [Getting Started](#getting-started)
   - [Web Installer](#web-installer)
+  - [Web Simulator](#web-simulator)
   - [Links](#links)
   - [Contributing](#contributing)
   - [License](#license)
 
 ---
 
-![PCB Overview Render](Images/Helsinki-LED-Train-Map_Overview.png)
+![PCB Overview Render](Images/Helsinki-LED-Train-Map_Working.JPEG)
 
 ## Features
 
@@ -59,7 +60,7 @@ A physical, real-time LED map of the Helsinki Region train network, powered by a
 The ESP32-C3 firmware is responsible for:
 
 1. Connecting to Wi-Fi
-2. Fetching live train data from the Fintraffic's [Digitraffic](https://www.digitraffic.fi/rautatieliikenne/) api
+2. Fetching live train data from the API
 3. Processing data to determine train locations
 4. Controlling WS2812B LEDs to display train positions
 
@@ -89,11 +90,22 @@ Easily flash the latest firmware to your ESP32-C3 using your browser:
 
 ---
 
+## Web Simulator
+
+View the map without having the physical pcb:
+
+[Open the Helsinki LED Train Map Web Simulator](https://hekinav.github.io/helsinki-live-train-map/sim.html)
+
+- Works with most modern browsers
+- Fetches data from the API
+
+---
+
 ## Links
 
 - [Web Installer](https://hekinav.github.io/helsinki-live-train-map//led-rails.html)
+- [Web Simulator](https://hekinav.github.io/helsinki-live-train-map//sim.html)
 - [Interactive PCB Viewer](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2FHekiNav%2Fhelsinki-live-train-map%2Ftree%2Fmain%2FPCB)
-- [GTFS Realtime Cache API](https://github.com/CDFER/GTFS-Realtime-Cache-Server)
 - [JLCPCB KiCad Library](https://github.com/CDFER/jlcpcb-kicad-library)
 
 ---

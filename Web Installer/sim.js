@@ -102,7 +102,8 @@ async function getJSON(name) {
 }
 
 function loadSvg() {
-    fetchData("./tools/output.svg").then(data => {
+    const prodUrl = "https://hekinav.github.io"
+    fetchData(window.location.href.substring(0,prodUrl.length) == prodUrl ? "./output.svg" : "./tools/output.svg").then(data => {
         svgContainer.innerHTML += data
         const svg = document.querySelector("svg")
         function resizeSVG() {
