@@ -21,7 +21,7 @@ A physical, real-time LED map of the Helsinki Region train network, powered by a
 
 ---
 
-![PCB Overview Render](Images/Helsinki-LED-Train-Map_Working.JPEG)
+![PCB Overview Render](Images/Helsinki-LED-Train-Map_Working.png)
 
 ## Features
 
