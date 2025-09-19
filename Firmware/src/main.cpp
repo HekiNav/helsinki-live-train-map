@@ -42,7 +42,10 @@ std::vector<RgbColor> colorTable;
 int blockColorIds[512];	 // Array to hold block colors
 
 int mode = 0;
-String modes[] = {String("test"), String("lines"), String("delay") };
+String modes[] = {
+	String("lines"), 
+	String("delay"), 
+	String("comp") };
 
 // --- Data structure for scheduled LED updates ---
 struct LedUpdate {
