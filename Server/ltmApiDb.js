@@ -31,7 +31,7 @@ module.exports.createDb = async function () {
 
   // Run once at startup
   console.log("Starting DB: fetching data")
-  await fetchAndCache()
+  //await fetchAndCache()
   console.log("Starting DB: cleaning up")
   await cleanup()
   console.log("DB started")

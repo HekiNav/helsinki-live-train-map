@@ -60,7 +60,13 @@ jobs:
         run: |
           mkdir -p _site/bin/Helsinki-LED-Rail-Map-V1.0.0
           cp -r "Web Installer/bin/Helsinki-LED-Rail-Map-V1.0.0/." _site/bin/Helsinki-LED-Rail-Map-V1.0.0/
+          cp -r "Web Installer/data/." _site/data/
           cp "Web Installer/led-rails.html" _site/
+          cp "Web Installer/sim.html" _site/
+          cp "Web Installer/sim.css" _site/
+          cp "Web Installer/sim.js" _site/
+          cp "Web Installer/Gotham XNarrow Medium.woff" _site/
+          cp "Web Installer/map_icon.svg" _site/
           cp "Web Installer/favicon.png" _site/
           # Add the new firmware from the artifact
           cp staging_firmware/firmware-merged.bin _site/bin/Helsinki-LED-Rail-Map-V1.0.0/firmware-merged.bin

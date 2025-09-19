@@ -87,9 +87,13 @@ module.exports.ltmApi = function () {
         })
         app.get('/100.json', (req, res) => {
             json.timestamp = Date.now() - 20
-            json.updates = generateUpdates(req.query.mode)
+
             json.colors = getColorTable(req.query.mode)
-            res.json(json)
+            generateUpdates(req.query.mode).then(updates => {
+                json.updates = updates
+                res.json(json)
+            })
+
         })
         console.log("Starting up LTM API: Listening")
         // MQTT HANDLING
@@ -229,7 +233,8 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: [] }) {
                     n: trainNumber,
                     l: commuterLineID,
                     d: typeof lastUpdate.differenceInMinutes == "number" ? lastUpdate.differenceInMinutes : lastUpdate.unknownDelay,
-                    t: Date.now()
+                    t: Date.now(),
+                    dt: departureDate
                 })
             }
         })
@@ -270,15 +275,18 @@ function findCorrectTrack(segment, lineID, timeTable) {
     }
     return remainingTracks[0]
 }
-function generateUpdates(mode) {
-    return ledState.flatMap(led => {
+async function generateUpdates(mode) {
+    return (await Promise.all(ledState.map(async led => {
         const block = (ledOrder["HPL-NOA"].some(id => id == led.id) ? ledOrder["HPL-NOA"].findIndex(id => id == led.id) + 300 : ledOrder["HKI-KTS"].findIndex(id => id == led.id) + 100)
+        let colors = []
         if (mode == "test") {
             const section = sections.filter(s => (s.tracks || s.segments.flat()).some(t => t.component == led.id))
-            return { b: [block, block], c: section.map(getTrainColorFunction(mode)), t: 0 }
+            colors = await Promise.all(section.map(getTrainColorFunction(mode)))
+        } else {
+            colors = await Promise.all(led.trains.map(getTrainColorFunction(mode)))
         }
-        return led.trains.length ? { b: [block, block], c: led.trains.map(getTrainColorFunction(mode)), t: 0 } : []
-    })
+        return led.trains.length || mode == "test" ? { b: [block, block], c: await colors, t: 0 } : []
+    }))).flat()
 }
 function getColorTable(mode) {
     switch (mode) {
@@ -308,9 +316,16 @@ function getTrainColorFunction(mode) {
             return () => 0;
     }
 }
-function getTrainColorByComposition(t) {
-
-    const loco = "Sm5"
+async function getTrainColorByComposition(t) {
+    const { data } = await db.get(`
+SELECT data
+  FROM compositions
+  WHERE trainNumber = ? AND depDate = ?
+  `, [t.n, t.dt]
+    )
+    const { journeySections } = JSON.parse(data)
+    const loco = journeySections[0].locomotives[0].locomotiveType
+    console.log(loco)
     switch (loco) {
         case "Sm2":
             return 0;
