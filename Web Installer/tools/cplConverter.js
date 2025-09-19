@@ -55,7 +55,7 @@ function parseData(cplFile) {
             height: LED_SIZE,
             fill: "none",
             stroke: "#555",
-            "stroke-width": "0.1mm",
+            "stroke-width": "0.01mm",
             transform: `translate(${LED.PosX - minX + LED_SIZE * 0.5},${LED.PosY - minY + LED_SIZE * 0.5})
             rotate(${LED.Rot * -1})`,
             id: LED.Ref

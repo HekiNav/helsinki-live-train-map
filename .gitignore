@@ -51,6 +51,10 @@ PCB/jlcpcb/
 # Node JS
 *node_modules/
 
+# Database 
+*.db
+*.db-journal
+
 # Built Visual Studio Code Extensions
 *.vsix
 

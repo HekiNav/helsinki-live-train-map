@@ -2,6 +2,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "mqtt": "^5.14.0"
+    "mqtt": "^5.14.0",
+    "node-cron": "^4.2.1",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
   }
 }

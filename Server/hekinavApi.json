@@ -1,0 +1,11 @@
+{
+    "name": "Hekinav API",
+    "path":"/",
+    "type":"listing",
+    "endpoints": [
+        {
+            "path":"hki-ltm/",
+            "desc": "API for Helsinki Live Train Map (see !a(https://github.com/hekinav/helsinki-live-train-map))"
+        }
+    ]
+}

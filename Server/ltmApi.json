@@ -1,0 +1,53 @@
+{
+    "name": "Helsinki Live Train Map API",
+    "path":"/hki-ltm",
+    "type":"docs",
+    "methods": [
+        {
+            "path":"/{version}.json?mode={mode}",
+            "desc":"JSON data consumed by the live train map",
+            "version": {
+                "type": "3-digit integer",
+                "desc": "Firmware version of the board. Version x.y.z => xyz",
+                "values": [
+                    "100"
+                ]
+            },
+            "mode": {
+                "type": "string",
+                "desc": "Display mode of the map",
+                "values": [
+                    "lines",
+                    "delay",
+                    "test"
+                ]
+            },
+            "examples": [
+                {
+                    "version":"100",
+                    "mode":"lines"
+                },
+                {
+                    "version":"100",
+                    "mode":"test"
+                }
+            ]
+        },
+        {
+            "path":"/ping?msg={message}",
+            "desc":"Test method to see if the API is running correctly",
+            "message": {
+                "type": "string",
+                "desc": "Test string to be echoed back by the server",
+                "values": [
+                    "any string"
+                ]
+            },
+            "examples": [
+                {
+                    "message":"Hello World!"
+                }
+            ]
+        }
+    ]
+}
