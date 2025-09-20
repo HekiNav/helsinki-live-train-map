@@ -19,7 +19,9 @@
                 "values": [
                     "lines",
                     "delay",
-                    "test"
+                    "test",
+                    "comp",
+                    "train"
                 ]
             },
             "examples": [

@@ -6,7 +6,8 @@ const OPTIONS = {
     modes: [
         "lines",
         "delay",
-        "comp"
+        "comp",
+        "train"
     ]
 }
 
@@ -18,12 +19,14 @@ const modeText = document.querySelector("#currentMode")
 
 let ledOrder
 let mapData = {
-    colors:{},
+    colors: {},
     updates: []
 }
 
 let mode = OPTIONS.modes[0]
 let updates = 0
+const prodUrl = "https://hekinav.github.io"
+const isProd = window.location.href.substring(0, prodUrl.length) == prodUrl
 
 Promise.all([fetch("./data/ledsInOrder.json"), loadSvg()]).then(([data, _]) => {
     data.json().then(json => {
@@ -57,7 +60,7 @@ async function fetchData(url) {
 }
 
 async function reloadMap() {
-    const url = OPTIONS.dev ? `http://127.0.0.1:3001/hki-ltm/${OPTIONS.apiVersion}.json?mode=${mode}` : `https://hekinav-api.loophole.site/hki-ltm/${OPTIONS.apiVersion}.json?mode=${mode}`
+    const url = !isProd && OPTIONS.dev ? `http://127.0.0.1:3001/hki-ltm/${OPTIONS.apiVersion}.json?mode=${mode}` : `https://hekinav-api.loophole.site/hki-ltm/${OPTIONS.apiVersion}.json?mode=${mode}`
     const response = await fetch(url)
     if (response.status == 200) {
         response.json().then(data => {
@@ -72,18 +75,21 @@ function drawMap() {
     const colors = mapData.colors
     updates++
     svg.querySelectorAll("rect").forEach(led => led.setAttribute("fill", "none"))
-
     mapData.updates.forEach(update => {
         const LED = svg.querySelector("rect#" + getLedIdFromIndex(update.b[1]))
+        let color = "none"
         if (update.c.length == 1) {
-            LED.setAttribute("fill", `rgb(${colors[update.c[0]]})`)
+            color = `rgb(${colors[update.c[0]]})`
+
         } else if (update.c.length > 1) {
             const i = updates % update.c.length
-            LED.setAttribute("fill", `rgb(${colors[update.c[i]]})`)
-        } else {
-            LED.setAttribute("fill", "none")
-        }
+            color = `rgb(${colors[update.c[i]]})`
 
+        }
+        LED.setAttribute("fill", color)
+        LED.setAttribute("style", `
+                filter: drop-shadow(0px 0px .5px ${color});
+                `)
     })
 }
 function getLedIdFromIndex(i) {
@@ -102,8 +108,7 @@ async function getJSON(name) {
 }
 
 function loadSvg() {
-    const prodUrl = "https://hekinav.github.io"
-    fetchData(window.location.href.substring(0,prodUrl.length) == prodUrl ? "./output.svg" : "./tools/output.svg").then(data => {
+    fetchData(isProd ? "./output.svg" : "./tools/output.svg").then(data => {
         svgContainer.innerHTML += data
         const svg = document.querySelector("svg")
         function resizeSVG() {

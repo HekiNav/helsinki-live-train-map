@@ -8,12 +8,15 @@ const { createDb } = require("./ltmApiDb")
 const app = express()
 
 const OPTIONS = {
-    allowedTrainTypes: ["HV", "HL"]
+    allowedTrainTypes: {
+        default: ["HL", "HV"],
+        train: [],
+        comp: []
+    }
 }
 
 
 let ledOrder
-let lines
 let sections
 let stations
 let client
@@ -27,7 +30,7 @@ const testColors = {
     4: [0, 0, 255],
 }
 
-const lineColors = {
+const fullColors = {
     0: [255, 0, 0],     // Red
     1: [255, 128, 0],   // Orange
     2: [255, 255, 0],   // Yellow
@@ -48,13 +51,6 @@ const delayColors = {
     1: [255, 255, 0],
     2: [255, 0, 0],
     2: [0, 255, 255],
-}
-const compColors = {
-    0: [255, 0, 0],   // Red    Sm2
-    1: [255, 255, 0], // Yellow Sm7
-    2: [0, 255, 0],   // Green  Sm4
-    3: [128, 0, 255], // Purple Sm5
-    4: [255, 0, 128], // Pink   Other
 }
 
 let ledState
@@ -79,7 +75,7 @@ module.exports.ltmApi = function () {
             timestamp: 0,
             update: 5,
             colors:
-                lineColors
+                fullColors
             , updates: []
         }
         app.get('/ping', (req, res) => {
@@ -101,7 +97,7 @@ module.exports.ltmApi = function () {
 
         //train-tracking/<departure_date,train_number,type,station,track_section,previous_station,next_station,previous_track_section,next_track_section>
         client.on("connect", () => {
-            client.subscribe("trains/+/+/Commuter/HL/#", (err) => {
+            client.subscribe("trains/+/+/+/+/#", (err) => {
                 if (err) console.error(`LTM API: MQTT connection error: ${err}`)
                 else console.log("Starting up LTM API: Connected to Digitraffic")
             });
@@ -139,7 +135,7 @@ async function fetchData(url) {
     const response = await fetch(url)
     return await response.text()
 }
-function parseMessage(topic, message, opt = { allowedTrainTypes: [] }) {
+function parseMessage(topic, message, opt = { allowedTrainTypes: { default: [] } }) {
     const [endpoint,
         departureDateT,
         trainNumberT,
@@ -164,7 +160,6 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: [] }) {
         deleted,
         timeTableRows } = message
     // Filters
-    if (opt.allowedTrainTypes.length && !opt.allowedTrainTypes.find(type => type == trainType)) return null
     if (!runningCurrently) {
         return null
     }
@@ -180,12 +175,13 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: [] }) {
     if (lastUpdate.type == "ARRIVAL") {
         s = sections.find(sec => sec.code == lastUpdate.stationShortCode)
         if (!s) {
-            console.error("Could not find last update point in data", timeTableRows, lastUpdate)
+            //console.error("Could not find last update point in data", timeTableRows, lastUpdate)
+            return null
         }
     } else {
         s = sections.find(sec => (sec.station1 == lastUpdate.stationShortCode && sec.station2 == nextUpdate.stationShortCode) || (sec.station2 == lastUpdate.stationShortCode && sec.station1 == nextUpdate.stationShortCode))
         if (!s) {
-            console.error("Could not find last update point in data", lastUpdate.stationShortCode, nextUpdate.stationShortCode)
+            //console.error("Could not find last update point in data", lastUpdate.stationShortCode, nextUpdate.stationShortCode)
             return null
         }
     }
@@ -212,10 +208,10 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: [] }) {
         }
         track = tracks[0]
     } else {
-        track = findCorrectTrack(s, commuterLineID, timeTableRows)
+        track = findCorrectTrack(s, commuterLineID.length ? commuterLineID : null, timeTableRows)
     }
     if (!track) {
-        console.error("No track", s, timeTableRows, commuterLineID)
+        console.error("No track", s, trainNumber, trainType)
         return null
     }
     if (track.length) track = track[0]
@@ -234,7 +230,8 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: [] }) {
                     l: commuterLineID,
                     d: typeof lastUpdate.differenceInMinutes == "number" ? lastUpdate.differenceInMinutes : lastUpdate.unknownDelay,
                     t: Date.now(),
-                    dt: departureDate
+                    dt: departureDate,
+                    ty: trainType
                 })
             }
         })
@@ -242,7 +239,7 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: [] }) {
 }
 function getLastUpdate(timeTable) {
     const last = timeTable[timeTable.findIndex(row => !row.actualTime) - 1]
-    if (!last && timeTable[0].trainReady) {
+    if (!last && timeTable[0] && timeTable[0].trainReady) {
 
         let update = timeTable[0]
         update.type = "ARRIVAL"
@@ -257,25 +254,26 @@ function findCorrectMultiTrack(segment, lineID, timeTable) {
 }
 function findCorrectTrack(segment, lineID, timeTable) {
     let remainingTracks = segment.tracks
-
-    if (remainingTracks.length > 1 && !segment.equalTracksException && !remainingTracks.find(t => !t.lines)) remainingTracks = remainingTracks.filter(t => t.lines.find(l => l == lineID))
-    if ((lineID == "I" || lineID == "P") && remainingTracks.length > 1) {
+    const line = lineID || "-"
+    if (remainingTracks.length > 1 && !segment.equalTracksException && !remainingTracks.find(t => !t.lines)) remainingTracks = remainingTracks.filter(t => t.lines.find(l => l == line))
+    if ((line == "I" || line == "P") && remainingTracks.length > 1) {
         let railwayLine = ""
-        if (lineID == "I" && timeTable[timeTable.length - 4].actualTime || lineID == "P" && !timeTable[timeTable.length - 4].actualTime) {
+        if (line == "I" && timeTable[timeTable.length - 4].actualTime || line == "P" && !timeTable[timeTable.length - 4].actualTime) {
             railwayLine = "coastal"
         } else {
             railwayLine = "main"
         }
         remainingTracks = remainingTracks.filter(t => t.line == railwayLine)
     }
-    if (remainingTracks.length != 1 && !segment.equalTracksException) {
+    if (remainingTracks.length != 1 && !segment.equalTracksException && line != "-") {
         console.error("Could not filter tracks")
-        console.log(segment, lineID)
+        console.log(segment, line)
         return null
     }
     return remainingTracks[0]
 }
 async function generateUpdates(mode) {
+    const allowedTrainTypes = OPTIONS.allowedTrainTypes[mode] || OPTIONS.allowedTrainTypes.default
     return (await Promise.all(ledState.map(async led => {
         const block = (ledOrder["HPL-NOA"].some(id => id == led.id) ? ledOrder["HPL-NOA"].findIndex(id => id == led.id) + 300 : ledOrder["HKI-KTS"].findIndex(id => id == led.id) + 100)
         let colors = []
@@ -283,21 +281,21 @@ async function generateUpdates(mode) {
             const section = sections.filter(s => (s.tracks || s.segments.flat()).some(t => t.component == led.id))
             colors = await Promise.all(section.map(getTrainColorFunction(mode)))
         } else {
-            colors = await Promise.all(led.trains.map(getTrainColorFunction(mode)))
+            colors = await Promise.all(led.trains.filter(t => !(allowedTrainTypes.length) || allowedTrainTypes.find(type => type == t.ty)).map(getTrainColorFunction(mode)))
         }
         return led.trains.length || mode == "test" ? { b: [block, block], c: await colors, t: 0 } : []
     }))).flat()
 }
 function getColorTable(mode) {
     switch (mode) {
-        case "lines":
-            return lineColors;
         case "delay":
             return delayColors;
         case "test":
             return testColors;
+        case "lines":
         case "comp":
-            return compColors;
+        case "train":
+            return fullColors;
         default:
             return [[255, 0, 0]];
     }
@@ -312,31 +310,40 @@ function getTrainColorFunction(mode) {
             return getBlockColorBySectionType;
         case "comp":
             return getTrainColorByComposition;
+        case "train":
+            return getTrainColorByType;
         default:
             return () => 0;
     }
 }
 async function getTrainColorByComposition(t) {
-    const { data } = await db.get(`
+    const response = await db.get(`
 SELECT data
   FROM compositions
   WHERE trainNumber = ? AND depDate = ?
   `, [t.n, t.dt]
     )
-    const { journeySections } = JSON.parse(data)
-    const loco = journeySections[0].locomotives[0].locomotiveType
-    console.log(loco)
+    const loco = response ? JSON.parse(response.data).journeySections[0].locomotives[0].locomotiveType : "N/A"
     switch (loco) {
         case "Sm2":
             return 0;
+        case "Sm3":
+            return 3;
         case "Sm7":
             return 1;
         case "Sm4":
             return 2;
-        case "Sm5":
-            return 3;
-        default:
+        case "Sr2":
             return 4;
+        case "Sr3":
+            return 5;
+        case "Sm5":
+            return 6;
+        case "N/A":
+            return 8;
+        default:
+            console.log(loco)
+            return 9;
     }
 }
 function getTrainColorByLine(t) {
@@ -371,6 +378,25 @@ function getTrainColorByLine(t) {
             return 2;
         default:
             return 8;
+    }
+}
+function getTrainColorByType(t) {
+    switch (t.ty) {
+        case "IC":
+            return 0;
+        case "HL":
+            return 3;
+        case "S":
+            return 2;
+        case "T":
+            return 4;
+        case "VET":
+            return 1;
+        case "SAA":
+        case "W":
+            return 5;
+        default:
+            return 9;
     }
 }
 function getTrainColorByDelay(t) {
