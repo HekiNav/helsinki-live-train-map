@@ -74,7 +74,12 @@ function drawMap() {
     const svg = document.querySelector("svg")
     const colors = mapData.colors
     updates++
-    svg.querySelectorAll("rect").forEach(led => led.setAttribute("fill", "none"))
+    svg.querySelectorAll("rect").forEach(led => {
+        led.setAttribute("fill", "none")
+        led.setAttribute("style", `
+                filter: drop-shadow(0px 0px .5px none);
+                `)
+    })
     mapData.updates.forEach(update => {
         const LED = svg.querySelector("rect#" + getLedIdFromIndex(update.b[1]))
         let color = "none"
@@ -84,7 +89,6 @@ function drawMap() {
         } else if (update.c.length > 1) {
             const i = updates % update.c.length
             color = `rgb(${colors[update.c[i]]})`
-
         }
         LED.setAttribute("fill", color)
         LED.setAttribute("style", `
