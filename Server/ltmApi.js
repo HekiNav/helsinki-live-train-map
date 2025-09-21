@@ -10,7 +10,7 @@ const app = express()
 const OPTIONS = {
     allowedTrainTypes: {
         default: ["HL", "HV"],
-        train: [],
+        train: [], //all
         comp: []
     }
 }
@@ -265,14 +265,12 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: { default: [] }
         const diff = (Number(t1) - Number(t2))
         const intervalTime = diff / (tracks.length)
         const interval = setInterval(updateMultiBetween, intervalTime)
-        console.log( lastUpdate.stationShortCode, nextUpdate.stationShortCode, intervalTime/1000/60)
         let i = 0
         updateMultiBetween()
         function updateMultiBetween() {
-            const track = tracks[i] || findCorrectTrack(sections.find(sec => sec.code == nextUpdate.stationShortCode),commuterLineID, timeTableRows)
+            const track = tracks[i] || findCorrectTrack(sections.find(sec => sec.code == nextUpdate.stationShortCode), commuterLineID, timeTableRows)
             const lastTrack = tracks[i - 1]
             if (i >= tracks.length || (i != 0 && !(ledState.find(led => led.id == lastTrack.component).trains.find(t => t.n == trainNumber)))) {
-                console.log(`MultiBetween handler cleared due to ${i > tracks.length ? "running to end of tracks" : "interruption"}`)
                 clearInterval(interval)
                 return
             }
@@ -294,7 +292,9 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: { default: [] }
 
 
 
+
     function updateLedState(track) {
+        const previousLed = ledState.find(led => led.id != track.component && led.trains.find(t => t.n == trainNumber))
         ledState.forEach(led => {
             led.trains = led.trains.filter(t => t.n != trainNumber)
             if (led.id == track.component) {
@@ -304,7 +304,8 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: { default: [] }
                     d: typeof lastUpdate.differenceInMinutes == "number" ? lastUpdate.differenceInMinutes : lastUpdate.unknownDelay,
                     t: Date.now(),
                     dt: departureDate,
-                    ty: trainType
+                    ty: trainType,
+                    p: previousLed && previousLed.id != track.component ? previousLed.id : null
                 })
             }
         })
@@ -348,16 +349,20 @@ function findCorrectTrack(segment, lineID, timeTable) {
 async function generateUpdates(mode) {
     const allowedTrainTypes = OPTIONS.allowedTrainTypes[mode] || OPTIONS.allowedTrainTypes.default
     return (await Promise.all(ledState.map(async led => {
-        const block = (ledOrder["HPL-NOA"].some(id => id == led.id) ? ledOrder["HPL-NOA"].findIndex(id => id == led.id) + 300 : ledOrder["HKI-KTS"].findIndex(id => id == led.id) + 100)
         let colors = []
+        const block = componentIdtoBlock(led.id)
+        const prevblock = componentIdtoBlock((led.trains.find(t => t.p) || { p: null }).p)
         if (mode == "test") {
             const section = sections.filter(s => (s.tracks || s.segments.flat()).some(t => t.component == led.id))
             colors = await Promise.all(section.map(getTrainColorFunction(mode)))
         } else {
             colors = await Promise.all(led.trains.filter(t => !(allowedTrainTypes.length) || allowedTrainTypes.find(type => type == t.ty)).map(getTrainColorFunction(mode)))
         }
-        return led.trains.length || mode == "test" ? { b: [block, block], c: await colors, t: Date.now() } : []
+        return led.trains.length || mode == "test" ? { b: [prevblock, block], c: colors, t: Date.now() } : []
     }))).flat()
+}
+function componentIdtoBlock(led) {
+    return led ? (ledOrder["HPL-NOA"].some(id => id == led) ? ledOrder["HPL-NOA"].findIndex(id => id == led) + 300 : ledOrder["HKI-KTS"].findIndex(id => id == led) + 100) : null
 }
 function getColorTable(mode) {
     switch (mode) {

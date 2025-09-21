@@ -15,6 +15,7 @@ A real-time PCB map of the Helsinki Region train network, powered by an ESP32-C3
   - [Getting Started](#getting-started)
   - [Web Installer](#web-installer)
   - [Web Simulator](#web-simulator)
+  - [Stand](#stand)
   - [Server](#server)
   - [Links](#links)
   - [Contributing](#contributing)
@@ -53,7 +54,8 @@ A real-time PCB map of the Helsinki Region train network, powered by an ESP32-C3
 - Designed in **KiCad V9.0** using [JLCPCB KiCad Library](https://github.com/CDFER/jlcpcb-kicad-library)
 - **View Online:** [Interactive PCB Layout (Kicanvas)](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2FHekiNav%2Fhelsinki-live-train-map%2Ftree%2Fmain%2FPCB)
 - **Source Files:** `/PCB` directory
-
+### Schematic
+Led chains are located on other pages
 ![Schematic](Images/Schematic.png)
 
 ---
@@ -76,10 +78,26 @@ The ESP32-C3 firmware is responsible for:
    - Use the [Web Installer](#web-installer) (recommended, no drivers needed)
    - Or flash manually using PlatformIO (`Firmware/` directory)
 2. **Connect to Wi-Fi:**
-   - On first boot, use the web installer interface to configure Wi-Fi credentials.
+   - On first boot, use the web installer interface to configure Wi-Fi credentials. They are saved locally on the device.
 3. **Power the Board:**
    - Use a 5V USB-C power supply capable of at least ~1A (~2A recommended for compatibility with higher brightness settings).
 4. **Enjoy the Live Train Map!**
+
+### Status LEDs
+| LED | Light | Meaning |
+|-----|-------|---------|
+| top (🔌)    |🟩 green | The board is powered
+| top (🔌)    |⬛ none  | The board is not powered
+| top (🔌)    |🟥 red   | This shouldn't happen although it's techically possible if theres isuues in the pcb
+|
+| middle (ᯤ)  |🟩 green | Connected to the API
+| middle (ᯤ)  |⬛ none  | Connecting to the API
+| middle (ᯤ)  |🟥 red   | Failed to connect to API
+|
+| bottom (🌐)  |🟩 green (blinking) | Connecting to wifi
+| bottom (🌐)  |🟩 green            | Connected to wifi
+| bottom (🌐)  |⬛ none             | Failed to boot
+| bottom (🌐)  |🟥 red              | Failed to connect to wifi
 
 ---
 
@@ -105,9 +123,15 @@ View the map without having the physical pcb:
 - Fetches data from the API
 
 ---
+## Stand
+
+A 3d-printable stand to hold up the board. Files are located in `/Stand`
+
+---
+
 ## Server
 
-Processes the data from [digitraffic](https://www.digitraffic.fi/rautatieliikenne/).
+Processes train running data from [digitraffic](https://rata.digitraffic.fi/). Documenation is available at https://www.digitraffic.fi/rautatieliikenne. Most of it is only available in finnish.
 
 ### Main packages:
 - express: API handling
@@ -115,7 +139,7 @@ Processes the data from [digitraffic](https://www.digitraffic.fi/rautatieliikenn
 - node-sqlite & sqlite3: Database for cached train compositions and stats
 - node-cron: Cron jobs for recaching data and cleaning the database
 
-The api is tunneled to [hekinav-api.loophole.site](https://hekinav-api.loophole.site/).
+The api is tunneled to [hekinav-api.loophole.site](https://hekinav-api.loophole.site/). Uptime is not guaranteed.
 
 ### Running locally
 

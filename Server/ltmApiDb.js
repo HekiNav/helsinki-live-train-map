@@ -40,7 +40,8 @@ module.exports = {
 
     // Run once at startup
     console.log("Starting DB: fetching data")
-    await fetchAndCache()
+    // Commented because takes too long and isnt necessary every time
+    //await fetchAndCache()
     console.log("Starting DB: cleaning up")
     await cleanup()
     console.log("DB started")

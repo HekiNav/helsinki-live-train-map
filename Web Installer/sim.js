@@ -82,6 +82,7 @@ function drawMap() {
     })
     mapData.updates.forEach(update => {
         const LED = svg.querySelector("rect#" + getLedIdFromIndex(update.b[1]))
+        const prevLED = svg.querySelector("rect#" + getLedIdFromIndex(update.b[0])) 
 
         let color = "none"
         if (update.c.length == 1) {
@@ -95,6 +96,7 @@ function drawMap() {
         LED.setAttribute("style", `
                 filter: drop-shadow(0px 0px .5px ${color});
                 `)
+        
     })
 }
 function getLedIdFromIndex(i) {
