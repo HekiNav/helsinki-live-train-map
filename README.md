@@ -37,10 +37,11 @@ A real-time PCB map of the Helsinki Region train network, powered by an ESP32-C3
 ## Hardware
 
 - **Microcontroller:** Expressif ESP32-C3FH4 (RISC-V, 160 MHz, 4 MB Flash, QFN32)
-- **Level shifter:** texas Instruments SN74LVC4245APWR (3.3V to 5V)
+- **Level shifter:** Texas Instruments SN74LVC4245APWR (3.3V to 5V)
 - **LEDs:** ~290 x XingLight XL-1615RGBC-WS2812B (1.6mm x 1.5mm)
 - **PCB:** 249mm x 71.5mm, JLCPCB-friendly
 - **Antenna:** On-board PCB antenna ([TI CC2430DB design](https://www.ti.com/lit/ug/swru125/swru125.pdf))
+- **Ports:** Two USB Type-C ports for redundancy
 
 ![ESP32-C3 PCB Render](Images/Helsinki-LED-Train-Map_ESP32_LVLS.png)
 
@@ -107,6 +108,12 @@ View the map without having the physical pcb:
 ## Server
 
 Processes the data from [digitraffic](https://www.digitraffic.fi/rautatieliikenne/).
+
+### Main packages:
+- express: API handling
+- mqtt: Listening to MQTT train messages 
+- node-sqlite & sqlite3: Database for cached train compositions and stats
+- node-cron: Cron jobs for recaching data and cleaning the database
 
 The api is tunneled to [hekinav-api.loophole.site](https://hekinav-api.loophole.site/).
 
