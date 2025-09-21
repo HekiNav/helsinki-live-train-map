@@ -3,7 +3,7 @@ const fs = require("node:fs/promises")
 const express = require("express")
 const { generateDocs } = require("./modules/docsCreator")
 const apiDocsJson = require("./ltmApi.json")
-const { createDb } = require("./ltmApiDb")
+const { createDb, createEndpointStat, incrementEndpointStat, getEndpointStat } = require("./ltmApiDb")
 
 const app = express()
 
@@ -64,12 +64,6 @@ module.exports.ltmApi = function () {
         // INITIAL STATE REQUEST
 
         initialRequest()
-
-        //setInterval(reloadMap, 1000)
-
-        app.get('/', (req, res) => {
-            res.send(generateDocs(apiDocsJson))
-        })
         const json = {
             version: "100",
             timestamp: 0,
@@ -78,25 +72,82 @@ module.exports.ltmApi = function () {
                 fullColors
             , updates: []
         }
-        app.get('/ping', (req, res) => {
-            res.send(req.query.msg || "Hello World!")
-        })
-        app.get('/100.json', (req, res) => {
-            json.timestamp = Date.now() - 20
+        //setInterval(reloadMap, 1000)
+        createEndpoints([
+            {
+                epLoc: "local",
+                statType: "user_fetches",
+                epPath: "/",
+                method: "get",
+                on: (req, res) => {
+                    res.send(generateDocs(apiDocsJson))
+                }
+            },
+            {
+                epLoc: "local",
+                statType: "user_fetches",
+                epPath: "/ping",
+                method: "get",
+                on: (req, res) => {
+                    res.send(req.query.msg || "Hello World!")
+                }
+            },
+            {
+                epLoc: "local",
+                statType: "user_fetches",
+                epPath: "/100.json",
+                method: "get",
+                on: (req, res) => {
+                    json.timestamp = Date.now() - 20
 
-            json.colors = getColorTable(req.query.mode)
-            generateUpdates(req.query.mode).then(updates => {
-                json.updates = updates
-                res.json(json)
-            })
+                    json.colors = getColorTable(req.query.mode)
+                    generateUpdates(req.query.mode).then(updates => {
+                        json.updates = updates
+                        res.json(json)
+                    })
+                }
+            },
+            {
+                epLoc: "local",
+                statType: "user_fetches",
+                epPath: "/stats",
+                method: "get",
+                on: (req, res) => {
+                    if (!req.query.stat || !req.query.stat.length) res.status(400).json({ message: "Invalid parameter 'stat': missing" })
+                    const stat = req.query.stat.split("..")
+                    if (stat.length != 2) res.status(400).json({ message: "Invalid parameter 'stat': bad syntax" })
+                    getEndpointStat({
+                        epLoc: stat[0],
+                        epPath: stat[1]
+                    }).then(response => {
+                        if (!response) res.status(400).json({ message: "Invalid parameter 'stat': bad values" })
+                        res.json(response)
+                    })
+                }
+            }
+        ], app)
 
-        })
         console.log("Starting up LTM API: Listening")
         // MQTT HANDLING
-        client = mqtt.connect("wss://rata.digitraffic.fi/mqtt")
-
+        const mqttUrl = "wss://rata.digitraffic.fi/mqtt"
+        const mqttConnectStatdata =
+        {
+            epLoc: "digitraffic",
+            statType: "server_mqtt_connections",
+            epPath: mqttUrl
+        }
+        const mqttMessageStatdata =
+        {
+            epLoc: "digitraffic",
+            statType: "server_mqtt_messages",
+            epPath: "live-trains"
+        }
+        client = mqtt.connect(mqttUrl)
+        createEndpointStat(mqttConnectStatdata)
+        createEndpointStat(mqttMessageStatdata)
         //train-tracking/<departure_date,train_number,type,station,track_section,previous_station,next_station,previous_track_section,next_track_section>
         client.on("connect", () => {
+            incrementEndpointStat(mqttConnectStatdata)
             client.subscribe("trains/+/+/+/+/#", (err) => {
                 if (err) console.error(`LTM API: MQTT connection error: ${err}`)
                 else console.log("Starting up LTM API: Connected to Digitraffic")
@@ -110,11 +161,21 @@ module.exports.ltmApi = function () {
         // MQTT MESSAGE HANDLING
 
         client.on("message", (topic, message) => {
+            incrementEndpointStat(mqttMessageStatdata)
             // message is Buffer
             parseMessage(topic, JSON.parse(message.toString()), OPTIONS)
         });
     })
     return app
+}
+function createEndpoints(eps, app) {
+    eps.forEach(async ep => {
+        if (ep.epLoc = "local") app[ep.method](ep.epPath, (...params) => {
+            incrementEndpointStat(ep)
+            ep.on(...params)
+        })
+        await createEndpointStat(ep)
+    })
 }
 function handleGhostTrains() {
     const now = Date.now()
@@ -123,7 +184,16 @@ function handleGhostTrains() {
     });
 }
 function initialRequest() {
-    fetchData("https://rata.digitraffic.fi/api/v1/live-trains").then(data => {
+    const url = "https://rata.digitraffic.fi/api/v1/live-trains"
+    const statdata =
+    {
+        epLoc: "digitraffic",
+        statType: "server_fetches",
+        epPath: url
+    }
+    createEndpointStat(statdata)
+    fetchData(url).then(data => {
+        incrementEndpointStat(statdata)
         const trains = JSON.parse(data)
         trains.forEach(train => {
             parseMessage("", train, OPTIONS)
@@ -193,18 +263,21 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: { default: [] }
         const t1 = new Date(nextUpdate.liveEstimateTime || nextUpdate.scheduledTime)
         const t2 = new Date(lastUpdate.actualTime || lastUpdate.scheduledTime)
         const diff = (Number(t1) - Number(t2))
-        const intervalTime = diff / (tracks.length - 1)
+        const intervalTime = diff / (tracks.length)
         const interval = setInterval(updateMultiBetween, intervalTime)
+        console.log( lastUpdate.stationShortCode, nextUpdate.stationShortCode, intervalTime/1000/60)
         let i = 0
+        updateMultiBetween()
         function updateMultiBetween() {
-            i++
-            const track = tracks[i]
+            const track = tracks[i] || findCorrectTrack(sections.find(sec => sec.code == nextUpdate.stationShortCode),commuterLineID, timeTableRows)
             const lastTrack = tracks[i - 1]
-            if (i >= tracks.length || !(ledState.find(led => led.id == lastTrack.component).trains.find(t => t.n == trainNumber))) {
+            if (i >= tracks.length || (i != 0 && !(ledState.find(led => led.id == lastTrack.component).trains.find(t => t.n == trainNumber)))) {
+                console.log(`MultiBetween handler cleared due to ${i > tracks.length ? "running to end of tracks" : "interruption"}`)
                 clearInterval(interval)
                 return
             }
             updateLedState(track)
+            i++
         }
         track = tracks[0]
     } else {
@@ -254,7 +327,7 @@ function findCorrectMultiTrack(segment, lineID, timeTable) {
 }
 function findCorrectTrack(segment, lineID, timeTable) {
     let remainingTracks = segment.tracks
-    const line = lineID || "-"
+    const line = lineID == "V" || !lineID ? "-" : lineID
     if (remainingTracks.length > 1 && !segment.equalTracksException && !remainingTracks.find(t => !t.lines)) remainingTracks = remainingTracks.filter(t => t.lines.find(l => l == line))
     if ((line == "I" || line == "P") && remainingTracks.length > 1) {
         let railwayLine = ""
@@ -283,7 +356,7 @@ async function generateUpdates(mode) {
         } else {
             colors = await Promise.all(led.trains.filter(t => !(allowedTrainTypes.length) || allowedTrainTypes.find(type => type == t.ty)).map(getTrainColorFunction(mode)))
         }
-        return led.trains.length || mode == "test" ? { b: [block, block], c: await colors, t: 0 } : []
+        return led.trains.length || mode == "test" ? { b: [block, block], c: await colors, t: Date.now() } : []
     }))).flat()
 }
 function getColorTable(mode) {
@@ -351,9 +424,9 @@ function getTrainColorByLine(t) {
         case "A":
             return 1;
         case "E":
-            return 7;
-        case "U":
             return 2;
+        case "U":
+            return 7;
         case "Y":
         case "L":
         case "H":

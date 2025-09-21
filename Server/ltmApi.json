@@ -50,6 +50,30 @@
                     "message":"Hello World!"
                 }
             ]
+        },
+        {
+            "path":"/stats?stat={stat}",
+            "desc":"Test method to see if the API is running correctly",
+            "stat": {
+                "type": "string",
+                "desc": "Statistic id to get",
+                "values": [
+                    "local..{any endpoint path in the /hki-ltm api}",
+                    "digitraffic..wss://rata.digitraffic.fi/mqtt",
+                    "digitraffic..live-trains"
+                ]
+            },
+            "examples": [
+                {
+                    "stat":"local../stats"
+                },
+                {
+                    "stat":"local../100.json"
+                },
+                {
+                    "stat":"digitraffic..wss://rata.digitraffic.fi/mqtt"
+                }
+            ]
         }
     ]
 }

@@ -1,12 +1,12 @@
 # Helsinki Live LED Train Map
 
-A physical, real-time LED map of the Helsinki Region train network, powered by an ESP32-C3 microcontroller. Train movements are displayed using addressable RGB LEDs, with live data fetched over Wi-Fi.
+A real-time PCB map of the Helsinki Region train network, powered by an ESP32-C3 microcontroller. Train movements are displayed using addressable RGB LEDs, with live data fetched over Wi-Fi.
 
 ---
 
 ## Table of Contents
 
-- [Helsinki Live LED Train Map](#auckland-live-led-train-map)
+- [Helsinki Live LED Train Map](#helsinki-live-led-train-map)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Hardware](#hardware)
@@ -15,6 +15,7 @@ A physical, real-time LED map of the Helsinki Region train network, powered by a
   - [Getting Started](#getting-started)
   - [Web Installer](#web-installer)
   - [Web Simulator](#web-simulator)
+  - [Server](#server)
   - [Links](#links)
   - [Contributing](#contributing)
   - [License](#license)
@@ -25,7 +26,7 @@ A physical, real-time LED map of the Helsinki Region train network, powered by a
 
 ## Features
 
-- **Real-time Train Tracking:** Displays the approximate locations of trains on the Helsinki region network.
+- **Real-time Train Tracking:** Displays the approximate locations of trains on the HSL and VR commuter network.
 - **Addressable LEDs:** ~290 WS2812B-compatible RGB LEDs (1.6x1.5mm) for a vibrant display.
 - **Wi-Fi Connectivity:** ESP32-C3's built-in Wi-Fi fetches live train data.
 - **Custom PCB:** Designed for JLCPCB manufacturing limits.
@@ -35,8 +36,9 @@ A physical, real-time LED map of the Helsinki Region train network, powered by a
 
 ## Hardware
 
-- **Microcontroller:** ESP32-C3 (RISC-V, 160 MHz, 4 MB Flash, QFN32)
-- **LEDs:** ~290 x XL-1615RGBC-WS2812B (1.6mm x 1.5mm)
+- **Microcontroller:** Expressif ESP32-C3FH4 (RISC-V, 160 MHz, 4 MB Flash, QFN32)
+- **Level shifter:** texas Instruments SN74LVC4245APWR (3.3V to 5V)
+- **LEDs:** ~290 x XingLight XL-1615RGBC-WS2812B (1.6mm x 1.5mm)
 - **PCB:** 249mm x 71.5mm, JLCPCB-friendly
 - **Antenna:** On-board PCB antenna ([TI CC2430DB design](https://www.ti.com/lit/ug/swru125/swru125.pdf))
 
@@ -62,7 +64,8 @@ The ESP32-C3 firmware is responsible for:
 1. Connecting to Wi-Fi
 2. Fetching live train data from the API
 3. Processing data to determine train locations
-4. Controlling WS2812B LEDs to display train positions
+4. Controlling WS2812B LED chains to display train positions
+5. Handling button inputs and status LEDs
 
 ---
 
@@ -75,7 +78,7 @@ The ESP32-C3 firmware is responsible for:
    - On first boot, use the web installer interface to configure Wi-Fi credentials.
 3. **Power the Board:**
    - Use a 5V USB-C power supply capable of at least ~1A (~2A recommended for compatibility with higher brightness settings).
-4. **Enjoy the Live Map!**
+4. **Enjoy the Live Train Map!**
 
 ---
 
@@ -96,8 +99,26 @@ View the map without having the physical pcb:
 
 [Open the Helsinki LED Train Map Web Simulator](https://hekinav.github.io/helsinki-live-train-map/sim.html)
 
+- Use the map mode button to switch display modes, just like on the real thing
 - Works with most modern browsers
 - Fetches data from the API
+
+---
+## Server
+
+Processes the data from [digitraffic](https://www.digitraffic.fi/rautatieliikenne/).
+
+The api is tunneled to [hekinav-api.loophole.site](https://hekinav-api.loophole.site/).
+
+### Running locally
+
+Install npm packages
+
+`npm install`
+
+Start the api (uses port 3001 by default)
+
+`npm start`
 
 ---
 

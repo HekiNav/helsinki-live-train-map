@@ -58,5 +58,6 @@
         "VDDA",
         "XINGLIGHT",
         "XTAL"
-    ]
+    ],
+    "liveServer.settings.multiRootWorkspaceName": "helsinki-live-train-map"
 }
