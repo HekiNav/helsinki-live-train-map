@@ -72,7 +72,6 @@ module.exports.ltmApi = function () {
                 fullColors
             , updates: []
         }
-        //setInterval(reloadMap, 1000)
         createEndpoints([
             {
                 epLoc: "local",
@@ -143,8 +142,10 @@ module.exports.ltmApi = function () {
             epPath: "live-trains"
         }
         client = mqtt.connect(mqttUrl)
+
         createEndpointStat(mqttConnectStatdata)
         createEndpointStat(mqttMessageStatdata)
+
         //train-tracking/<departure_date,train_number,type,station,track_section,previous_station,next_station,previous_track_section,next_track_section>
         client.on("connect", () => {
             incrementEndpointStat(mqttConnectStatdata)
@@ -156,7 +157,7 @@ module.exports.ltmApi = function () {
 
 
         // PERIODICALLY REMOVE GHOST TRAINS
-        setInterval(handleGhostTrains, 60000)
+        setInterval(handleGhostTrains, 1000)
 
         // MQTT MESSAGE HANDLING
 
