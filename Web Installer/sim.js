@@ -1,7 +1,7 @@
 const MEASURING_TIME = null //Time limit for MQTT in seconds, starts from 1st message, logs amount of messages after
 
 const OPTIONS = {
-    dev: true,
+    dev: false,
     apiVersion: "100",
     modes: [
         "lines",
@@ -60,7 +60,7 @@ async function fetchData(url) {
 }
 
 async function reloadMap() {
-    const url = !isProd && OPTIONS.dev ? `http://127.0.0.1:3001/hki-ltm/${OPTIONS.apiVersion}.json?mode=${mode}` : `https://hekinav-api.loophole.site/hki-ltm/${OPTIONS.apiVersion}.json?mode=${mode}`
+    const url = !isProd && OPTIONS.dev ? `http://127.0.0.1:3001/hki-ltm/${OPTIONS.apiVersion}.json?mode=${mode}` : `http://84.250.190.107:3001/hki-ltm/${OPTIONS.apiVersion}.json?mode=${mode}`
     const response = await fetch(url)
     if (response.status == 200) {
         response.json().then(data => {
