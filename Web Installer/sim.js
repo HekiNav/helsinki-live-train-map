@@ -105,7 +105,7 @@ function getLedIdFromIndex(i) {
     } else if (i >= 300 && i < 300 + ledOrder["HPL-NOA"].length) {
         return ledOrder["HPL-NOA"][i - 300]
     } else {
-        console.error(`Index ${i} is out of range for both strands`)
+        //console.error(`Index ${i} is out of range for both strands`)
     }
 }
 

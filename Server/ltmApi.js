@@ -358,7 +358,7 @@ async function generateUpdates(mode) {
         } else {
             colors = await Promise.all(led.trains.filter(t => !(allowedTrainTypes.length) || allowedTrainTypes.find(type => type == t.ty)).map(getTrainColorFunction(mode)))
         }
-        return led.trains.length || mode == "test" ? { b: [prevblock, block], c: colors, t: Date.now() } : []
+        return led.trains.length || mode == "test" ? { b: [block, block], c: colors, t: Date.now() } : []
     }))).flat()
 }
 function componentIdtoBlock(led) {

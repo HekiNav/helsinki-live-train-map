@@ -14,3 +14,8 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
     res.send(generateDocs(apiDocsJson))
 })
+
+app.get(/\/sim(.*)/, (req, res) => {
+    console.log(req.url)
+    res.sendFile(decodeURI( req.url.replace("/sim","/home/untoa/helsinki-live-train-map/Web Installer"))) 
+})
