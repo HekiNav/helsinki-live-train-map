@@ -142,6 +142,7 @@ module.exports.ltmApi = function () {
             epPath: "live-trains"
         }
         client = mqtt.connect(mqttUrl)
+        
 
         createEndpointStat(mqttConnectStatdata)
         createEndpointStat(mqttMessageStatdata)
@@ -234,7 +235,6 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: { default: [] }
     if (!runningCurrently) {
         return null
     }
-
     const filteredTimeTable = timeTableRows.filter(row => stations.find(s => s.stationShortCode == row.stationShortCode).passengerTraffic)
 
     const lastUpdate = getLastUpdate(filteredTimeTable)
@@ -359,7 +359,7 @@ async function generateUpdates(mode) {
         } else {
             colors = await Promise.all(led.trains.filter(t => !(allowedTrainTypes.length) || allowedTrainTypes.find(type => type == t.ty)).map(getTrainColorFunction(mode)))
         }
-        return led.trains.length || mode == "test" ? { b: [block, block], c: colors, t: Date.now() } : []
+        return led.trains.length || mode == "test" ? { b: [prevblock, block], c: colors, t: Date.now() } : []
     }))).flat()
 }
 function componentIdtoBlock(led) {

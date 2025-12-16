@@ -510,6 +510,26 @@
         "latitude": 60.209813
     },
     {
+        "passengerTraffic": false,
+        "type": "STATION",
+        "stationName": "Helsinki Louhenpuisto",
+        "stationShortCode": "LOP",
+        "stationUICCode": 1370,
+        "countryCode": "FI",
+        "longitude": 24.933980,
+        "latitude": 60.208840
+    },
+    {
+        "passengerTraffic": false,
+        "type": "STATION",
+        "stationName": "Helsinki Veräjälaakso",
+        "stationShortCode": "VRJ",
+        "stationUICCode": 1371,
+        "countryCode": "FI",
+        "longitude": 24.973708,
+        "latitude": 60.231999
+    },
+    {
         "passengerTraffic": true,
         "type": "STATION",
         "stationName": "Henna",
@@ -1348,6 +1368,16 @@
         "countryCode": "FI",
         "longitude": 24.911994,
         "latitude": 60.750527
+    },
+    {
+        "passengerTraffic": false,
+        "type": "TURNOUT_IN_THE_OPEN_LINE",
+        "stationName": "Kello",
+        "stationShortCode": "KEO",
+        "stationUICCode": 1372,
+        "countryCode": "FI",
+        "longitude": 25.416081,
+        "latitude": 65.126161
     },
     {
         "passengerTraffic": true,
@@ -3730,7 +3760,7 @@
         "latitude": 61.761151
     },
     {
-        "passengerTraffic": false,
+        "passengerTraffic": true,
         "type": "STATION",
         "stationName": "Purola",
         "stationShortCode": "PUR",
@@ -4820,6 +4850,16 @@
         "latitude": 61.700590
     },
     {
+        "passengerTraffic": true,
+        "type": "STATION",
+        "stationName": "Tornio",
+        "stationShortCode": "TOR",
+        "stationUICCode": 351,
+        "countryCode": "FI",
+        "longitude": 24.163844,
+        "latitude": 65.845798
+    },
+    {
         "passengerTraffic": false,
         "type": "TURNOUT_IN_THE_OPEN_LINE",
         "stationName": "Tornio (R742)",
@@ -4828,16 +4868,6 @@
         "countryCode": "FI",
         "longitude": 24.170265,
         "latitude": 65.851978
-    },
-    {
-        "passengerTraffic": true,
-        "type": "STATION",
-        "stationName": "Tornio asema",
-        "stationShortCode": "TOR",
-        "stationUICCode": 351,
-        "countryCode": "FI",
-        "longitude": 24.163844,
-        "latitude": 65.845798
     },
     {
         "passengerTraffic": true,
@@ -5588,16 +5618,6 @@
         "countryCode": "FI",
         "longitude": 24.064036,
         "latitude": 62.553265
-    },
-    {
-        "passengerTraffic": false,
-        "type": "STATION",
-        "stationName": "Ämmänsaari",
-        "stationShortCode": "ÄM",
-        "stationUICCode": 394,
-        "countryCode": "FI",
-        "longitude": 28.890466,
-        "latitude": 64.887024
     },
     {
         "passengerTraffic": false,
