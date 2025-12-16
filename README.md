@@ -139,7 +139,7 @@ Processes train running data from [digitraffic](https://rata.digitraffic.fi/). D
 - node-sqlite & sqlite3: Database for cached train compositions and stats
 - node-cron: Cron jobs for recaching data and cleaning the database
 
-The api is tunneled to [hekinav-api.loophole.site](https://hekinav-api.loophole.site/). Uptime is not guaranteed.
+The api is tunneled to [ltm.hekinav.dev](https://ltm.hekinav.dev/). Uptime is not guaranteed.
 
 ### Running locally
 
