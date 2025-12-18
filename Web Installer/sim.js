@@ -25,8 +25,8 @@ let mapData = {
 
 let mode = OPTIONS.modes[0]
 let updates = 0
-const prodUrl = "https://hekinav.github.io"
-const isProd = window.location.href.substring(0, prodUrl.length) == prodUrl
+const prodUrls = ["https://hekinav.github.io", "ltm.hekinav.dev", "hekinav.dev", "hki-ltm.pages.dev"]
+const isProd = prodUrls.find(url => window.location.host.includes(url))
 
 Promise.all([fetch("./data/ledsInOrder.json"), loadSvg()]).then(([data, _]) => {
     data.json().then(json => {
