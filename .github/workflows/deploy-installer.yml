@@ -10,6 +10,7 @@ permissions:
   pages: write
   id-token: write
 
+
 jobs:
   build_firmware:
     runs-on: ubuntu-latest
@@ -81,3 +82,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Deploy to Cloudflare Workers with Wrangler
+        uses: cloudflare/wrangler-action@v3.14.1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
