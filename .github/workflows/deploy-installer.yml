@@ -66,6 +66,8 @@ jobs:
           cp "Web Installer/sim.html" _site/
           cp "Web Installer/sim.css" _site/
           cp "Web Installer/sim.js" _site/
+          cp "Web Installer/index.html" _site/
+          cp "Web Installer/index.css" _site/
           cp "Web Installer/tools/output.svg" _site/
           cp "Web Installer/GothamXNarrowMedium.woff" _site/
           cp "Web Installer/map_icon.svg" _site/

@@ -60,7 +60,7 @@ async function fetchData(url) {
 }
 
 async function reloadMap() {
-    const url = !isProd && OPTIONS.dev ? `http://127.0.0.1:3001/hki-ltm/${OPTIONS.apiVersion}.json?mode=${mode}` : `http://ltm-api.hekinav.dev/hki-ltm/${OPTIONS.apiVersion}.json?mode=${mode}`
+    const url = !isProd && OPTIONS.dev ? `http://127.0.0.1:3001/hki-ltm/${OPTIONS.apiVersion}.json?mode=${mode}` : `https://ltm-api.hekinav.dev/hki-ltm/${OPTIONS.apiVersion}.json?mode=${mode}`
     const response = await fetch(url)
     if (response.status == 200) {
         response.json().then(data => {
