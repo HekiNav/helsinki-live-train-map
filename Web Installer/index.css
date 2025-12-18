@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Gotham XNarrow";
+    src: url("GothamXNarrowMedium.woff");
+}
+body {
+    background-color: #333;
+    color: white;
+    font-family: "Gotham XNarrow", sans-serif;
+}
+li a{
+    color: white;
+}
