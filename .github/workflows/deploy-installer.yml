@@ -88,5 +88,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy YOUR_DIRECTORY_OF_STATIC_ASSETS --project-name=YOUR_PROJECT_NAME
+          command: pages deploy ./_site --project-name=hki-ltm
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
