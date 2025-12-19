@@ -96,6 +96,7 @@ function drawMap() {
             prevColor = `rgba(${colors[update.c[i]]}, 0.4)`
 
         }
+        LED.setAttribute("data-content", update.c.map(c => `(${colors[c]})`).join(", "))
         LED.setAttribute("fill", color)
         LED.setAttribute("style", `
                 filter: drop-shadow(0px 0px .5px ${color});
@@ -124,7 +125,14 @@ async function getJSON(name) {
 
 function loadSvg() {
     fetchData(isProd ? "./output.svg" : "./tools/output.svg").then(data => {
-        svgContainer.innerHTML += data
+        const tempContainer = document.createElement("div")
+        tempContainer.innerHTML = data
+        console.log(tempContainer)
+        tempContainer.querySelectorAll(".component").forEach(led => {
+            led.addEventListener("mousemove", (e) => showTooltip(e, led.getAttribute("data-content"))),
+                led.addEventListener("mouseleave", hideTooltip)
+        })
+        svgContainer.append(...tempContainer.children)
         const svg = document.querySelector("svg")
         function resizeSVG() {
             svg.style.transform = `scale(${svgContainer.clientWidth / svg.clientWidth * 90}%)`
@@ -132,4 +140,17 @@ function loadSvg() {
         window.addEventListener("resize", resizeSVG)
         resizeSVG()
     })
+}
+function showTooltip(evt, text) {
+    if(!text) return hideTooltip()
+    let tooltip = document.getElementById("tooltip");
+    tooltip.innerHTML = text;
+    tooltip.style.display = "block";
+    tooltip.style.left = evt.pageX + 10 + 'px';
+    tooltip.style.top = evt.pageY + 10 + 'px';
+}
+
+function hideTooltip() {
+    var tooltip = document.getElementById("tooltip");
+    tooltip.style.display = "none";
 }

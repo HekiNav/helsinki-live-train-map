@@ -59,7 +59,12 @@ svg{
 #changeMode img {
     width: 100%;
 }
-
+#tooltip {
+    position: absolute;
+    padding: .25rem;
+    background-color: #555;
+    font-family: "Gotham XNarrow";
+}
 *[hidden] {
     display: none;
 }
