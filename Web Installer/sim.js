@@ -82,21 +82,29 @@ function drawMap() {
     })
     mapData.updates.forEach(update => {
         const LED = svg.querySelector("rect#" + getLedIdFromIndex(update.b[1]))
-        const prevLED = svg.querySelector("rect#" + getLedIdFromIndex(update.b[0])) 
+        const prevLED = svg.querySelector("rect#" + getLedIdFromIndex(update.b[0]))
 
+        let prevColor = "none"
         let color = "none"
         if (update.c.length == 1) {
             color = `rgb(${colors[update.c[0]]})`
+            prevColor = `rgba(${colors[update.c[0]]}, 0.4)`
 
         } else if (update.c.length > 1) {
             const i = updates % update.c.length
             color = `rgb(${colors[update.c[i]]})`
+            prevColor = `rgba(${colors[update.c[i]]}, 0.4)`
+
         }
         LED.setAttribute("fill", color)
         LED.setAttribute("style", `
                 filter: drop-shadow(0px 0px .5px ${color});
                 `)
-        
+        if (!prevLED || prevLED.id == LED.id) return
+        prevLED.setAttribute("fill", prevColor)
+        prevLED.setAttribute("style", `
+                filter: drop-shadow(0px 0px .5px ${prevColor});
+                `)
     })
 }
 function getLedIdFromIndex(i) {
