@@ -16,8 +16,8 @@
 String serverURLs[] = {
 	//String("http://keastudios.co.nz/akl-ltm/") + BACKEND_VERSION + ".json",
 	//String("http://dirksonline.net/akl-ltm/") + BACKEND_VERSION + ".json",
-	String("https://hekinav-api.loophole.site/hki-ltm/") + BACKEND_VERSION + ".json",
-	String("http://192.168.1.155:3001/hki-ltm/") + BACKEND_VERSION + ".json",
+	String("https://ltm-api.hekinav.dev/hki-ltm/") + BACKEND_VERSION + ".json",
+	//String("http://192.168.1.155:3001/hki-ltm/") + BACKEND_VERSION + ".json",
 };
 const int numServers = sizeof(serverURLs) / sizeof(serverURLs[0]);
 int currentServerIndex = 0;
@@ -376,11 +376,9 @@ void drawMap(time_t epoch) {
 			const int l = update.colorIds.size();
 			if (l > 1) {
 				const int i = updateCounter % l;
-				if (epoch >= update.timestamp) {
-					setBlockColor(update.postBlock, update.colorIds[i]);
-				} else {
-					setBlockColor(update.preBlock, update.colorIds[i]);
-				}
+				setBlockColor(update.postBlock, update.colorIds[i]);
+				//if (update.preBlock) setBlockColor(update.preBlock, update.colorIds[i]);
+
 				ledUpdatePending = true;
 
 			} else {
@@ -419,12 +417,7 @@ void parseLEDMap(const String& downloadedJson) {
 	JsonObject colors = doc["colors"];
 	JsonArray updates = doc["updates"];
 
-	if (baseTimestamp + updateOffset > nextFetchTime) {
-		nextFetchTime = baseTimestamp + updateOffset;
-	} else {
-		Serial.println("Fetched the same data twice");
-		//return;	 // No need to update if the data is the same
-	}
+	nextFetchTime = baseTimestamp + updateOffset;
 
 	if (String(BACKEND_VERSION) != version) {
 		Serial.printf("Backend version mismatch: expected %s, got %s\n", BACKEND_VERSION, version.c_str());
@@ -588,7 +581,7 @@ void loop() {
 				setStatusLedState(CONFIG_LED_PIN, LED_ON_RED);
 			}
 
-			nextFetchTime = max(nextFetchTime, epoch + 6);	// Ensure we don't fetch too frequently
+			nextFetchTime = max(nextFetchTime, epoch + 10);	 // Ensure we don't fetch too frequently
 
 			Serial.printf("%s MCU:%2.0f°C  WiFi:%idBm\n", getLocalTime(epoch), temperatureRead(), WiFi.RSSI());
 			Serial.flush();
