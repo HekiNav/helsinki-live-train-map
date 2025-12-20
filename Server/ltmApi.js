@@ -349,18 +349,20 @@ function findCorrectTrack(segment, lineID, timeTable) {
 }
 async function generateUpdates(mode) {
     const allowedTrainTypes = OPTIONS.allowedTrainTypes[mode] || OPTIONS.allowedTrainTypes.default
-    return (await Promise.all(ledState.map(async led => {
+    const updates = (await Promise.all(ledState.map(async led => {
         let colors = []
         const block = componentIdtoBlock(led.id)
-        const prevblock = componentIdtoBlock((led.trains.find(t => t.p) || { p: null }).p)
+        const prevblocks = led.trains.map(t => componentIdtoBlock(t.p || null))
         if (mode == "test") {
             const section = sections.filter(s => (s.tracks || s.segments.flat()).some(t => t.component == led.id))
             colors = await Promise.all(section.map(getTrainColorFunction(mode)))
         } else {
             colors = await Promise.all(led.trains.filter(t => !(allowedTrainTypes.length) || allowedTrainTypes.find(type => type == t.ty)).map(getTrainColorFunction(mode)))
         }
-        return led.trains.length || mode == "test" ? { b: [prevblock, block], c: colors, t: Date.now() } : []
+        return led.trains.length || mode == "test" ? { b: block, p: prevblocks, v: led.trains.map(t => t.n), c: colors, t: Date.now() } : []
     }))).flat()
+    // filter out prev blocks that overlap with current blocks
+    return updates.map(u => ({...u, p: u.p.filter(b => !updates.some(e => e.b == b))}))
 }
 function componentIdtoBlock(led) {
     return led ? (ledOrder["HPL-NOA"].some(id => id == led) ? ledOrder["HPL-NOA"].findIndex(id => id == led) + 300 : ledOrder["HKI-KTS"].findIndex(id => id == led) + 100) : null

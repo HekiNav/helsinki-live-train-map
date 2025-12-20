@@ -81,8 +81,8 @@ function drawMap() {
                 `)
     })
     mapData.updates.forEach(update => {
-        const LED = svg.querySelector("rect#" + getLedIdFromIndex(update.b[1]))
-        const prevLED = svg.querySelector("rect#" + getLedIdFromIndex(update.b[0]))
+        const LED = svg.querySelector("rect#" + getLedIdFromIndex(update.b))
+        const prevLEDs = update.p.reduce((prev, block) => block ? [...prev, svg.querySelector("rect#" + getLedIdFromIndex(block))] : prev, [])
 
         let prevColor = "none"
         let color = "none"
@@ -96,16 +96,19 @@ function drawMap() {
             prevColor = `rgba(${colors[update.c[i]]}, 0.4)`
 
         }
-        LED.setAttribute("data-content", update.c.map(c => `(${colors[c]})`).join(", "))
+        LED.setAttribute("data-content", update.v.join(", "))
         LED.setAttribute("fill", color)
         LED.setAttribute("style", `
                 filter: drop-shadow(0px 0px .5px ${color});
                 `)
-        if (!prevLED || prevLED.id == LED.id) return
-        prevLED.setAttribute("fill", prevColor)
-        prevLED.setAttribute("style", `
+        for (const prevLED of prevLEDs) {
+            if (prevLED.id == LED.id) return
+            prevLED.setAttribute("fill", prevColor)
+            prevLED.setAttribute("style", `
                 filter: drop-shadow(0px 0px .5px ${prevColor});
                 `)
+        }
+
     })
 }
 function getLedIdFromIndex(i) {
@@ -142,7 +145,7 @@ function loadSvg() {
     })
 }
 function showTooltip(evt, text) {
-    if(!text) return hideTooltip()
+    if (!text) return hideTooltip()
     let tooltip = document.getElementById("tooltip");
     tooltip.innerHTML = text;
     tooltip.style.display = "block";
