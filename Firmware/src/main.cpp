@@ -52,6 +52,14 @@ struct LedUpdate {
 	time_t timestamp;  // Timestamp for when the update should occur
 };
 
+uint8_t brightnessValues[5][2] = {
+	{0,0},
+	{65,35},
+	{80,40},
+	{100, 55},
+	{120, 80},
+};
+
 std::vector<LedUpdate> ledUpdateSchedule;
 
 enum statusLedCommand {
@@ -76,7 +84,7 @@ typedef struct {
 TaskHandle_t statusLedTaskHandle;
 
 static unsigned long lastUpdate = 0;
-int16_t brightness = 60;
+int16_t brightness = 0;
 bool ledUpdatePending = false;
 
 struct Button {
@@ -228,15 +236,15 @@ void checkButton(Button* button) {
 				switch (button->pin) {
 					case BRIGHTNESS_DOWN_BUTTON:
 						Serial.print("Brightness Down pressed ");
-						brightness -= 20;
+						brightness -= 1;
 						break;
 					case BRIGHTNESS_UP_BUTTON:
 						Serial.print("Brightness Up pressed ");
-						brightness += 20;
+						brightness += 1;
 						break;
 					case POWER_BUTTON:
 						Serial.print("Power button pressed ");
-						brightness = (brightness == 0) ? 250 : 0;  // Toggle brightness
+						brightness = (brightness == 0) ? 3 : 0;  // Toggle brightness
 						break;
 					case MAP_BUTTON:
 						Serial.print("Map button pressed ");
@@ -253,7 +261,7 @@ void checkButton(Button* button) {
 				}
 
 				// Ensure brightness stays within bounds
-				brightness = (brightness > 0) ? constrain(brightness, 20, 250) : 0;
+				brightness = (brightness > 0) ? constrain(brightness, 0, (sizeof(brightnessValues) / sizeof(brightnessValues[0]))-1) : 0;
 
 				// Save brightness to preferences
 				preferences.begin("brightness");
@@ -263,12 +271,10 @@ void checkButton(Button* button) {
 				preferences.end();
 
 				// Update the LEDs
-				hplNoa.SetLuminance(brightness);
-				hkiKts.SetLuminance(brightness);
 				if (button->pin == MAP_BUTTON) {
 					Serial.printf("mode is now : %s\n", modes[mode]);
 				} else {
-					Serial.printf("brightness now at: %i/255\n", brightness);
+					Serial.printf("brightness now at: %i/%i\n",brightness, (sizeof(brightnessValues) / sizeof(brightnessValues[0]))-1);
 				}
 				ledUpdatePending = true;
 			}
@@ -343,7 +349,7 @@ String downloadJSON() {
 	return String();
 }
 
-void setBlockColor(uint16_t block, int colorId) {
+void setBlockColor(uint16_t block, int colorId, bool secondary = false) {
 	if (colorId < blockColorIds[block]) {
 		return;	 // Do not update if the block if it is low priority
 	}
@@ -352,9 +358,9 @@ void setBlockColor(uint16_t block, int colorId) {
 
 	// Set the color on the appropriate strand based on the block number
 	if (block >= 100 && block < 100 + HKI_KTS_PIXELS) {
-		hkiKts.SetPixelColor(block - 100, colorTable[blockColorIds[block]]);
+		hkiKts.SetPixelColor(block - 100, colorTable[blockColorIds[block]].Dim(brightnessValues[brightness][secondary ? 1 : 0]));
 	} else if (block >= 300 && block < 300 + HPL_NOA_PIXELS) {
-		hplNoa.SetPixelColor(block - 300, colorTable[blockColorIds[block]]);
+		hplNoa.SetPixelColor(block - 300, colorTable[blockColorIds[block]].Dim(brightnessValues[brightness][secondary ? 1 : 0]));
 	} else {
 		Serial.printf("Block %d is out of range for both strands.\n", block);
 	}
@@ -382,19 +388,13 @@ void drawMap(time_t epoch) {
 				ledUpdatePending = true;
 
 			} else { */
-			String colorIdsStr = "[";
-			for (size_t i = 0; i < update.colorIds.size(); i++) {
-				colorIdsStr += String(update.colorIds[i]);
-				if (i < update.colorIds.size() - 1) {
-					colorIdsStr += ", ";
+			
+			if (update.colorIds.size() > 0) setBlockColor(update.postBlock, update.colorIds[0]);
+			for (auto i = 0; i < update.preBlocks.size(); i++) {
+				if (update.preBlocks.size() > i && update.colorIds.size() > i && update.preBlocks[i]) {
+					setBlockColor(update.preBlocks[i], update.colorIds[i], true);
 				}
 			}
-			colorIdsStr += "]";
-			Serial.println(colorIdsStr);
-			//setBlockColor(update.postBlock, update.colorIds[0]);
-			/* for (auto i = 0; i < update.preBlocks.size(); i++) {
-				if (update.preBlocks[i]) setBlockColor(update.preBlocks[i], update.colorIds[i]);
-			} */
 			//}
 		}
 	}
@@ -505,10 +505,10 @@ void setup() {
 
 	// Set initial brightness
 	preferences.begin("brightness");
-	brightness = preferences.getInt("brightness", brightness);
+	brightness = 0;//preferences.getInt("brightness", brightness);
 	preferences.end();
-	hplNoa.SetLuminance(brightness);
-	hkiKts.SetLuminance(brightness);
+	hplNoa.SetLuminance(255);
+	hkiKts.SetLuminance(255);
 
 // Factory test mode
 #if defined(FACTORY_TEST)
