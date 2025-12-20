@@ -46,7 +46,7 @@ String modes[] = { String("lines"), String("delay"), String("comp"), String("tra
 
 // --- Data structure for scheduled LED updates ---
 struct LedUpdate {
-	uint16_t preBlock;
+	std::vector<uint16_t> preBlocks;
 	uint16_t postBlock;
 	std::vector<int> colorIds;
 	time_t timestamp;  // Timestamp for when the update should occur
@@ -374,20 +374,28 @@ void drawMap(time_t epoch) {
 		updateCounter++;
 		for (const auto& update : ledUpdateSchedule) {
 			const int l = update.colorIds.size();
-			if (l > 1) {
+			/* 			if (l > 1) {
 				const int i = updateCounter % l;
 				setBlockColor(update.postBlock, update.colorIds[i]);
 				//if (update.preBlock) setBlockColor(update.preBlock, update.colorIds[i]);
 
 				ledUpdatePending = true;
 
-			} else {
-				if (epoch >= update.timestamp) {
-					setBlockColor(update.postBlock, update.colorIds[0]);
-				} else {
-					setBlockColor(update.preBlock, update.colorIds[0]);
+			} else { */
+			String colorIdsStr = "[";
+			for (size_t i = 0; i < update.colorIds.size(); i++) {
+				colorIdsStr += String(update.colorIds[i]);
+				if (i < update.colorIds.size() - 1) {
+					colorIdsStr += ", ";
 				}
 			}
+			colorIdsStr += "]";
+			Serial.println(colorIdsStr);
+			//setBlockColor(update.postBlock, update.colorIds[0]);
+			/* for (auto i = 0; i < update.preBlocks.size(); i++) {
+				if (update.preBlocks[i]) setBlockColor(update.preBlocks[i], update.colorIds[i]);
+			} */
+			//}
 		}
 	}
 
@@ -438,14 +446,17 @@ void parseLEDMap(const String& downloadedJson) {
 
 	ledUpdateSchedule.clear();
 	for (JsonObject update : updates) {
-		JsonArray blocks = update["b"];
+		JsonArray preBlocks = update["p"];
 		JsonArray colorIds = update["c"];
 		int offset = update["t"];
+		uint16_t postBlock = update["b"];
 
 		// Schedule color update
 		LedUpdate ledUpdate;
-		ledUpdate.preBlock = blocks[0];
-		ledUpdate.postBlock = blocks[1];
+		for (JsonVariant value : preBlocks) {
+			ledUpdate.preBlocks.push_back(value.as<uint16_t>());
+		}
+		ledUpdate.postBlock = postBlock;
 		if (offset > 0) {
 			ledUpdate.timestamp = baseTimestamp + offset;
 		} else {

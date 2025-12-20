@@ -88,7 +88,6 @@ function drawMap() {
         let color = "none"
         if (update.c.length == 1) {
             color = `rgb(${colors[update.c[0]]})`
-            prevColor = `rgba(${colors[update.c[0]]}, 0.4)`
 
         } else if (update.c.length > 1) {
             const i = updates % update.c.length
@@ -96,13 +95,18 @@ function drawMap() {
             prevColor = `rgba(${colors[update.c[i]]}, 0.4)`
 
         }
-        LED.setAttribute("data-content", update.v.join(", "))
         LED.setAttribute("fill", color)
         LED.setAttribute("style", `
                 filter: drop-shadow(0px 0px .5px ${color});
                 `)
-        for (const prevLED of prevLEDs) {
-            if (prevLED.id == LED.id) return
+        for (const i in prevLEDs) {
+
+            const prevLED = prevLEDs[i]
+
+            if (!prevLED || prevLED.id == LED.id) return
+            prevLED.setAttribute("data-content", "a")
+
+            const prevColor = `rgba(${colors[update.c[0]]}, 0.4)`
             prevLED.setAttribute("fill", prevColor)
             prevLED.setAttribute("style", `
                 filter: drop-shadow(0px 0px .5px ${prevColor});
