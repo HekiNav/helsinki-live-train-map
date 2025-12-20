@@ -54,10 +54,10 @@ struct LedUpdate {
 
 uint8_t brightnessValues[5][2] = {
 	{0,0},
-	{65,35},
-	{80,40},
-	{100, 55},
-	{120, 80},
+	{70,35},
+	{85,40},
+	{110, 55},
+	{130, 70},
 };
 
 std::vector<LedUpdate> ledUpdateSchedule;
@@ -505,7 +505,7 @@ void setup() {
 
 	// Set initial brightness
 	preferences.begin("brightness");
-	brightness = 0;//preferences.getInt("brightness", brightness);
+	brightness = preferences.getInt("brightness", brightness);
 	preferences.end();
 	hplNoa.SetLuminance(255);
 	hkiKts.SetLuminance(255);
