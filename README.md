@@ -123,9 +123,9 @@ View the map without having the physical pcb:
 - Fetches data from the API
 
 ---
-## Stand
+## Stand and other 3D Models
 
-A 3d-printable stand to hold up the board. Files are located in `/Stand`
+A 3d-printable stand to hold up the board. Files are located in `/3D Models`
 
 ---
 

@@ -63,3 +63,5 @@ PCB/jlcpcb/
 *secrets*
 !*secrets-blank*
 *env*
+# Freecad temp files
+*FCBak*
