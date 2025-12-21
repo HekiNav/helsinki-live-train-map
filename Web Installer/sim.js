@@ -106,7 +106,7 @@ function drawMap() {
             if (!prevLED || prevLED.id == LED.id) return
             prevLED.setAttribute("data-content", "a")
 
-            const prevColor = `rgba(${colors[update.c[0]]}, 0.4)`
+            const prevColor = `rgba(${colors[update.c[i]]}, 0.4)`
             prevLED.setAttribute("fill", prevColor)
             prevLED.setAttribute("style", `
                 filter: drop-shadow(0px 0px .5px ${prevColor});
