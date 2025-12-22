@@ -53,11 +53,7 @@ struct LedUpdate {
 };
 
 uint8_t brightnessValues[5][2] = {
-	{0,0},
-	{70,35},
-	{85,40},
-	{110, 55},
-	{130, 70},
+	{ 0, 0 }, { 80, 35 }, { 90, 35 }, { 120, 40 }, { 150, 50 },
 };
 
 std::vector<LedUpdate> ledUpdateSchedule;
@@ -244,7 +240,7 @@ void checkButton(Button* button) {
 						break;
 					case POWER_BUTTON:
 						Serial.print("Power button pressed ");
-						brightness = (brightness == 0) ? 3 : 0;  // Toggle brightness
+						brightness = (brightness == 0) ? 3 : 0;	 // Toggle brightness
 						break;
 					case MAP_BUTTON:
 						Serial.print("Map button pressed ");
@@ -261,7 +257,8 @@ void checkButton(Button* button) {
 				}
 
 				// Ensure brightness stays within bounds
-				brightness = (brightness > 0) ? constrain(brightness, 0, (sizeof(brightnessValues) / sizeof(brightnessValues[0]))-1) : 0;
+				brightness =
+					(brightness > 0) ? constrain(brightness, 0, (sizeof(brightnessValues) / sizeof(brightnessValues[0])) - 1) : 0;
 
 				// Save brightness to preferences
 				preferences.begin("brightness");
@@ -274,7 +271,8 @@ void checkButton(Button* button) {
 				if (button->pin == MAP_BUTTON) {
 					Serial.printf("mode is now : %s\n", modes[mode]);
 				} else {
-					Serial.printf("brightness now at: %i/%i\n",brightness, (sizeof(brightnessValues) / sizeof(brightnessValues[0]))-1);
+					Serial.printf(
+						"brightness now at: %i/%i\n", brightness, (sizeof(brightnessValues) / sizeof(brightnessValues[0])) - 1);
 				}
 				ledUpdatePending = true;
 			}
@@ -388,8 +386,9 @@ void drawMap(time_t epoch) {
 				ledUpdatePending = true;
 
 			} else { */
-			
-			if (update.colorIds.size() > 0) setBlockColor(update.postBlock, update.colorIds[0]);
+
+			if (update.colorIds.size() > 0)
+				setBlockColor(update.postBlock, update.colorIds[0]);
 			for (auto i = 0; i < update.preBlocks.size(); i++) {
 				if (update.preBlocks.size() > i && update.colorIds.size() > i && update.preBlocks[i]) {
 					setBlockColor(update.preBlocks[i], update.colorIds[i], true);
