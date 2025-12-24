@@ -38,7 +38,7 @@ scene.add(dirLight);
 
 const loader = new GLTFLoader();
 loader.load(
-  './data/pcb_cu.glb', 
+  './data/pcb_optimized.glb', 
   (gltf) => {
     const model = gltf.scene;
 
