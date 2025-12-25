@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { VRMLLoader } from 'three/addons/loaders/VRMLLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const scene = new THREE.Scene();
@@ -36,26 +36,13 @@ const dirLight = new THREE.DirectionalLight(0xffffff, 1);
 dirLight.position.set(5, 10, 5);
 scene.add(dirLight);
 
-const loader = new GLTFLoader();
+const loader = new VRMLLoader();
 loader.load(
-  './data/pcb_optimized.glb', 
-  (gltf) => {
-    const model = gltf.scene;
+  './data/pcb.wrl', 
+  (object) => {
 
-    model.scale.set(100,100,100)
-
-
-    const box = new THREE.Box3().setFromObject(model);
-
-    const center = box.getCenter(new THREE.Vector3());
-
-    model.position.sub(center);
-
-
-    scene.add(model);
-
-    const outline = new THREE.BoxHelper(model, 0xffff00);
-    scene.add(outline);
+    
+    scene.add(object);
   },
   undefined,
   (error) => {
