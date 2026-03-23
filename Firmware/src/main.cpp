@@ -44,7 +44,7 @@ std::vector<RgbColor> colorTable;
 int blockColorIds[512];	 // Array to hold block colors
 
 int mode = 0;
-String modes[] = { String("lines"), String("delay"), String("comp"), String("train") };
+String modes[] = { String("lines"), String("delay"), String("comp"), String("train"), String("test") };
 
 // --- Data structure for scheduled LED updates ---
 struct LedUpdate {
@@ -392,7 +392,7 @@ void drawMap(time_t epoch) {
 			if (l > 1) {
 				const int i = updateCounter % l;
 				setBlockColor(update.postBlock, update.colorIds[i]);
-				
+
 				for (auto i = 0; i < update.preBlocks.size(); i++) {
 					if (update.preBlocks.size() > i && update.colorIds.size() > i && update.preBlocks[i]) {
 						setBlockColor(update.preBlocks[i], update.colorIds[i], true);
