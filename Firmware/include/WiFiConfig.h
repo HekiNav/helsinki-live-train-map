@@ -125,7 +125,7 @@ const char index_html[] PROGMEM = R"=====(
       width: 90%;
       text-align: center;
     }
-    h1 {
+    h1 {	
       color: #09f;
       font-family: inherit;
       margin-bottom: 16px;
@@ -145,7 +145,7 @@ const char index_html[] PROGMEM = R"=====(
 </head>
 <body>
   <div class="container">
-    <h1>LED-Rails</h1>
+    <h1></h1>
     <h2>This is just an empty page for now, in the future settings will be added here...</h2>
   </div>
 </body>

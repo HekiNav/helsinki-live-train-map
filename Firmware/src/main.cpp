@@ -26,6 +26,8 @@ const char* ntpServers[] = { "0.fi.pool.ntp.org", "1.fi.pool.ntp.org", "2.fi.poo
 
 const char* time_zone = "Europe/Helsinki";
 
+const bool direction_indicators = false;
+
 time_t lastMapDrawTime = 0;	 // Tracks the last time the map was drawn
 time_t nextFetchTime = 0;	 // Tracks when the next update should occur
 int updateCounter = 0;
@@ -54,6 +56,9 @@ struct LedUpdate {
 
 uint8_t brightnessValues[5][2] = {
 	{ 0, 0 }, { 80, 35 }, { 90, 35 }, { 120, 40 }, { 150, 50 },
+};
+uint8_t brightnessValuesWithoutDirection[5][2] = {
+	{ 0, 0 }, { 35, 0 }, { 50, 0 }, { 80, 0 }, { 255, 0 },
 };
 
 std::vector<LedUpdate> ledUpdateSchedule;
@@ -356,9 +361,15 @@ void setBlockColor(uint16_t block, int colorId, bool secondary = false) {
 
 	// Set the color on the appropriate strand based on the block number
 	if (block >= 100 && block < 100 + HKI_KTS_PIXELS) {
-		hkiKts.SetPixelColor(block - 100, colorTable[blockColorIds[block]].Dim(brightnessValues[brightness][secondary ? 1 : 0]));
+		hkiKts.SetPixelColor(
+			block - 100,
+			colorTable[blockColorIds[block]].Dim(
+				(direction_indicators ? brightnessValues : brightnessValuesWithoutDirection)[brightness][secondary ? 1 : 0]));
 	} else if (block >= 300 && block < 300 + HPL_NOA_PIXELS) {
-		hplNoa.SetPixelColor(block - 300, colorTable[blockColorIds[block]].Dim(brightnessValues[brightness][secondary ? 1 : 0]));
+		hplNoa.SetPixelColor(
+			block - 300,
+			colorTable[blockColorIds[block]].Dim(
+				(direction_indicators ? brightnessValues : brightnessValuesWithoutDirection)[brightness][secondary ? 1 : 0]));
 	} else {
 		Serial.printf("Block %d is out of range for both strands.\n", block);
 	}
@@ -378,23 +389,28 @@ void drawMap(time_t epoch) {
 		updateCounter++;
 		for (const auto& update : ledUpdateSchedule) {
 			const int l = update.colorIds.size();
-			/* 			if (l > 1) {
+			if (l > 1) {
 				const int i = updateCounter % l;
 				setBlockColor(update.postBlock, update.colorIds[i]);
-				//if (update.preBlock) setBlockColor(update.preBlock, update.colorIds[i]);
+				
+				for (auto i = 0; i < update.preBlocks.size(); i++) {
+					if (update.preBlocks.size() > i && update.colorIds.size() > i && update.preBlocks[i]) {
+						setBlockColor(update.preBlocks[i], update.colorIds[i], true);
+					}
+				}
 
 				ledUpdatePending = true;
 
-			} else { */
+			} else {
 
-			if (update.colorIds.size() > 0)
-				setBlockColor(update.postBlock, update.colorIds[0]);
-			for (auto i = 0; i < update.preBlocks.size(); i++) {
-				if (update.preBlocks.size() > i && update.colorIds.size() > i && update.preBlocks[i]) {
-					setBlockColor(update.preBlocks[i], update.colorIds[i], true);
+				if (update.colorIds.size() > 0)
+					setBlockColor(update.postBlock, update.colorIds[0]);
+				for (auto i = 0; i < update.preBlocks.size(); i++) {
+					if (update.preBlocks.size() > i && update.colorIds.size() > i && update.preBlocks[i]) {
+						setBlockColor(update.preBlocks[i], update.colorIds[i], true);
+					}
 				}
 			}
-			//}
 		}
 	}
 
@@ -452,9 +468,10 @@ void parseLEDMap(const String& downloadedJson) {
 
 		// Schedule color update
 		LedUpdate ledUpdate;
-		for (JsonVariant value : preBlocks) {
-			ledUpdate.preBlocks.push_back(value.as<uint16_t>());
-		}
+		if (direction_indicators)
+			for (JsonVariant value : preBlocks) {
+				ledUpdate.preBlocks.push_back(value.as<uint16_t>());
+			}
 		ledUpdate.postBlock = postBlock;
 		if (offset > 0) {
 			ledUpdate.timestamp = baseTimestamp + offset;
