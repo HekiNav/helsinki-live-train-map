@@ -43,7 +43,7 @@ RgbColor black(0, 0, 0);
 std::vector<RgbColor> colorTable;
 int blockColorIds[512];	 // Array to hold block colors
 
-int mode = 0;
+int8_t mode = 0;
 String modes[] = { String("lines"), String("delay"), String("comp"), String("train"), String("test") };
 
 // --- Data structure for scheduled LED updates ---
@@ -492,6 +492,30 @@ void onCdcRxEvent(void* arg, esp_event_base_t event_base, int32_t event_id, void
 	improvSerial.handleSerial();
 }
 
+void updateValues(int8_t new_mode = -1, int8_t new_brightness = -1) {
+	if (new_mode >= 0) {
+		Serial.printf("Set mode: %i\n", new_mode);
+		Serial.println(new_mode % (sizeof(modes) / sizeof(modes[0])));
+		mode = (new_mode % (sizeof(modes) / sizeof(modes[0])));
+		ledUpdatePending = true;
+		nextFetchTime = 0;
+		setStatusLedState(CONFIG_LED_PIN, LED_OFF);
+	}
+	if (new_brightness >= 0) {
+		Serial.printf("Set brightness: %i\n", new_brightness);
+		brightness =
+			(brightness > 0) ? constrain(new_brightness, 0, (sizeof(brightnessValues) / sizeof(brightnessValues[0])) - 1) : 0;
+
+		preferences.begin("brightness");
+		if (preferences.getInt("brightness") != brightness) {
+			preferences.putInt("brightness", brightness);
+		}
+		preferences.end();
+
+		ledUpdatePending = 0;
+	}
+}
+
 void setup() {
 	xTaskCreate(statusLedManagerTask, "Status LED Manager", 1024, NULL, 1, &statusLedTaskHandle);
 
@@ -562,6 +586,7 @@ void setup() {
 	pinMode(brightnessDownButton.pin, INPUT_PULLUP);
 	pinMode(brightnessUpButton.pin, INPUT_PULLUP);
 	pinMode(powerButton.pin, INPUT_PULLUP);
+	pinMode(mapButton.pin, INPUT_PULLUP);
 
 	// Attach interrupts with debouncing
 	attachInterruptArg(digitalPinToInterrupt(BRIGHTNESS_DOWN_BUTTON), buttonISR, &brightnessDownButton, CHANGE);
@@ -583,7 +608,7 @@ void setup() {
 	WiFi.setTxPower(WIFI_POWER_15dBm);	// Set WiFi power to avoid brownouts
 	WiFi.disconnect();
 
-	WiFiImprovSetup();
+	WiFiImprovSetup(updateValues, &mode, &brightness);
 
 	Serial.println(getSystemInfo());
 	//ledCalibration();

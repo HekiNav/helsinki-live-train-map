@@ -22,79 +22,6 @@ int wifiNetworkIndex = 0;  // Index of the current WiFi network
 
 savedWiFiNetwork savedWiFi[MAX_WIFI_NETWORKS];	// Array to hold saved WiFi networks
 
-void setUpWebserver(AsyncWebServer &server);
-
-void onImprovWiFiErrorCb(ImprovTypes::Error err) {
-	Serial.printf("Improv WiFi Error: %d\n", err);
-	server.end();
-}
-
-// Save WiFi credentials to Preferences (NVS Flash Partition)
-void exportWiFi() {
-	preferences.begin("wifi");
-	preferences.putBytes("wifi", savedWiFi, sizeof(savedWiFi));
-	preferences.end();
-}
-
-// Read WiFi credentials from Preferences (NVS Flash Partition)
-void importWiFi() {
-	preferences.begin("wifi", true);
-	preferences.getBytes("wifi", savedWiFi, sizeof(savedWiFi));
-	preferences.end();
-}
-
-void onImprovWiFiConnectedCb(const char *ssid, const char *password) {
-	// Move the networks all down one position
-	for (int i = MAX_WIFI_NETWORKS - 1; i > 0; i--) {
-		strncpy(savedWiFi[i].ssid, savedWiFi[i - 1].ssid, MAX_SSID_LEN);
-		strncpy(savedWiFi[i].password, savedWiFi[i - 1].password, MAX_PASS_LEN);
-	}
-
-	// Save the new network at the top
-	strncpy(savedWiFi[0].ssid, ssid, MAX_SSID_LEN);
-	strncpy(savedWiFi[0].password, password, MAX_PASS_LEN);
-
-	// Save the updated WiFi networks to Preferences
-	exportWiFi();
-
-	// Restart the web server
-	server.end();
-	server.begin();
-}
-
-bool attemptConnectToSavedWiFi(int index) {
-	Serial.printf("Attempting to connect to saved network %i: %s\n", index, savedWiFi[index].ssid);
-	if (improvSerial.tryConnectToWifi(savedWiFi[index].ssid, savedWiFi[index].password, 500, 5)) {
-		Serial.println("WiFi connected successfully!");
-		server.begin();	 // Start the web server
-		return true;
-	} else {
-		Serial.printf("Failed to connect to %s.\n", savedWiFi[index].ssid);
-		return false;
-	}
-}
-
-void WiFiImprovSetup() {
-	importWiFi();
-	improvSerial.setDeviceInfo(
-		ImprovTypes::ChipFamily::CF_ESP32_C3, FIRMWARE, FIRMWARE_VERSION, ARDUINO_BOARD, "http://{LOCAL_IPV4}/");
-	improvSerial.onImprovError(onImprovWiFiErrorCb);
-	improvSerial.onImprovConnected(onImprovWiFiConnectedCb);
-	setUpWebserver(server);
-
-	while (wifiNetworkIndex < MAX_WIFI_NETWORKS) {
-		if (strlen(savedWiFi[wifiNetworkIndex].ssid) > 0) {
-			wifiConnected = attemptConnectToSavedWiFi(wifiNetworkIndex);
-			if (wifiConnected)
-				break;	// Exit loop if connected
-		}
-		wifiNetworkIndex++;
-	}
-
-	if (!wifiConnected) {
-		Serial.println("Failed to connect to any saved WiFi networks");
-	}
-}
 
 const char index_html[] PROGMEM = R"=====(
 <!DOCTYPE html>
@@ -153,20 +80,117 @@ const char index_html[] PROGMEM = R"=====(
 
 )=====";
 
-void setUpWebserver(AsyncWebServer &server) {
+
+void setUpWebserver(AsyncWebServer &server, void setValueCb(int8_t, int8_t), int8_t *mode_ptr, int16_t *brightness_ptr) {
 	// return 404 to webpage icon
 	server.on("/favicon.ico", [](AsyncWebServerRequest *request) {
 		request->send(404);
 	});	 // webpage icon
 
 	// Serve Basic HTML Page
-	server.on("/", HTTP_ANY, [](AsyncWebServerRequest *request) {
+	server.on("/", HTTP_ANY, [setValueCb](AsyncWebServerRequest *request) {
 		AsyncWebServerResponse *response = request->beginResponse(200, "text/html", index_html);
+
+		AsyncWebParameter *mode = request->hasParam("mode") ? request->getParam("mode") : new AsyncWebParameter("mode", "-1");
+		AsyncWebParameter *brightness = request->hasParam("brightness") ? request->getParam("brightness") : new AsyncWebParameter("brightness", "-1");
+		
+		setValueCb(mode->value().toInt(), brightness->value().toInt());
+
 		response->addHeader(
 			"Cache-Control", "public,max-age=31536000");  // save this file to cache for 1 year (unless you refresh)
 		request->send(response);
 		Serial.println("Served Basic HTML Page");
 	});
+
+	server.on("/data/", HTTP_ANY, [brightness_ptr](AsyncWebServerRequest *request) {
+
+		StaticJsonDocument<64> doc;
+
+		JsonObject data = doc.to<JsonObject>();
+
+		data["brightness"] = *brightness_ptr;
+
+		char jsonBuffer[64];
+
+		serializeJson(doc,jsonBuffer, sizeof(jsonBuffer));
+
+		AsyncWebServerResponse *response = request->beginResponse(200, "application/json", jsonBuffer);
+		
+		request->send(response);
+		Serial.println("Served Stats");
+	});
+}
+
+void onImprovWiFiErrorCb(ImprovTypes::Error err) {
+	Serial.printf("Improv WiFi Error: %d\n", err);
+	server.end();
+}
+
+// Save WiFi credentials to Preferences (NVS Flash Partition)
+void exportWiFi() {
+	preferences.begin("wifi");
+	preferences.putBytes("wifi", savedWiFi, sizeof(savedWiFi));
+	preferences.end();
+}
+
+// Read WiFi credentials from Preferences (NVS Flash Partition)
+void importWiFi() {
+	preferences.begin("wifi", true);
+	preferences.getBytes("wifi", savedWiFi, sizeof(savedWiFi));
+	preferences.end();
+}
+
+void onImprovWiFiConnectedCb(const char *ssid, const char *password) {
+	// Move the networks all down one position
+	for (int i = MAX_WIFI_NETWORKS - 1; i > 0; i--) {
+		strncpy(savedWiFi[i].ssid, savedWiFi[i - 1].ssid, MAX_SSID_LEN);
+		strncpy(savedWiFi[i].password, savedWiFi[i - 1].password, MAX_PASS_LEN);
+	}
+
+	// Save the new network at the top
+	strncpy(savedWiFi[0].ssid, ssid, MAX_SSID_LEN);
+	strncpy(savedWiFi[0].password, password, MAX_PASS_LEN);
+
+	// Save the updated WiFi networks to Preferences
+	exportWiFi();
+
+	// Restart the web server
+	server.end();
+	server.begin();
+}
+
+bool attemptConnectToSavedWiFi(int index) {
+	Serial.printf("Attempting to connect to saved network %i: %s\n", index, savedWiFi[index].ssid);
+	if (improvSerial.tryConnectToWifi(savedWiFi[index].ssid, savedWiFi[index].password, 500, 5)) {
+		Serial.println("WiFi connected successfully!");
+		server.begin();	 // Start the web server
+		return true;
+	} else {
+		Serial.printf("Failed to connect to %s.\n", savedWiFi[index].ssid);
+		return false;
+	}
+}
+
+void WiFiImprovSetup(void setValueCb(int8_t, int8_t), int8_t *mode_ptr, int16_t *brightness_ptr) {
+	importWiFi();
+	improvSerial.setDeviceInfo(
+		ImprovTypes::ChipFamily::CF_ESP32_C3, FIRMWARE, FIRMWARE_VERSION, ARDUINO_BOARD, "http://{LOCAL_IPV4}/");
+	improvSerial.onImprovError(onImprovWiFiErrorCb);
+	improvSerial.onImprovConnected(onImprovWiFiConnectedCb);
+	setUpWebserver(server, setValueCb, mode_ptr, brightness_ptr);
+
+	while (wifiNetworkIndex < MAX_WIFI_NETWORKS) {
+		if (strlen(savedWiFi[wifiNetworkIndex].ssid) > 0) {
+			wifiConnected = attemptConnectToSavedWiFi(wifiNetworkIndex);
+			if (wifiConnected)
+				break;	// Exit loop if connected
+		}
+		wifiNetworkIndex++;
+	}
+
+	if (!wifiConnected) {
+		Serial.println("Failed to connect to any saved WiFi networks");
+	}
 }
 
 void handleWiFiImprov() {
