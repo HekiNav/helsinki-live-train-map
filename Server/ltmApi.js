@@ -432,6 +432,7 @@ function getTrainColorByLine(t) {
         case "A":
             return 1;
         case "E":
+        case "O":
             return 2;
         case "U":
             return 7;
@@ -455,8 +456,6 @@ function getTrainColorByLine(t) {
         // Not in service
         case "V":
             return 0;
-        case "O":
-            return 2;
         default:
             return 8;
     }
