@@ -4,6 +4,7 @@ const express = require("express")
 const { generateDocs } = require("./modules/docsCreator")
 const apiDocsJson = require("./ltmApi.json")
 const { createDb, createEndpointStat, incrementEndpointStat, getEndpointStat } = require("./ltmApiDb")
+const sqlite3 = require("sqlite3")
 
 const app = express()
 
@@ -20,6 +21,9 @@ let ledOrder
 let sections
 let stations
 let client
+/**
+ * @type {sqlite3.DataBase}
+ */
 let db
 
 const testColors = {
@@ -54,7 +58,7 @@ const delayColors = {
 }
 
 let ledState
-module.exports.ltmApi = function () {
+export function ltmApi() {
     Promise.all([
         getJSON("ledsInOrder"), getJSON("lines",), getJSON("sections"), getJSON("stations"), createDb()
     ]).then((jsonData) => {
@@ -398,6 +402,7 @@ function getTrainColorFunction(mode) {
     }
 }
 async function getTrainColorByComposition(t) {
+    if (db.)
     const response = await db.get(`
 SELECT data
   FROM compositions
@@ -405,6 +410,7 @@ SELECT data
   `, [t.n, t.dt]
     )
     const loco = response ? JSON.parse(response.data).journeySections[0].locomotives[0].locomotiveType : "N/A"
+    console.log(loco, t.n, t.dt)
     switch (loco) {
         case "Sm2":
             return 0;

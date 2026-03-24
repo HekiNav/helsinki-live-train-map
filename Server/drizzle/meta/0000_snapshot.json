@@ -1,0 +1,99 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "prevId": "",
+  "version": "6",
+  "dialect": "sqlite",
+  "tables": {
+    "compositions": {
+      "name": "compositions",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "depDate": {
+          "autoincrement": false,
+          "name": "depDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "data": {
+          "autoincrement": false,
+          "name": "data",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "trainNumber": {
+          "autoincrement": false,
+          "name": "trainNumber",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "default": "(CURRENT_TIMESTAMP)",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "stats": {
+      "name": "stats",
+      "columns": {
+        "endpoint_location": {
+          "autoincrement": false,
+          "name": "endpoint_location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stat_type": {
+          "autoincrement": false,
+          "name": "stat_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "endpoint_path": {
+          "autoincrement": false,
+          "name": "endpoint_path",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "amount_called": {
+          "autoincrement": false,
+          "name": "amount_called",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}

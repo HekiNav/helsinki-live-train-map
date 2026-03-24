@@ -1,8 +1,8 @@
-const express = require("express")
-const cors = require("cors")
-const { ltmApi } = require("./ltmApi")
-const {generateDocs} = require("./modules/docsCreator")
-const apiDocsJson = require("./hekinavApi.json")
+import express from "express"
+import cors from "cors"
+import { ltmApi } from "./ltmApi"
+import { generateDocs } from "./modules/docsCreator"
+import apiDocsJson from "./hekinavApi.json"
 
 const app = express()
 const port = 3001
