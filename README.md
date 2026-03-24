@@ -105,7 +105,10 @@ The ESP32-C3 firmware is responsible for:
    - On first boot, use the web installer interface to configure Wi-Fi credentials. They are saved locally on the device.
 3. **Power the Board:**
    - Use a 5V USB-C power supply capable of at least ~1A (~2A recommended for compatibility with higher brightness settings).
-4. **Enjoy the Live Train Map!**
+4. **Configure in the :**
+   - Visit the IP address of your device (shown in Web Installer)
+   - Configure options like tails, brightness and mode 
+5. **Enjoy the Live Train Map!**
 
 ### Status LEDs
 
