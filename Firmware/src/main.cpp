@@ -43,16 +43,21 @@ RgbColor black(0, 0, 0);
 std::vector<RgbColor> colorTable;
 int blockColorIds[512];	 // Array to hold block colors
 
-int8_t mode = 0;
-String modes[] = { String("lines"), String("delay"), String("comp"), String("train"), String("test") };
-
-// --- Data structure for scheduled LED updates ---
+// Data structure for scheduled LED updates
 struct LedUpdate {
 	std::vector<uint16_t> preBlocks;
 	uint16_t postBlock;
 	std::vector<int> colorIds;
-	time_t timestamp;  // Timestamp for when the update should occur
+	time_t timestamp;
 };
+
+enum charlieplexedLedState { GREEN, RED, OFF };
+
+int8_t mode = 0;
+
+// When updating these values, make sure to also update web server data
+
+String modes[] = { String("lines"), String("delay"), String("comp"), String("train"), String("test") };
 
 uint8_t brightnessValues[5][2] = {
 	{ 0, 0 }, { 80, 35 }, { 90, 35 }, { 120, 40 }, { 150, 50 },
@@ -62,25 +67,6 @@ uint8_t brightnessValuesWithoutDirection[5][2] = {
 };
 
 std::vector<LedUpdate> ledUpdateSchedule;
-
-enum statusLedCommand {
-	LED_OFF,
-	LED_ON_GREEN,
-	LED_ON_RED,
-	LED_BLINK_GREEN_SLOW,  // 1Hz
-	LED_BLINK_GREEN_FAST,  // 5Hz
-	LED_BLINK_RED_SLOW,	   // 1Hz
-	LED_BLINK_RED_FAST	   // 5Hz
-};
-
-enum charlieplexedLedState { GREEN, RED, OFF };
-
-typedef struct {
-	uint8_t pin;
-	statusLedCommand command;
-	bool currentState;
-	unsigned long lastToggle;
-} statusLed;
 
 TaskHandle_t statusLedTaskHandle;
 
@@ -158,10 +144,10 @@ int ledCalibration() {
 		unsigned long now = millis();
 		if (now - last >= 200) {
 			if (i < HPL_NOA_PIXELS) {
-				hplNoa.SetPixelColor(i, RgbColor(255, 0, 255));
+				hplNoa.SetPixelColor(i, RgbColor(255, 255, 255));
 				hplNoa.Show();
 			} else {
-				hkiKts.SetPixelColor(i - HPL_NOA_PIXELS, RgbColor(255, 0, 255));
+				hkiKts.SetPixelColor(i - HPL_NOA_PIXELS, RgbColor(255, 255, 255));
 				hkiKts.Show();
 			}
 			last = now;
@@ -173,8 +159,9 @@ int ledCalibration() {
 	return 1;
 }
 
+statusLed leds[] = { { WIFI_LED_PIN, (statusLedCommand)LED_OFF, false, 0 }, { CONFIG_LED_PIN, (statusLedCommand)LED_OFF, false, 0 } };
+
 void statusLedManagerTask(void* pvParameters) {
-	statusLed leds[] = { { WIFI_LED_PIN, LED_OFF, false, 0 }, { CONFIG_LED_PIN, LED_OFF, false, 0 } };
 	const int numLeds = sizeof(leds) / sizeof(leds[0]);
 
 	while (1) {
@@ -189,7 +176,7 @@ void statusLedManagerTask(void* pvParameters) {
 					leds[i].command = cmd;
 					// Immediate response for non-blinking states
 					if (cmd == LED_ON_GREEN || cmd == LED_ON_RED || cmd == LED_OFF) {
-						setCharlieplexedLED(pin, (cmd == LED_ON_GREEN) ? GREEN : (cmd == LED_ON_RED) ? RED : OFF);
+						setCharlieplexedLED(pin, (cmd == (statusLedCommand)LED_ON_GREEN) ? GREEN : (statusLedCommand)(cmd == LED_ON_RED) ? RED : OFF);
 					}
 					break;
 				}
@@ -249,12 +236,10 @@ void checkButton(Button* button) {
 						break;
 					case MAP_BUTTON:
 						Serial.print("Map button pressed ");
-						Serial.print(mode + 1 % (sizeof(modes) / sizeof(modes[0])));
-						Serial.print(mode + 1);
 						mode = (mode + 1) % (sizeof(modes) / sizeof(modes[0]));
 						ledUpdatePending = true;
 						nextFetchTime = 0;
-						setStatusLedState(CONFIG_LED_PIN, LED_OFF);
+						setStatusLedState(CONFIG_LED_PIN, (statusLedCommand)LED_BLINK_GREEN_FAST);
 						break;
 					default:
 						Serial.printf("Unknown button pressed on pin %d\n", button->pin);
@@ -499,20 +484,21 @@ void updateValues(int8_t new_mode = -1, int8_t new_brightness = -1) {
 		mode = (new_mode % (sizeof(modes) / sizeof(modes[0])));
 		ledUpdatePending = true;
 		nextFetchTime = 0;
-		setStatusLedState(CONFIG_LED_PIN, LED_OFF);
+		setStatusLedState(CONFIG_LED_PIN, (statusLedCommand)LED_BLINK_GREEN_FAST);
 	}
 	if (new_brightness >= 0) {
-		Serial.printf("Set brightness: %i\n", new_brightness);
 		brightness =
 			(brightness > 0) ? constrain(new_brightness, 0, (sizeof(brightnessValues) / sizeof(brightnessValues[0])) - 1) : 0;
 
 		preferences.begin("brightness");
 		if (preferences.getInt("brightness") != brightness) {
 			preferences.putInt("brightness", brightness);
+			Serial.printf("Setting brightness: %i\n", new_brightness);
+			ledUpdatePending = 0;
+		} else {
+			Serial.printf("Ignoring brightness command (no change) : %i\n", new_brightness);
 		}
 		preferences.end();
-
-		ledUpdatePending = 0;
 	}
 }
 
@@ -603,15 +589,15 @@ void setup() {
 	configTzTime(time_zone, ntpServers[0], ntpServers[1], ntpServers[2]);
 
 	// --- WiFi Setup ---
-	setStatusLedState(WIFI_LED_PIN, LED_BLINK_GREEN_FAST);
+	setStatusLedState(WIFI_LED_PIN, (statusLedCommand)LED_BLINK_GREEN_FAST);
 	WiFi.mode(WIFI_STA);
 	WiFi.setTxPower(WIFI_POWER_15dBm);	// Set WiFi power to avoid brownouts
 	WiFi.disconnect();
 
-	WiFiImprovSetup(updateValues, &mode, &brightness);
+	WiFiImprovSetup(updateValues, &mode, &brightness, &leds);
 
 	Serial.println(getSystemInfo());
-	//ledCalibration();
+	//ledCalibration(); // <-- breaks the brightness control for some reason
 }
 
 void loop() {
@@ -619,18 +605,18 @@ void loop() {
 	time_t epoch = time(nullptr);  // Get current time
 
 	if (WiFi.status() == WL_CONNECTED) {
-		setStatusLedState(WIFI_LED_PIN, LED_ON_GREEN);
+		setStatusLedState(WIFI_LED_PIN, (statusLedCommand)LED_ON_GREEN);
 
 		// --- Fetch new data periodically ---
 		if (epoch > nextFetchTime) {
 
 			String downloadedJson = downloadJSON();
 			if (downloadedJson.length() > 0) {
-				setStatusLedState(CONFIG_LED_PIN, LED_ON_GREEN);
+				setStatusLedState(CONFIG_LED_PIN, (statusLedCommand)LED_ON_GREEN);
 				parseLEDMap(downloadedJson);  // This populates/updates the schedule
 			} else {
 				Serial.println("All servers failed to provide data.");
-				setStatusLedState(CONFIG_LED_PIN, LED_ON_RED);
+				setStatusLedState(CONFIG_LED_PIN, (statusLedCommand)LED_ON_RED);
 			}
 
 			nextFetchTime = max(nextFetchTime, epoch + 10);	 // Ensure we don't fetch too frequently
@@ -652,7 +638,7 @@ void loop() {
 		}
 
 	} else {
-		setStatusLedState(WIFI_LED_PIN, LED_ON_RED);
+		setStatusLedState(WIFI_LED_PIN, (statusLedCommand)LED_ON_RED);
 	}
 	vTaskDelay(pdMS_TO_TICKS(10));	// Delay to yield to other tasks
 }

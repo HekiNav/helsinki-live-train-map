@@ -1,3 +1,5 @@
+#pragma once
+#include "statusLed.h"
 #include "ImprovWiFiLibrary.h"
 #include <ESPAsyncWebServer.h>
 #include <Esp.h>
@@ -29,7 +31,7 @@ const char index_html[] PROGMEM = R"=====(
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LED Rails Device</title>
+  <title>LED Rail Map Device</title>
   <style>
     body {
       background: #222;
@@ -72,7 +74,7 @@ const char index_html[] PROGMEM = R"=====(
 </head>
 <body>
   <div class="container">
-    <h1></h1>
+    <h1>Led Rail Map Device Settings</h1>
     <h2>This is just an empty page for now, in the future settings will be added here...</h2>
   </div>
 </body>
@@ -81,37 +83,43 @@ const char index_html[] PROGMEM = R"=====(
 )=====";
 
 
-void setUpWebserver(AsyncWebServer &server, void setValueCb(int8_t, int8_t), int8_t *mode_ptr, int16_t *brightness_ptr) {
+void setUpWebserver(AsyncWebServer &server, void setValueCb(int8_t, int8_t), int8_t *mode_ptr, int16_t *brightness_ptr, statusLed (*leds_ptr)[2]) {
 	// return 404 to webpage icon
 	server.on("/favicon.ico", [](AsyncWebServerRequest *request) {
 		request->send(404);
 	});	 // webpage icon
 
 	// Serve Basic HTML Page
-	server.on("/", HTTP_ANY, [setValueCb](AsyncWebServerRequest *request) {
+	server.on("/", HTTP_ANY, [](AsyncWebServerRequest *request) {
 		AsyncWebServerResponse *response = request->beginResponse(200, "text/html", index_html);
 
+		response->addHeader(
+			"Cache-Control", "public,max-age=31536000");  // save this file to cache for 1 year (unless you refresh)
+		request->send(response);
+		Serial.println("Served Control Panel HTML Page");
+	});
+
+	server.on("/set_data", HTTP_ANY, [setValueCb](AsyncWebServerRequest *request) {
 		AsyncWebParameter *mode = request->hasParam("mode") ? request->getParam("mode") : new AsyncWebParameter("mode", "-1");
 		AsyncWebParameter *brightness = request->hasParam("brightness") ? request->getParam("brightness") : new AsyncWebParameter("brightness", "-1");
 		
 		setValueCb(mode->value().toInt(), brightness->value().toInt());
 
-		response->addHeader(
-			"Cache-Control", "public,max-age=31536000");  // save this file to cache for 1 year (unless you refresh)
+		AsyncWebServerResponse *response = request->beginResponse(200, "application/json", "{\"success\":true}");
+		
 		request->send(response);
-		Serial.println("Served Basic HTML Page");
 	});
 
-	server.on("/data/", HTTP_ANY, [brightness_ptr, mode_ptr](AsyncWebServerRequest *request) {
+	server.on("/get_data/", HTTP_ANY, [brightness_ptr, mode_ptr, leds_ptr](AsyncWebServerRequest *request) {
 
-		char jsonBuffer[32];
+		char jsonBuffer[64];
 
-		snprintf(jsonBuffer, sizeof(jsonBuffer), "{\"brightness\":%i,\"mode\":%i}", *brightness_ptr, *mode_ptr);
+		snprintf(jsonBuffer, sizeof(jsonBuffer), "{\"brightness\":%i,\"mode\":%i,\"wifiLed\":%i,\"networkLed\":%i}", *brightness_ptr, *mode_ptr, (*leds_ptr)[0].command, (*leds_ptr)[1].command);
 
 		AsyncWebServerResponse *response = request->beginResponse(200, "application/json", jsonBuffer);
 		
 		request->send(response);
-		Serial.println("Served Stats");
+		Serial.println("Served Data");
 	});
 }
 
@@ -165,13 +173,13 @@ bool attemptConnectToSavedWiFi(int index) {
 	}
 }
 
-void WiFiImprovSetup(void setValueCb(int8_t, int8_t), int8_t *mode_ptr, int16_t *brightness_ptr) {
+void WiFiImprovSetup(void setValueCb(int8_t, int8_t), int8_t *mode_ptr, int16_t *brightness_ptr, statusLed (*leds_ptr)[2]) {
 	importWiFi();
 	improvSerial.setDeviceInfo(
 		ImprovTypes::ChipFamily::CF_ESP32_C3, FIRMWARE, FIRMWARE_VERSION, ARDUINO_BOARD, "http://{LOCAL_IPV4}/");
 	improvSerial.onImprovError(onImprovWiFiErrorCb);
 	improvSerial.onImprovConnected(onImprovWiFiConnectedCb);
-	setUpWebserver(server, setValueCb, mode_ptr, brightness_ptr);
+	setUpWebserver(server, setValueCb, mode_ptr, brightness_ptr, leds_ptr);
 
 	while (wifiNetworkIndex < MAX_WIFI_NETWORKS) {
 		if (strlen(savedWiFi[wifiNetworkIndex].ssid) > 0) {

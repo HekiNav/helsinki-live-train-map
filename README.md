@@ -10,7 +10,7 @@ A real-time PCB map of the Helsinki Region train network, powered by an ESP32-C3
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Hardware](#hardware)
-  - [PCB Design](#pcb-design)
+  - [Design](#design)
   - [Software / Firmware](#software--firmware)
   - [Getting Started](#getting-started)
   - [Web Installer](#web-installer)
@@ -49,14 +49,37 @@ A real-time PCB map of the Helsinki Region train network, powered by an ESP32-C3
 
 ---
 
-## PCB Design
+## Design
+
+
+### Rail diagram design
+
+Inspiration for the layout was taken from the VR rail map used on commuter trains (above the doors). 
+
+**Each LED represents a double-track line**
+- 8-tracked sections (4 LEDs wide):
+   1. Helsinki-Pasila
+- Quad-tracked sections (2 express commuter & intercity, 2 slower commuter):
+   1. Pasila-Leppävaara-(Kauklahti [Under construction])
+   2. Pasila-Kerava
+
+- Exceptions to single-track lines: 
+   1. Tavastila-Kotkan satama
+   2. Siuntio-Hanko
+
+
+
+### Technical design
 
 - Designed in **KiCad V9.0** using [JLCPCB KiCad Library](https://github.com/CDFER/jlcpcb-kicad-library)
 - **View Online:** [Interactive PCB Layout (Kicanvas)](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2FHekiNav%2Fhelsinki-live-train-map%2Ftree%2Fmain%2FPCB)
 - **Source Files:** `/PCB` directory
 ### Schematic
 Led chains are located on other pages
+
+
 ![Schematic](Images/Schematic.png)
+
 
 ---
 
@@ -69,6 +92,7 @@ The ESP32-C3 firmware is responsible for:
 3. Processing data to determine train locations
 4. Controlling WS2812B LED chains to display train positions
 5. Handling button inputs and status LEDs
+6. Hosting a web page for configuration
 
 ---
 
@@ -84,15 +108,21 @@ The ESP32-C3 firmware is responsible for:
 4. **Enjoy the Live Train Map!**
 
 ### Status LEDs
+
+The top (🔌) power led is hardwired to the power rail
+
+The middle and bottom status leds are controlled by the MCU
+
 | LED | Light | Meaning |
 |-----|-------|---------|
 | top (🔌)    |🟩 green | The board is powered
 | top (🔌)    |⬛ none  | The board is not powered
-| top (🔌)    |🟥 red   | This shouldn't happen although it's techically possible if theres isuues in the pcb
+| top (🔌)    |🟥 red   | This shouldn't happen although it's techically possible if there's severe issues in the pcb
 |
-| middle (ᯤ)  |🟩 green | Connected to the API
-| middle (ᯤ)  |⬛ none  | Connecting to the API
-| middle (ᯤ)  |🟥 red   | Failed to connect to API
+| middle (ᯤ)  |🟩 green            | Connected to the API
+| middle (ᯤ)  |🟩 green (blinking) | Mode change pending
+| middle (ᯤ)  |⬛ none             | Connecting to the API
+| middle (ᯤ)  |🟥 red              | Failed to connect to API
 |
 | bottom (🌐)  |🟩 green (blinking) | Connecting to wifi
 | bottom (🌐)  |🟩 green            | Connected to wifi
@@ -131,7 +161,7 @@ A 3d-printable stand to hold up the board. Files are located in `/3D Models`
 
 ## Server
 
-Processes train running data from [digitraffic](https://rata.digitraffic.fi/). Documenation is available at https://www.digitraffic.fi/rautatieliikenne. Most of it is only available in finnish.
+Processes train running data from [digitraffic](https://rata.digitraffic.fi/). Documentation for the train API is available at https://www.digitraffic.fi/rautatieliikenne. Most of it is only available in finnish.
 
 ### Main packages:
 - express: API handling
@@ -167,6 +197,10 @@ Start the api (uses port 3001 by default)
 Contributions are welcome! Open an issue or submit a pull request for improvements, bug fixes, or feature suggestions.
 
 ---
+
+## Attributions
+
+Thanks to [Chris (CDFER)](https://github.com/CDFER/) for the base and support of this project. Check out his store with multiple LED Rail Maps at [keastudios.co.nz](https://keastudios.co.nz/)
 
 ## License
 

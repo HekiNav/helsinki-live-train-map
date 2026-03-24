@@ -30,5 +30,6 @@
         "vector": "cpp",
         "string_view": "cpp",
         "regex": "cpp"
-    }
+    },
+    "liveServer.settings.port": 5501
 }
