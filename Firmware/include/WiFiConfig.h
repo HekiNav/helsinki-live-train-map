@@ -107,6 +107,10 @@ void setUpWebserver(AsyncWebServer &server, void setValueCb(int8_t, int8_t), int
 
 		AsyncWebServerResponse *response = request->beginResponse(200, "application/json", "{\"success\":true}");
 		
+		response->addHeader(
+			"Access-Control-Allow-Origin", "*"
+		);
+
 		request->send(response);
 	});
 
@@ -117,7 +121,9 @@ void setUpWebserver(AsyncWebServer &server, void setValueCb(int8_t, int8_t), int
 		snprintf(jsonBuffer, sizeof(jsonBuffer), "{\"brightness\":%i,\"mode\":%i,\"wifiLed\":%i,\"networkLed\":%i}", *brightness_ptr, *mode_ptr, (*leds_ptr)[0].command, (*leds_ptr)[1].command);
 
 		AsyncWebServerResponse *response = request->beginResponse(200, "application/json", jsonBuffer);
-		
+		response->addHeader(
+			"Access-Control-Allow-Origin", "*"
+		);
 		request->send(response);
 		Serial.println("Served Data");
 	});

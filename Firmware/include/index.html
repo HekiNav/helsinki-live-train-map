@@ -31,6 +31,17 @@
       font-family: inherit;
       margin-bottom: 16px;
     }
+    button {	
+      background-color: #09f;
+      border-radius: 12px;
+      border: 0;
+      padding: .5em;
+      font-size: 1em;
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(0, 153, 255, 0.8);
+      font-family: inherit;
+      margin-bottom: 16px;
+    }
     h2 {
       color: #fff;
       font-family: inherit;
@@ -47,7 +58,59 @@
 <body>
   <div class="container">
     <h1>Led Rail Map Device Settings</h1>
-    <h2>The device is connected</h2>
+    <h2>Status: <span id="status">Loading...</span></h2>
+    <button onclick="getData()">Refresh</button>
   </div>
+  <script>
+    //@ts-check
+    const API_URL = "http://192.168.1.195"
+
+    const statusSpan = document.querySelector("#status")
+
+    async function getData() {
+        if (statusSpan) statusSpan.innerHTML = "Loading..."
+        const response = await fetch(`${API_URL}/get_data/`)
+        const data = await response.json()
+        parseData(data)
+    }
+    /**
+     * @typedef {{
+     *  mode: number,
+     *  brightness: number,
+     *  wifiLed: number,
+     *  networkLed: number,
+     * }} APIData
+     * @param {APIData} data
+     */ 
+    function parseData(data) {
+        if (statusSpan) statusSpan.innerHTML = getStatus(data.wifiLed, data.networkLed)
+    }
+    function getStatus(wifiLed = 0, networkLed = 0) {
+        switch (wifiLed) {
+            case 0:
+                return "Boot failed"
+            case 1:
+                switch (networkLed) {
+                    case 0:
+                        return "Trying to connect to server"
+                    case 1:
+                        return "Connected to server"
+                    case 2:
+                        return "Failed to connect to server. Reconnecting..."
+                    case 4:
+                        return "Switching map mode"
+                    default:
+                        return "Unknown status: " + networkLed
+                }
+            case 2:
+                return "Failed to connect to WiFi"
+            case 4:
+                return "Connecting to WiFi"
+            default:
+                return "Unknown status: " + wifiLed
+        }
+    }
+    getData()
+  </script>
 </body>
 </html>
