@@ -444,6 +444,7 @@ function getTrainColorByLine(t) {
         case "I":
             return 4;
         case "P":
+        case "G":
             return 3;
         case "K":
             return 5;

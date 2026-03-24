@@ -123,11 +123,11 @@ The middle and bottom status leds are controlled by the MCU
 | top (🔌)    |🟥 red   | This shouldn't happen although it's techically possible if there's severe issues in the pcb
 |
 | middle (ᯤ)  |🟩 green            | Connected to the API
-| middle (ᯤ)  |🟩 green (blinking) | Mode change pending
+| middle (ᯤ)  |🟩 green \(blinking\) | Mode change pending
 | middle (ᯤ)  |⬛ none             | Connecting to the API
 | middle (ᯤ)  |🟥 red              | Failed to connect to API
 |
-| bottom (🌐)  |🟩 green (blinking) | Connecting to wifi
+| bottom (🌐)  |🟩 green \(blinking\) | Connecting to wifi
 | bottom (🌐)  |🟩 green            | Connected to wifi
 | bottom (🌐)  |⬛ none             | Failed to boot
 | bottom (🌐)  |🟥 red              | Failed to connect to wifi
@@ -144,7 +144,7 @@ There are 4(+1) map modes on the device. You can switch the mode by pressing the
 |-------------------------------|-------|
 |$${\color{#f80}\Huge\text{■}}$$| A     |
 |$${\color{#ff0}\Huge\text{■}}$$| E,O   |
-|$${\color{#0f0}\Huge\text{■}}$$| P     |
+|$${\color{#0f0}\Huge\text{■}}$$| P,G   |
 |$${\color{#0ff}\Huge\text{■}}$$| M,I   |
 |$${\color{#00f}\Huge\text{■}}$$| K     |
 |$${\color{#80f}\Huge\text{■}}$$| Y,L,H |
