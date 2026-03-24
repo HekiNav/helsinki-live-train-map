@@ -4,8 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LED Rail Map Device</title>
+    <title>Rail Map Control Panel</title>
     <style>
+        ::selection {
+            background-color: #09f;
+            color: #fff;
+        }
+
+        ::-moz-selection {
+            background-color: #09f;
+            color: #fff;
+        }
+
         body {
             background: #222;
             color: #fff;
@@ -26,7 +36,9 @@
             padding: 32px 24px;
             max-width: 600px;
             width: 90%;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
         }
 
         h1 {
@@ -53,6 +65,14 @@
         h2 {
             color: #fff;
             font-family: inherit;
+            font-weight: 600;
+            margin-top: 0;
+            display: flex;
+        }
+
+        h3 {
+            color: #fff;
+            font-family: inherit;
             font-weight: 400;
             margin-top: 0;
             display: flex;
@@ -75,6 +95,10 @@
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
             padding: 8px 8px;
             width: max-content;
+            display: flex;
+            flex-direction: row;
+            z-index: 1000;
+            gap: .5em;
             bottom: -8px;
         }
 
@@ -89,6 +113,20 @@
 
             h2 {
                 font-size: 1.1em;
+            }
+
+            h3 {
+                font-size: .9em;
+            }
+
+            details div {
+                margin-top: 1em;
+                padding: 8px 8px;
+                width: min-content;
+                height: max-content;
+                flex-direction: column;
+                top: 2em;
+                right: 0;
             }
         }
 
@@ -107,42 +145,43 @@
 
 <body>
     <div class="container">
-        <h1>Led Rail Map Device Settings</h1>
-        <div class="align-start">
-            <h2>Status: <span id="status">Loading...</span></h2>
-            <h2>Mode: <span id="mode">Loading...</span>
-                <details>
-                    <summary>Change</summary>
-                    <div>
-                        <button onclick="setChanges('mode',0)">Commuter lines</button>
-                        <button onclick="setChanges('mode',1)">Delay</button>
-                        <button onclick="setChanges('mode',2)">Composition</button>
-                        <button onclick="setChanges('mode',3)">Train Type</button>
-                        <button onclick="setChanges('mode',4)">Test</button>
-                    </div>
-                </details>
-            </h2>
-            <h2>Tails: <span id="dir_ind">Loading...</span>
-                <details>
-                    <summary>Change</summary>
-                    <div>
-                        <button onclick="setChanges('dir_ind',0)">No</button>
-                        <button onclick="setChanges('dir_ind',1)">Yes</button>
-                    </div>
-                </details>
-            </h2>
-            <h2>
-                Brightness: <span id="brightness">Loading...</span>
-                <details>
-                    <summary>Change</summary>
-                    <div id="brightnessC">
+        <h1>Rail Map Control Panel</h1>
+        <h2>Settings</h2>
+        <h3>Status: <span id="status">Loading...</span></h3>
+        <h3>Mode: <span id="mode">Loading...</span>
+            <details>
+                <summary>Change</summary>
+                <div>
+                    <button onclick="setChanges('mode',0)">Commuter lines</button>
+                    <button onclick="setChanges('mode',1)">Delay</button>
+                    <button onclick="setChanges('mode',2)">Composition</button>
+                    <button onclick="setChanges('mode',3)">Train Type</button>
+                    <button onclick="setChanges('mode',4)">Test</button>
+                </div>
+            </details>
+        </h3>
+        <h3>Tails: <span id="dir_ind">Loading...</span>
+            <details>
+                <summary>Change</summary>
+                <div>
+                    <button onclick="setChanges('dir_ind',0)">No</button>
+                    <button onclick="setChanges('dir_ind',1)">Yes</button>
+                </div>
+            </details>
+        </h3>
+        <h3>
+            Brightness: <span id="brightness">Loading...</span>
+            <details>
+                <summary>Change</summary>
+                <div id="brightnessC">
 
-                    </div>
-                </details>
-            </h2>
+                </div>
+            </details>
+        </h3>
+        <div>
+            <button id="refresh" onclick="getData()">Refresh</button>
+            <button hidden id="save" onclick="saveChanges()">Save changes</button>
         </div>
-        <button id="refresh" onclick="getData()">Refresh</button>
-        <button hidden id="save" onclick="saveChanges()">Save changes</button>
     </div>
     <script>
         //@ts-check
@@ -217,7 +256,7 @@
             if (brightnessContainer) {
                 brightnessContainer.innerHTML = ""
                 for (let i = 0; i < 5; i++) {
-                    brightnessContainer.innerHTML += `<button onclick="setChanges('brightness',${i})">${getBrightness(i, data.directionIndicator).split("/")[0]}</button>&nbsp;`
+                    brightnessContainer.innerHTML += `<button onclick="setChanges('brightness',${i})">${getBrightness(i, data.directionIndicator).split("/")[0]}</button>`
                 }
             }
 
