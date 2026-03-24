@@ -102,17 +102,11 @@ void setUpWebserver(AsyncWebServer &server, void setValueCb(int8_t, int8_t), int
 		Serial.println("Served Basic HTML Page");
 	});
 
-	server.on("/data/", HTTP_ANY, [brightness_ptr](AsyncWebServerRequest *request) {
+	server.on("/data/", HTTP_ANY, [brightness_ptr, mode_ptr](AsyncWebServerRequest *request) {
 
-		StaticJsonDocument<64> doc;
+		char jsonBuffer[32];
 
-		JsonObject data = doc.to<JsonObject>();
-
-		data["brightness"] = *brightness_ptr;
-
-		char jsonBuffer[64];
-
-		serializeJson(doc,jsonBuffer, sizeof(jsonBuffer));
+		snprintf(jsonBuffer, sizeof(jsonBuffer), "{\"brightness\":%i,\"mode\":%i}", *brightness_ptr, *mode_ptr);
 
 		AsyncWebServerResponse *response = request->beginResponse(200, "application/json", jsonBuffer);
 		
