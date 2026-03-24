@@ -1,116 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LED Rail Map Device</title>
-  <style>
-    body {
-      background: #222;
-      color: #fff;
-      font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .container {
-      background: #222;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      padding: 32px 24px;
-      max-width: 600px;
-      width: 90%;
-      text-align: center;
-    }
-    h1 {	
-      color: #09f;
-      font-family: inherit;
-      margin-bottom: 16px;
-    }
-    button {	
-      background-color: #09f;
-      border-radius: 12px;
-      border: 0;
-      padding: .5em;
-      font-size: 1em;
-      color: #fff;
-      box-shadow: 0 2px 12px rgba(0, 153, 255, 0.8);
-      font-family: inherit;
-      margin-bottom: 16px;
-    }
-    h2 {
-      color: #fff;
-      font-family: inherit;
-      font-weight: 400;
-      margin-top: 0;
-    }
-    @media (max-width: 600px) {
-      .container { padding: 18px 4px; }
-      h1 { font-size: 1.6em; }
-      h2 { font-size: 1.1em; }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Led Rail Map Device Settings</h1>
-    <h2>Status: <span id="status">Loading...</span></h2>
-    <button onclick="getData()">Refresh</button>
-  </div>
-  <script>
-    //@ts-check
-    const API_URL = "http://192.168.1.195"
-
-    const statusSpan = document.querySelector("#status")
-
-    async function getData() {
-        if (statusSpan) statusSpan.innerHTML = "Loading..."
-        const response = await fetch(`${API_URL}/get_data/`)
-        const data = await response.json()
-        parseData(data)
-    }
-    /**
-     * @typedef {{
-     *  mode: number,
-     *  brightness: number,
-     *  wifiLed: number,
-     *  networkLed: number,
-     * }} APIData
-     * @param {APIData} data
-     */ 
-    function parseData(data) {
-        if (statusSpan) statusSpan.innerHTML = getStatus(data.wifiLed, data.networkLed)
-    }
-    function getStatus(wifiLed = 0, networkLed = 0) {
-        switch (wifiLed) {
-            case 0:
-                return "Boot failed"
-            case 1:
-                switch (networkLed) {
-                    case 0:
-                        return "Trying to connect to server"
-                    case 1:
-                        return "Connected to server"
-                    case 2:
-                        return "Failed to connect to server. Reconnecting..."
-                    case 4:
-                        return "Switching map mode"
-                    default:
-                        return "Unknown status: " + networkLed
-                }
-            case 2:
-                return "Failed to connect to WiFi"
-            case 4:
-                return "Connecting to WiFi"
-            default:
-                return "Unknown status: " + wifiLed
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED Rail Map Device</title>
+    <style>
+        body {
+            background: #222;
+            color: #fff;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-    }
-    getData()
-  </script>
+
+        .container {
+            background: #333;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+            padding: 32px 24px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #09f;
+            font-family: inherit;
+            margin-bottom: 16px;
+        }
+
+        button,
+        summary {
+            background-color: #09f;
+            border-radius: 12px;
+            border: 0;
+            padding: .5em;
+            font-size: 1em;
+            color: #fff;
+            box-shadow: 0 2px 6px rgba(0, 153, 255, 0.6);
+            font-family: inherit;
+            margin-bottom: 16px;
+            height: min-content;
+            margin-bottom: 0;
+        }
+
+        h2 {
+            color: #fff;
+            font-family: inherit;
+            font-weight: 400;
+            margin-top: 0;
+            display: flex;
+        }
+
+        details {
+            display: flex;
+            justify-content: center;
+            font-size: .6em;
+            margin-left: 1em;
+            height: min-content;
+            position: relative;
+        }
+
+        details div {
+            margin-left: 1em;
+            position: absolute;
+            background: #222;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+            padding: 8px 8px;
+            width: max-content;
+            bottom: -8px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 18px 4px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            h2 {
+                font-size: 1.1em;
+            }
+        }
+
+        .align-start {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: start;
+        }
+
+        details>summary {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Led Rail Map Device Settings</h1>
+        <div class="align-start">
+            <h2>Status: <span id="status">Loading...</span></h2>
+            <h2>Mode: <span id="mode">Loading...</span>
+                <details>
+                    <summary>Change</summary>
+                    <div>
+                        <button onclick="setChanges('mode',0)">Commuter lines</button>
+                        <button onclick="setChanges('mode',1)">Delay</button>
+                        <button onclick="setChanges('mode',2)">Composition</button>
+                        <button onclick="setChanges('mode',3)">Train Type</button>
+                        <button onclick="setChanges('mode',4)">Test</button>
+                    </div>
+                </details>
+            </h2>
+            <h2>Tails: <span id="dir_ind">Loading...</span>
+                <details>
+                    <summary>Change</summary>
+                    <div>
+                        <button onclick="setChanges('dir_ind',0)">No</button>
+                        <button onclick="setChanges('dir_ind',1)">Yes</button>
+                    </div>
+                </details>
+            </h2>
+            <h2>
+                Brightness: <span id="brightness">Loading...</span>
+                <details>
+                    <summary>Change</summary>
+                    <div id="brightnessC">
+
+                    </div>
+                </details>
+            </h2>
+        </div>
+        <button id="refresh" onclick="getData()">Refresh</button>
+        <button hidden id="save" onclick="saveChanges()">Save changes</button>
+    </div>
+    <script>
+        //@ts-check
+        const API_URL = "http://192.168.1.195"
+
+        const statusSpan = document.querySelector("#status")
+        const modeSpan = document.querySelector("#mode")
+        const brightnessSpan = document.querySelector("#brightness")
+        const brightnessContainer = document.querySelector("#brightnessC")
+        const dirIndSpan = document.querySelector("#dir_ind")
+        const saveButton = document.querySelector("#save")
+        const refreshButton = document.querySelector("#refresh")
+
+        /**
+         * @type {{
+         * mode?: number,
+         * brightness?: number,
+         * dir_ind?: number
+         * }} changes
+         */
+        let changes = {}
+
+        function setChanges(k, v) {
+            if (saveButton) saveButton.hidden = false
+            changes = { ...changes, [k]: v }
+        }
+
+        async function getData() {
+            if (refreshButton) refreshButton.innerHTML = "Loading..."
+            const response = await fetch(`${API_URL}/get_data/`)
+            const data = await response.json()
+            if (refreshButton) refreshButton.innerHTML = "Refresh"
+            parseData(data)
+        }
+        async function saveChanges() {
+            if (saveButton) saveButton.innerHTML = "Saving..."
+            const searchParams = Object.entries(changes)
+            if (searchParams.length) await fetch(`${API_URL}/set_data/${searchParams.length ? `${searchParams.reduce((p, [k, v]) => `${p}${p.length ? "&" : "?"}${k}=${v}`, "")}` : ""}`)
+            if (saveButton) saveButton.innerHTML = "Save changes"
+            if (saveButton) saveButton.hidden = true
+            if (refreshButton) refreshButton.innerHTML = "Auto-reloading in 1 second"
+            setTimeout(() => {
+                getData()
+            }, 1000)
+            changes = {}
+        }
+        /**
+         * @typedef {{
+         *  mode: number,
+         *  brightness: number,
+         *  wifiLed: number,
+         *  networkLed: number,
+         *  directionIndicator: number,
+         * }} APIData
+         * @param {APIData} data
+         */
+        function parseData(data) {
+            if (statusSpan) statusSpan.innerHTML = getStatus(data.wifiLed, data.networkLed)
+            if (brightnessSpan) brightnessSpan.innerHTML = getBrightness(data.brightness, data.directionIndicator)
+            if (dirIndSpan) dirIndSpan.innerHTML = data.directionIndicator ? "Yes" : "No"
+            if (modeSpan) {
+                const { name } = getMode(data.mode)
+                modeSpan.innerHTML = name
+            }
+            if (data.networkLed != 1 || data.wifiLed != 1) {
+                if (refreshButton) refreshButton.innerHTML = "Auto-reloading in 5 seconds"
+
+                setTimeout(() => {
+                    getData()
+                }, 5000)
+            }
+            if (brightnessContainer) {
+                brightnessContainer.innerHTML = ""
+                for (let i = 0; i < 5; i++) {
+                    brightnessContainer.innerHTML += `<button onclick="setChanges('brightness',${i})">${getBrightness(i, data.directionIndicator).split("/")[0]}</button>&nbsp;`
+                }
+            }
+
+        }
+        function getStatus(wifiLed = -1, networkLed = -1) {
+            switch (wifiLed) {
+                case 0:
+                    return "Boot failed"
+                case 1:
+                    switch (networkLed) {
+                        case 0:
+                            return "Trying to connect to server"
+                        case 1:
+                            return "Connected to server"
+                        case 2:
+                            return "Failed to connect to server. Reconnecting..."
+                        case 4:
+                            return "Switching map mode"
+                        default:
+                            return "Unknown status: " + networkLed
+                    }
+                case 2:
+                    return "Failed to connect to WiFi"
+                case 4:
+                    return "Connecting to WiFi"
+                default:
+                    return "Unknown status: " + wifiLed
+            }
+        }
+        function getMode(mode = -1) {
+            switch (mode) {
+                case 0:
+                    return {
+                        name: "Commuter lines"
+                    }
+                case 1:
+                    return {
+                        name: "Delay"
+                    }
+                case 2:
+                    return {
+                        name: "Train composition (locomotive)"
+                    }
+                case 3:
+                    return {
+                        name: "Train Type"
+                    }
+                case 4:
+                    return {
+                        name: "Test"
+                    }
+                default:
+                    return {
+                        name: "Unknown mode: " + mode
+                    }
+            }
+        }
+        function getBrightness(brightness = -1, directionIndicators = false) {
+            switch (brightness) {
+                case 0:
+                    return directionIndicators ? "0/255" : "0/255"
+                case 1:
+                    return directionIndicators ? "80/255" : "35/255"
+                case 2:
+                    return directionIndicators ? "90/255" : "50/255"
+                case 3:
+                    return directionIndicators ? "120/255" : "80/255"
+                case 4:
+                    return directionIndicators ? "255/255" : "255/255"
+                default:
+                    return "Unknown brightness: " + brightness
+            }
+        }
+        getData()
+    </script>
 </body>
+
 </html>

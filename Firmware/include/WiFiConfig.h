@@ -83,7 +83,7 @@ const char index_html[] PROGMEM = R"=====(
 )=====";
 
 
-void setUpWebserver(AsyncWebServer &server, void setValueCb(int8_t, int8_t), int8_t *mode_ptr, int16_t *brightness_ptr, statusLed (*leds_ptr)[2]) {
+void setUpWebserver(AsyncWebServer &server, void setValueCb(int8_t, int8_t, int8_t), int8_t *mode_ptr, int16_t *brightness_ptr, statusLed (*leds_ptr)[2], bool *direction_indicators_ptr) {
 	// return 404 to webpage icon
 	server.on("/favicon.ico", [](AsyncWebServerRequest *request) {
 		request->send(404);
@@ -102,8 +102,9 @@ void setUpWebserver(AsyncWebServer &server, void setValueCb(int8_t, int8_t), int
 	server.on("/set_data", HTTP_ANY, [setValueCb](AsyncWebServerRequest *request) {
 		AsyncWebParameter *mode = request->hasParam("mode") ? request->getParam("mode") : new AsyncWebParameter("mode", "-1");
 		AsyncWebParameter *brightness = request->hasParam("brightness") ? request->getParam("brightness") : new AsyncWebParameter("brightness", "-1");
+		AsyncWebParameter *dir_ind = request->hasParam("dir_ind") ? request->getParam("dir_ind") : new AsyncWebParameter("dir_ind", "-1");
 		
-		setValueCb(mode->value().toInt(), brightness->value().toInt());
+		setValueCb(mode->value().toInt(), brightness->value().toInt(), dir_ind->value().toInt());
 
 		AsyncWebServerResponse *response = request->beginResponse(200, "application/json", "{\"success\":true}");
 		
@@ -114,11 +115,11 @@ void setUpWebserver(AsyncWebServer &server, void setValueCb(int8_t, int8_t), int
 		request->send(response);
 	});
 
-	server.on("/get_data/", HTTP_ANY, [brightness_ptr, mode_ptr, leds_ptr](AsyncWebServerRequest *request) {
+	server.on("/get_data/", HTTP_ANY, [brightness_ptr, mode_ptr, leds_ptr, direction_indicators_ptr](AsyncWebServerRequest *request) {
 
-		char jsonBuffer[64];
+		char jsonBuffer[128];
 
-		snprintf(jsonBuffer, sizeof(jsonBuffer), "{\"brightness\":%i,\"mode\":%i,\"wifiLed\":%i,\"networkLed\":%i}", *brightness_ptr, *mode_ptr, (*leds_ptr)[0].command, (*leds_ptr)[1].command);
+		snprintf(jsonBuffer, sizeof(jsonBuffer), "{\"brightness\":%i,\"mode\":%i,\"wifiLed\":%i,\"networkLed\":%i,\"directionIndicator\":%s}", *brightness_ptr, *mode_ptr, (*leds_ptr)[0].command, (*leds_ptr)[1].command, *direction_indicators_ptr ? "true" : "false");
 
 		AsyncWebServerResponse *response = request->beginResponse(200, "application/json", jsonBuffer);
 		response->addHeader(
@@ -179,13 +180,13 @@ bool attemptConnectToSavedWiFi(int index) {
 	}
 }
 
-void WiFiImprovSetup(void setValueCb(int8_t, int8_t), int8_t *mode_ptr, int16_t *brightness_ptr, statusLed (*leds_ptr)[2]) {
+void WiFiImprovSetup(void setValueCb(int8_t, int8_t, int8_t), int8_t *mode_ptr, int16_t *brightness_ptr, statusLed (*leds_ptr)[2], bool *direction_indicators_ptr) {
 	importWiFi();
 	improvSerial.setDeviceInfo(
 		ImprovTypes::ChipFamily::CF_ESP32_C3, FIRMWARE, FIRMWARE_VERSION, ARDUINO_BOARD, "http://{LOCAL_IPV4}/");
 	improvSerial.onImprovError(onImprovWiFiErrorCb);
 	improvSerial.onImprovConnected(onImprovWiFiConnectedCb);
-	setUpWebserver(server, setValueCb, mode_ptr, brightness_ptr, leds_ptr);
+	setUpWebserver(server, setValueCb, mode_ptr, brightness_ptr, leds_ptr, direction_indicators_ptr);
 
 	while (wifiNetworkIndex < MAX_WIFI_NETWORKS) {
 		if (strlen(savedWiFi[wifiNetworkIndex].ssid) > 0) {

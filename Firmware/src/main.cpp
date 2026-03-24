@@ -26,7 +26,7 @@ const char* ntpServers[] = { "0.fi.pool.ntp.org", "1.fi.pool.ntp.org", "2.fi.poo
 
 const char* time_zone = "Europe/Helsinki";
 
-const bool direction_indicators = false;
+bool direction_indicators = false;
 
 time_t lastMapDrawTime = 0;	 // Tracks the last time the map was drawn
 time_t nextFetchTime = 0;	 // Tracks when the next update should occur
@@ -60,7 +60,7 @@ int8_t mode = 0;
 String modes[] = { String("lines"), String("delay"), String("comp"), String("train"), String("test") };
 
 uint8_t brightnessValues[5][2] = {
-	{ 0, 0 }, { 80, 35 }, { 90, 35 }, { 120, 40 }, { 150, 50 },
+	{ 0, 0 }, { 80, 35 }, { 90, 35 }, { 120, 40 }, { 255, 80 },
 };
 uint8_t brightnessValuesWithoutDirection[5][2] = {
 	{ 0, 0 }, { 35, 0 }, { 50, 0 }, { 80, 0 }, { 255, 0 },
@@ -236,7 +236,7 @@ void checkButton(Button* button) {
 						break;
 					case MAP_BUTTON:
 						Serial.print("Map button pressed ");
-						mode = (mode + 1) % (sizeof(modes) / sizeof(modes[0]));
+						mode = (mode + 1) % (sizeof(modes) / sizeof(modes[0]) -1); // -1 accounts for test mode
 						ledUpdatePending = true;
 						nextFetchTime = 0;
 						setStatusLedState(CONFIG_LED_PIN, (statusLedCommand)LED_BLINK_GREEN_FAST);
@@ -477,7 +477,7 @@ void onCdcRxEvent(void* arg, esp_event_base_t event_base, int32_t event_id, void
 	improvSerial.handleSerial();
 }
 
-void updateValues(int8_t new_mode = -1, int8_t new_brightness = -1) {
+void updateValues(int8_t new_mode = -1, int8_t new_brightness = -1, int8_t new_dir_ind = -1) {
 	if (new_mode >= 0) {
 		Serial.printf("Set mode: %i\n", new_mode);
 		Serial.println(new_mode % (sizeof(modes) / sizeof(modes[0])));
@@ -497,6 +497,19 @@ void updateValues(int8_t new_mode = -1, int8_t new_brightness = -1) {
 			ledUpdatePending = 0;
 		} else {
 			Serial.printf("Ignoring brightness command (no change) : %i\n", new_brightness);
+		}
+		preferences.end();
+	}
+	if (new_dir_ind >= 0) {
+		direction_indicators = new_dir_ind == 1 ? true : false;
+
+		preferences.begin("dir_ind");
+		if (preferences.getInt("dir_ind") != direction_indicators) {
+			preferences.putInt("dir_ind", direction_indicators);
+			Serial.printf("Setting direction indicators: %i\n", new_dir_ind);
+			ledUpdatePending = 0;
+		} else {
+			Serial.printf("Ignoring direction indicators command (no change) : %i\n", new_dir_ind);
 		}
 		preferences.end();
 	}
@@ -533,6 +546,11 @@ void setup() {
 	preferences.begin("brightness");
 	brightness = preferences.getInt("brightness", brightness);
 	preferences.end();
+	preferences.begin("dir_ind");
+	direction_indicators = preferences.getInt("dir_ind", direction_indicators);
+	preferences.end();
+
+
 	hplNoa.SetLuminance(255);
 	hkiKts.SetLuminance(255);
 
@@ -594,7 +612,7 @@ void setup() {
 	WiFi.setTxPower(WIFI_POWER_15dBm);	// Set WiFi power to avoid brownouts
 	WiFi.disconnect();
 
-	WiFiImprovSetup(updateValues, &mode, &brightness, &leds);
+	WiFiImprovSetup(updateValues, &mode, &brightness, &leds, &direction_indicators);
 
 	Serial.println(getSystemInfo());
 	//ledCalibration(); // <-- breaks the brightness control for some reason
