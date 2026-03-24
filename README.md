@@ -152,6 +152,22 @@ There are 4(+1) map modes on the device. You can switch the mode by pressing the
 |$${\color{#f00}\Huge\text{■}}$$| V     |
 |$${\color{#fff}\Huge\text{■}}$$| Z     |
 
+#### Delay
+- Shows commuter trains by line
+- Some colors are reused on lines that do not intersect
+
+| Color                         | Line  | 
+|-------------------------------|-------|
+|$${\color{#f80}\Huge\text{■}}$$| A     |
+|$${\color{#ff0}\Huge\text{■}}$$| E,O   |
+|$${\color{#0f0}\Huge\text{■}}$$| P,G   |
+|$${\color{#0ff}\Huge\text{■}}$$| M,I   |
+|$${\color{#00f}\Huge\text{■}}$$| K     |
+|$${\color{#80f}\Huge\text{■}}$$| Y,L,H |
+|$${\color{#f08}\Huge\text{■}}$$| D,T,R |
+|$${\color{#f00}\Huge\text{■}}$$| V     |
+|$${\color{#fff}\Huge\text{■}}$$| Z     |
+
 ---
 
 ## Web Installer

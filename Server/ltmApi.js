@@ -50,7 +50,7 @@ const delayColors = {
     0: [0, 255, 0],
     1: [255, 255, 0],
     2: [255, 0, 0],
-    2: [0, 255, 255],
+    3: [0, 255, 255],
 }
 
 let ledState
@@ -481,7 +481,7 @@ function getTrainColorByType(t) {
     }
 }
 function getTrainColorByDelay(t) {
-    if (t.d === true) {
+    if (t.d < 0) {
         return 3
     } else if (t.d < 2) {
         return 0
