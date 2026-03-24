@@ -121,12 +121,12 @@ The middle and bottom status leds are controlled by the MCU
 | top (🔌)    |🟩 green | The board is powered
 | top (🔌)    |⬛ none  | The board is not powered
 | top (🔌)    |🟥 red   | This shouldn't happen although it's techically possible if there's severe issues in the pcb
-|
+|||
 | middle (ᯤ)  |🟩 green            | Connected to the API
 | middle (ᯤ)  |🟩 green \(blinking\) | Mode change pending
 | middle (ᯤ)  |⬛ none             | Connecting to the API
 | middle (ᯤ)  |🟥 red              | Failed to connect to API
-|
+|||
 | bottom (🌐)  |🟩 green \(blinking\) | Connecting to wifi
 | bottom (🌐)  |🟩 green            | Connected to wifi
 | bottom (🌐)  |⬛ none             | Failed to boot
