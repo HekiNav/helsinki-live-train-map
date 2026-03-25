@@ -138,35 +138,72 @@ There are 4(+1) map modes on the device. You can switch the mode by pressing the
 
 #### Lines (default)
 - Shows commuter trains by line
+- Only commuter trains
 - Some colors are reused on lines that do not intersect
 
-| Color                         | Line  | 
-|-------------------------------|-------|
-|$${\color{#f80}\Huge\text{■}}$$| A     |
-|$${\color{#ff0}\Huge\text{■}}$$| E,O   |
-|$${\color{#0f0}\Huge\text{■}}$$| P,G   |
-|$${\color{#0ff}\Huge\text{■}}$$| M,I   |
-|$${\color{#00f}\Huge\text{■}}$$| K     |
-|$${\color{#80f}\Huge\text{■}}$$| Y,L,H |
-|$${\color{#f08}\Huge\text{■}}$$| D,T,R |
-|$${\color{#f00}\Huge\text{■}}$$| V     |
-|$${\color{#fff}\Huge\text{■}}$$| Z     |
+| Color                         | Line     | 
+|-------------------------------|----------|
+|$${\color{#f00}\Huge\text{■}}$$| Z        |
+|$${\color{#f80}\Huge\text{■}}$$| A        |
+|$${\color{#ff0}\Huge\text{■}}$$| E,O      |
+|$${\color{#0f0}\Huge\text{■}}$$| P,G      |
+|$${\color{#0ff}\Huge\text{■}}$$| M,I      |
+|$${\color{#00f}\Huge\text{■}}$$| K        |
+|$${\color{#80f}\Huge\text{■}}$$| Y,L,H    |
+|$${\color{#f0f}\Huge\text{■}}$$| U        |
+|$${\color{#f08}\Huge\text{■}}$$| D,T,R    |
+|$${\color{#fff}\Huge\text{■}}$$| V, Other |
+
+\* V is used in transfer services
 
 #### Delay
-- Shows commuter trains by line
-- Some colors are reused on lines that do not intersect
+- Shows the delay state of trains
+- Only commuter trains
 
-| Color                         | Line  | 
-|-------------------------------|-------|
-|$${\color{#f80}\Huge\text{■}}$$| A     |
-|$${\color{#ff0}\Huge\text{■}}$$| E,O   |
-|$${\color{#0f0}\Huge\text{■}}$$| P,G   |
-|$${\color{#0ff}\Huge\text{■}}$$| M,I   |
-|$${\color{#00f}\Huge\text{■}}$$| K     |
-|$${\color{#80f}\Huge\text{■}}$$| Y,L,H |
-|$${\color{#f08}\Huge\text{■}}$$| D,T,R |
-|$${\color{#f00}\Huge\text{■}}$$| V     |
-|$${\color{#fff}\Huge\text{■}}$$| Z     |
+| Color                         | Delay (min) | Description          |
+|-------------------------------|-------------|----------------------|
+|$${\color{#0ff}\Huge\text{■}}$$| < 0         | Ahead of schedule    |
+|$${\color{#0f0}\Huge\text{■}}$$| 0 - 2       | On time              |
+|$${\color{#ff0}\Huge\text{■}}$$| 2 - 10      | Mild delay           |
+|$${\color{#f00}\Huge\text{■}}$$| > 20        | Severe delay         |
+|$${\color{#f0f}\Huge\text{■}}$$| -           | Unknown delay amount |
+
+
+#### Composition
+- Shows the locomotives/EMUs of trains
+- ALL trains shown (incl. InterCity, freight)
+
+| Color                         | Loco                                     | Description                                |
+|-------------------------------|------------------------------------------|--------------------------------------------|
+| EMUs                          |                                          |                                            |
+|$${\color{#f00}\Huge\text{■}}$$| [Sm2](https://fi.wikipedia.org/wiki/Sm2) | Commuter, old                              |
+|$${\color{#0f0}\Huge\text{■}}$$| [Sm3](https://fi.wikipedia.org/wiki/Sm3) | Pendolino (IC)                             |
+|$${\color{#ff0}\Huge\text{■}}$$| [Sm4](https://fi.wikipedia.org/wiki/Sm4) | Commuter, longer distances                 |
+|$${\color{#80f}\Huge\text{■}}$$| [Sm5](https://fi.wikipedia.org/wiki/Sm5) | Commuter, shorter distances                |
+|$${\color{#f0f}\Huge\text{■}}$$| [Sm6](https://fi.wikipedia.org/wiki/Sm6) | Allegro (IC)                               |
+|$${\color{#f80}\Huge\text{■}}$$| [Sm7](https://fi.wikipedia.org/wiki/Sm7) | Commuter, not in regular service yet       |
+| Locos                         |                                          |                                            |
+|$${\color{#0ff}\Huge\text{■}}$$| [Sr2](https://fi.wikipedia.org/wiki/Sr2) | IC locomotive                              |
+|$${\color{#00f}\Huge\text{■}}$$| [Sr3](https://fi.wikipedia.org/wiki/Sr3) | Newer IC locomotive                        |
+| Other                         |                                          |                                            |
+|$${\color{#f08}\Huge\text{■}}$$| N/A                                      | No composition found (most likely freight) |
+|$${\color{#fff}\Huge\text{■}}$$| Other                                    | Other locomotive with no color defined     |
+
+#### Train types
+- Shows the types of trains
+- ALL trains shown (incl. InterCity, freight)
+
+| Color                         | Code                  | Description                                |
+|-------------------------------|-----------------------|--------------------------------------------|
+|$${\color{#f00}\Huge\text{■}}$$| IC                    | Double-decker intercity trains             |
+|$${\color{#f80}\Huge\text{■}}$$| VET                   | Locomotive train                           |
+|$${\color{#f80}\Huge\text{■}}$$| MUS, MUV              | Heritage train                             |
+|$${\color{#0f0}\Huge\text{■}}$$| S                     | Pendolino train                            |
+|$${\color{#00f}\Huge\text{■}}$$| T                     | Freight train                              |
+|$${\color{#80f}\Huge\text{■}}$$| HL                    | Commuter train                             |
+|$${\color{#f0f}\Huge\text{■}}$$| HV                    | Commuter train transfer                    |
+|$${\color{#f08}\Huge\text{■}}$$| PAR, PAI, VEV, W, SAA | Shunting                                   |
+|$${\color{#fff}\Huge\text{■}}$$| Other                 | Other train type with no color defined     |
 
 ---
 

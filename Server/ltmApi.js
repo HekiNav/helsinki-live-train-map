@@ -51,6 +51,7 @@ const delayColors = {
     1: [255, 255, 0],
     2: [255, 0, 0],
     3: [0, 255, 255],
+    4: [255, 0, 255],
 }
 
 let ledState
@@ -410,16 +411,20 @@ SELECT data
             return 0;
         case "Sm3":
             return 3;
-        case "Sm7":
-            return 1;
         case "Sm4":
             return 2;
+        case "Sm5":
+            return 6;
+        case "Sm6":
+            return 7;
+        case "Sm7":
+            return 1;
+            
         case "Sr2":
             return 4;
         case "Sr3":
             return 5;
-        case "Sm5":
-            return 6;
+        
         case "N/A":
             return 8;
         default:
@@ -429,59 +434,67 @@ SELECT data
 }
 function getTrainColorByLine(t) {
     switch (t.l) {
+        case "Z":
+            return 0;
         case "A":
             return 1;
         case "E":
         case "O":
             return 2;
-        case "U":
-            return 7;
+        case "P":
+        case "G":
+            return 3;
+        case "M":
+        case "I":
+            return 4;
+        case "K":
+            return 5;
         case "Y":
         case "L":
         case "H":
             return 6;
-        case "M":
-        case "I":
-            return 4;
-        case "P":
-        case "G":
-            return 3;
-        case "K":
-            return 5;
-        case "Z":
-            return 9;
+        case "U":
+            return 7;
         case "D":
         case "T":
         case "R":
             return 8;
         // Not in service
         case "V":
-            return 0;
         default:
-            return 8;
+            return 9;
     }
 }
 function getTrainColorByType(t) {
     switch (t.ty) {
         case "IC":
             return 0;
-        case "HL":
-            return 3;
-        case "S":
-            return 2;
-        case "T":
-            return 4;
         case "VET":
             return 1;
-        case "SAA":
-        case "W":
+        case "MUS":
+        case "MUV":
+            return 2;
+        case "S":
+            return 3;
+        case "T":
             return 5;
+        case "HL":
+            return 6;
+        case "HV":
+            return 7;
+        case "SAA":
+        case "PAR":
+        case "PAI":
+        case "VEV":
+        case "W":
+            return 8;
         default:
+            console.log(t)
             return 9;
     }
 }
 function getTrainColorByDelay(t) {
-    if (t.d < 0) {
+    if (t.d < 0 || t.d === true /* WHAT IS THIS BRO */) {
         return 3
     } else if (t.d < 2) {
         return 0
