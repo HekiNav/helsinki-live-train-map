@@ -65,3 +65,5 @@ PCB/jlcpcb/
 *env*
 # Freecad temp files
 *FCBak*
+
+*dist/

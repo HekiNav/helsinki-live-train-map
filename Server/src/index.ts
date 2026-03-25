@@ -1,8 +1,8 @@
-const express = require("express")
-const cors = require("cors")
-const { ltmApi } = require("./ltmApi")
-const {generateDocs} = require("./modules/docsCreator")
-const apiDocsJson = require("./hekinavApi.json")
+import express from "express"
+import cors from "cors"
+import { ltmApi } from "./ltmApi"
+import { AnyDocJson, generateDocs } from "./modules/docsCreator"
+import apiDocsJson from "./hekinavApi.json"
 
 const app = express()
 const port = 3001
@@ -12,7 +12,7 @@ app.listen(port, () => {
     console.log(`Starting up main app: Listening on port ${port}`)
 })
 app.get('/', (req, res) => {
-    res.send(generateDocs(apiDocsJson))
+    res.send(generateDocs(apiDocsJson as AnyDocJson))
 })
 
 app.get(/\/sim(.*)/, (req, res) => {

@@ -1,13 +1,21 @@
-const mqtt = require("mqtt")
-const fs = require("node:fs/promises")
-const express = require("express")
-const { generateDocs } = require("./modules/docsCreator")
-const apiDocsJson = require("./ltmApi.json")
-const { createDb, createEndpointStat, incrementEndpointStat, getEndpointStat } = require("./ltmApiDb")
+import mqtt, { MqttClient } from "mqtt"
+import fs from "node:fs/promises"
+import express from "express"
+import { AnyDocJson, generateDocs } from "./modules/docsCreator"
+import apiDocsJson from "./ltmApi.json"
+import { createDb, createEndpointStat, incrementEndpointStat, getEndpointStat } from "./ltmApiDb"
+import { and, eq } from "drizzle-orm"
+import { compositions } from "./db/schema"
 
 const app = express()
 
-const OPTIONS = {
+const OPTIONS: {
+    allowedTrainTypes: {
+        [k in MapMode | "default"]?: DigitrafficTrainType[]
+    } & {
+        default: DigitrafficTrainType[]
+    }
+} = {
     allowedTrainTypes: {
         default: ["HL", "HV"],
         train: [], //all
@@ -15,57 +23,127 @@ const OPTIONS = {
     }
 }
 
+export type RGBArray = [number, number, number]
 
-let ledOrder
-let sections
-let stations
-let client
-let db
+export interface MultiTrack extends SectionTrack {
+    lines: string[],
+    line?: string
+}
+
+export interface MultiBetweenSection {
+    type: "multiBetween",
+    station1: string,
+    station2: string,
+    segments: MultiTrack[][]
+}
+
+export interface SectionTrack {
+    component: string
+}
+
+export interface StationSection {
+    type: "station",
+    code: string,
+    equalTracksException?: boolean
+    tracks: MultiTrack[]
+}
+
+export interface StopSection {
+    type: "stop",
+    code: string,
+    equalTracksException?: boolean
+    tracks: MultiTrack[]
+}
+export interface BetweenSection {
+    type: "between",
+    station1: string,
+    station2: string,
+    equalTracksException?: boolean
+    tracks: MultiTrack[]
+}
+
+export interface Station {
+    passengerTraffic: boolean,
+    type: string,
+    stationName: string,
+    stationShortCode: string,
+    stationUICCode: number,
+    countryCode: string,
+    longitude: number,
+    latitude: number
+}
+
+export type AnyTrackSection = StationSection | MultiBetweenSection | StopSection | BetweenSection
+
+let ledOrder: { "HPL-NOA": string[], "HKI-KTS": string[] }
+let sections: AnyTrackSection[]
+let stations: Station[]
+let client: MqttClient
+
+const db = createDb()
 
 const testColors = {
-    0: [255, 0, 0],
-    1: [255, 255, 0],
-    2: [0, 255, 0],
-    3: [0, 255, 255],
-    4: [0, 0, 255],
+    0: [255, 0, 0] as RGBArray,
+    1: [255, 255, 0] as RGBArray,
+    2: [0, 255, 0] as RGBArray,
+    3: [0, 255, 255] as RGBArray,
+    4: [0, 0, 255] as RGBArray,
 }
 
 const fullColors = {
-    0: [255, 0, 0],     // Red
-    1: [255, 128, 0],   // Orange
-    2: [255, 255, 0],   // Yellow
+    0: [255, 0, 0] as RGBArray,     // Red
+    1: [255, 128, 0] as RGBArray,   // Orange
+    2: [255, 255, 0] as RGBArray,   // Yellow
     // SKIPPED 3: [128, 255, 0], // Yellow-green
-    3: [0, 255, 0],     // Green
+    3: [0, 255, 0] as RGBArray,     // Green
     // SKIPPED 5: [0, 255, 128], // Turqoise
-    4: [0, 255, 255],   // Cyan
+    4: [0, 255, 255] as RGBArray,   // Cyan
     // SKIPPED 7: [0, 128, 255], // Almost blue
-    5: [0, 0, 255],     // Blue
-    6: [128, 0, 255],   // Purple
-    7: [255, 0, 255],   // Magenta
-    8: [255, 0, 128],   // Pink
-    9: [255, 255, 255], // White
+    5: [0, 0, 255] as RGBArray,     // Blue
+    6: [128, 0, 255] as RGBArray,   // Purple
+    7: [255, 0, 255] as RGBArray,   // Magenta
+    8: [255, 0, 128] as RGBArray,   // Pink
+    9: [255, 255, 255] as RGBArray, // White
 }
 
 const delayColors = {
-    0: [0, 255, 0],
-    1: [255, 255, 0],
-    2: [255, 0, 0],
-    3: [0, 255, 255],
-    4: [255, 0, 255],
+    0: [0, 255, 0] as RGBArray,
+    1: [255, 255, 0] as RGBArray,
+    2: [255, 0, 0] as RGBArray,
+    3: [0, 255, 255] as RGBArray,
+    4: [255, 255, 255] as RGBArray,
 }
 
-let ledState
-module.exports.ltmApi = function () {
+let ledState: {
+    id: string,
+    trains: any[]
+}[]
+export interface LEDTrain {
+    n: number,
+    l: string | null,
+    d: number | true,
+    t: number,
+    dt: Date,
+    ty: DigitrafficTrainType,
+    p: string | null
+}
+export function ltmApi() {
     Promise.all([
-        getJSON("ledsInOrder"), getJSON("lines",), getJSON("sections"), getJSON("stations"), createDb()
+        getJSON("ledsInOrder"), getJSON("sections"), getJSON("stations")
     ]).then((jsonData) => {
-        [ledOrder, lines, sections, stations, db] = jsonData
+        [ledOrder, sections, stations] = jsonData
         ledState = Object.values(ledOrder).flat().map(id => ({ id: id, trains: [] }))
 
         // INITIAL STATE REQUEST
 
         initialRequest()
-        const json = {
+        const json: {
+            colors: { [key: number]: RGBArray },
+            version: string,
+            timestamp: number,
+            update: number,
+            updates: MapUpdate[]
+        } = {
             version: "100",
             timestamp: 0,
             update: 5,
@@ -80,7 +158,7 @@ module.exports.ltmApi = function () {
                 epPath: "/",
                 method: "get",
                 on: (req, res) => {
-                    res.send(generateDocs(apiDocsJson))
+                    res.send(generateDocs(apiDocsJson as AnyDocJson))
                 }
             },
             {
@@ -100,8 +178,8 @@ module.exports.ltmApi = function () {
                 on: (req, res) => {
                     json.timestamp = Date.now() - 20
 
-                    json.colors = getColorTable(req.query.mode)
-                    generateUpdates(req.query.mode).then(updates => {
+                    json.colors = getColorTable(typeof req.query.mode == "string" ? req.query.mode as MapMode : "test")
+                    generateUpdates(typeof req.query.mode == "string" ? req.query.mode as MapMode : "test").then(updates => {
                         json.updates = updates
                         res.json(json)
                     })
@@ -113,12 +191,14 @@ module.exports.ltmApi = function () {
                 epPath: "/stats",
                 method: "get",
                 on: (req, res) => {
-                    if (!req.query.stat || !req.query.stat.length) res.status(400).json({ message: "Invalid parameter 'stat': missing" })
-                    const stat = req.query.stat.split("..")
+                    const statString = (Array.isArray(req.query.stat) ? req.query.stat[0] : req.query.stat)
+                    const stat = typeof statString?.split == "function" && statString?.split("..")
+                    if (!req.query.stat || !req.query.stat.length || !statString || !stat) return res.status(400).json({ message: "Invalid parameter 'stat': missing" })
                     if (stat.length != 2) res.status(400).json({ message: "Invalid parameter 'stat': bad syntax" })
+
                     getEndpointStat({
                         epLoc: stat[0],
-                        epPath: stat[1]
+                        epPath: stat[1],
                     }).then(response => {
                         if (!response) res.status(400).json({ message: "Invalid parameter 'stat': bad values" })
                         res.json(response)
@@ -130,20 +210,20 @@ module.exports.ltmApi = function () {
         console.log("Starting up LTM API: Listening")
         // MQTT HANDLING
         const mqttUrl = "wss://rata.digitraffic.fi/mqtt"
-        const mqttConnectStatdata =
+        const mqttConnectStatdata: EndpointDefinition =
         {
             epLoc: "digitraffic",
             statType: "server_mqtt_connections",
             epPath: mqttUrl
         }
-        const mqttMessageStatdata =
+        const mqttMessageStatdata: EndpointDefinition =
         {
             epLoc: "digitraffic",
             statType: "server_mqtt_messages",
             epPath: "live-trains"
         }
         client = mqtt.connect(mqttUrl)
-        
+
 
         createEndpointStat(mqttConnectStatdata)
         createEndpointStat(mqttMessageStatdata)
@@ -171,11 +251,18 @@ module.exports.ltmApi = function () {
     })
     return app
 }
-function createEndpoints(eps, app) {
+export interface EndpointDefinition {
+    epLoc: string,
+    statType: "user_fetches" | "server_fetches" | "server_mqtt_connections" | "server_mqtt_messages",
+    epPath: string,
+    method?: "get" | "post",
+    on?: (req: express.Request, res: express.Response, next: express.NextFunction) => void
+}
+function createEndpoints(eps: EndpointDefinition[], app: express.Application) {
     eps.forEach(async ep => {
-        if (ep.epLoc = "local") app[ep.method](ep.epPath, (...params) => {
+        if (ep.epLoc == "local" && ep.method && ep.on) app[ep.method](ep.epPath, (...params) => {
             incrementEndpointStat(ep)
-            ep.on(...params)
+            if (ep.on) ep.on(...params)
         })
         await createEndpointStat(ep)
     })
@@ -188,7 +275,7 @@ function handleGhostTrains() {
 }
 function initialRequest() {
     const url = "https://rata.digitraffic.fi/api/v1/live-trains"
-    const statdata =
+    const statdata: EndpointDefinition =
     {
         epLoc: "digitraffic",
         statType: "server_fetches",
@@ -197,18 +284,71 @@ function initialRequest() {
     createEndpointStat(statdata)
     fetchData(url).then(data => {
         incrementEndpointStat(statdata)
-        const trains = JSON.parse(data)
+        const trains = JSON.parse(data) as DigitrafficTrainData[]
         trains.forEach(train => {
             parseMessage("", train, OPTIONS)
         });
         console.log("Starting up LTM API: Fetched initial data")
     })
 }
-async function fetchData(url) {
+async function fetchData(url: string) {
     const response = await fetch(url)
     return await response.text()
 }
-function parseMessage(topic, message, opt = { allowedTrainTypes: { default: [] } }) {
+
+export type DigitrafficTrainType = "PAR" | "HL" | "VET" | "VEV" | "H" | "PVS" | "HV" | "P" | "HDM" | "PVV" | "VLI" | "S" | "HLV" | "T" | "V" | "W" | "IC2" | "IC" | "HSM" | "AE" | "PYO" | "MV" | "MUS" | "TYO" | "MUV" | "SAA" | "LIV" | "RJ" | "PAI"
+
+export interface DigitrafficTrainData {
+    trainNumber: 1
+    departureDate: string
+    operatorUICCode: 1
+    operatorShortCode: string
+    trainType: DigitrafficTrainType
+    trainCategory: string
+    commuterLineID?: string
+    runningCurrently: true
+    cancelled: true
+    version: number
+    timetableType: "REGULAR" | "ADHOC"
+    timetableAcceptanceDate: string
+    deleted?: true
+    timeTableRows: DigitrafficTrainTimetableRow[]
+
+
+}
+export interface DigitrafficTrainTimetableRow {
+    trainStopping: boolean
+    stationShortCode: string
+    stationUICCode: 1
+    countryCode: string
+    type: string
+    commercialStop?: boolean
+    commercialTrack?: string
+    cancelled: true
+    scheduledTime: string
+    liveEstimateTime?: string
+    estimateSource?: string
+    unknownDelay?: boolean
+    actualTime?: string
+    differenceInMinutes?: number
+    causes: DigitrafficDelayCauses
+    stopSector?: string
+    trainReady?: DigitrafficTrainReady
+}
+export interface DigitrafficTrainReady {
+    source: string
+    accepted: boolean
+    timestamp: string
+}
+export interface DigitrafficDelayCauses {
+    categoryCodeId: string
+    categoryCode: string
+    detailedCategoryCodeId?: string
+    detailedCategoryCode?: string
+    thirdCategoryCodeId?: string
+    thirdCategoryCode?: string
+}
+function parseMessage(topic: string, message: DigitrafficTrainData, opt: typeof OPTIONS = { allowedTrainTypes: { default: [] } }) {
     const [endpoint,
         departureDateT,
         trainNumberT,
@@ -236,7 +376,7 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: { default: [] }
     if (!runningCurrently) {
         return null
     }
-    const filteredTimeTable = timeTableRows.filter(row => stations.find(s => s.stationShortCode == row.stationShortCode).passengerTraffic)
+    const filteredTimeTable = timeTableRows.filter(row => stations?.find(s => s.stationShortCode == row.stationShortCode)?.passengerTraffic)
 
     const lastUpdate = getLastUpdate(filteredTimeTable)
     const nextUpdate = filteredTimeTable.find(row => !row.actualTime) || filteredTimeTable[0]
@@ -245,21 +385,21 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: { default: [] }
     if (!lastUpdate) return null
     let s
     if (lastUpdate.type == "ARRIVAL") {
-        s = sections.find(sec => sec.code == lastUpdate.stationShortCode)
+        s = sections.find(sec => (sec.type == "station" || sec.type == "stop") && sec.code == lastUpdate.stationShortCode)
         if (!s) {
             //console.error("Could not find last update point in data", timeTableRows, lastUpdate)
             return null
         }
     } else {
-        s = sections.find(sec => (sec.station1 == lastUpdate.stationShortCode && sec.station2 == nextUpdate.stationShortCode) || (sec.station2 == lastUpdate.stationShortCode && sec.station1 == nextUpdate.stationShortCode))
+        s = sections.find(sec => (sec.type == "between" || sec.type == "multiBetween") && ((sec.station1 == lastUpdate.stationShortCode && sec.station2 == nextUpdate.stationShortCode) || (sec.station2 == lastUpdate.stationShortCode && sec.station1 == nextUpdate.stationShortCode)))
         if (!s) {
             //console.error("Could not find last update point in data", lastUpdate.stationShortCode, nextUpdate.stationShortCode)
             return null
         }
     }
-    let track
+    let track: SectionTrack | SectionTrack[] | null
     if (s.type == "multiBetween") {
-        let tracks = findCorrectMultiTrack(s, commuterLineID, timeTableRows)
+        let tracks = findCorrectMultiTrack(s, commuterLineID || "-", timeTableRows)
         if (lastUpdate.stationShortCode == s.station2) tracks.reverse()
         // TODO: multiBetween handling
         const t1 = new Date(nextUpdate.liveEstimateTime || nextUpdate.scheduledTime)
@@ -270,32 +410,34 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: { default: [] }
         let i = 0
         updateMultiBetween()
         function updateMultiBetween() {
-            const track = tracks[i] || findCorrectTrack(sections.find(sec => sec.code == nextUpdate.stationShortCode), commuterLineID, timeTableRows)
+            const sec = sections.find(sec => (sec.type != "multiBetween" && sec.type != "between") && sec.code == nextUpdate.stationShortCode) as StopSection | StationSection | null
+            const track: SectionTrack | null = sec ? tracks[i] || findCorrectTrack(sec, commuterLineID || "-", timeTableRows) : null
             const lastTrack = tracks[i - 1]
-            if (i >= tracks.length || (i != 0 && !(ledState.find(led => led.id == lastTrack.component).trains.find(t => t.n == trainNumber)))) {
+            if (!lastTrack || !track || i >= tracks.length || (i != 0 && !(ledState.find(led => led.id == lastTrack.component)?.trains.find(t => t.n == trainNumber)))) {
                 clearInterval(interval)
                 return
             }
-            updateLedState(track)
+            if (track) updateLedState(track)
             i++
         }
         track = tracks[0]
     } else {
-        track = findCorrectTrack(s, commuterLineID.length ? commuterLineID : null, timeTableRows)
+        const t = findCorrectTrack(s, commuterLineID || "-", timeTableRows)
+        track = t
     }
     if (!track) {
         console.error("No track", s, trainNumber, trainType)
         return null
     }
-    if (track.length) track = track[0]
+    if (Array.isArray(track)) track = track[0]
 
-    updateLedState(track)
-
-
+    if (track && !Array.isArray(track)) updateLedState(track)
 
 
 
-    function updateLedState(track) {
+
+
+    function updateLedState(track: SectionTrack) {
         const previousLed = ledState.find(led => led.id != track.component && led.trains.find(t => t.n == trainNumber))
         ledState.forEach(led => {
             led.trains = led.trains.filter(t => t.n != trainNumber)
@@ -313,7 +455,7 @@ function parseMessage(topic, message, opt = { allowedTrainTypes: { default: [] }
         })
     }
 }
-function getLastUpdate(timeTable) {
+function getLastUpdate(timeTable: DigitrafficTrainTimetableRow[]) {
     const last = timeTable[timeTable.findIndex(row => !row.actualTime) - 1]
     if (!last && timeTable[0] && timeTable[0].trainReady) {
 
@@ -323,12 +465,12 @@ function getLastUpdate(timeTable) {
     }
     return last
 }
-function findCorrectMultiTrack(segment, lineID, timeTable) {
+function findCorrectMultiTrack(segment: MultiBetweenSection, lineID: string, timeTable: DigitrafficTrainTimetableRow[]) {
     return segment.segments.map(s => {
         return findCorrectTrack({ tracks: s }, lineID, timeTable)
     })
 }
-function findCorrectTrack(segment, lineID, timeTable) {
+function findCorrectTrack(segment: { tracks: MultiTrack[], equalTracksException?: boolean }, lineID: string, timeTable: DigitrafficTrainTimetableRow[]) {
     let remainingTracks = segment.tracks
     const line = lineID == "V" || !lineID ? "-" : lineID
     if (remainingTracks.length > 1 && !segment.equalTracksException && !remainingTracks.find(t => !t.lines)) remainingTracks = remainingTracks.filter(t => t.lines.find(l => l == line))
@@ -348,27 +490,35 @@ function findCorrectTrack(segment, lineID, timeTable) {
     }
     return remainingTracks[0]
 }
-async function generateUpdates(mode) {
-    const allowedTrainTypes = OPTIONS.allowedTrainTypes[mode] || OPTIONS.allowedTrainTypes.default
+export type MapMode = "delay" | "test" | "lines" | "comp" | "train"
+export interface MapUpdate {
+    p: number[];
+    b: number;
+    v: number[];
+    c: number[];
+    t: number;
+}
+async function generateUpdates(mode: MapMode) {
+    const allowedTrainTypes = OPTIONS?.allowedTrainTypes[mode] || OPTIONS.allowedTrainTypes.default
     const updates = (await Promise.all(ledState.map(async led => {
-        let colors = []
-        const block = componentIdtoBlock(led.id)
-        const prevblocks = led.trains.map(t => componentIdtoBlock(t.p || null))
+        let colors: number[] = []
+        const block = componentIdtoBlock(led.id) || 0
+        const prevblocks = led.trains.flatMap(t => componentIdtoBlock(t.p || null) || [])
         if (mode == "test") {
-            const section = sections.filter(s => (s.tracks || s.segments.flat()).some(t => t.component == led.id))
-            colors = await Promise.all(section.map(getTrainColorFunction(mode)))
+            const section = sections.filter(s => (s.type == "multiBetween" ? s.segments.flat() : s.tracks).some(t => t.component == led.id))
+            colors = await Promise.all(section.map(getBlockColorBySectionType))
         } else {
             colors = await Promise.all(led.trains.filter(t => !(allowedTrainTypes.length) || allowedTrainTypes.find(type => type == t.ty)).map(getTrainColorFunction(mode)))
         }
         return led.trains.length || mode == "test" ? { b: block, p: prevblocks, v: led.trains.map(t => t.n), c: colors, t: Date.now() } : []
-    }))).flat()
+    }))).flat().filter(u => u.b)
     // filter out prev blocks that overlap with current blocks
-    return updates.map(u => ({...u, p: u.p.filter(b => !updates.some(e => e.b == b))}))
+    return updates.map(u => ({ ...u, p: u.p.filter(b => !updates.some(e => e.b == b)) }))
 }
-function componentIdtoBlock(led) {
+function componentIdtoBlock(led: string) {
     return led ? (ledOrder["HPL-NOA"].some(id => id == led) ? ledOrder["HPL-NOA"].findIndex(id => id == led) + 300 : ledOrder["HKI-KTS"].findIndex(id => id == led) + 100) : null
 }
-function getColorTable(mode) {
+function getColorTable(mode: MapMode) {
     switch (mode) {
         case "delay":
             return delayColors;
@@ -379,17 +529,15 @@ function getColorTable(mode) {
         case "train":
             return fullColors;
         default:
-            return [[255, 0, 0]];
+            return { 0: [255, 0, 0] as RGBArray };
     }
 }
-function getTrainColorFunction(mode) {
+function getTrainColorFunction(mode: MapMode): (t: LEDTrain) => (Promise<number> | number) {
     switch (mode) {
         case "lines":
             return getTrainColorByLine;
         case "delay":
             return getTrainColorByDelay;
-        case "test":
-            return getBlockColorBySectionType;
         case "comp":
             return getTrainColorByComposition;
         case "train":
@@ -398,13 +546,14 @@ function getTrainColorFunction(mode) {
             return () => 0;
     }
 }
-async function getTrainColorByComposition(t) {
-    const response = await db.get(`
-SELECT data
-  FROM compositions
-  WHERE trainNumber = ? AND depDate = ?
-  `, [t.n, t.dt]
-    )
+async function getTrainColorByComposition(t: LEDTrain) {
+    const response = await (await db).query.compositions.findFirst({
+        where: and(
+            eq(compositions.trainNumber, t.n),
+            eq(compositions.depDate, new Date(t.dt)),
+        )
+    })
+
     const loco = response ? JSON.parse(response.data).journeySections[0].locomotives[0].locomotiveType : "N/A"
     switch (loco) {
         case "Sm2":
@@ -432,7 +581,7 @@ SELECT data
             return 9;
     }
 }
-function getTrainColorByLine(t) {
+function getTrainColorByLine(t: LEDTrain) {
     switch (t.l) {
         case "Z":
             return 0;
@@ -465,7 +614,7 @@ function getTrainColorByLine(t) {
             return 9;
     }
 }
-function getTrainColorByType(t) {
+function getTrainColorByType(t: LEDTrain) {
     switch (t.ty) {
         case "IC":
             return 0;
@@ -493,8 +642,10 @@ function getTrainColorByType(t) {
             return 9;
     }
 }
-function getTrainColorByDelay(t) {
-    if (t.d < 0 || t.d === true /* WHAT IS THIS BRO */) {
+function getTrainColorByDelay(t: LEDTrain) {
+    if (t.d === true/* WHAT IS THIS BRO */) {
+        return 4
+    } else if (t.d < 0) {
         return 3
     } else if (t.d < 2) {
         return 0
@@ -504,7 +655,7 @@ function getTrainColorByDelay(t) {
         return 1
     }
 }
-function getBlockColorBySectionType(s) {
+function getBlockColorBySectionType(s: { type: "stop" | "station" | "multiBetween" | "between" }) {
     switch (s.type) {
         case "stop":
             return 0;
@@ -518,7 +669,7 @@ function getBlockColorBySectionType(s) {
             return 4;
     }
 }
-async function getJSON(name) {
-    const json = (await fs.readFile(`./data/${name}.json`)).toString()
+async function getJSON(name: string) {
+    const json = (await fs.readFile(`./src/data/${name}.json`)).toString()
     return JSON.parse(json)
 }

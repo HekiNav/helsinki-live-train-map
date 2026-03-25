@@ -1,9 +1,8 @@
 module.exports = {
   apps : [{
     name   : "hki-ltm-api",
-    script : "./index.js",
-    watch: ["./"],
-    ignore_watch: ["comp_cache.db"],
+    script : "npm start",
+    ignore_watch: ["./src/comp_cache.db"],
     cron_restart: "0 * * * *"
   }]
 }
