@@ -27,7 +27,7 @@ export interface DocEndpointParam {
     desc: string,
     values: string[]
 }
-export function generateDocs(docJson) {
+export function generateDocs(docJson: AnyDocJson) {
     return `
         <style>${style}</style>
         <h1>${docJson.name}</h1>
@@ -92,10 +92,10 @@ function generateContent(docJson: AnyDocJson) {
     }
     return content;
 }
-function fillTemplate(template, values) {
+function fillTemplate(template: string, values: Record<string, string>) {
     return template.replace(/{(.*?)}/g, (_, key) => values[key] ?? `{${key}}`);
 }
-function parseAnchors(str) {
+function parseAnchors(str: string) {
     return str.replace(/!a\((https?:\/\/[^\s)]+)\)/g, (_, url) => {
         return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
     });

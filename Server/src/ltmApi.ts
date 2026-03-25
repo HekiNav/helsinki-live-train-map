@@ -1,11 +1,11 @@
 import mqtt, { MqttClient } from "mqtt"
 import fs from "node:fs/promises"
 import express from "express"
-import { generateDocs } from "./modules/docsCreator.ts"
+import { AnyDocJson, generateDocs } from "./modules/docsCreator"
 import apiDocsJson from "./ltmApi.json"
 import { createDb, createEndpointStat, incrementEndpointStat, getEndpointStat } from "./ltmApiDb"
 import { and, eq } from "drizzle-orm"
-import { compositions } from "./db/schema.ts"
+import { compositions } from "./db/schema"
 
 const app = express()
 
@@ -111,6 +111,7 @@ const delayColors = {
     1: [255, 255, 0] as RGBArray,
     2: [255, 0, 0] as RGBArray,
     3: [0, 255, 255] as RGBArray,
+    4: [255, 255, 255] as RGBArray,
 }
 
 let ledState: {
@@ -157,7 +158,7 @@ export function ltmApi() {
                 epPath: "/",
                 method: "get",
                 on: (req, res) => {
-                    res.send(generateDocs(apiDocsJson))
+                    res.send(generateDocs(apiDocsJson as AnyDocJson))
                 }
             },
             {
@@ -549,12 +550,11 @@ async function getTrainColorByComposition(t: LEDTrain) {
     const response = await (await db).query.compositions.findFirst({
         where: and(
             eq(compositions.trainNumber, t.n),
-            eq(compositions.depDate, t.dt),
+            eq(compositions.depDate, new Date(t.dt)),
         )
     })
 
     const loco = response ? JSON.parse(response.data).journeySections[0].locomotives[0].locomotiveType : "N/A"
-    console.log(loco, t.n, t.dt)
     switch (loco) {
         case "Sm2":
             return 0;
@@ -631,7 +631,9 @@ function getTrainColorByType(t: LEDTrain) {
     }
 }
 function getTrainColorByDelay(t: LEDTrain) {
-    if (t.d === true || t.d < 0) {
+    if (t.d === true) {
+        return 4
+    } else if (t.d < 0) {
         return 3
     } else if (t.d < 2) {
         return 0

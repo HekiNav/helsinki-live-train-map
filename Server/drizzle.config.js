@@ -2,7 +2,7 @@ import { defineConfig } from "drizzle-kit";
 
 export default defineConfig({
   dialect: "sqlite",
-  url: "./comp_cache.db",
-  schema: "./drizzle/schema.ts",
+  url: "./src/comp_cache.db",
+  schema: "./src/db/schema.ts",
   out: "./drizzle",
 });

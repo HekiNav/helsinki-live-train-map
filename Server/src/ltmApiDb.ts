@@ -1,14 +1,14 @@
 import Database from "better-sqlite3"
 import { drizzle } from "drizzle-orm/better-sqlite3"
 import cron from "node-cron"
-import * as schema from "./db/schema.ts"
-import { DigitrafficTrainType, EndpointDefinition } from "./ltmApi.ts"
-import { and, eq, lte, SQL, sql } from "drizzle-orm"
-import { SQLiteColumn } from "drizzle-orm/sqlite-core/index"
+import * as schema from "./db/schema"
+import { DigitrafficTrainType, EndpointDefinition } from "./ltmApi"
+import { and, eq, lte, sql } from "drizzle-orm"
 // Open SQLite DB 
 
 const db = drizzle<typeof schema>({
   client: new Database("./src/comp_cache.db"),
+  schema
 })
 
 export async function createDb() {
