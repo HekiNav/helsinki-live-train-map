@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@types/express": "^5.0.6",
     "better-sqlite3": "^12.8.0",
     "cors": "^2.8.5",
     "drizzle-orm": "^0.45.1",
@@ -10,10 +11,14 @@
     "sqlite3": "^5.1.7"
   },
   "scripts": {
-    "start": "node index"
+    "dev": "tsx watch ./src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.31.10"
+    "@types/cors": "^2.8.19",
+    "drizzle-kit": "^0.31.10",
+    "typescript": "^6.0.2"
   },
   "type": "module"
 }

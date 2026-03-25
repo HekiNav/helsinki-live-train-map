@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import { ltmApi } from "./ltmApi"
-import { generateDocs } from "./modules/docsCreator"
+import { generateDocs } from "./modules/docsCreator.ts"
 import apiDocsJson from "./hekinavApi.json"
 
 const app = express()

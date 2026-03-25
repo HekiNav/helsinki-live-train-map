@@ -7,7 +7,7 @@ export const compositions = sqliteTable("compositions", {
 	trainNumber: integer().notNull(),
 	createdAt: integer({ mode: "timestamp_ms" }).default(sql`(unixepoch() * 1000)`),
 }, (table) => ({
-	pk: primaryKey({ columns: [table.depDate, table.trainNumber], name: "test_key" }),
+	pk: primaryKey({ columns: [table.depDate, table.trainNumber] }),
 }));
 
 export const stats = sqliteTable("stats", {
