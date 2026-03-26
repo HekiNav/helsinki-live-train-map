@@ -14,8 +14,8 @@ const db = drizzle<typeof schema>({
 export async function createDb() {
   console.log("Starting DB: setting up CRON jobs")
 
-  // Schedule: fetch daily at 04:00 and 16:00
-  cron.schedule("0 4,16 * * *", fetchAndCache)
+  // Schedule: fetch every 12 hours
+  cron.schedule("0 */12 * * *", fetchAndCache)
 
   // Schedule: cleanup every 6 hours
   cron.schedule("0 */6 * * *", cleanup)
@@ -23,7 +23,7 @@ export async function createDb() {
   // Run once at startup
   console.log("Starting DB: fetching data")
   // Commented because takes too long and isnt necessary every time
-  //await fetchAndCache()
+  await fetchAndCache()
   console.log("Starting DB: cleaning up")
   await cleanup()
   console.log("DB started")
