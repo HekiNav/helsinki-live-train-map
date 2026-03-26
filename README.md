@@ -245,7 +245,7 @@ Processes train running data from [digitraffic](https://rata.digitraffic.fi/). D
 - node-sqlite & sqlite3: Database for cached train compositions and stats
 - node-cron: Cron jobs for recaching data and cleaning the database
 
-The api is tunneled to [ltm.hekinav.dev](https://ltm.hekinav.dev/). Uptime is not guaranteed.
+The api is tunneled to [ltm.hekinav.dev](https://ltm.hekinav.dev/).
 
 ### Running locally
 
@@ -253,9 +253,19 @@ Install npm packages
 
 `npm install`
 
-Start the api (uses port 3001 by default)
+Start the api in dev mode (watches files) (uses port 3001 by default)
 
-`npm start`
+`npm run dev`
+
+### Production
+
+Compile TS to JS
+
+`npm run build`
+
+Start the server
+
+`npm run start` or in PM2 `pm2 start ./ecosystem.config.cjs`
 
 ---
 
