@@ -383,7 +383,7 @@ function parseMessage(topic: string, message: DigitrafficTrainData, opt: typeof 
 
 
     if (!lastUpdate) return null
-    let s
+    let s: AnyTrackSection | undefined
     if (lastUpdate.type == "ARRIVAL") {
         s = sections.find(sec => (sec.type == "station" || sec.type == "stop") && sec.code == lastUpdate.stationShortCode)
         if (!s) {
@@ -405,7 +405,8 @@ function parseMessage(topic: string, message: DigitrafficTrainData, opt: typeof 
         const t1 = new Date(nextUpdate.liveEstimateTime || nextUpdate.scheduledTime)
         const t2 = new Date(lastUpdate.actualTime || lastUpdate.scheduledTime)
         const diff = (Number(t1) - Number(t2))
-        const intervalTime = diff / (tracks.length)
+        const intervalTime = diff / (tracks.length) / 10
+
         const interval = setInterval(updateMultiBetween, intervalTime)
         let i = 0
         updateMultiBetween()
@@ -413,11 +414,18 @@ function parseMessage(topic: string, message: DigitrafficTrainData, opt: typeof 
             const sec = sections.find(sec => (sec.type != "multiBetween" && sec.type != "between") && sec.code == nextUpdate.stationShortCode) as StopSection | StationSection | null
             const track: SectionTrack | null = sec ? tracks[i] || findCorrectTrack(sec, commuterLineID || "-", timeTableRows) : null
             const lastTrack = tracks[i - 1]
-            if (!lastTrack || !track || i >= tracks.length || (i != 0 && !(ledState.find(led => led.id == lastTrack.component)?.trains.find(t => t.n == trainNumber)))) {
+            //console.log("BEGIN", (s as MultiBetweenSection).station1, "=>", (s as MultiBetweenSection).station2, intervalTime)
+            if (!track || i > tracks.length || (i != 0 && !(ledState.find(led => led.id == lastTrack?.component)?.trains.find(t => t.n == trainNumber)))) {
+                //console.log("CLEAR", (s as MultiBetweenSection).station1, "=>", (s as MultiBetweenSection).station2, i)
+
                 clearInterval(interval)
                 return
             }
-            if (track) updateLedState(track)
+            if (track) updateLedState({
+                ...track,
+            })
+            //console.log("UPDATE", (s as MultiBetweenSection).station1, "=>", (s as MultiBetweenSection).station2, i, track.component)
+
             i++
         }
         track = tracks[0]
@@ -568,12 +576,12 @@ async function getTrainColorByComposition(t: LEDTrain) {
             return 7;
         case "Sm7":
             return 1;
-            
+
         case "Sr2":
             return 4;
         case "Sr3":
             return 5;
-        
+
         case "N/A":
             return 8;
         default:
