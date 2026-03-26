@@ -162,7 +162,7 @@ There are 4(+1) map modes on the device. You can switch the mode by pressing the
 
 | Color                         | Delay (min) | Description          |
 |-------------------------------|-------------|----------------------|
-|$${\color{#0ff}\Huge\text{■}}$$| < 0         | Ahead of schedule    |
+|$${\color{#0ff}\Huge\text{■}}$$| < 0         | Ahead of schedule    |  
 |$${\color{#0f0}\Huge\text{■}}$$| 0 - 2       | On time              |
 |$${\color{#ff0}\Huge\text{■}}$$| 2 - 10      | Mild delay           |
 |$${\color{#f00}\Huge\text{■}}$$| > 20        | Severe delay         |
