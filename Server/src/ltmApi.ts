@@ -401,7 +401,7 @@ function parseMessage(topic: string, message: DigitrafficTrainData, opt: typeof 
     if (s.type == "multiBetween") {
         let tracks = findCorrectMultiTrack(s, commuterLineID || "-", timeTableRows)
         if (lastUpdate.stationShortCode == s.station2) tracks.reverse()
-        // TODO: multiBetween handling
+        // TODO: fix multiBetween handling
         const t1 = new Date(nextUpdate.liveEstimateTime || nextUpdate.scheduledTime)
         const t2 = new Date(lastUpdate.actualTime || lastUpdate.scheduledTime)
         const diff = (Number(t1) - Number(t2))
