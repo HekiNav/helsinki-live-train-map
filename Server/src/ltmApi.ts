@@ -405,7 +405,7 @@ function parseMessage(topic: string, message: DigitrafficTrainData, opt: typeof 
         const t1 = new Date(nextUpdate.liveEstimateTime || nextUpdate.scheduledTime)
         const t2 = new Date(lastUpdate.actualTime || lastUpdate.scheduledTime)
         const diff = (Number(t1) - Number(t2))
-        const intervalTime = diff / (tracks.length) / 10
+        const intervalTime = diff / (tracks.length)
 
         const interval = setInterval(updateMultiBetween, intervalTime)
         let i = 0
