@@ -134,25 +134,25 @@ The middle and bottom status leds are controlled by the MCU
 
 ### Map Modes
 
-There are 4(+1) map modes on the device. You can switch the mode by pressing the map (🗺️) button or by going to the control panel
+There are 4(+1) map modes on the device. You can switch the mode by pressing the map (🗺️) button or by going to the control panel.
 
 #### Lines (default)
 - Shows commuter trains by line
 - Only commuter trains
 - Some colors are reused on lines that do not intersect
 
-| Color                         | Line     | 
-|-------------------------------|----------|
-|$${\color{#f00}\Huge\text{■}}$$| Z        |
-|$${\color{#f80}\Huge\text{■}}$$| A        |
-|$${\color{#ff0}\Huge\text{■}}$$| E,O      |
-|$${\color{#0f0}\Huge\text{■}}$$| P,G      |
-|$${\color{#0ff}\Huge\text{■}}$$| M,I      |
-|$${\color{#00f}\Huge\text{■}}$$| K        |
-|$${\color{#80f}\Huge\text{■}}$$| Y,L,H    |
-|$${\color{#f0f}\Huge\text{■}}$$| U        |
-|$${\color{#f08}\Huge\text{■}}$$| D,T,R    |
-|$${\color{#fff}\Huge\text{■}}$$| V, Other |
+| Color                         | Line     | |
+|-------------------------------|----------|-|
+|$${\color{#f00}\Huge\text{■}}$$| Z        | |
+|$${\color{#f80}\Huge\text{■}}$$| A        | |
+|$${\color{#ff0}\Huge\text{■}}$$| E,O      | |
+|$${\color{#0f0}\Huge\text{■}}$$| P,G      | |
+|$${\color{#0ff}\Huge\text{■}}$$| M,I      | |
+|$${\color{#00f}\Huge\text{■}}$$| K        | |
+|$${\color{#80f}\Huge\text{■}}$$| Y,L,H    | |
+|$${\color{#f0f}\Huge\text{■}}$$| U        | |
+|$${\color{#f08}\Huge\text{■}}$$| D,T,R    | |
+|$${\color{#fff}\Huge\text{■}}$$| V, Other | Look up on [juliadata.fi](https://juliadata.fi/map/view?mode=trains#8.86/60.3487/25.1733)|
 
 \* V is used in transfer services
 
@@ -187,7 +187,7 @@ There are 4(+1) map modes on the device. You can switch the mode by pressing the
 |$${\color{#00f}\Huge\text{■}}$$| [Sr3](https://fi.wikipedia.org/wiki/Sr3) | Newer IC locomotive                        |
 | Other                         |                                          |                                            |
 |$${\color{#f08}\Huge\text{■}}$$| N/A                                      | No composition found (most likely freight) |
-|$${\color{#fff}\Huge\text{■}}$$| Other                                    | Other locomotive with no color defined     |
+|$${\color{#fff}\Huge\text{■}}$$| Other                                    | Other locomotive with no color defined (Look up on [juliadata.fi](https://juliadata.fi/map/view?mode=trains#8.86/60.3487/25.1733)) |
 
 #### Train types
 - Shows the types of trains
@@ -203,7 +203,18 @@ There are 4(+1) map modes on the device. You can switch the mode by pressing the
 |$${\color{#80f}\Huge\text{■}}$$| HL                    | Commuter train                             |
 |$${\color{#f0f}\Huge\text{■}}$$| HV                    | Commuter train transfer                    |
 |$${\color{#f08}\Huge\text{■}}$$| PAR, PAI, VEV, W, SAA | Shunting                                   |
-|$${\color{#fff}\Huge\text{■}}$$| Other                 | Other train type with no color defined     |
+|$${\color{#fff}\Huge\text{■}}$$| Other                 | Other train type with no color defined (Look up on [juliadata.fi](https://juliadata.fi/map/view?mode=trains#8.86/60.3487/25.1733)) |
+
+
+#### Test
+- Shows the types of LEDs
+
+| Color                         | Type         | Description                          | Technical logic                                                    |
+|-------------------------------|--------------|--------------------------------------|--------------------------------------------------------------------|
+|$${\color{#ff0}\Huge\text{■}}$$| Station      | All services stop                    | Train has arrived, but not departed                                |
+|$${\color{#f00}\Huge\text{■}}$$| Stop         | Express services skip                | Same as station                                                    |
+|$${\color{#0f0}\Huge\text{■}}$$| Between      | Single LED between stops/stations    | Train left previous, not arrived at next                           |
+|$${\color{#0ff}\Huge\text{■}}$$| MultiBetween | Multiple LEDs between stops/stations | Same as between, but exact position is appoximated using timetable |
 
 ---
 

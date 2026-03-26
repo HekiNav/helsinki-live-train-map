@@ -56,5 +56,6 @@
         "XINGLIGHT",
         "XTAL"
     ],
-    "liveServer.settings.multiRootWorkspaceName": "helsinki-live-train-map"
+    "liveServer.settings.multiRootWorkspaceName": "helsinki-live-train-map",
+    "liveServer.settings.port": 5501
 }
