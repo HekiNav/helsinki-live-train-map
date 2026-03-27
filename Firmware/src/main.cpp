@@ -136,26 +136,23 @@ void setCharlieplexedLED(uint8_t pin, charlieplexedLedState state) {
 	}
 }
 int ledCalibration() {
+	vTaskDelay(pdMS_TO_TICKS(1000));
 	hplNoa.SetLuminance(40);
 	hkiKts.SetLuminance(40);
-	unsigned long last;
 	int i = 0;
 	while (i < HPL_NOA_PIXELS + HKI_KTS_PIXELS) {
-		unsigned long now = millis();
-		if (now - last >= 200) {
-			if (i < HPL_NOA_PIXELS) {
-				hplNoa.SetPixelColor(i, RgbColor(255, 255, 255));
-				hplNoa.Show();
-			} else {
-				hkiKts.SetPixelColor(i - HPL_NOA_PIXELS, RgbColor(255, 255, 255));
-				hkiKts.Show();
-			}
-			last = now;
-			i++;
+		if (i < HPL_NOA_PIXELS) {
+			hplNoa.SetPixelColor(i, RgbColor(128, 0, 255));
+			hplNoa.Show();
+		} else {
+			hkiKts.SetPixelColor(i - HPL_NOA_PIXELS, RgbColor(128, 0, 255));
+			hkiKts.Show();
 		}
-
-		vTaskDelay(pdMS_TO_TICKS(25));
+		i++;
+		vTaskDelay(pdMS_TO_TICKS(5));
 	}
+	hplNoa.SetLuminance(255);
+	hkiKts.SetLuminance(255);
 	return 1;
 }
 
@@ -618,7 +615,7 @@ void setup() {
 	WiFiImprovSetup(updateValues, &mode, &brightness, &leds, &direction_indicators);
 
 	Serial.println(getSystemInfo());
-	//ledCalibration(); // <-- breaks the brightness control for some reason
+	ledCalibration();  // <-- breaks the brightness control for some reason
 }
 
 void loop() {
