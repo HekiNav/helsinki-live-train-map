@@ -36,6 +36,13 @@
             ]
         },
         {
+            "path":"/most_delayed",
+            "desc":"Gets the most delayed train on the live train map",
+            "examples": [
+                {}
+            ]
+        },
+        {
             "path":"/ping?msg={message}",
             "desc":"Test method to see if the API is running correctly",
             "message": {

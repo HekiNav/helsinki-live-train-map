@@ -283,6 +283,15 @@ export function ltmApi() {
             {
                 epLoc: "local",
                 statType: "user_fetches",
+                epPath: "/most_delayed",
+                method: "get",
+                on: (req, res) => {
+                    res.send(ledState.flatMap(l => l.trains).reduce((p, c) => c.d > (p?.d || 0) ? c : p, null as LEDTrain | null))
+                }
+            },
+            {
+                epLoc: "local",
+                statType: "user_fetches",
                 epPath: "/ping",
                 method: "get",
                 on: (req, res) => {
