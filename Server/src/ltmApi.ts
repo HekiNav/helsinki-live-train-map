@@ -23,6 +23,53 @@ const OPTIONS: {
     }
 }
 
+let ledOrder: { "HPL-NOA": string[], "HKI-KTS": string[] }
+let sections: AnyTrackSection[]
+let stations: Station[]
+let client: MqttClient
+let paxInfo: PaxInfoCategory[]
+
+const db = createDb()
+
+const testColors = {
+    0: [255, 0, 0] as RGBArray,
+    1: [255, 255, 0] as RGBArray,
+    2: [0, 255, 0] as RGBArray,
+    3: [0, 255, 255] as RGBArray,
+    4: [0, 0, 255] as RGBArray,
+}
+
+const fullColors = {
+    0: [255, 0, 0] as RGBArray,     // Red
+    1: [255, 128, 0] as RGBArray,   // Orange
+    2: [255, 255, 0] as RGBArray,   // Yellow
+    // SKIPPED 3: [128, 255, 0], // Yellow-green
+    3: [0, 255, 0] as RGBArray,     // Green
+    // SKIPPED 5: [0, 255, 128], // Turqoise
+    4: [0, 255, 255] as RGBArray,   // Cyan
+    // SKIPPED 7: [0, 128, 255], // Almost blue
+    5: [0, 0, 255] as RGBArray,     // Blue
+    6: [128, 0, 255] as RGBArray,   // Purple
+    7: [255, 0, 255] as RGBArray,   // Magenta
+    8: [255, 0, 128] as RGBArray,   // Pink
+    9: [255, 255, 255] as RGBArray, // White
+}
+
+const delayColors = {
+    0: [0, 255, 0] as RGBArray,
+    1: [255, 255, 0] as RGBArray,
+    2: [255, 0, 0] as RGBArray,
+    3: [0, 255, 255] as RGBArray,
+    4: [255, 255, 255] as RGBArray,
+}
+
+let ledState: {
+    id: string,
+    trains: LEDTrain[]
+}[]
+
+let paxInfoState: PaxInfoStateItem[] = []
+
 export type RGBArray = [number, number, number]
 
 export interface MultiTrack extends SectionTrack {
@@ -75,49 +122,25 @@ export interface Station {
 
 export type AnyTrackSection = StationSection | MultiBetweenSection | StopSection | BetweenSection
 
-let ledOrder: { "HPL-NOA": string[], "HKI-KTS": string[] }
-let sections: AnyTrackSection[]
-let stations: Station[]
-let client: MqttClient
-
-const db = createDb()
-
-const testColors = {
-    0: [255, 0, 0] as RGBArray,
-    1: [255, 255, 0] as RGBArray,
-    2: [0, 255, 0] as RGBArray,
-    3: [0, 255, 255] as RGBArray,
-    4: [0, 0, 255] as RGBArray,
+export interface PaxInfoCategory {
+    id: DisruptionType,
+    keywords: string[]
 }
 
-const fullColors = {
-    0: [255, 0, 0] as RGBArray,     // Red
-    1: [255, 128, 0] as RGBArray,   // Orange
-    2: [255, 255, 0] as RGBArray,   // Yellow
-    // SKIPPED 3: [128, 255, 0], // Yellow-green
-    3: [0, 255, 0] as RGBArray,     // Green
-    // SKIPPED 5: [0, 255, 128], // Turqoise
-    4: [0, 255, 255] as RGBArray,   // Cyan
-    // SKIPPED 7: [0, 128, 255], // Almost blue
-    5: [0, 0, 255] as RGBArray,     // Blue
-    6: [128, 0, 255] as RGBArray,   // Purple
-    7: [255, 0, 255] as RGBArray,   // Magenta
-    8: [255, 0, 128] as RGBArray,   // Pink
-    9: [255, 255, 255] as RGBArray, // White
+interface PaxInfoTrainNotif {
+    type: "train"
+    category: DisruptionType
+    train: number
 }
 
-const delayColors = {
-    0: [0, 255, 0] as RGBArray,
-    1: [255, 255, 0] as RGBArray,
-    2: [255, 0, 0] as RGBArray,
-    3: [0, 255, 255] as RGBArray,
-    4: [255, 255, 255] as RGBArray,
+interface PaxInfoStationNotif {
+    type: "station"
+    category: DisruptionType
+    stations: string[]
 }
 
-let ledState: {
-    id: string,
-    trains: any[]
-}[]
+export type PaxInfoStateItem = PaxInfoTrainNotif | PaxInfoStationNotif
+
 export interface LEDTrain {
     n: number,
     l: string | null,
@@ -127,11 +150,107 @@ export interface LEDTrain {
     ty: DigitrafficTrainType,
     p: string | null
 }
+
+export type DisruptionType = "infrastructure_disruption" | "track_work" | "missing_wagon" | "cancellation" | "replacement" | "private_train" | "other_disruption"
+export type MapMode = "delay" | "test" | "lines" | "comp" | "train" | "disruption"
+export interface MapUpdate {
+    p: number[];
+    b: number;
+    v: number[];
+    c: number[];
+    t: number;
+}
+
+export interface EndpointDefinition {
+    epLoc: string,
+    statType: "user_fetches" | "server_fetches" | "server_mqtt_connections" | "server_mqtt_messages",
+    epPath: string,
+    method?: "get" | "post",
+    on?: (req: express.Request, res: express.Response, next: express.NextFunction) => void
+}
+
+export interface DigitrafficPaxInfoMsg {
+    id: string
+    version: number
+    creationDateTime: string
+    startValidity: string
+    endValidity: string
+    stations: string[]
+    trainNumber?: number
+    trainDepartureDate?: string
+    audio?: {
+        text?: DigitrafficPaxInfoText
+    }
+    video?: {
+        text?: DigitrafficPaxInfoText
+    }
+
+}
+export interface DigitrafficPaxInfoText {
+    fi?: string
+    sv?: string
+    en?: string
+}
+
+
+export type DigitrafficTrainType = "PAR" | "HL" | "VET" | "VEV" | "H" | "PVS" | "HV" | "P" | "HDM" | "PVV" | "VLI" | "S" | "HLV" | "T" | "V" | "W" | "IC2" | "IC" | "HSM" | "AE" | "PYO" | "MV" | "MUS" | "TYO" | "MUV" | "SAA" | "LIV" | "RJ" | "PAI"
+
+export interface DigitrafficTrainData {
+    trainNumber: 1
+    departureDate: string
+    operatorUICCode: 1
+    operatorShortCode: string
+    trainType: DigitrafficTrainType
+    trainCategory: string
+    commuterLineID?: string
+    runningCurrently: true
+    cancelled: true
+    version: number
+    timetableType: "REGULAR" | "ADHOC"
+    timetableAcceptanceDate: string
+    deleted?: true
+    timeTableRows: DigitrafficTrainTimetableRow[]
+
+
+}
+export interface DigitrafficTrainTimetableRow {
+    trainStopping: boolean
+    stationShortCode: string
+    stationUICCode: 1
+    countryCode: string
+    type: string
+    commercialStop?: boolean
+    commercialTrack?: string
+    cancelled: true
+    scheduledTime: string
+    liveEstimateTime?: string
+    estimateSource?: string
+    unknownDelay?: boolean
+    actualTime?: string
+    differenceInMinutes?: number
+    causes: DigitrafficDelayCauses
+    stopSector?: string
+    trainReady?: DigitrafficTrainReady
+}
+export interface DigitrafficTrainReady {
+    source: string
+    accepted: boolean
+    timestamp: string
+}
+export interface DigitrafficDelayCauses {
+    categoryCodeId: string
+    categoryCode: string
+    detailedCategoryCodeId?: string
+    detailedCategoryCode?: string
+    thirdCategoryCodeId?: string
+    thirdCategoryCode?: string
+}
+
 export function ltmApi() {
     Promise.all([
-        getJSON("ledsInOrder"), getJSON("sections"), getJSON("stations")
+        getJSON("ledsInOrder"), getJSON("sections"), getJSON("stations"), getJSON("paxInfo")
     ]).then((jsonData) => {
-        [ledOrder, sections, stations] = jsonData
+        [ledOrder, sections, stations, paxInfo] = jsonData
         ledState = Object.values(ledOrder).flat().map(id => ({ id: id, trains: [] }))
 
         // INITIAL STATE REQUEST
@@ -241,8 +360,10 @@ export function ltmApi() {
         // PERIODICALLY REMOVE GHOST TRAINS
         setInterval(handleGhostTrains, 1000)
 
-        // MQTT MESSAGE HANDLING
+        setInterval(handlePaxInfo, 60_000)
+        handlePaxInfo()
 
+        // MQTT MESSAGE HANDLING
         client.on("message", (topic, message) => {
             incrementEndpointStat(mqttMessageStatdata)
             // message is Buffer
@@ -251,13 +372,40 @@ export function ltmApi() {
     })
     return app
 }
-export interface EndpointDefinition {
-    epLoc: string,
-    statType: "user_fetches" | "server_fetches" | "server_mqtt_connections" | "server_mqtt_messages",
-    epPath: string,
-    method?: "get" | "post",
-    on?: (req: express.Request, res: express.Response, next: express.NextFunction) => void
+
+async function handlePaxInfo() {
+    const data = JSON.parse(await fetchData("https://rata.digitraffic.fi/api/v1/passenger-information/active")) as DigitrafficPaxInfoMsg[]
+
+    const notifs = data.reduce((p, m) => {
+        const texts: string[] = [m.audio?.text?.fi, m.video?.text?.fi].filter(t => t !== undefined)
+        const types = paxInfo.reduce((p, c) => {
+            const match = texts.find(t => c.keywords.some(k => t.toLowerCase().includes(k.toLowerCase())))
+            return match ? [...p, { ...c, text: match }] : p
+        }, new Array<PaxInfoCategory & { text: string }>)
+        if (!types.length) {
+            //console.log(texts, m.stations, m.trainNumber)
+            return p
+        }
+        //console.log(types, m.stations, m.trainNumber)
+        if (m.trainNumber && m.trainDepartureDate == new Date().toISOString().slice(0, 10)) {
+            return [...p, {
+                type: "train" as "train",
+                train: m.trainNumber | 0,
+                category: types[0].id
+            }]
+        } else if (!m.trainNumber) {
+            return [...p, {
+                type: "station" as "station",
+                category: types[0].id,
+                stations: m.stations
+            }]
+        } else {
+            return p
+        }
+    }, new Array<PaxInfoStateItem>)
+    paxInfoState = notifs
 }
+
 function createEndpoints(eps: EndpointDefinition[], app: express.Application) {
     eps.forEach(async ep => {
         if (ep.epLoc == "local" && ep.method && ep.on) app[ep.method](ep.epPath, (...params) => {
@@ -296,58 +444,6 @@ async function fetchData(url: string) {
     return await response.text()
 }
 
-export type DigitrafficTrainType = "PAR" | "HL" | "VET" | "VEV" | "H" | "PVS" | "HV" | "P" | "HDM" | "PVV" | "VLI" | "S" | "HLV" | "T" | "V" | "W" | "IC2" | "IC" | "HSM" | "AE" | "PYO" | "MV" | "MUS" | "TYO" | "MUV" | "SAA" | "LIV" | "RJ" | "PAI"
-
-export interface DigitrafficTrainData {
-    trainNumber: 1
-    departureDate: string
-    operatorUICCode: 1
-    operatorShortCode: string
-    trainType: DigitrafficTrainType
-    trainCategory: string
-    commuterLineID?: string
-    runningCurrently: true
-    cancelled: true
-    version: number
-    timetableType: "REGULAR" | "ADHOC"
-    timetableAcceptanceDate: string
-    deleted?: true
-    timeTableRows: DigitrafficTrainTimetableRow[]
-
-
-}
-export interface DigitrafficTrainTimetableRow {
-    trainStopping: boolean
-    stationShortCode: string
-    stationUICCode: 1
-    countryCode: string
-    type: string
-    commercialStop?: boolean
-    commercialTrack?: string
-    cancelled: true
-    scheduledTime: string
-    liveEstimateTime?: string
-    estimateSource?: string
-    unknownDelay?: boolean
-    actualTime?: string
-    differenceInMinutes?: number
-    causes: DigitrafficDelayCauses
-    stopSector?: string
-    trainReady?: DigitrafficTrainReady
-}
-export interface DigitrafficTrainReady {
-    source: string
-    accepted: boolean
-    timestamp: string
-}
-export interface DigitrafficDelayCauses {
-    categoryCodeId: string
-    categoryCode: string
-    detailedCategoryCodeId?: string
-    detailedCategoryCode?: string
-    thirdCategoryCodeId?: string
-    thirdCategoryCode?: string
-}
 function parseMessage(topic: string, message: DigitrafficTrainData, opt: typeof OPTIONS = { allowedTrainTypes: { default: [] } }) {
     const [endpoint,
         departureDateT,
@@ -452,10 +548,10 @@ function parseMessage(topic: string, message: DigitrafficTrainData, opt: typeof 
             if (led.id == track.component) {
                 led.trains.push({
                     n: trainNumber,
-                    l: commuterLineID,
-                    d: typeof lastUpdate.differenceInMinutes == "number" ? lastUpdate.differenceInMinutes : lastUpdate.unknownDelay,
+                    l: commuterLineID || null,
+                    d: typeof lastUpdate.differenceInMinutes == "number" ? lastUpdate.differenceInMinutes : lastUpdate.unknownDelay as number | true,
                     t: Date.now(),
-                    dt: departureDate,
+                    dt: new Date(departureDate),
                     ty: trainType,
                     p: previousLed && previousLed.id != track.component ? previousLed.id : null
                 })
@@ -498,20 +594,13 @@ function findCorrectTrack(segment: { tracks: MultiTrack[], equalTracksException?
     }
     return remainingTracks[0]
 }
-export type MapMode = "delay" | "test" | "lines" | "comp" | "train"
-export interface MapUpdate {
-    p: number[];
-    b: number;
-    v: number[];
-    c: number[];
-    t: number;
-}
+
 async function generateUpdates(mode: MapMode) {
     const allowedTrainTypes = OPTIONS?.allowedTrainTypes[mode] || OPTIONS.allowedTrainTypes.default
-    const updates = (await Promise.all(ledState.map(async led => {
+    const updates = mode == "disruption" ? getDisruptionUpdates() : (await Promise.all(ledState.map(async led => {
         let colors: number[] = []
         const block = componentIdtoBlock(led.id) || 0
-        const prevblocks = led.trains.flatMap(t => componentIdtoBlock(t.p || null) || [])
+        const prevblocks = led.trains.flatMap(t => componentIdtoBlock(t.p || "") || [])
         if (mode == "test") {
             const section = sections.filter(s => (s.type == "multiBetween" ? s.segments.flat() : s.tracks).some(t => t.component == led.id))
             colors = await Promise.all(section.map(getBlockColorBySectionType))
@@ -523,6 +612,76 @@ async function generateUpdates(mode: MapMode) {
     // filter out prev blocks that overlap with current blocks
     return updates.map(u => ({ ...u, p: u.p.filter(b => !updates.some(e => e.b == b)) }))
 }
+
+function getDisruptionUpdates(): MapUpdate[] {
+    const trains = ledState.filter(l => paxInfoState.some(i => i.type == "train" && l.trains.some(t => t.n == i.train)))
+    // TODO: add station updates
+    const stations = paxInfoState.reduce((p, i) =>
+        i.type == "station" ? [...p, {
+            ...i,
+            leds: sections.filter(se =>
+                (se.type == "stop" || se.type == "station") ?
+                    i.stations.some(s =>
+                        s == se.code
+                    ) :
+                    i.stations.some(s =>
+                        s == se.station1
+                    ) && i.stations.some(s =>
+                        s == se.station2
+                    )
+            ).flatMap(se =>
+                se.type == "multiBetween" ? se.segments.flat().map(t => t.component) :
+                    se.tracks.map(t => t.component)
+            )
+        }
+        ] : p, new Array<PaxInfoStationNotif & { leds: string[] }>)
+    return [...trains.map(t => ({
+        p: [],
+        b: componentIdtoBlock(t.id) || 0,
+        v: [],
+        c: [0],
+        t: Date.now()
+    })), ...stations.flatMap(s => s.leds.map(id => ({
+        p: [],
+        v: [],
+        b: componentIdtoBlock(id) || 0,
+        c: [getColorFromDisruptionType(s.category)],
+        t: Date.now()
+    })))].reduce((prev, curr) => {
+        const index = prev.findIndex(u => u.b == curr.b)
+        if (index >= 0) {
+            const prevItem = prev[index]
+            prev.splice(index, 1, {
+                ...curr,
+                c: [...new Set([...prevItem.c, ...curr.c])],
+            })
+            return prev
+        }
+        return [...prev, curr]
+    }, new Array<MapUpdate>())
+}
+
+function getColorFromDisruptionType(type: DisruptionType): number {
+    switch (type) {
+        case "cancellation":
+            return 0
+        case "infrastructure_disruption":
+            return 1
+        case "other_disruption":
+            return 2
+        case "track_work":
+            return 3
+        case "private_train":
+            return 4
+        case "replacement":
+            return 5
+        case "missing_wagon":
+            return 6
+        default:
+            return 9
+    }
+}
+
 function componentIdtoBlock(led: string) {
     return led ? (ledOrder["HPL-NOA"].some(id => id == led) ? ledOrder["HPL-NOA"].findIndex(id => id == led) + 300 : ledOrder["HKI-KTS"].findIndex(id => id == led) + 100) : null
 }
@@ -535,6 +694,7 @@ function getColorTable(mode: MapMode) {
         case "lines":
         case "comp":
         case "train":
+        case "disruption":
             return fullColors;
         default:
             return { 0: [255, 0, 0] as RGBArray };

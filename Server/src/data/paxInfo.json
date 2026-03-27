@@ -1,0 +1,52 @@
+[
+    {
+        "id" : "infrastructure_disruption",
+        "keywords": [
+            "vika",
+            "vaurio"
+        ]
+    },
+    {
+        "id" : "track_work",
+        "keywords": [
+            "ratatyö"
+        ]
+    },
+    {
+        "id" : "missing_wagon",
+        "keywords": [
+            "puuttu",
+            "kalusto on muuttunut",
+            "kalusto muuttunut",
+            "muuttunut kalusto"
+        ]
+    },
+    {
+        "id" : "cancellation",
+        "keywords": [
+            "peruttu"
+        ]
+    },
+    {
+        "id" : "replacement",
+        "keywords": [
+            "korvattu",
+            "korvaava"
+        ]
+    },
+    {
+        "id" : "private_train",
+        "keywords": [
+            "yksityis",
+            "tilausjuna"
+        ]
+    },
+    {
+        "id" : "other_disruption",
+        "keywords": [
+            "Myöhästymisen syy",
+            "myöhästy",
+            "myöhästelee"
+        ]
+    }
+]
