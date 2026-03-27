@@ -147,12 +147,15 @@
             display: block;
             aspect-ratio: 1;
         }
+
         table {
             border-spacing: .5em 0;
         }
+
         th {
             text-align: start;
         }
+
         th div {
             text-transform: capitalize;
         }
@@ -172,7 +175,8 @@
                     <button onclick="setChanges('mode',1)">Delay</button>
                     <button onclick="setChanges('mode',2)">Composition</button>
                     <button onclick="setChanges('mode',3)">Train Type</button>
-                    <button onclick="setChanges('mode',4)">Test</button>
+                    <button onclick="setChanges('mode',4)">Disruptions</button>
+                    <button onclick="setChanges('mode',5)">Test</button>
                 </div>
             </details>
         </h3>
@@ -206,220 +210,233 @@
 
             </tbody>
         </table>
-        </div>
-        <script>
-            //@ts-check
-            // temp for degugging outside firmware
-            const API_URL = "http://192.168.1.195"
+    </div>
+    <script>
+        //@ts-check
+        // temp for degugging outside firmware
+        const API_URL = "http://192.168.1.195"
 
-            const statusSpan = document.querySelector("#status")
-            const modeSpan = document.querySelector("#mode")
-            const brightnessSpan = document.querySelector("#brightness")
-            const brightnessContainer = document.querySelector("#brightnessC")
-            const dirIndSpan = document.querySelector("#dir_ind")
-            const saveButton = document.querySelector("#save")
-            const refreshButton = document.querySelector("#refresh")
-            const legend = document.querySelector("#legend")
+        const statusSpan = document.querySelector("#status")
+        const modeSpan = document.querySelector("#mode")
+        const brightnessSpan = document.querySelector("#brightness")
+        const brightnessContainer = document.querySelector("#brightnessC")
+        const dirIndSpan = document.querySelector("#dir_ind")
+        const saveButton = document.querySelector("#save")
+        const refreshButton = document.querySelector("#refresh")
+        const legend = document.querySelector("#legend")
 
 
-            const legends = [
-                [
-                    { color: "#f00", line: "Z" },
-                    { color: "#f80", line: "A" },
-                    { color: "#ff0", line: "E,O" },
-                    { color: "#0f0", line: "P,G" },
-                    { color: "#0ff", line: "M,I" },
-                    { color: "#00f", line: "K" },
-                    { color: "#80f", line: "Y,L,H" },
-                    { color: "#f0f", line: "U" },
-                    { color: "#f08", line: "D,T,R" },
-                    { color: "#fff", line: "V, Other" }
-                ], [
-                    { color: "#0ff", delay: "< 0", description: "Ahead of schedule" },
-                    { color: "#0f0", delay: "0 - 2", description: "On time" },
-                    { color: "#ff0", delay: "2 - 10", description: "Mild delay" },
-                    { color: "#f00", delay: "> 20", description: "Severe delay" },
-                    { color: "#f0f", delay: "-", description: "Unknown delay amount" }
-                ], [
-                    { color: "#f00", class: "Sm2", description: "Commuter, old" },
-                    { color: "#0f0", class: "Sm3", description: "Pendolino (IC)" },
-                    { color: "#ff0", class: "Sm4", description: "Commuter, longer distances" },
-                    { color: "#80f", class: "Sm5", description: "Commuter, shorter distances" },
-                    { color: "#f0f", class: "Sm6", description: "Allegro (IC)" },
-                    { color: "#f80", class: "Sm7", description: "Commuter, not in regular service yet" },
-                    { color: "#0ff", class: "Sr2", description: "IC locomotive" },
-                    { color: "#00f", class: "Sr3", description: "Newer IC locomotive" },
-                    { color: "#f08", class: "N/A", description: "No composition found (most likely freight)" },
-                    { color: "#fff", class: "Other", description: "Other locomotive with no color defined" }
-                ], [
-                    { color: "#f00", code: "IC", description: "Double-decker intercity trains" },
-                    { color: "#f80", code: "VET", description: "Locomotive train" },
-                    { color: "#f80", code: "MUS, MUV", description: "Heritage train" },
-                    { color: "#0f0", code: "S", description: "Pendolino train" },
-                    { color: "#00f", code: "T", description: "Freight train" },
-                    { color: "#80f", code: "HL", description: "Commuter train" },
-                    { color: "#f0f", code: "HV", description: "Commuter train transfer" },
-                    { color: "#f08", code: "PAR, PAI, VEV, W, SAA", description: "Shunting" },
-                    { color: "#fff", code: "Other", description: "Other train type with no color defined" }
-                ], [
-                    { color: "#ff0", type: "Station", description: "All services stop" },
-                    { color: "#f00", type: "Stop", description: "Express services skip" },
-                    { color: "#0f0", type: "Between", description: "Single LED between stops/stations" },
-                    { color: "#0ff", type: "MultiBetween", description: "Multiple LEDs between stops/stations" }
-                ]
+        const legends = [
+            [
+                { color: "#f00", line: "Z" },
+                { color: "#f80", line: "A" },
+                { color: "#ff0", line: "E,O" },
+                { color: "#0f0", line: "P,G" },
+                { color: "#0ff", line: "M,I" },
+                { color: "#00f", line: "K" },
+                { color: "#80f", line: "Y,L,H" },
+                { color: "#f0f", line: "U" },
+                { color: "#f08", line: "D,T,R" },
+                { color: "#fff", line: "V, Other" }
+            ], [
+                { color: "#0ff", delay: "< 0", description: "Ahead of schedule" },
+                { color: "#0f0", delay: "0 - 2", description: "On time" },
+                { color: "#ff0", delay: "2 - 10", description: "Mild delay" },
+                { color: "#f00", delay: "> 20", description: "Severe delay" },
+                { color: "#f0f", delay: "-", description: "Unknown delay amount" }
+            ], [
+                { color: "#f00", class: "Sm2", description: "Commuter, old" },
+                { color: "#0f0", class: "Sm3", description: "Pendolino (IC)" },
+                { color: "#ff0", class: "Sm4", description: "Commuter, longer distances" },
+                { color: "#80f", class: "Sm5", description: "Commuter, shorter distances" },
+                { color: "#f0f", class: "Sm6", description: "Allegro (IC)" },
+                { color: "#f80", class: "Sm7", description: "Commuter, not in regular service yet" },
+                { color: "#0ff", class: "Sr2", description: "IC locomotive" },
+                { color: "#00f", class: "Sr3", description: "Newer IC locomotive" },
+                { color: "#f08", class: "N/A", description: "No composition found (most likely freight)" },
+                { color: "#fff", class: "Other", description: "Other locomotive with no color defined" }
+            ], [
+                { color: "#f00", code: "IC", description: "Double-decker intercity trains" },
+                { color: "#f80", code: "VET", description: "Locomotive train" },
+                { color: "#f80", code: "MUS, MUV", description: "Heritage train" },
+                { color: "#0f0", code: "S", description: "Pendolino train" },
+                { color: "#00f", code: "T", description: "Freight train" },
+                { color: "#80f", code: "HL", description: "Commuter train" },
+                { color: "#f0f", code: "HV", description: "Commuter train transfer" },
+                { color: "#f08", code: "PAR, PAI, VEV, W, SAA", description: "Shunting" },
+                { color: "#fff", code: "Other", description: "Other train type with no color defined" }
+            ], [
+                { color: "#f00", disruption: "Cancellation" },
+                { color: "#f80", disruption: "Infrastructure disruption" },
+                { color: "#ff0", disruption: "Other disruption" },
+                { color: "#0f0", disruption: "Track work" },
+                { color: "#0ff", disruption: "Private train" },
+                { color: "#00f", disruption: "Replacement service" },
+                { color: "#80f", disruption: "Missing/replaced wagon(s)" },
+                { color: "#fff", disruption: "Unclassified" }
+            ], [
+                { color: "#ff0", type: "Station", description: "All services stop" },
+                { color: "#f00", type: "Stop", description: "Express services skip" },
+                { color: "#0f0", type: "Between", description: "Single LED between stops/stations" },
+                { color: "#0ff", type: "MultiBetween", description: "Multiple LEDs between stops/stations" }
             ]
+        ]
 
-            /**
-             * @type {{
-             * mode?: number,
-             * brightness?: number,
-             * dir_ind?: number
-             * }} changes
-             */
-            let changes = {}
+        /**
+         * @type {{
+         * mode?: number,
+         * brightness?: number,
+         * dir_ind?: number
+         * }} changes
+         */
+        let changes = {}
 
-            function setChanges(k, v) {
-                if (saveButton) saveButton.hidden = false
-                changes = { ...changes, [k]: v }
+        function setChanges(k, v) {
+            if (saveButton) saveButton.hidden = false
+            changes = { ...changes, [k]: v }
+        }
+
+        async function getData() {
+            if (refreshButton) refreshButton.innerHTML = "Loading..."
+            const response = await fetch(`${API_URL}/get_data/`)
+            const data = await response.json()
+            if (refreshButton) refreshButton.innerHTML = "Refresh"
+            parseData(data)
+        }
+        async function saveChanges() {
+            if (saveButton) saveButton.innerHTML = "Saving..."
+            const searchParams = Object.entries(changes)
+            if (searchParams.length) await fetch(`${API_URL}/set_data/${searchParams.length ? `${searchParams.reduce((p, [k, v]) => `${p}${p.length ? "&" : "?"}${k}=${v}`, "")}` : ""}`)
+            if (saveButton) saveButton.innerHTML = "Save changes"
+            if (saveButton) saveButton.hidden = true
+            if (refreshButton) refreshButton.innerHTML = "Auto-reloading in 1 second"
+            setTimeout(() => {
+                getData()
+            }, 1000)
+            changes = {}
+        }
+        /**
+         * @typedef {{
+         *  mode: number,
+         *  brightness: number,
+         *  wifiLed: number,
+         *  networkLed: number,
+         *  directionIndicator: number,
+         * }} APIData
+         * @param {APIData} data
+         */
+        function parseData(data) {
+            if (statusSpan) statusSpan.innerHTML = getStatus(data.wifiLed, data.networkLed)
+            if (brightnessSpan) brightnessSpan.innerHTML = getBrightness(data.brightness, data.directionIndicator)
+            if (dirIndSpan) dirIndSpan.innerHTML = data.directionIndicator ? "Yes" : "No"
+            if (modeSpan) {
+                const { name } = getMode(data.mode)
+                modeSpan.innerHTML = name
             }
+            if (data.networkLed != 1 || data.wifiLed != 1) {
+                if (refreshButton) refreshButton.innerHTML = "Auto-reloading in 5 seconds"
 
-            async function getData() {
-                if (refreshButton) refreshButton.innerHTML = "Loading..."
-                const response = await fetch(`${API_URL}/get_data/`)
-                const data = await response.json()
-                if (refreshButton) refreshButton.innerHTML = "Refresh"
-                parseData(data)
-            }
-            async function saveChanges() {
-                if (saveButton) saveButton.innerHTML = "Saving..."
-                const searchParams = Object.entries(changes)
-                if (searchParams.length) await fetch(`${API_URL}/set_data/${searchParams.length ? `${searchParams.reduce((p, [k, v]) => `${p}${p.length ? "&" : "?"}${k}=${v}`, "")}` : ""}`)
-                if (saveButton) saveButton.innerHTML = "Save changes"
-                if (saveButton) saveButton.hidden = true
-                if (refreshButton) refreshButton.innerHTML = "Auto-reloading in 1 second"
                 setTimeout(() => {
                     getData()
-                }, 1000)
-                changes = {}
+                }, 5000)
             }
-            /**
-             * @typedef {{
-             *  mode: number,
-             *  brightness: number,
-             *  wifiLed: number,
-             *  networkLed: number,
-             *  directionIndicator: number,
-             * }} APIData
-             * @param {APIData} data
-             */
-            function parseData(data) {
-                if (statusSpan) statusSpan.innerHTML = getStatus(data.wifiLed, data.networkLed)
-                if (brightnessSpan) brightnessSpan.innerHTML = getBrightness(data.brightness, data.directionIndicator)
-                if (dirIndSpan) dirIndSpan.innerHTML = data.directionIndicator ? "Yes" : "No"
-                if (modeSpan) {
-                    const { name } = getMode(data.mode)
-                    modeSpan.innerHTML = name
+            if (brightnessContainer) {
+                brightnessContainer.innerHTML = ""
+                for (let i = 0; i < 5; i++) {
+                    brightnessContainer.innerHTML += `<button onclick="setChanges('brightness',${i})">${getBrightness(i, data.directionIndicator).split("/")[0]}</button>`
                 }
-                if (data.networkLed != 1 || data.wifiLed != 1) {
-                    if (refreshButton) refreshButton.innerHTML = "Auto-reloading in 5 seconds"
+            }
+            if (legend) {
+                legend.innerHTML = ""
+                const table = legends[data.mode]
+                if (!table) return
+                const keys = Object.keys(table[0])
+                legend.innerHTML += `<tr>${keys.reduce((p, k) => `${p}<th><div>${k}</div></th>`, "")}</tr>`
+                table.forEach(r => {
+                    const { color, ...otherData } = r
+                    const values = Object.values(otherData)
+                    console.log(values)
+                    legend.innerHTML += `<tr><td><span class="legend-color" style="background-color: ${color}"></span></td>${values.reduce((p, r) => `${p}<td>${r}</td>`, "")}</tr>`
+                })
+            }
 
-                    setTimeout(() => {
-                        getData()
-                    }, 5000)
-                }
-                if (brightnessContainer) {
-                    brightnessContainer.innerHTML = ""
-                    for (let i = 0; i < 5; i++) {
-                        brightnessContainer.innerHTML += `<button onclick="setChanges('brightness',${i})">${getBrightness(i, data.directionIndicator).split("/")[0]}</button>`
+        }
+        function getStatus(wifiLed = -1, networkLed = -1) {
+            switch (wifiLed) {
+                case 0:
+                    return "Boot failed"
+                case 1:
+                    switch (networkLed) {
+                        case 0:
+                            return "Trying to connect to server"
+                        case 1:
+                            return "Connected to server"
+                        case 2:
+                            return "Failed to connect to server. Reconnecting..."
+                        case 4:
+                            return "Switching map mode"
+                        default:
+                            return "Unknown status: " + networkLed
                     }
-                }
-                if (legend) {
-                    legend.innerHTML = ""
-                    const table = legends[data.mode]
-                    if (!table) return
-                    const keys = Object.keys(table[0])
-                    legend.innerHTML += `<tr>${keys.reduce((p,k) => `${p}<th><div>${k}</div></th>`,"")}</tr>`
-                    table.forEach(r => {
-                        const {color, ...otherData} = r
-                        const values = Object.values(otherData)
-                        console.log(values)
-                        legend.innerHTML += `<tr><td><span class="legend-color" style="background-color: ${color}"></span></td>${values.reduce((p,r) => `${p}<td>${r}</td>`,"")}</tr>`
-                    })
-                }
+                case 2:
+                    return "Failed to connect to WiFi"
+                case 4:
+                    return "Connecting to WiFi"
+                default:
+                    return "Unknown status: " + wifiLed
+            }
+        }
+        function getMode(mode = -1) {
+            switch (mode) {
+                case 0:
+                    return {
+                        name: "Commuter lines"
+                    }
+                case 1:
+                    return {
+                        name: "Delay"
+                    }
+                case 2:
+                    return {
+                        name: "Train composition (locomotive)"
+                    }
+                case 3:
+                    return {
+                        name: "Train Type"
+                    }
+                case 4:
+                    return {
+                        name: "Disruptions"
+                    }
+                case 5:
+                    return {
+                        name: "Test"
+                    }
+                default:
+                    return {
+                        name: "Unknown mode: " + mode
+                    }
+            }
+        }
+        function getBrightness(brightness = -1, directionIndicators = false) {
+            switch (brightness) {
+                case 0:
+                    return directionIndicators ? "0/255" : "0/255"
+                case 1:
+                    return directionIndicators ? "80/255" : "35/255"
+                case 2:
+                    return directionIndicators ? "90/255" : "50/255"
+                case 3:
+                    return directionIndicators ? "120/255" : "80/255"
+                case 4:
+                    return directionIndicators ? "255/255" : "255/255"
+                default:
+                    return "Unknown brightness: " + brightness
+            }
+        }
 
-            }
-            function getStatus(wifiLed = -1, networkLed = -1) {
-                switch (wifiLed) {
-                    case 0:
-                        return "Boot failed"
-                    case 1:
-                        switch (networkLed) {
-                            case 0:
-                                return "Trying to connect to server"
-                            case 1:
-                                return "Connected to server"
-                            case 2:
-                                return "Failed to connect to server. Reconnecting..."
-                            case 4:
-                                return "Switching map mode"
-                            default:
-                                return "Unknown status: " + networkLed
-                        }
-                    case 2:
-                        return "Failed to connect to WiFi"
-                    case 4:
-                        return "Connecting to WiFi"
-                    default:
-                        return "Unknown status: " + wifiLed
-                }
-            }
-            function getMode(mode = -1) {
-                switch (mode) {
-                    case 0:
-                        return {
-                            name: "Commuter lines"
-                        }
-                    case 1:
-                        return {
-                            name: "Delay"
-                        }
-                    case 2:
-                        return {
-                            name: "Train composition (locomotive)"
-                        }
-                    case 3:
-                        return {
-                            name: "Train Type"
-                        }
-                    case 4:
-                        return {
-                            name: "Test"
-                        }
-                    default:
-                        return {
-                            name: "Unknown mode: " + mode
-                        }
-                }
-            }
-            function getBrightness(brightness = -1, directionIndicators = false) {
-                switch (brightness) {
-                    case 0:
-                        return directionIndicators ? "0/255" : "0/255"
-                    case 1:
-                        return directionIndicators ? "80/255" : "35/255"
-                    case 2:
-                        return directionIndicators ? "90/255" : "50/255"
-                    case 3:
-                        return directionIndicators ? "120/255" : "80/255"
-                    case 4:
-                        return directionIndicators ? "255/255" : "255/255"
-                    default:
-                        return "Unknown brightness: " + brightness
-                }
-            }
-
-            getData()
-        </script>
+        getData()
+    </script>
 </body>
 
 </html>

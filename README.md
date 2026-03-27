@@ -216,6 +216,20 @@ There are 4(+1) map modes on the device. You can switch the mode by pressing the
 |$${\color{#0f0}\Huge\text{■}}$$| Between      | Single LED between stops/stations    | Train left previous, not arrived at next                           |
 |$${\color{#0ff}\Huge\text{■}}$$| MultiBetween | Multiple LEDs between stops/stations | Same as between, but exact position is appoximated using timetable |
 
+#### Disruptions
+- Shows disruptions for stations and trains
+
+| Color                         | Disruption                |
+|-------------------------------|---------------------------|
+|$${\color{#f00}\Huge\text{■}}$$| Cancellation              |
+|$${\color{#f80}\Huge\text{■}}$$| Infrastructure disruption |
+|$${\color{#ff0}\Huge\text{■}}$$| Other disruption          |
+|$${\color{#0f0}\Huge\text{■}}$$| Track work                |
+|$${\color{#0ff}\Huge\text{■}}$$| Private train             |
+|$${\color{#00f}\Huge\text{■}}$$| Replacement service       |
+|$${\color{#80f}\Huge\text{■}}$$| Missing/replaced wagon(s) |
+|$${\color{#fff}\Huge\text{■}}$$| Unclassified              |
+
 ---
 
 ## Web Installer
