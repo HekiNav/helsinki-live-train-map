@@ -57,7 +57,7 @@ int8_t mode = 0;
 
 // When updating these values, make sure to also update web server data
 
-String modes[] = { String("lines"), String("delay"), String("comp"), String("train"), String("test") };
+String modes[] = { String("lines"), String("delay"), String("comp"), String("train"), String("disruption"), String("test") };
 
 uint8_t brightnessValues[5][2] = {
 	{ 0, 0 }, { 80, 35 }, { 90, 35 }, { 120, 40 }, { 255, 80 },
@@ -159,7 +159,8 @@ int ledCalibration() {
 	return 1;
 }
 
-statusLed leds[] = { { WIFI_LED_PIN, (statusLedCommand)LED_OFF, false, 0 }, { CONFIG_LED_PIN, (statusLedCommand)LED_OFF, false, 0 } };
+statusLed leds[] = { { WIFI_LED_PIN, (statusLedCommand)LED_OFF, false, 0 },
+					 { CONFIG_LED_PIN, (statusLedCommand)LED_OFF, false, 0 } };
 
 void statusLedManagerTask(void* pvParameters) {
 	const int numLeds = sizeof(leds) / sizeof(leds[0]);
@@ -176,7 +177,10 @@ void statusLedManagerTask(void* pvParameters) {
 					leds[i].command = cmd;
 					// Immediate response for non-blinking states
 					if (cmd == LED_ON_GREEN || cmd == LED_ON_RED || cmd == LED_OFF) {
-						setCharlieplexedLED(pin, (cmd == (statusLedCommand)LED_ON_GREEN) ? GREEN : (statusLedCommand)(cmd == LED_ON_RED) ? RED : OFF);
+						setCharlieplexedLED(pin,
+											(cmd == (statusLedCommand)LED_ON_GREEN) ? GREEN
+											: (statusLedCommand)(cmd == LED_ON_RED) ? RED
+																					: OFF);
 					}
 					break;
 				}
@@ -236,7 +240,7 @@ void checkButton(Button* button) {
 						break;
 					case MAP_BUTTON:
 						Serial.print("Map button pressed ");
-						mode = (mode + 1) % (sizeof(modes) / sizeof(modes[0]) -1); // -1 accounts for test mode
+						mode = (mode + 1) % (sizeof(modes) / sizeof(modes[0]) - 1);	 // -1 accounts for test mode
 						ledUpdatePending = true;
 						nextFetchTime = 0;
 						setStatusLedState(CONFIG_LED_PIN, (statusLedCommand)LED_BLINK_GREEN_FAST);
@@ -549,7 +553,6 @@ void setup() {
 	preferences.begin("dir_ind");
 	direction_indicators = preferences.getInt("dir_ind", direction_indicators);
 	preferences.end();
-
 
 	hplNoa.SetLuminance(255);
 	hkiKts.SetLuminance(255);
