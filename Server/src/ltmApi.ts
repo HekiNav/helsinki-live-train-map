@@ -822,7 +822,8 @@ function getTrainColorByType(t: LEDTrain) {
 function getTrainColorByDelay(t: LEDTrain) {
     if (t.d === true/* WHAT IS THIS BRO */) {
         return 4
-    } else if (t.d < 0) {
+        // More than 1 min delay
+    } else if (t.d < -1) {
         return 3
     } else if (t.d < 2) {
         return 0
