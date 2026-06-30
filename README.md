@@ -85,6 +85,8 @@ Led chains are located on other pages
 
 ## Software / Firmware
 
+NOTE! Software and firmware have been moved to [another repo](https://github.com/HekiNav/legacy-ltm-firmware)
+
 The ESP32-C3 firmware is responsible for:
 
 1. Connecting to Wi-Fi
