@@ -85,6 +85,8 @@ Led chains are located on other pages
 
 ## Software / Firmware
 
+NOTE! Software and firmware have been moved to [another repo](https://github.com/HekiNav/legacy-ltm-firmware)
+
 The ESP32-C3 firmware is responsible for:
 
 1. Connecting to Wi-Fi
@@ -236,7 +238,7 @@ There are 4(+1) map modes on the device. You can switch the mode by pressing the
 
 Easily flash the latest firmware to your ESP32-C3 using your browser:
 
-[Open the Helsinki LED Train Map Web Installer](https://hekinav.github.io/helsinki-live-train-map/led-rails.html)
+[Open the Helsinki LED Train Map Web Installer](https://hekinav.github.io/ltm-firmware/led-rails.html)
 
 - Works with Chrome, Edge, or any Web Serial-compatible browser
 - Follow on-screen instructions to connect and flash your device
@@ -247,7 +249,7 @@ Easily flash the latest firmware to your ESP32-C3 using your browser:
 
 View the map without having the physical pcb:
 
-[Open the Helsinki LED Train Map Web Simulator](https://hekinav.github.io/helsinki-live-train-map/sim.html)
+[Open the Helsinki LED Train Map Web Simulator](https://hekinav.github.io/ltm-firmware/sim.html)
 
 - Use the map mode button to switch display modes, just like on the real thing
 - Works with most modern browsers
@@ -296,8 +298,8 @@ Start the server
 
 ## Links
 
-- [Web Installer](https://hekinav.github.io/helsinki-live-train-map//led-rails.html)
-- [Web Simulator](https://hekinav.github.io/helsinki-live-train-map//sim.html)
+- [Web Installer](https://hekinav.github.io/ltm-firmware//led-rails.html)
+- [Web Simulator](https://hekinav.github.io/ltm-firmware//sim.html)
 - [Interactive PCB Viewer](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2FHekiNav%2Fhelsinki-live-train-map%2Ftree%2Fmain%2FPCB)
 - [JLCPCB KiCad Library](https://github.com/CDFER/jlcpcb-kicad-library)
 
