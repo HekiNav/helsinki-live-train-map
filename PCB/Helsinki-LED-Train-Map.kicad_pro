@@ -553,7 +553,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "jlcpcb/Gerb/",
+      "plot": "jlcpcb/",
       "pos_files": "jlcpcb/Cpl/",
       "specctra_dsn": "",
       "step": "Auckland-LED-Train-Map.step",
